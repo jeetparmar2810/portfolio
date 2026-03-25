@@ -11,7 +11,8 @@
 body{
   font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto;
   background:#020617;
-  color:#e2e8f0;
+  color:#fff;
+  overflow-x:hidden;
 }
 
 /* NAV */
@@ -23,7 +24,7 @@ header{
 }
 nav{
   display:flex;justify-content:space-between;
-  padding:12px 16px;max-width:1100px;margin:auto;
+  padding:12px 16px;max-width:1200px;margin:auto;
 }
 .logo{color:#8b5cf6;font-weight:bold;}
 .nav-links{display:flex;gap:15px;list-style:none;}
@@ -37,74 +38,94 @@ nav{
 }
 .hero span{color:#8b5cf6;}
 .btn{
-  padding:10px 18px;border-radius:25px;
-  background:#6366f1;color:white;text-decoration:none;
+  padding:12px 22px;
+  border-radius:30px;
+  background:linear-gradient(135deg,#8b5cf6,#6366f1);
+  color:white;
+  text-decoration:none;
 }
 
 /* SECTION */
-section{
-  padding:80px 15px;
-  opacity:0;
-  transform:translateY(30px);
-  transition:0.6s;
-}
-section.show{opacity:1;transform:translateY(0);}
-.container{max-width:1000px;margin:auto;}
-h2{text-align:center;margin-bottom:25px;}
+section{padding:80px 20px;}
+.container{max-width:1200px;margin:auto;}
+h2{text-align:center;margin-bottom:30px;}
 
-/* APP CARD */
-.app-card{
+/* CAROUSEL */
+.carousel{
   display:flex;
-  gap:20px;
+  gap:25px;
+  overflow-x:auto;
+  scroll-snap-type:x mandatory;
+  padding:20px;
+}
+
+.carousel::-webkit-scrollbar{display:none;}
+
+/* CARD */
+.app-card{
+  min-width:260px;
+  height:460px;
   background:rgba(255,255,255,0.05);
-  padding:15px;
-  border-radius:15px;
-  margin-bottom:25px;
-  align-items:center;
-}
-
-/* DEVICE */
-.device-frame{
-  width:130px;height:260px;
-  border:6px solid #111;
   border-radius:25px;
-  overflow:hidden;
-}
-.device-frame img{
-  width:100%;height:100%;object-fit:cover;
+  padding:12px;
+  scroll-snap-align:center;
+  transition:0.4s;
+  transform-style:preserve-3d;
+  cursor:pointer;
 }
 
-/* INFO */
-.rating{color:#facc15;margin:8px 0;}
-.buttons button{
-  padding:8px 15px;
-  border:none;border-radius:20px;margin-right:10px;
+.app-card img{
+  width:100%;
+  height:380px;
+  object-fit:cover;
+  border-radius:20px;
 }
-.install{background:#22c55e;color:white;}
-.preview{background:#6366f1;color:white;}
+
+.app-card h3{margin-top:10px;font-size:16px;}
+.app-card p{font-size:12px;color:#aaa;}
+
+/* 3D hover */
+.app-card:hover{
+  transform:rotateY(10deg) scale(1.08);
+}
+
+/* center zoom */
+.app-card.active{
+  transform:scale(1.15);
+}
 
 /* SLIDER */
 #slider{
   display:none;
-  position:fixed;top:0;left:0;
+  position:fixed;
+  top:0;left:0;
   width:100%;height:100%;
-  background:black;
+  background:#000;
   z-index:9999;
   justify-content:center;
   align-items:center;
   flex-direction:column;
 }
+
 #slider img{
   max-width:90%;
   max-height:80%;
+  border-radius:10px;
 }
-.controls button{
-  margin:10px;padding:10px;
+
+.slider-controls{
+  margin-top:10px;
+}
+.slider-controls button{
+  margin:5px;
+  padding:10px 15px;
+  border:none;
+  border-radius:10px;
+  cursor:pointer;
 }
 
 /* MOBILE */
 @media(max-width:768px){
-  .app-card{flex-direction:column;text-align:center;}
   .nav-links{display:none;}
 }
 </style>
@@ -126,7 +147,7 @@ h2{text-align:center;margin-bottom:25px;}
 <section class="hero">
 <div>
 <h1>Hi, I'm <span>Jeet</span> 👋</h1>
-<p id="typing"></p>
+<p>Flutter Developer 🚀</p>
 <a href="#projects" class="btn">View Work</a>
 </div>
 </section>
@@ -137,41 +158,36 @@ h2{text-align:center;margin-bottom:25px;}
 
 <h2>My Apps</h2>
 
+<div class="carousel" id="carousel">
+
 <!-- TODO APP -->
-<div class="app-card">
-
-<div class="device-frame">
-<img src="assets/images/todo/login.png" onclick="openSlider('todo')">
+<div class="app-card" onclick="openSlider('todo')">
+<img src="assets/images/todo/login.png">
+<h3>Todo App</h3>
+<p>Realtime + Offline Sync</p>
 </div>
 
-<div class="app-info">
-<h3>Smart Todo App</h3>
-<p>Realtime task management with Firebase & offline sync</p>
-
-<div class="rating">⭐ 4.9 • Productivity</div>
-
-<ul style="font-size:13px;line-height:1.6;">
-<li>✅ Firebase Auth</li>
-<li>✅ Add/Edit/Delete Tasks</li>
-<li>✅ Share with users</li>
-<li>✅ Real-time sync</li>
-<li>✅ Offline mode</li>
-<li>✅ MVVM + Riverpod</li>
-</ul>
-
-<div class="buttons">
-<button class="install">Install</button>
-<button class="preview" onclick="openSlider('todo')">Preview</button>
-<a href="https://github.com/jeetparmar2810/todo-app" target="_blank">
-<button class="preview">Code</button>
-</a>
+<!-- VIDEO CALL APP -->
+<div class="app-card" onclick="openSlider('video')">
+<img src="assets/images/video/login.png">
+<h3>Video Call App</h3>
+<p>Realtime Calling • Channel Based</p>
 </div>
 
-</div>
 </div>
 
 </div>
 </section>
+
+<!-- SLIDER -->
+<div id="slider">
+<img id="sliderImg">
+<div class="slider-controls">
+<button onclick="prev()">⬅</button>
+<button onclick="next()">➡</button>
+<button onclick="closeSlider()">❌</button>
+</div>
+</div>
 
 <!-- CONTACT -->
 <section id="contact">
@@ -181,36 +197,30 @@ h2{text-align:center;margin-bottom:25px;}
 </div>
 </section>
 
-<!-- SLIDER -->
-<div id="slider">
-<img id="sliderImg">
-<div class="controls">
-<button onclick="prev()">⬅</button>
-<button onclick="next()">➡</button>
-<button onclick="closeSlider()">❌</button>
-</div>
-</div>
-
 <script>
 
-/* typing */
-const texts=["Flutter Developer 🚀","Android Expert 📱"];
-let i=0;
-setInterval(()=>{
-document.getElementById("typing").innerText=texts[i];
-i=(i+1)%texts.length;
-},2000);
+/* AUTO SCROLL */
+const carousel=document.getElementById("carousel");
 
-/* scroll */
-document.addEventListener("scroll",()=>{
-document.querySelectorAll("section").forEach(s=>{
-if(s.getBoundingClientRect().top<window.innerHeight-50){
-s.classList.add("show");
+setInterval(()=>{
+carousel.scrollBy({left:300,behavior:'smooth'});
+},3000);
+
+/* CENTER ACTIVE */
+carousel.addEventListener("scroll",()=>{
+let cards=document.querySelectorAll(".app-card");
+cards.forEach(c=>c.classList.remove("active"));
+
+let center=window.innerWidth/2;
+cards.forEach(card=>{
+let rect=card.getBoundingClientRect();
+if(rect.left<center && rect.right>center){
+card.classList.add("active");
 }
 });
 });
 
-/* slider data */
+/* DATA */
 let data={
 todo:[
 "assets/images/todo/login.png",
@@ -221,35 +231,43 @@ todo:[
 "assets/images/todo/delete-task.png",
 "assets/images/todo/mask-task-options.png",
 "assets/images/todo/task-list.png"
+],
+video:[
+"assets/images/video/login.png",
+"assets/images/video/users.png",
+"assets/images/video/userDetails.png",
+"assets/images/video/video.png",
+"assets/images/video/video-1.png",
+"assets/images/video/error.png"
 ]
 };
 
 let list=[],index=0;
 
 function openSlider(type){
-list=data[type];index=0;
+list=data[type];
+index=0;
 document.getElementById("slider").style.display="flex";
 show();
 }
+
 function show(){
 document.getElementById("sliderImg").src=list[index];
 }
-function next(){index=(index+1)%list.length;show();}
-function prev(){index=(index-1+list.length)%list.length;show();}
+
+function next(){
+index=(index+1)%list.length;
+show();
+}
+
+function prev(){
+index=(index-1+list.length)%list.length;
+show();
+}
+
 function closeSlider(){
 document.getElementById("slider").style.display="none";
 }
-
-/* swipe */
-let startX=0;
-document.getElementById("slider").addEventListener("touchstart",e=>{
-startX=e.touches[0].clientX;
-});
-document.getElementById("slider").addEventListener("touchend",e=>{
-let endX=e.changedTouches[0].clientX;
-if(endX-startX>50) prev();
-if(startX-endX>50) next();
-});
 
 </script>
 
