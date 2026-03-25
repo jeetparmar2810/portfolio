@@ -3,228 +3,605 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Jeet Parmar | Flutter Developer</title>
-
+<title>Jeet Parmar | Senior Flutter & Android Developer</title>
+<link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800;900&family=Cabinet+Grotesk:wght@400;500;700;800;900&display=swap" rel="stylesheet">
 <style>
-*{margin:0;padding:0;box-sizing:border-box;font-family:'Segoe UI',sans-serif;}
-body{background:#0b0f1a;color:#fff;overflow-x:hidden}
+:root {
+  --accent: #6c47ff;
+  --accent2: #ff47d6;
+  --accent3: #47c8ff;
+  --bg: #05080f;
+  --bg2: #0a0e1a;
+  --bg3: #111827;
+  --border: rgba(255,255,255,0.07);
+  --text: #eef0f8;
+  --muted: #6b7394;
+  --green: #22c55e;
+  --r: 18px;
+}
+*{margin:0;padding:0;box-sizing:border-box;}
+html{scroll-behavior:smooth;}
+body{background:var(--bg);color:var(--text);font-family:'Outfit',sans-serif;overflow-x:hidden;cursor:none;}
 
-/* NAV */
-nav{
-display:flex;justify-content:space-between;
-padding:15px 25px;background:#0b0f1a;position:sticky;top:0;
-z-index:1000;
-}
-nav h2{color:#7c5cff}
-nav a{color:#ccc;margin-left:15px;text-decoration:none;font-size:14px}
-nav a:hover{color:#fff}
+/* ── CURSOR ── */
+#cur,#cur-ring{position:fixed;pointer-events:none;z-index:99999;border-radius:50%;transform:translate(-50%,-50%);}
+#cur{width:10px;height:10px;background:var(--accent);transition:transform .15s,background .2s;}
+#cur-ring{width:36px;height:36px;border:1.5px solid rgba(108,71,255,.5);transition:width .3s,height .3s,border-color .3s;}
+#cur.h{transform:translate(-50%,-50%) scale(2);background:var(--accent2);}
+#cur-ring.h{width:52px;height:52px;border-color:rgba(255,71,214,.5);}
 
-/* HERO */
-.hero{
-height:65vh;
-display:flex;flex-direction:column;justify-content:center;align-items:center;
-text-align:center;padding:20px;
-}
-.hero h1{font-size:36px}
-.hero span{color:#7c5cff}
-.hero p{color:#aaa;margin-top:5px}
-.btn{
-margin-top:15px;padding:10px 20px;border-radius:25px;
-background:#7c5cff;color:#fff;text-decoration:none;font-size:14px;
-display:inline-block;
-}
+/* ── NAV ── */
+nav{display:flex;justify-content:space-between;align-items:center;padding:18px 60px;position:sticky;top:0;z-index:1000;background:rgba(5,8,15,.85);backdrop-filter:blur(20px);border-bottom:1px solid var(--border);}
+.logo{font-family:'Cabinet Grotesk',sans-serif;font-size:20px;font-weight:900;background:linear-gradient(135deg,var(--accent),var(--accent2));-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;text-decoration:none;}
+.nav-r{display:flex;gap:28px;align-items:center;}
+.nav-r a{color:var(--muted);text-decoration:none;font-size:13.5px;font-weight:500;transition:color .2s;}
+.nav-r a:hover{color:var(--text);}
+.nav-cta{background:linear-gradient(135deg,var(--accent),var(--accent2));color:#fff !important;padding:8px 20px;border-radius:50px;font-size:13px !important;font-weight:600 !important;}
 
-/* SECTION */
-.section{padding:25px}
+/* ── HERO ── */
+.hero{min-height:92vh;display:flex;flex-direction:column;justify-content:center;align-items:center;text-align:center;padding:80px 30px 60px;position:relative;overflow:hidden;}
+.hero-glow{position:absolute;inset:0;background:radial-gradient(ellipse 80% 60% at 50% -10%,rgba(108,71,255,.2) 0%,transparent 65%),radial-gradient(ellipse 50% 40% at 90% 90%,rgba(255,71,214,.1) 0%,transparent 60%),radial-gradient(ellipse 40% 30% at 10% 80%,rgba(71,200,255,.08) 0%,transparent 60%);pointer-events:none;}
+.hero-dots{position:absolute;inset:0;background-image:radial-gradient(rgba(108,71,255,.15) 1px,transparent 1px);background-size:32px 32px;pointer-events:none;}
+.hero-content{position:relative;z-index:1;max-width:780px;}
+.badge{display:inline-flex;align-items:center;gap:8px;background:rgba(108,71,255,.1);border:1px solid rgba(108,71,255,.25);padding:6px 16px;border-radius:50px;font-size:12.5px;color:#a78bfa;margin-bottom:30px;font-weight:500;}
+.badge-dot{width:7px;height:7px;border-radius:50%;background:var(--green);animation:blink 2s infinite;}
+@keyframes blink{0%,100%{opacity:1}50%{opacity:.4}}
+.hero h1{font-family:'Cabinet Grotesk',sans-serif;font-size:clamp(40px,7.5vw,78px);font-weight:900;line-height:1.05;letter-spacing:-2px;margin-bottom:20px;}
+.grad{background:linear-gradient(135deg,var(--accent),var(--accent2) 50%,var(--accent3));-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;}
+.hero-sub{font-size:17px;color:var(--muted);line-height:1.75;margin-bottom:18px;font-weight:400;}
+.hero-tags{display:flex;gap:10px;flex-wrap:wrap;justify-content:center;margin-bottom:38px;}
+.hero-tag{background:rgba(255,255,255,.04);border:1px solid var(--border);padding:6px 14px;border-radius:8px;font-size:12.5px;color:var(--muted);font-weight:500;}
+.hero-btns{display:flex;gap:14px;justify-content:center;flex-wrap:wrap;}
+.btn-p{background:linear-gradient(135deg,var(--accent),var(--accent2));color:#fff;padding:13px 30px;border-radius:50px;text-decoration:none;font-size:14px;font-weight:700;box-shadow:0 8px 32px rgba(108,71,255,.4);transition:transform .2s,box-shadow .2s;}
+.btn-p:hover{transform:translateY(-2px);box-shadow:0 14px 40px rgba(108,71,255,.55);}
+.btn-s{background:rgba(255,255,255,.04);border:1px solid rgba(255,255,255,.1);color:var(--text);padding:13px 30px;border-radius:50px;text-decoration:none;font-size:14px;font-weight:600;transition:background .2s,border-color .2s;}
+.btn-s:hover{background:rgba(255,255,255,.08);border-color:rgba(108,71,255,.4);}
 
-/* RESUME */
-.resume{
-background:#111827;
-padding:20px;
-border-radius:15px;
-margin-bottom:30px;
-}
-.resume h3{color:#7c5cff;margin-bottom:10px}
-.resume p{margin-bottom:10px;color:#ccc}
-.resume ul{padding-left:20px}
-.resume li{margin-bottom:5px;font-size:14px}
+/* ── STATS ── */
+.stats{display:flex;justify-content:center;background:var(--bg2);border-top:1px solid var(--border);border-bottom:1px solid var(--border);flex-wrap:wrap;}
+.stat{flex:1;min-width:130px;max-width:200px;text-align:center;padding:32px 20px;border-right:1px solid var(--border);}
+.stat:last-child{border-right:none;}
+.stat-n{font-family:'Cabinet Grotesk',sans-serif;font-size:38px;font-weight:900;background:linear-gradient(135deg,var(--accent),var(--accent2));-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;}
+.stat-l{font-size:11.5px;color:var(--muted);margin-top:4px;font-weight:600;text-transform:uppercase;letter-spacing:.8px;}
 
-/* APP */
-.app{margin-bottom:40px}
-.app-header{
-display:flex;justify-content:space-between;align-items:center;
-margin-bottom:10px;
-}
-.install{
-background:#22c55e;padding:4px 12px;border-radius:20px;font-size:12px;
-}
+/* ── SECTIONS ── */
+.sec{padding:80px 60px;}
+.sec-alt{background:var(--bg2);}
+.sec-head{margin-bottom:50px;}
+.sec-label{font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:2px;color:var(--accent);margin-bottom:10px;}
+.sec-title{font-family:'Cabinet Grotesk',sans-serif;font-size:clamp(26px,4vw,38px);font-weight:900;letter-spacing:-1px;line-height:1.15;}
+.sec-title .g{background:linear-gradient(135deg,var(--accent),var(--accent2));-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;}
+.sec-desc{color:var(--muted);font-size:15px;margin-top:10px;max-width:550px;}
 
-/* CAROUSEL */
-.carousel{overflow:hidden}
-.track{
-display:flex;gap:10px;transition:0.5s;
-}
-.card{
-min-width:180px;height:320px;border-radius:15px;overflow:hidden;
-transition:0.3s;
-}
-.card img{width:100%;height:100%;object-fit:cover}
-.card.active{transform:scale(1.1)}
+/* ── SKILLS ── */
+.skills-cats{display:flex;flex-direction:column;gap:28px;}
+.skill-cat-title{font-size:12px;font-weight:700;text-transform:uppercase;letter-spacing:1.5px;color:var(--accent2);margin-bottom:12px;}
+.skills-wrap{display:flex;flex-wrap:wrap;gap:9px;}
+.skill{background:var(--bg3);border:1px solid var(--border);padding:9px 16px;border-radius:10px;font-size:13px;font-weight:600;color:var(--text);transition:border-color .2s,transform .2s,background .2s;}
+.skill:hover{border-color:var(--accent);transform:translateY(-2px);background:rgba(108,71,255,.08);}
 
-/* MOBILE */
-@media(max-width:768px){
-.hero h1{font-size:26px}
-.card{min-width:140px;height:260px}
+/* ── EXPERIENCE ── */
+.exp-list{display:flex;flex-direction:column;gap:0;border-left:2px solid rgba(108,71,255,.2);padding-left:30px;margin-left:10px;}
+.exp-item{position:relative;padding-bottom:42px;}
+.exp-item:last-child{padding-bottom:0;}
+.exp-dot{position:absolute;left:-39px;top:5px;width:14px;height:14px;border-radius:50%;background:var(--accent);border:3px solid var(--bg2);box-shadow:0 0 0 3px rgba(108,71,255,.2);}
+.exp-year{font-size:11.5px;font-weight:700;color:var(--accent);text-transform:uppercase;letter-spacing:1px;margin-bottom:5px;}
+.exp-role{font-family:'Cabinet Grotesk',sans-serif;font-size:19px;font-weight:800;margin-bottom:3px;}
+.exp-co{font-size:14px;color:var(--muted);margin-bottom:12px;font-weight:500;}
+.exp-desc{font-size:13.5px;color:var(--muted);line-height:1.7;max-width:620px;}
+.exp-tags{display:flex;flex-wrap:wrap;gap:7px;margin-top:12px;}
+.exp-tag{background:rgba(108,71,255,.1);border:1px solid rgba(108,71,255,.2);color:#a78bfa;font-size:11.5px;font-weight:600;padding:3px 11px;border-radius:50px;}
+
+/* ── PROJECTS ── */
+.projects-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(300px,1fr));gap:18px;}
+.proj-card{background:var(--bg3);border:1px solid var(--border);border-radius:var(--r);padding:24px;transition:border-color .25s,transform .25s;}
+.proj-card:hover{border-color:rgba(108,71,255,.4);transform:translateY(-3px);}
+.proj-top{display:flex;justify-content:space-between;align-items:flex-start;margin-bottom:12px;}
+.proj-icon{font-size:28px;}
+.proj-link{background:rgba(108,71,255,.1);border:1px solid rgba(108,71,255,.2);color:#a78bfa;font-size:11px;font-weight:700;padding:4px 12px;border-radius:50px;text-decoration:none;transition:background .2s;}
+.proj-link:hover{background:rgba(108,71,255,.22);}
+.proj-title{font-family:'Cabinet Grotesk',sans-serif;font-size:17px;font-weight:800;margin-bottom:7px;}
+.proj-desc{font-size:13px;color:var(--muted);line-height:1.65;margin-bottom:14px;}
+.proj-stack{display:flex;flex-wrap:wrap;gap:6px;}
+.proj-tech{background:rgba(255,255,255,.04);border:1px solid var(--border);color:var(--muted);font-size:11px;font-weight:600;padding:3px 9px;border-radius:6px;}
+
+/* ── APPS SHOWCASE ── */
+.apps-list{display:flex;flex-direction:column;gap:60px;}
+.app-top{display:flex;justify-content:space-between;align-items:center;margin-bottom:20px;flex-wrap:wrap;gap:10px;}
+.app-name{font-family:'Cabinet Grotesk',sans-serif;font-size:21px;font-weight:800;}
+.app-live{background:rgba(34,197,94,.1);border:1px solid rgba(34,197,94,.25);color:#4ade80;font-size:10.5px;font-weight:800;padding:4px 13px;border-radius:50px;text-transform:uppercase;letter-spacing:1px;}
+
+/* ── CAROUSEL ── */
+.caro-wrap{background:var(--bg2);border:1px solid var(--border);border-radius:22px;padding:28px 18px 20px;user-select:none;}
+.caro-outer{overflow:hidden;}
+.caro-track{display:flex;gap:16px;transition:transform .55s cubic-bezier(.22,1,.36,1);will-change:transform;}
+.phone{flex:0 0 155px;height:295px;border-radius:26px;overflow:hidden;border:2.5px solid rgba(255,255,255,.07);background:#0d0d0d;transition:transform .4s cubic-bezier(.22,1,.36,1),border-color .4s,box-shadow .4s;cursor:grab;}
+.phone:active{cursor:grabbing;}
+.phone img{width:100%;height:100%;object-fit:cover;display:block;pointer-events:none;}
+.phone.on{transform:scale(1.11) translateY(-8px);border-color:var(--accent);box-shadow:0 18px 55px rgba(108,71,255,.45),0 0 0 1px rgba(108,71,255,.3);}
+.phone.off{transform:scale(0.93);opacity:.55;}
+.caro-ctrl{display:flex;align-items:center;justify-content:center;gap:12px;margin-top:20px;}
+.carr-btn{width:34px;height:34px;border-radius:50%;border:1px solid rgba(108,71,255,.3);background:rgba(108,71,255,.08);color:var(--accent);font-size:15px;cursor:pointer;display:flex;align-items:center;justify-content:center;transition:background .2s,transform .15s;}
+.carr-btn:hover{background:rgba(108,71,255,.2);transform:scale(1.1);}
+.dots{display:flex;gap:5px;align-items:center;}
+.dot{width:5px;height:5px;border-radius:50%;background:rgba(255,255,255,.12);cursor:pointer;transition:background .2s,transform .2s;}
+.dot.on{background:var(--accent);transform:scale(1.5);}
+
+/* ── EDUCATION ── */
+.edu-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(280px,1fr));gap:16px;}
+.edu-card{background:var(--bg3);border:1px solid var(--border);border-radius:var(--r);padding:22px;transition:border-color .2s;}
+.edu-card:hover{border-color:rgba(108,71,255,.3);}
+.edu-deg{font-family:'Cabinet Grotesk',sans-serif;font-size:17px;font-weight:800;margin-bottom:5px;}
+.edu-school{font-size:13.5px;color:var(--muted);margin-bottom:6px;}
+.edu-yr{font-size:11.5px;font-weight:700;color:var(--accent);text-transform:uppercase;letter-spacing:1px;}
+
+/* ── CONTACT ── */
+.contact-box{max-width:660px;margin:0 auto;text-align:center;}
+.contact-links{display:flex;gap:14px;justify-content:center;flex-wrap:wrap;margin-top:36px;}
+.cl{display:flex;align-items:center;gap:10px;background:var(--bg3);border:1px solid var(--border);padding:13px 22px;border-radius:12px;text-decoration:none;color:var(--text);font-size:13.5px;font-weight:600;transition:border-color .2s,transform .2s,background .2s;}
+.cl:hover{border-color:var(--accent);transform:translateY(-3px);background:rgba(108,71,255,.07);}
+
+/* ── FOOTER ── */
+footer{text-align:center;padding:28px;color:var(--muted);font-size:13px;border-top:1px solid var(--border);}
+footer strong{color:var(--accent);}
+
+/* ── SCROLL REVEAL ── */
+.reveal{opacity:0;transform:translateY(28px);transition:opacity .65s ease,transform .65s ease;}
+.reveal.in{opacity:1;transform:none;}
+
+/* ── RESPONSIVE ── */
+@media(max-width:900px){
+  nav{padding:15px 20px;}
+  .nav-r a:not(.nav-cta){display:none;}
+  .sec{padding:60px 22px;}
+  .stat{min-width:50%;}
+}
+@media(max-width:600px){
+  .hero h1{letter-spacing:-1px;}
+  .phone{flex:0 0 125px;height:240px;}
+  .projects-grid{grid-template-columns:1fr;}
 }
 </style>
 </head>
-
 <body>
 
-<!-- NAV -->
+<div id="cur"></div>
+<div id="cur-ring"></div>
+
+<!-- ── NAV ── -->
 <nav>
-<h2>Jeet Parmar</h2>
-<div>
-<a href="#apps">Apps</a>
-<a href="JITENDRA_Resume.pdf" target="_blank">Resume</a>
-</div>
+  <a href="#" class="logo">JP</a>
+  <div class="nav-r">
+    <a href="#skills">Skills</a>
+    <a href="#experience">Experience</a>
+    <a href="#projects">Projects</a>
+    <a href="#apps">Apps</a>
+    <a href="#contact">Contact</a>
+    <a href="JITENDRA___Senior_Mobile_Application_Developer__.pdf" target="_blank" class="nav-cta">Resume ↗</a>
+  </div>
 </nav>
 
-<!-- HERO -->
-<div class="hero">
-<h1>Hi, I'm <span>Jeet 👋</span></h1>
-<p>Senior Flutter Developer | 10+ Years Experience</p>
-<a href="#apps" class="btn">View Work</a>
+<!-- ── HERO ── -->
+<section class="hero">
+  <div class="hero-glow"></div>
+  <div class="hero-dots"></div>
+  <div class="hero-content">
+    <div class="badge"><span class="badge-dot"></span> Open to new opportunities · Ahmedabad, India</div>
+    <h1>Jeet <span class="grad">Parmar</span></h1>
+    <p class="hero-sub">Senior Mobile Application Developer with <strong>10+ years</strong> building<br>high-performance Android &amp; Flutter apps used by hundreds of thousands.</p>
+    <div class="hero-tags">
+      <span class="hero-tag">📱 Flutter</span>
+      <span class="hero-tag">🤖 Android · Kotlin</span>
+      <span class="hero-tag">🔥 Firebase</span>
+      <span class="hero-tag">🏗 Clean Architecture</span>
+      <span class="hero-tag">⚙️ CI/CD</span>
+      <span class="hero-tag">🤝 Team Lead</span>
+    </div>
+    <div class="hero-btns">
+      <a href="#projects" class="btn-p">View My Work</a>
+      <a href="JITENDRA___Senior_Mobile_Application_Developer__.pdf" target="_blank" class="btn-s">Download Resume ↓</a>
+    </div>
+  </div>
+</section>
+
+<!-- ── STATS ── -->
+<div class="stats">
+  <div class="stat reveal"><div class="stat-n">10+</div><div class="stat-l">Years Exp.</div></div>
+  <div class="stat reveal"><div class="stat-n">30+</div><div class="stat-l">Apps Built</div></div>
+  <div class="stat reveal"><div class="stat-n">100K+</div><div class="stat-l">Downloads</div></div>
+  <div class="stat reveal"><div class="stat-n">4.5★</div><div class="stat-l">Avg Rating</div></div>
+  <div class="stat reveal"><div class="stat-n">5</div><div class="stat-l">Companies</div></div>
 </div>
 
-<!-- RESUME -->
-<div class="section resume">
+<!-- ── SKILLS ── -->
+<section class="sec" id="skills">
+  <div class="sec-head reveal">
+    <div class="sec-label">What I work with</div>
+    <div class="sec-title">Tech <span class="g">Stack</span></div>
+    <p class="sec-desc">A decade of hands-on experience across the full mobile development spectrum.</p>
+  </div>
+  <div class="skills-cats">
+    <div class="reveal">
+      <div class="skill-cat-title">📱 Mobile Development</div>
+      <div class="skills-wrap">
+        <span class="skill">Flutter</span><span class="skill">Android Native</span><span class="skill">Dart</span><span class="skill">Kotlin</span><span class="skill">Java</span><span class="skill">Jetpack Compose</span>
+      </div>
+    </div>
+    <div class="reveal">
+      <div class="skill-cat-title">🏗 Architecture &amp; Patterns</div>
+      <div class="skills-wrap">
+        <span class="skill">MVVM</span><span class="skill">MVC</span><span class="skill">MVP</span><span class="skill">Clean Architecture</span>
+      </div>
+    </div>
+    <div class="reveal">
+      <div class="skill-cat-title">🔄 State Management</div>
+      <div class="skills-wrap">
+        <span class="skill">Riverpod</span><span class="skill">Bloc</span><span class="skill">Cubit</span><span class="skill">GetX</span><span class="skill">Provider</span>
+      </div>
+    </div>
+    <div class="reveal">
+      <div class="skill-cat-title">🔥 Backend &amp; Database</div>
+      <div class="skills-wrap">
+        <span class="skill">Firebase</span><span class="skill">REST APIs</span><span class="skill">GraphQL</span><span class="skill">Retrofit</span><span class="skill">Dio</span><span class="skill">SQLite</span><span class="skill">Room DB</span><span class="skill">Realm</span><span class="skill">Cloud Firestore</span><span class="skill">FCM</span>
+      </div>
+    </div>
+    <div class="reveal">
+      <div class="skill-cat-title">⚙️ DevOps &amp; Tools</div>
+      <div class="skills-wrap">
+        <span class="skill">GitHub Actions</span><span class="skill">GitLab CI/CD</span><span class="skill">Firebase Distribution</span><span class="skill">Git</span><span class="skill">Jira</span><span class="skill">Figma</span><span class="skill">n8n Automation</span><span class="skill">SonarQube</span>
+      </div>
+    </div>
+    <div class="reveal">
+      <div class="skill-cat-title">💳 Integrations &amp; More</div>
+      <div class="skills-wrap">
+        <span class="skill">In-App Purchases</span><span class="skill">Payment Gateways</span><span class="skill">BLE / Wi-Fi API</span><span class="skill">Google Analytics</span><span class="skill">AppsFlyer</span><span class="skill">Optimizely</span><span class="skill">ExoPlayer</span><span class="skill">Social Media SDKs</span>
+      </div>
+    </div>
+  </div>
+</section>
 
-<h3>👨‍💻 Professional Summary</h3>
-<p>
-Senior Mobile Developer with 10+ years experience in Android & Flutter,
-building scalable apps with modern architecture and Firebase.
-</p>
+<!-- ── EXPERIENCE ── -->
+<section class="sec sec-alt" id="experience">
+  <div class="sec-head reveal">
+    <div class="sec-label">Career Journey</div>
+    <div class="sec-title">Work <span class="g">Experience</span></div>
+    <p class="sec-desc">10+ years across product companies, agencies, and startups.</p>
+  </div>
+  <div class="exp-list">
 
-<h3>⚡ Skills</h3>
-<ul>
-<li>Flutter, Android (Kotlin, Java)</li>
-<li>Riverpod, Bloc, MVVM</li>
-<li>Firebase, REST APIs</li>
-<li>SQLite, Room</li>
-<li>CI/CD, GitHub Actions</li>
-</ul>
+    <div class="exp-item reveal">
+      <div class="exp-dot"></div>
+      <div class="exp-year">Dec 2024 – Present</div>
+      <div class="exp-role">Senior Software Engineer</div>
+      <div class="exp-co">Gooroo Mobility India Pvt. Ltd. · Ahmedabad</div>
+      <div class="exp-desc">Leading mobile development with Android &amp; Flutter. Architecting scalable, maintainable solutions following industry best practices. Implementing CI/CD pipelines via GitHub Actions, building n8n workflow automation for team efficiency, and working with agent-based development for intelligent automation.</div>
+      <div class="exp-tags"><span class="exp-tag">Flutter</span><span class="exp-tag">Android</span><span class="exp-tag">Riverpod</span><span class="exp-tag">Bloc</span><span class="exp-tag">GitHub Actions</span><span class="exp-tag">n8n</span><span class="exp-tag">Clean Architecture</span></div>
+    </div>
 
-<h3>💼 Experience</h3>
-<ul>
-<li>Senior Software Engineer – Gooroo Mobility (2024–Present)</li>
-<li>Senior Software Engineer – Brainvire (2023–2024)</li>
-<li>Senior Software Engineer – TOPS (2021–2023)</li>
-</ul>
+    <div class="exp-item reveal">
+      <div class="exp-dot"></div>
+      <div class="exp-year">Mar 2023 – Dec 2024</div>
+      <div class="exp-role">Senior Software Engineer</div>
+      <div class="exp-co">Brainvire Infotech Pvt. Ltd. · Ahmedabad</div>
+      <div class="exp-desc">Developed and maintained multiple Android &amp; Flutter applications for international clients. Led code reviews, mentored junior developers, implemented Jetpack Compose UI, integrated Firebase &amp; GraphQL APIs, and optimized performance resulting in improved load times and reduced crash rates.</div>
+      <div class="exp-tags"><span class="exp-tag">Flutter</span><span class="exp-tag">Jetpack Compose</span><span class="exp-tag">GraphQL</span><span class="exp-tag">Firebase</span><span class="exp-tag">CI/CD</span><span class="exp-tag">Mentoring</span></div>
+    </div>
 
-<h3>🏆 Achievements</h3>
-<ul>
-<li>30+ apps developed</li>
-<li>100K+ downloads</li>
-<li>4+ star rated apps</li>
-</ul>
+    <div class="exp-item reveal">
+      <div class="exp-dot"></div>
+      <div class="exp-year">Jun 2021 – Feb 2023</div>
+      <div class="exp-role">Senior Software Engineer</div>
+      <div class="exp-co">TOPS Infosolutions Pvt. Ltd. · Ahmedabad</div>
+      <div class="exp-desc">Native Android development using Kotlin/Java with MVVM architecture. Implemented In-App Purchases, real-time chat with Cloud Firestore, and hardware BLE integration using Estimote &amp; Kontakt IO SDK. Published multiple 4★+ apps on the Play Store.</div>
+      <div class="exp-tags"><span class="exp-tag">Kotlin</span><span class="exp-tag">MVVM</span><span class="exp-tag">BLE</span><span class="exp-tag">Firestore</span><span class="exp-tag">In-App Purchases</span></div>
+    </div>
 
-</div>
+    <div class="exp-item reveal">
+      <div class="exp-dot"></div>
+      <div class="exp-year">Aug 2016 – May 2021</div>
+      <div class="exp-role">Android Developer</div>
+      <div class="exp-co">Wedowebapps Pvt. Ltd. · Ahmedabad</div>
+      <div class="exp-desc">Built 15+ Android apps across music, video, e-commerce, and utilities. Created custom media player and video editing apps, implemented social sharing, push notifications, and analytics. Gained experience in Android smartwatch app development.</div>
+      <div class="exp-tags"><span class="exp-tag">Android</span><span class="exp-tag">Java</span><span class="exp-tag">ExoPlayer</span><span class="exp-tag">REST APIs</span><span class="exp-tag">Smartwatch</span></div>
+    </div>
 
-<!-- APPS -->
-<div id="apps" class="section">
+    <div class="exp-item reveal">
+      <div class="exp-dot"></div>
+      <div class="exp-year">Aug 2014 – Aug 2016</div>
+      <div class="exp-role">Android Developer</div>
+      <div class="exp-co">Alakmalak Technologies Pvt. Ltd. · Ahmedabad</div>
+      <div class="exp-desc">Started career building Android apps in Java. Developed e-commerce applications with payment gateway integration, SQLite database management, and Material Design UI. Full SDLC participation in agile team environment.</div>
+      <div class="exp-tags"><span class="exp-tag">Java</span><span class="exp-tag">Android SDK</span><span class="exp-tag">SQLite</span><span class="exp-tag">Material Design</span></div>
+    </div>
 
-<!-- TODO -->
-<div class="app">
-<div class="app-header">
-<h3>📋 Todo App</h3>
-<div class="install">Live</div>
-</div>
-<div class="carousel"><div class="track" id="todo">
-<img src="assets/images/todo/login.png" class="card active">
-<img src="assets/images/todo/task-list.png" class="card">
-<img src="assets/images/todo/add-task.png" class="card">
-<img src="assets/images/todo/edit-task.png" class="card">
-</div></div>
-</div>
+  </div>
+</section>
 
-<!-- VIDEO -->
-<div class="app">
-<div class="app-header">
-<h3>📞 Video Call App</h3>
-<div class="install">Live</div>
-</div>
-<div class="carousel"><div class="track" id="video">
-<img src="assets/images/video/login.png" class="card active">
-<img src="assets/images/video/users.png" class="card">
-<img src="assets/images/video/video-1.png" class="card">
-</div></div>
-</div>
+<!-- ── PROJECTS ── -->
+<section class="sec" id="projects">
+  <div class="sec-head reveal">
+    <div class="sec-label">Featured Work</div>
+    <div class="sec-title">Key <span class="g">Projects</span></div>
+    <p class="sec-desc">Production apps with real users, real downloads, and real impact.</p>
+  </div>
+  <div class="projects-grid">
 
-<!-- GALLERY -->
-<div class="app">
-<div class="app-header">
-<h3>🖼 Gallery App</h3>
-<div class="install">Live</div>
-</div>
-<div class="carousel"><div class="track" id="gallery">
-<img src="assets/images/gallery/gallery-1.png" class="card active">
-<img src="assets/images/gallery/1.png" class="card">
-<img src="assets/images/gallery/2.png" class="card">
-</div></div>
-</div>
+    <div class="proj-card reveal">
+      <div class="proj-top"><div class="proj-icon">💬</div><a href="https://play.google.com/store/apps/details?id=com.quirktastic" target="_blank" class="proj-link">Play Store ↗</a></div>
+      <div class="proj-title">QuirkChat</div>
+      <div class="proj-desc">Social networking platform for geek communities &amp; fandom clubs. Real-time chat with Cloud Firestore, social authentication, and push notifications.</div>
+      <div class="proj-stack"><span class="proj-tech">Kotlin</span><span class="proj-tech">MVVM</span><span class="proj-tech">Firebase</span><span class="proj-tech">Firestore</span><span class="proj-tech">FCM</span></div>
+    </div>
 
-<!-- VIDEO EDITOR -->
-<div class="app">
-<div class="app-header">
-<h3>🎬 Video Editor</h3>
-<div class="install">Live</div>
-</div>
-<div class="carousel"><div class="track" id="studio">
-<img src="assets/images/videostudio/1.png" class="card active">
-<img src="assets/images/videostudio/2.png" class="card">
-<img src="assets/images/videostudio/3.png" class="card">
-</div></div>
-</div>
+    <div class="proj-card reveal">
+      <div class="proj-top"><div class="proj-icon">🎵</div><a href="https://play.google.com/store/apps/details?id=com.ostech.vibez" target="_blank" class="proj-link">Play Store ↗</a></div>
+      <div class="proj-title">Vibez — African Music</div>
+      <div class="proj-desc">Music streaming platform connecting African artists with global audiences. Playlist management, offline playback, and premium subscription payments.</div>
+      <div class="proj-stack"><span class="proj-tech">Kotlin</span><span class="proj-tech">ExoPlayer</span><span class="proj-tech">Retrofit</span><span class="proj-tech">Room</span><span class="proj-tech">In-App Purchases</span></div>
+    </div>
 
-<!-- SOCIETY -->
-<div class="app">
-<div class="app-header">
-<h3>🏢 Society App</h3>
-<div class="install">Live</div>
-</div>
-<div class="carousel"><div class="track" id="ns">
-<img src="assets/images/ns/login.webp" class="card active">
-<img src="assets/images/ns/home.webp" class="card">
-<img src="assets/images/ns/dashboard.webp" class="card">
-</div></div>
-</div>
+    <div class="proj-card reveal">
+      <div class="proj-top"><div class="proj-icon">🏗</div><a href="https://play.google.com/store/apps/details?id=com.contractorfm" target="_blank" class="proj-link">Play Store ↗</a></div>
+      <div class="proj-title">FM Contractor</div>
+      <div class="proj-desc">Business management app for contractors and broker networks with complex business logic, data visualization dashboards and reporting.</div>
+      <div class="proj-stack"><span class="proj-tech">Kotlin</span><span class="proj-tech">MVVM</span><span class="proj-tech">Retrofit</span><span class="proj-tech">Google Analytics</span></div>
+    </div>
 
-</div>
+    <div class="proj-card reveal">
+      <div class="proj-top"><div class="proj-icon">🌾</div><a href="https://play.google.com/store/apps/details?id=com.keinsumos" target="_blank" class="proj-link">Play Store ↗</a></div>
+      <div class="proj-title">Ke Insumos</div>
+      <div class="proj-desc">Agricultural marketplace with dual user roles for producers &amp; agronomists. Order management, real-time tracking, and notification system.</div>
+      <div class="proj-stack"><span class="proj-tech">Flutter</span><span class="proj-tech">GetX</span><span class="proj-tech">Firebase</span><span class="proj-tech">REST APIs</span></div>
+    </div>
+
+    <div class="proj-card reveal">
+      <div class="proj-top"><div class="proj-icon">🏓</div><a href="https://apps.apple.com/us/app/main-court-play-pickleball/id6471336853" target="_blank" class="proj-link">App Store ↗</a></div>
+      <div class="proj-title">Main Court: Pickleball</div>
+      <div class="proj-desc">Cross-platform iOS &amp; Android app connecting Pickleball players. Match creation, skill-based matching, scheduling, and Google Maps integration.</div>
+      <div class="proj-stack"><span class="proj-tech">Flutter</span><span class="proj-tech">Bloc</span><span class="proj-tech">Firebase</span><span class="proj-tech">Google Maps</span></div>
+    </div>
+
+    <div class="proj-card reveal">
+      <div class="proj-top"><div class="proj-icon">🥗</div><a href="https://play.google.com/store/apps/details?id=com.lomasdefrida.dietassaludablesV2" target="_blank" class="proj-link">Play Store ↗</a></div>
+      <div class="proj-title">Dietas Saludables</div>
+      <div class="proj-desc">Health &amp; fitness app with 30+ diet plans, BMI calculator, ideal weight algorithms, and intuitive meal planning UI.</div>
+      <div class="proj-stack"><span class="proj-tech">Android</span><span class="proj-tech">SQLite</span><span class="proj-tech">Custom UI</span><span class="proj-tech">Material Design</span></div>
+    </div>
+
+  </div>
+</section>
+
+<!-- ── APP SCREENSHOTS ── -->
+<section class="sec sec-alt" id="apps">
+  <div class="sec-head reveal">
+    <div class="sec-label">UI Showcase</div>
+    <div class="sec-title">App <span class="g">Screenshots</span></div>
+    <p class="sec-desc">Tap arrows or swipe to browse each app's screens one at a time.</p>
+  </div>
+  <div class="apps-list">
+
+    <div class="app-block reveal">
+      <div class="app-top"><div class="app-name">📋 Todo App</div><div class="app-live">Live</div></div>
+      <div class="caro-wrap" id="w-todo">
+        <div class="caro-outer"><div class="caro-track" id="t-todo">
+          <div class="phone"><img src="assets/images/todo/login.png" alt="Login" draggable="false"></div>
+          <div class="phone"><img src="assets/images/todo/task-list.png" alt="Tasks" draggable="false"></div>
+          <div class="phone"><img src="assets/images/todo/add-task.png" alt="Add Task" draggable="false"></div>
+          <div class="phone"><img src="assets/images/todo/edit-task.png" alt="Edit Task" draggable="false"></div>
+        </div></div>
+        <div class="caro-ctrl">
+          <button class="carr-btn" data-d="-1">&#8592;</button>
+          <div class="dots" id="d-todo"></div>
+          <button class="carr-btn" data-d="1">&#8594;</button>
+        </div>
+      </div>
+    </div>
+
+    <div class="app-block reveal">
+      <div class="app-top"><div class="app-name">📞 Video Call App</div><div class="app-live">Live</div></div>
+      <div class="caro-wrap" id="w-video">
+        <div class="caro-outer"><div class="caro-track" id="t-video">
+          <div class="phone"><img src="assets/images/video/login.png" alt="Login" draggable="false"></div>
+          <div class="phone"><img src="assets/images/video/users.png" alt="Users" draggable="false"></div>
+          <div class="phone"><img src="assets/images/video/video-1.png" alt="Video" draggable="false"></div>
+        </div></div>
+        <div class="caro-ctrl">
+          <button class="carr-btn" data-d="-1">&#8592;</button>
+          <div class="dots" id="d-video"></div>
+          <button class="carr-btn" data-d="1">&#8594;</button>
+        </div>
+      </div>
+    </div>
+
+    <div class="app-block reveal">
+      <div class="app-top"><div class="app-name">🖼 Gallery App</div><div class="app-live">Live</div></div>
+      <div class="caro-wrap" id="w-gallery">
+        <div class="caro-outer"><div class="caro-track" id="t-gallery">
+          <div class="phone"><img src="assets/images/gallery/gallery-1.png" alt="Gallery" draggable="false"></div>
+          <div class="phone"><img src="assets/images/gallery/1.png" alt="Photo 1" draggable="false"></div>
+          <div class="phone"><img src="assets/images/gallery/2.png" alt="Photo 2" draggable="false"></div>
+        </div></div>
+        <div class="caro-ctrl">
+          <button class="carr-btn" data-d="-1">&#8592;</button>
+          <div class="dots" id="d-gallery"></div>
+          <button class="carr-btn" data-d="1">&#8594;</button>
+        </div>
+      </div>
+    </div>
+
+    <div class="app-block reveal">
+      <div class="app-top"><div class="app-name">🎬 Video Editor</div><div class="app-live">Live</div></div>
+      <div class="caro-wrap" id="w-studio">
+        <div class="caro-outer"><div class="caro-track" id="t-studio">
+          <div class="phone"><img src="assets/images/videostudio/1.png" alt="Screen 1" draggable="false"></div>
+          <div class="phone"><img src="assets/images/videostudio/2.png" alt="Screen 2" draggable="false"></div>
+          <div class="phone"><img src="assets/images/videostudio/3.png" alt="Screen 3" draggable="false"></div>
+        </div></div>
+        <div class="caro-ctrl">
+          <button class="carr-btn" data-d="-1">&#8592;</button>
+          <div class="dots" id="d-studio"></div>
+          <button class="carr-btn" data-d="1">&#8594;</button>
+        </div>
+      </div>
+    </div>
+
+    <div class="app-block reveal">
+      <div class="app-top"><div class="app-name">🏢 Society App</div><div class="app-live">Live</div></div>
+      <div class="caro-wrap" id="w-ns">
+        <div class="caro-outer"><div class="caro-track" id="t-ns">
+          <div class="phone"><img src="assets/images/ns/login.webp" alt="Login" draggable="false"></div>
+          <div class="phone"><img src="assets/images/ns/home.webp" alt="Home" draggable="false"></div>
+          <div class="phone"><img src="assets/images/ns/dashboard.webp" alt="Dashboard" draggable="false"></div>
+        </div></div>
+        <div class="caro-ctrl">
+          <button class="carr-btn" data-d="-1">&#8592;</button>
+          <div class="dots" id="d-ns"></div>
+          <button class="carr-btn" data-d="1">&#8594;</button>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<!-- ── EDUCATION ── -->
+<section class="sec" id="education">
+  <div class="sec-head reveal">
+    <div class="sec-label">Academic Background</div>
+    <div class="sec-title">Edu<span class="g">cation</span></div>
+  </div>
+  <div class="edu-grid">
+    <div class="edu-card reveal">
+      <div class="edu-deg">Master of Computer Application</div>
+      <div class="edu-school">Shri Jairambhai Patel Institute of Business Management (NICM)</div>
+      <div class="edu-yr">2011 – 2014 · MCA</div>
+    </div>
+    <div class="edu-card reveal">
+      <div class="edu-deg">Bachelor of Computer Application</div>
+      <div class="edu-school">Navgujarat College of Computer Applications</div>
+      <div class="edu-yr">2008 – 2011 · BCA</div>
+    </div>
+  </div>
+</section>
+
+<!-- ── CONTACT ── -->
+<section class="sec sec-alt" id="contact">
+  <div class="contact-box reveal">
+    <div class="sec-label" style="text-align:center">Say Hello</div>
+    <div class="sec-title" style="text-align:center">Get in <span class="g">Touch</span></div>
+    <p class="sec-desc" style="margin:12px auto 0;text-align:center;">Available for freelance projects, full-time roles, and consulting. Languages: English, Hindi, Gujarati.</p>
+    <div class="contact-links">
+      <a href="mailto:jeet.mobiledeveloper@gmail.com" class="cl">
+        <svg width="17" height="17" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"/></svg>
+        jeet.mobiledeveloper@gmail.com
+      </a>
+      <a href="https://www.linkedin.com/in/jeet-parmar-a37b0b98" target="_blank" class="cl">
+        <svg width="17" height="17" fill="currentColor" viewBox="0 0 24 24"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-4 0v7h-4v-7a6 6 0 0 1 6-6z"/><rect x="2" y="9" width="4" height="12"/><circle cx="4" cy="4" r="2"/></svg>
+        LinkedIn
+      </a>
+      <a href="https://jeetparmar2810.github.io/portfolio" target="_blank" class="cl">
+        <svg width="17" height="17" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><path d="M2 12h20M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/></svg>
+        Portfolio
+      </a>
+      <a href="tel:+919327972901" class="cl">
+        <svg width="17" height="17" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 4.69 12 19.79 19.79 0 0 1 1.61 3.41 2 2 0 0 1 3.6 1.24h3a2 2 0 0 1 2 1.72c.05.25.11.5.17.74a12.84 12.84 0 0 0 .53 2.07 2 2 0 0 1-.45 2.11L7.91 8.9a16 16 0 0 0 6 6l.92-.92a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+        +91 93279 72901
+      </a>
+      <a href="JITENDRA___Senior_Mobile_Application_Developer__.pdf" target="_blank" class="cl">
+        <svg width="17" height="17" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14,2 14,8 20,8"/><line x1="12" y1="18" x2="12" y2="12"/><polyline points="9,15 12,18 15,15"/></svg>
+        Download Resume
+      </a>
+    </div>
+  </div>
+</section>
+
+<!-- ── FOOTER ── -->
+<footer>
+  Designed &amp; built by <strong>Jeet Parmar</strong> · Senior Flutter &amp; Android Developer · Ahmedabad, India
+</footer>
 
 <script>
-function slider(id){
-let track=document.getElementById(id);
-let index=0;
+/* ── CURSOR ── */
+const cur=document.getElementById('cur'),ring=document.getElementById('cur-ring');
+let mx=0,my=0,rx=0,ry=0;
+document.addEventListener('mousemove',e=>{mx=e.clientX;my=e.clientY;});
+(function tick(){
+  cur.style.left=mx+'px';cur.style.top=my+'px';
+  rx+=(mx-rx)*.11;ry+=(my-ry)*.11;
+  ring.style.left=rx+'px';ring.style.top=ry+'px';
+  requestAnimationFrame(tick);
+})();
+document.querySelectorAll('a,button,.phone,.skill,.proj-card,.exp-item,.edu-card,.cl,.stat').forEach(el=>{
+  el.addEventListener('mouseenter',()=>{cur.classList.add('h');ring.classList.add('h');});
+  el.addEventListener('mouseleave',()=>{cur.classList.remove('h');ring.classList.remove('h');});
+});
 
-setInterval(()=>{
-let cards=track.children;
-for(let c of cards)c.classList.remove("active");
+/* ── SCROLL REVEAL ── */
+const ro=new IntersectionObserver(entries=>{
+  entries.forEach(e=>{if(e.isIntersecting)e.target.classList.add('in');});
+},{threshold:.1});
+document.querySelectorAll('.reveal').forEach(el=>ro.observe(el));
 
-index=(index+1)%cards.length;
-cards[index].classList.add("active");
+/* ── CAROUSEL ── */
+function initCaro(id){
+  const track=document.getElementById('t-'+id);
+  const dotsEl=document.getElementById('d-'+id);
+  const wrap=document.getElementById('w-'+id);
+  const cards=[...track.children];
+  const total=cards.length;
+  let current=0,dragX=null,dragging=false;
 
-track.style.transform=`translateX(-${index*190}px)`;
+  // Build dots
+  dotsEl.innerHTML='';
+  cards.forEach((_,i)=>{
+    const d=document.createElement('div');
+    d.className='dot'+(i===0?' on':'');
+    d.addEventListener('click',()=>go(i));
+    dotsEl.appendChild(d);
+  });
 
-},2500);
+  function cardW(){return cards[0].offsetWidth+16;}
+  function update(){
+    cards.forEach((c,i)=>{c.classList.remove('on','off');c.classList.add(i===current?'on':'off');});
+    dotsEl.querySelectorAll('.dot').forEach((d,i)=>d.classList.toggle('on',i===current));
+  }
+  function go(idx){
+    current=((idx%total)+total)%total;
+    const cw=cardW();
+    const ow=track.parentElement.offsetWidth;
+    const offset=current*cw-(ow-cards[0].offsetWidth)/2;
+    track.style.transform=`translateX(${-Math.max(0,offset)}px)`;
+    update();
+  }
+  go(0);
+
+  // Buttons — scoped to this wrap only
+  wrap.querySelectorAll('.carr-btn').forEach(b=>{
+    b.addEventListener('click',()=>go(current+parseInt(b.dataset.d)));
+  });
+
+  // Drag / swipe
+  const ds=x=>{dragX=x;dragging=false;};
+  const dm=x=>{if(dragX!==null&&Math.abs(x-dragX)>5)dragging=true;};
+  const de=x=>{
+    if(dragX===null)return;
+    if(dragging){const diff=dragX-x;if(diff>40)go(current+1);else if(diff<-40)go(current-1);}
+    dragX=null;dragging=false;
+  };
+  wrap.addEventListener('mousedown',e=>ds(e.clientX));
+  wrap.addEventListener('mousemove',e=>dm(e.clientX));
+  wrap.addEventListener('mouseup',e=>de(e.clientX));
+  wrap.addEventListener('mouseleave',e=>{if(dragX!==null)de(e.clientX);});
+  wrap.addEventListener('touchstart',e=>ds(e.touches[0].clientX),{passive:true});
+  wrap.addEventListener('touchmove',e=>dm(e.touches[0].clientX),{passive:true});
+  wrap.addEventListener('touchend',e=>de(e.changedTouches[0].clientX));
+
+  // Auto-play
+  setInterval(()=>go(current+1),3800);
+  window.addEventListener('resize',()=>go(current));
 }
 
-slider("todo");
-slider("video");
-slider("gallery");
-slider("studio");
-slider("ns");
+['todo','video','gallery','studio','ns'].forEach(initCaro);
 </script>
-
 </body>
 </html>
