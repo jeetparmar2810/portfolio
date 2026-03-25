@@ -1,615 +1,316 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Jeet Parmar - Android & Flutter Developer</title>
-    <style>
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Jeet Parmar | Flutter Developer</title>
 
-        body {
-            font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
-            line-height: 1.6;
-            color: #333;
-            overflow-x: hidden;
-        }
+<style>
+*{margin:0;padding:0;box-sizing:border-box;}
 
-        /* Header */
-        header {
-            position: fixed;
-            top: 0;
-            width: 100%;
-            background: rgba(255, 255, 255, 0.95);
-            backdrop-filter: blur(10px);
-            z-index: 1000;
-            padding: 1rem 0;
-            box-shadow: 0 2px 20px rgba(0,0,0,0.1);
-        }
+body{
+  font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,sans-serif;
+  background:#020617;
+  color:#e2e8f0;
+  overflow-x:hidden;
+}
 
-        nav {
-            max-width: 1200px;
-            margin: 0 auto;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            padding: 0 2rem;
-        }
+/* LOADER */
+#loader{
+  position:fixed;
+  width:100%;
+  height:100%;
+  background:#020617;
+  display:flex;
+  justify-content:center;
+  align-items:center;
+  z-index:9999;
+}
+.loader{
+  width:40px;height:40px;
+  border:4px solid #6366f1;
+  border-top:4px solid transparent;
+  border-radius:50%;
+  animation:spin 1s linear infinite;
+}
+@keyframes spin{100%{transform:rotate(360deg);}}
 
-        .logo {
-            font-size: 1.5rem;
-            font-weight: 700;
-            color: #2563eb;
-        }
+/* NAV */
+header{
+  position:fixed;
+  width:100%;
+  background:rgba(2,6,23,0.7);
+  backdrop-filter:blur(10px);
+  z-index:1000;
+}
+nav{
+  display:flex;
+  justify-content:space-between;
+  padding:12px 16px;
+  max-width:1100px;
+  margin:auto;
+}
+.logo{color:#8b5cf6;font-weight:bold;}
+.nav-links{display:flex;gap:12px;list-style:none;}
+.nav-links a{color:#cbd5f5;text-decoration:none;font-size:14px;}
 
-        .nav-links {
-            display: flex;
-            list-style: none;
-            gap: 2rem;
-        }
+/* HERO */
+.hero{
+  min-height:100vh;
+  display:flex;
+  justify-content:center;
+  align-items:center;
+  text-align:center;
+  padding:20px;
+}
+.hero h1{font-size:2rem;}
+.hero span{color:#8b5cf6;}
+.hero p{margin:10px 0;color:#94a3b8;}
 
-        .nav-links a {
-            text-decoration: none;
-            color: #333;
-            font-weight: 500;
-            transition: color 0.3s ease;
-        }
+.btn{
+  padding:10px 18px;
+  border-radius:30px;
+  margin:5px;
+  text-decoration:none;
+  display:inline-block;
+  transition:0.3s;
+  font-size:14px;
+}
+.btn-primary{
+  background:linear-gradient(135deg,#8b5cf6,#6366f1);
+  color:white;
+}
+.btn-secondary{
+  border:1px solid #8b5cf6;
+  color:#8b5cf6;
+}
+.btn:hover{transform:scale(1.05);}
 
-        .nav-links a:hover {
-            color: #2563eb;
-        }
+/* SECTION */
+section{
+  padding:70px 15px;
+  opacity:0;
+  transform:translateY(30px);
+  transition:0.6s;
+}
+section.show{opacity:1;transform:translateY(0);}
 
-        /* Hero Section */
-        .hero {
-            min-height: 100vh;
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            text-align: center;
-            color: white;
-            position: relative;
-            overflow: hidden;
-        }
+.container{max-width:1000px;margin:auto;}
+h2{text-align:center;margin-bottom:25px;font-size:20px;}
 
-        .hero::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
-            bottom: 0;
-            background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1000 1000"><polygon fill="%23ffffff08" points="0,0 1000,300 1000,1000 0,700"/></svg>');
-            background-size: cover;
-        }
+/* GRID */
+.grid{
+  display:grid;
+  grid-template-columns:repeat(auto-fit,minmax(220px,1fr));
+  gap:15px;
+}
 
-        .hero-content {
-            max-width: 800px;
-            z-index: 1;
-            position: relative;
-        }
+/* CARD */
+.card{
+  background:rgba(255,255,255,0.05);
+  padding:12px;
+  border-radius:12px;
+  backdrop-filter:blur(10px);
+  transition:0.3s;
+}
+.card:hover{transform:translateY(-6px);}
 
-        .hero h1 {
-            font-size: 3.5rem;
-            margin-bottom: 1rem;
-            animation: fadeInUp 1s ease-out;
-        }
+/* PHONE */
+.phone{
+  border:5px solid #111;
+  border-radius:25px;
+  overflow:hidden;
+}
+.phone img{width:100%;}
 
-        .hero p {
-            font-size: 1.2rem;
-            margin-bottom: 2rem;
-            opacity: 0.9;
-            animation: fadeInUp 1s ease-out 0.3s both;
-        }
+/* STATS */
+.stats{
+  display:grid;
+  grid-template-columns:repeat(3,1fr);
+  text-align:center;
+  gap:10px;
+}
+.stat h3{color:#8b5cf6;font-size:18px;}
 
-        .cta-button {
-            display: inline-block;
-            background: white;
-            color: #2563eb;
-            padding: 1rem 2rem;
-            border-radius: 50px;
-            text-decoration: none;
-            font-weight: 600;
-            transition: all 0.3s ease;
-            animation: fadeInUp 1s ease-out 0.6s both;
-            box-shadow: 0 10px 30px rgba(0,0,0,0.2);
-        }
+/* CHAT */
+#chatBox{
+  position:fixed;
+  bottom:80px;
+  right:10px;
+  width:260px;
+  background:#0f172a;
+  border-radius:12px;
+  padding:10px;
+  display:none;
+}
+#chatMessages{height:120px;overflow:auto;font-size:12px;margin-bottom:8px;}
+#chatInput{width:100%;padding:6px;border-radius:8px;border:none;}
 
-        .cta-button:hover {
-            transform: translateY(-3px);
-            box-shadow: 0 15px 40px rgba(0,0,0,0.3);
-        }
+/* BUTTONS */
+.chat-btn{
+  position:fixed;
+  bottom:20px;
+  left:20px;
+  background:#6366f1;
+  color:white;
+  padding:10px;
+  border-radius:50%;
+}
+.whatsapp{
+  position:fixed;
+  bottom:20px;
+  right:20px;
+  background:#25D366;
+  padding:10px;
+  border-radius:50%;
+}
 
-        /* About Section */
-        .about {
-            padding: 5rem 0;
-            background: #f8fafc;
-        }
-
-        .container {
-            max-width: 1200px;
-            margin: 0 auto;
-            padding: 0 2rem;
-        }
-
-        .section-title {
-            text-align: center;
-            font-size: 2.5rem;
-            margin-bottom: 3rem;
-            color: #1e293b;
-        }
-
-        .about-content {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 4rem;
-            align-items: center;
-        }
-
-        .about-text {
-            font-size: 1.1rem;
-            line-height: 1.8;
-            color: #64748b;
-        }
-
-        .skills-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
-            gap: 1.5rem;
-            margin-top: 2rem;
-        }
-
-        .skill-card {
-            background: white;
-            padding: 1.5rem;
-            border-radius: 15px;
-            text-align: center;
-            box-shadow: 0 5px 20px rgba(0,0,0,0.1);
-            transition: transform 0.3s ease;
-        }
-
-        .skill-card:hover {
-            transform: translateY(-5px);
-        }
-
-        .skill-icon {
-            font-size: 2.5rem;
-            margin-bottom: 1rem;
-        }
-
-        .skill-name {
-            font-weight: 600;
-            color: #1e293b;
-        }
-
-        /* Projects Section */
-        .projects {
-            padding: 5rem 0;
-            background: white;
-        }
-
-        .projects-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
-            gap: 2rem;
-        }
-
-        .project-card {
-            background: #f8fafc;
-            border-radius: 15px;
-            overflow: hidden;
-            box-shadow: 0 5px 20px rgba(0,0,0,0.1);
-            transition: transform 0.3s ease;
-        }
-
-        .project-card:hover {
-            transform: translateY(-5px);
-        }
-
-        .project-image {
-            height: 200px;
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            color: white;
-            font-size: 3rem;
-        }
-
-        .project-content {
-            padding: 1.5rem;
-        }
-
-        .project-title {
-            font-size: 1.3rem;
-            font-weight: 600;
-            margin-bottom: 1rem;
-            color: #1e293b;
-        }
-
-        .project-description {
-            color: #64748b;
-            margin-bottom: 1.5rem;
-        }
-
-        .project-tags {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 0.5rem;
-            margin-bottom: 1.5rem;
-        }
-
-        .tag {
-            background: #e2e8f0;
-            color: #475569;
-            padding: 0.3rem 0.8rem;
-            border-radius: 20px;
-            font-size: 0.8rem;
-            font-weight: 500;
-        }
-
-        .project-links {
-            display: flex;
-            gap: 1rem;
-        }
-
-        .project-link {
-            color: #2563eb;
-            text-decoration: none;
-            font-weight: 500;
-            transition: color 0.3s ease;
-        }
-
-        .project-link:hover {
-            color: #1d4ed8;
-        }
-
-        /* Contact Section */
-        .contact {
-            padding: 5rem 0;
-            background: #1e293b;
-            color: white;
-            text-align: center;
-        }
-
-        .contact-content {
-            max-width: 600px;
-            margin: 0 auto;
-        }
-
-        .contact-info {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-            gap: 2rem;
-            margin-top: 3rem;
-        }
-
-        .contact-item {
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            gap: 1rem;
-            padding: 1rem;
-            background: rgba(255,255,255,0.1);
-            border-radius: 10px;
-            transition: background 0.3s ease;
-        }
-
-        .contact-item:hover {
-            background: rgba(255,255,255,0.2);
-        }
-
-        .contact-icon {
-            font-size: 1.5rem;
-        }
-
-        .contact-text {
-            font-weight: 500;
-        }
-
-        /* Footer */
-        footer {
-            background: #0f172a;
-            color: white;
-            text-align: center;
-            padding: 2rem 0;
-        }
-
-        /* Animations */
-        @keyframes fadeInUp {
-            from {
-                opacity: 0;
-                transform: translateY(30px);
-            }
-            to {
-                opacity: 1;
-                transform: translateY(0);
-            }
-        }
-
-        /* Responsive Design */
-        @media (max-width: 768px) {
-            .nav-links {
-                display: none;
-            }
-            
-            .hero h1 {
-                font-size: 2.5rem;
-            }
-            
-            .about-content {
-                grid-template-columns: 1fr;
-                gap: 2rem;
-            }
-            
-            .skills-grid {
-                grid-template-columns: repeat(2, 1fr);
-            }
-            
-            .projects-grid {
-                grid-template-columns: 1fr;
-            }
-            
-            .contact-info {
-                grid-template-columns: 1fr;
-            }
-        }
-
-        /* Smooth scroll */
-        html {
-            scroll-behavior: smooth;
-        }
-    </style>
+/* RESPONSIVE */
+@media(max-width:768px){
+  .nav-links{display:none;}
+  .hero h1{font-size:1.6rem;}
+}
+</style>
 </head>
+
 <body>
-    <!-- Header -->
-    <header>
-        <nav>
-            <div class="logo">Jeet B. Parmar</div>
-            <ul class="nav-links">
-                <li><a href="#home">Home</a></li>
-                <li><a href="#about">About</a></li>
-                <li><a href="#projects">Projects</a></li>
-                <li><a href="#contact">Contact</a></li>
-            </ul>
-        </nav>
-    </header>
 
-    <!-- Hero Section -->
-    <section id="home" class="hero">
-        <div class="hero-content">
-            <h1>Jeet B. Parmar</h1>
-            <p>Senior Android & Flutter Developer with 8+ years of experience creating innovative mobile applications</p>
-            <a href="#projects" class="cta-button">View My Work</a>
-        </div>
-    </section>
+<div id="loader"><div class="loader"></div></div>
 
-    <!-- About Section -->
-    <section id="about" class="about">
-        <div class="container">
-            <h2 class="section-title">About Me</h2>
-            <div class="about-content">
-                <div class="about-text">
-                    <p>Hello! I'm Jeet B. Parmar, a Senior Android and Flutter Developer with 8+ years of experience in mobile application development. I have successfully developed and launched 15+ mobile applications with 100K+ combined downloads across Google Play Store and App Store.</p>
-                    
-                    <p>Currently working as a Senior Software Engineer at Brainvire Infotech Pvt. Ltd., I specialize in both Android native development and Flutter cross-platform solutions. My expertise spans the complete software development lifecycle, from analysis and design to development, testing, and maintenance.</p>
-                    
-                    <p>I'm passionate about learning new technologies and staying current with the latest Android development practices. I have experience working with diverse projects, including social networking apps, music platforms, agricultural solutions, and health & fitness applications.</p>
-                </div>
-                
-                <div class="skills-grid">
-                    <div class="skill-card">
-                        <div class="skill-icon">📱</div>
-                        <div class="skill-name">Flutter</div>
-                    </div>
-                    <div class="skill-card">
-                        <div class="skill-icon">🤖</div>
-                        <div class="skill-name">Android</div>
-                    </div>
-                    <div class="skill-card">
-                        <div class="skill-icon">⚡</div>
-                        <div class="skill-name">Kotlin</div>
-                    </div>
-                    <div class="skill-card">
-                        <div class="skill-icon">☕</div>
-                        <div class="skill-name">Java</div>
-                    </div>
-                    <div class="skill-card">
-                        <div class="skill-icon">🎯</div>
-                        <div class="skill-name">Dart</div>
-                    </div>
-                    <div class="skill-card">
-                        <div class="skill-icon">🔥</div>
-                        <div class="skill-name">Firebase</div>
-                    </div>
-                    <div class="skill-card">
-                        <div class="skill-icon">🎨</div>
-                        <div class="skill-name">Compose UI</div>
-                    </div>
-                    <div class="skill-card">
-                        <div class="skill-icon">📊</div>
-                        <div class="skill-name">GetX/Bloc</div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
+<header>
+<nav>
+<div class="logo">Jeet Parmar</div>
+<ul class="nav-links">
+<li><a href="#about">About</a></li>
+<li><a href="#projects">Projects</a></li>
+<li><a href="#fiverr">Hire</a></li>
+<li><a href="#contact">Contact</a></li>
+</ul>
+</nav>
+</header>
 
-    <!-- Projects Section -->
-    <section id="projects" class="projects">
-        <div class="container">
-            <h2 class="section-title">My Projects</h2>
-            <div class="projects-grid">
-                <div class="project-card">
-                    <div class="project-image">💬</div>
-                    <div class="project-content">
-                        <h3 class="project-title">QuirkChat: Find Your People</h3>
-                        <p class="project-description">Social networking app for geek communities with real-time messaging and community features. The place for geeks to hangout with like-minded people.</p>
-                        <div class="project-tags">
-                            <span class="tag">Android</span>
-                            <span class="tag">Java</span>
-                            <span class="tag">Firebase</span>
-                            <span class="tag">Real-time Chat</span>
-                        </div>
-                        <div class="project-links">
-                            <a href="https://play.google.com/store/apps/details?id=com.quirktastic" class="project-link">Play Store</a>
-                            <a href="#" class="project-link">Live Demo</a>
-                        </div>
-                    </div>
-                </div>
+<section class="hero">
+<div>
+<h1>Hi, I'm <span>Jeet</span> 👋</h1>
+<p id="typing"></p>
+<a href="#projects" class="btn btn-primary">View Work</a>
+<a href="#fiverr" class="btn btn-secondary">Hire Me</a>
+</div>
+</section>
 
-                <div class="project-card">
-                    <div class="project-image">🎵</div>
-                    <div class="project-content">
-                        <h3 class="project-title">Vibez - African Music Platform</h3>
-                        <p class="project-description">Music streaming platform connecting African artists with global audience. Showcase the best of African entertainment to the world.</p>
-                        <div class="project-tags">
-                            <span class="tag">Android</span>
-                            <span class="tag">Kotlin</span>
-                            <span class="tag">Media Player</span>
-                            <span class="tag">Payment Integration</span>
-                        </div>
-                        <div class="project-links">
-                            <a href="https://play.google.com/store/apps/details?id=com.ostech.vibez" class="project-link">Play Store</a>
-                            <a href="#" class="project-link">Live Demo</a>
-                        </div>
-                    </div>
-                </div>
+<section id="about">
+<div class="container">
+<h2>About</h2>
+<p style="text-align:center;">Flutter Developer with 8+ years experience building scalable apps.</p>
+<div class="stats">
+<div class="stat"><h3>8+</h3><p>Years</p></div>
+<div class="stat"><h3>15+</h3><p>Apps</p></div>
+<div class="stat"><h3>100K+</h3><p>Downloads</p></div>
+</div>
+</div>
+</section>
 
-                <div class="project-card">
-                    <div class="project-image">🏓</div>
-                    <div class="project-content">
-                        <h3 class="project-title">Main Court: Play Pickleball</h3>
-                        <p class="project-description">Sports networking app for Pickleball players to find and join matches. Skill-based matching with real-time notifications.</p>
-                        <div class="project-tags">
-                            <span class="tag">Flutter</span>
-                            <span class="tag">Dart</span>
-                            <span class="tag">Firebase</span>
-                            <span class="tag">Geolocation</span>
-                        </div>
-                        <div class="project-links">
-                            <a href="https://apps.apple.com/us/app/main-court-play-pickleball/id6471336853" class="project-link">App Store</a>
-                            <a href="#" class="project-link">Live Demo</a>
-                        </div>
-                    </div>
-                </div>
+<section id="projects">
+<div class="container">
+<h2>Projects</h2>
+<div class="grid">
 
-                <div class="project-card">
-                    <div class="project-image">🌾</div>
-                    <div class="project-content">
-                        <h3 class="project-title">Ke Insumos</h3>
-                        <p class="project-description">Agricultural marketplace connecting producers with agronomists. Unique innovation in the agricultural market with order management.</p>
-                        <div class="project-tags">
-                            <span class="tag">Flutter</span>
-                            <span class="tag">Dart</span>
-                            <span class="tag">Firebase</span>
-                            <span class="tag">E-commerce</span>
-                        </div>
-                        <div class="project-links">
-                            <a href="https://play.google.com/store/apps/details?id=com.keinsumos&hl=en" class="project-link">Play Store</a>
-                            <a href="#" class="project-link">Live Demo</a>
-                        </div>
-                    </div>
-                </div>
+<div class="card">
+<div class="phone"><img src="https://via.placeholder.com/300x600"></div>
+<h3>Remote Control App</h3>
+<p>AI Smart TV control</p>
+</div>
 
-                <div class="project-card">
-                    <div class="project-image">🏥</div>
-                    <div class="project-content">
-                        <h3 class="project-title">Dietas Saludables</h3>
-                        <p class="project-description">Health & fitness app with BMI calculator and 30+ free diet plans. Comprehensive nutrition management solution.</p>
-                        <div class="project-tags">
-                            <span class="tag">Android</span>
-                            <span class="tag">SQLite</span>
-                            <span class="tag">Health APIs</span>
-                            <span class="tag">Custom Calculators</span>
-                        </div>
-                        <div class="project-links">
-                            <a href="https://play.google.com/store/apps/details?id=com.lomasdefrida.dietassaludablesV2" class="project-link">Play Store</a>
-                            <a href="#" class="project-link">Live Demo</a>
-                        </div>
-                    </div>
-                </div>
+<div class="card">
+<div class="phone"><img src="https://via.placeholder.com/300x600"></div>
+<h3>Video Editor Studio</h3>
+<p>Advanced editing</p>
+</div>
 
-                <div class="project-card">
-                    <div class="project-image">🔨</div>
-                    <div class="project-content">
-                        <h3 class="project-title">FM Contractor</h3>
-                        <p class="project-description">Business management app for contractors and brokers. Helps build and grow broker networks with comprehensive business tools.</p>
-                        <div class="project-tags">
-                            <span class="tag">Android</span>
-                            <span class="tag">Kotlin</span>
-                            <span class="tag">Business Logic</span>
-                            <span class="tag">Data Management</span>
-                        </div>
-                        <div class="project-links">
-                            <a href="https://play.google.com/store/apps/details?id=com.contractorfm" class="project-link">Play Store</a>
-                            <a href="#" class="project-link">Live Demo</a>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
+<div class="card">
+<div class="phone"><img src="https://via.placeholder.com/300x600"></div>
+<h3>Nakshatra Aspire</h3>
+<p>Society management system</p>
+</div>
 
-    <!-- Contact Section -->
-    <section id="contact" class="contact">
-        <div class="container">
-            <div class="contact-content">
-                <h2 class="section-title">Get In Touch</h2>
-                <p>Senior Android & Flutter Developer with 8+ years of experience. Currently available for freelance projects and full-time opportunities. Let's discuss how I can help bring your mobile app ideas to life!</p>
-                
-                <div class="contact-info">
-                    <div class="contact-item">
-                        <div class="contact-icon">📧</div>
-                        <div class="contact-text">jeet.mobiledeveloper@gmail.com</div>
-                    </div>
-                    <div class="contact-item">
-                        <div class="contact-icon">📱</div>
-                        <div class="contact-text">+91 9327972901</div>
-                    </div>
-                    <div class="contact-item">
-                        <div class="contact-icon">📍</div>
-                        <div class="contact-text">Ahmedabad, Gujarat, India</div>
-                    </div>
-                    <div class="contact-item">
-                        <div class="contact-icon">💼</div>
-                        <div class="contact-text">Available for Projects</div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
+</div>
+</div>
+</section>
 
-    <!-- Footer -->
-    <footer>
-        <div class="container">
-            <p>&copy; 2024 Jeet B. Parmar. All rights reserved. | Senior Android & Flutter Developer</p>
-        </div>
-    </footer>
+<section id="fiverr">
+<div class="container">
+<h2>Hire Me</h2>
+<div class="card" style="text-align:center;">
+<p>I build production-ready mobile apps.</p>
+<a href="#" class="btn btn-primary">Fiverr Profile</a>
+</div>
+</div>
+</section>
 
-    <script>
-        // Smooth scrolling for navigation links
-        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-            anchor.addEventListener('click', function (e) {
-                e.preventDefault();
-                document.querySelector(this.getAttribute('href')).scrollIntoView({
-                    behavior: 'smooth'
-                });
-            });
-        });
+<section id="contact">
+<div class="container" style="text-align:center;">
+<h2>Contact</h2>
+<p>jeet.mobiledeveloper@gmail.com</p>
+<p>+91 9327972901</p>
+</div>
+</section>
 
-        // Add scroll effect to header
-        window.addEventListener('scroll', function() {
-            const header = document.querySelector('header');
-            if (window.scrollY > 100) {
-                header.style.background = 'rgba(255, 255, 255, 0.98)';
-            } else {
-                header.style.background = 'rgba(255, 255, 255, 0.95)';
-            }
-        });
-    </script>
+<!-- CHAT -->
+<div id="chatBox">
+<div id="chatMessages"></div>
+<input id="chatInput" placeholder="Ask me...">
+</div>
+
+<button class="chat-btn" onclick="toggleChat()">🤖</button>
+<a href="https://wa.me/919327972901" class="whatsapp">💬</a>
+
+<script>
+window.onload=()=>{document.getElementById("loader").style.display="none";}
+
+/* typing */
+const texts=["Flutter Developer 🚀","Android Expert 📱","Freelancer 💼"];
+let i=0;
+setInterval(()=>{
+document.getElementById("typing").innerText=texts[i];
+i=(i+1)%texts.length;
+},2000);
+
+/* scroll */
+document.addEventListener("scroll",()=>{
+document.querySelectorAll("section").forEach(s=>{
+if(s.getBoundingClientRect().top<window.innerHeight-50){
+s.classList.add("show");
+}
+});
+});
+
+/* chat */
+function toggleChat(){
+let box=document.getElementById("chatBox");
+box.style.display=box.style.display==="none"?"block":"none";
+}
+
+document.getElementById("chatInput").addEventListener("keypress",function(e){
+if(e.key==="Enter"){
+let msg=this.value.toLowerCase();
+let reply="I build mobile apps 🚀";
+if(msg.includes("flutter")) reply="8+ years Flutter experience";
+if(msg.includes("contact")) reply="Check contact section!";
+if(msg.includes("price")) reply="Let’s discuss on WhatsApp 📲";
+let chat=document.getElementById("chatMessages");
+chat.innerHTML+=`<p>You: ${this.value}</p><p>AI: ${reply}</p>`;
+this.value="";
+chat.scrollTop=chat.scrollHeight;
+}
+});
+
+/* voice */
+function speakIntro(){
+let msg=new SpeechSynthesisUtterance("Hi I am Jeet Parmar Flutter developer");
+speechSynthesis.speak(msg);
+}
+setTimeout(speakIntro,1500);
+</script>
+
 </body>
 </html>
