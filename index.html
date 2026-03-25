@@ -9,266 +9,192 @@
 *{margin:0;padding:0;box-sizing:border-box;}
 
 body{
-  font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,sans-serif;
+  font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto;
   background:#020617;
   color:#e2e8f0;
-  overflow-x:hidden;
 }
-
-/* LOADER */
-#loader{
-  position:fixed;
-  width:100%;
-  height:100%;
-  background:#020617;
-  display:flex;
-  justify-content:center;
-  align-items:center;
-  z-index:9999;
-}
-.loader{
-  width:40px;height:40px;
-  border:4px solid #6366f1;
-  border-top:4px solid transparent;
-  border-radius:50%;
-  animation:spin 1s linear infinite;
-}
-@keyframes spin{100%{transform:rotate(360deg);}}
 
 /* NAV */
 header{
-  position:fixed;
-  width:100%;
+  position:fixed;width:100%;
   background:rgba(2,6,23,0.7);
   backdrop-filter:blur(10px);
   z-index:1000;
 }
 nav{
-  display:flex;
-  justify-content:space-between;
-  padding:12px 16px;
-  max-width:1100px;
-  margin:auto;
+  display:flex;justify-content:space-between;
+  padding:12px 16px;max-width:1100px;margin:auto;
 }
 .logo{color:#8b5cf6;font-weight:bold;}
-.nav-links{display:flex;gap:12px;list-style:none;}
-.nav-links a{color:#cbd5f5;text-decoration:none;font-size:14px;}
+.nav-links{display:flex;gap:15px;list-style:none;}
+.nav-links a{color:#cbd5f5;text-decoration:none;}
 
 /* HERO */
 .hero{
-  min-height:100vh;
-  display:flex;
-  justify-content:center;
-  align-items:center;
+  height:100vh;
+  display:flex;justify-content:center;align-items:center;
   text-align:center;
-  padding:20px;
 }
-.hero h1{font-size:2rem;}
 .hero span{color:#8b5cf6;}
-.hero p{margin:10px 0;color:#94a3b8;}
-
 .btn{
-  padding:10px 18px;
-  border-radius:30px;
-  margin:5px;
-  text-decoration:none;
-  display:inline-block;
-  transition:0.3s;
-  font-size:14px;
+  padding:10px 18px;border-radius:25px;
+  background:#6366f1;color:white;text-decoration:none;
 }
-.btn-primary{
-  background:linear-gradient(135deg,#8b5cf6,#6366f1);
-  color:white;
-}
-.btn-secondary{
-  border:1px solid #8b5cf6;
-  color:#8b5cf6;
-}
-.btn:hover{transform:scale(1.05);}
 
 /* SECTION */
 section{
-  padding:70px 15px;
+  padding:80px 15px;
   opacity:0;
   transform:translateY(30px);
   transition:0.6s;
 }
 section.show{opacity:1;transform:translateY(0);}
-
 .container{max-width:1000px;margin:auto;}
-h2{text-align:center;margin-bottom:25px;font-size:20px;}
+h2{text-align:center;margin-bottom:25px;}
 
-/* GRID */
-.grid{
-  display:grid;
-  grid-template-columns:repeat(auto-fit,minmax(220px,1fr));
-  gap:15px;
-}
-
-/* CARD */
-.card{
+/* APP CARD */
+.app-card{
+  display:flex;
+  gap:20px;
   background:rgba(255,255,255,0.05);
-  padding:12px;
-  border-radius:12px;
-  backdrop-filter:blur(10px);
-  transition:0.3s;
+  padding:15px;
+  border-radius:15px;
+  margin-bottom:25px;
+  align-items:center;
 }
-.card:hover{transform:translateY(-6px);}
 
-/* PHONE */
-.phone{
-  border:5px solid #111;
+/* DEVICE */
+.device-frame{
+  width:130px;height:260px;
+  border:6px solid #111;
   border-radius:25px;
   overflow:hidden;
 }
-.phone img{width:100%;}
-
-/* STATS */
-.stats{
-  display:grid;
-  grid-template-columns:repeat(3,1fr);
-  text-align:center;
-  gap:10px;
+.device-frame img{
+  width:100%;height:100%;object-fit:cover;
 }
-.stat h3{color:#8b5cf6;font-size:18px;}
 
-/* CHAT */
-#chatBox{
-  position:fixed;
-  bottom:80px;
-  right:10px;
-  width:260px;
-  background:#0f172a;
-  border-radius:12px;
-  padding:10px;
+/* INFO */
+.rating{color:#facc15;margin:8px 0;}
+.buttons button{
+  padding:8px 15px;
+  border:none;border-radius:20px;margin-right:10px;
+}
+.install{background:#22c55e;color:white;}
+.preview{background:#6366f1;color:white;}
+
+/* SLIDER */
+#slider{
   display:none;
+  position:fixed;top:0;left:0;
+  width:100%;height:100%;
+  background:black;
+  z-index:9999;
+  justify-content:center;
+  align-items:center;
+  flex-direction:column;
 }
-#chatMessages{height:120px;overflow:auto;font-size:12px;margin-bottom:8px;}
-#chatInput{width:100%;padding:6px;border-radius:8px;border:none;}
-
-/* BUTTONS */
-.chat-btn{
-  position:fixed;
-  bottom:20px;
-  left:20px;
-  background:#6366f1;
-  color:white;
-  padding:10px;
-  border-radius:50%;
+#slider img{
+  max-width:90%;
+  max-height:80%;
 }
-.whatsapp{
-  position:fixed;
-  bottom:20px;
-  right:20px;
-  background:#25D366;
-  padding:10px;
-  border-radius:50%;
+.controls button{
+  margin:10px;padding:10px;
 }
 
-/* RESPONSIVE */
+/* MOBILE */
 @media(max-width:768px){
+  .app-card{flex-direction:column;text-align:center;}
   .nav-links{display:none;}
-  .hero h1{font-size:1.6rem;}
 }
 </style>
 </head>
 
 <body>
 
-<div id="loader"><div class="loader"></div></div>
-
 <header>
 <nav>
 <div class="logo">Jeet Parmar</div>
 <ul class="nav-links">
-<li><a href="#about">About</a></li>
 <li><a href="#projects">Projects</a></li>
-<li><a href="#fiverr">Hire</a></li>
 <li><a href="#contact">Contact</a></li>
 </ul>
 </nav>
 </header>
 
+<!-- HERO -->
 <section class="hero">
 <div>
 <h1>Hi, I'm <span>Jeet</span> 👋</h1>
 <p id="typing"></p>
-<a href="#projects" class="btn btn-primary">View Work</a>
-<a href="#fiverr" class="btn btn-secondary">Hire Me</a>
+<a href="#projects" class="btn">View Work</a>
 </div>
 </section>
 
-<section id="about">
-<div class="container">
-<h2>About</h2>
-<p style="text-align:center;">Flutter Developer with 8+ years experience building scalable apps.</p>
-<div class="stats">
-<div class="stat"><h3>8+</h3><p>Years</p></div>
-<div class="stat"><h3>15+</h3><p>Apps</p></div>
-<div class="stat"><h3>100K+</h3><p>Downloads</p></div>
-</div>
-</div>
-</section>
-
+<!-- PROJECTS -->
 <section id="projects">
 <div class="container">
-<h2>Projects</h2>
-<div class="grid">
 
-<div class="card">
-<div class="phone"><img src="https://via.placeholder.com/300x600"></div>
-<h3>Remote Control App</h3>
-<p>AI Smart TV control</p>
+<h2>My Apps</h2>
+
+<!-- TODO APP -->
+<div class="app-card">
+
+<div class="device-frame">
+<img src="assets/images/todo/login.png" onclick="openSlider('todo')">
 </div>
 
-<div class="card">
-<div class="phone"><img src="https://via.placeholder.com/300x600"></div>
-<h3>Video Editor Studio</h3>
-<p>Advanced editing</p>
+<div class="app-info">
+<h3>Smart Todo App</h3>
+<p>Realtime task management with Firebase & offline sync</p>
+
+<div class="rating">⭐ 4.9 • Productivity</div>
+
+<ul style="font-size:13px;line-height:1.6;">
+<li>✅ Firebase Auth</li>
+<li>✅ Add/Edit/Delete Tasks</li>
+<li>✅ Share with users</li>
+<li>✅ Real-time sync</li>
+<li>✅ Offline mode</li>
+<li>✅ MVVM + Riverpod</li>
+</ul>
+
+<div class="buttons">
+<button class="install">Install</button>
+<button class="preview" onclick="openSlider('todo')">Preview</button>
+<a href="https://github.com/jeetparmar2810/todo-app" target="_blank">
+<button class="preview">Code</button>
+</a>
 </div>
 
-<div class="card">
-<div class="phone"><img src="https://via.placeholder.com/300x600"></div>
-<h3>Nakshatra Aspire</h3>
-<p>Society management system</p>
+</div>
 </div>
 
-</div>
 </div>
 </section>
 
-<section id="fiverr">
-<div class="container">
-<h2>Hire Me</h2>
-<div class="card" style="text-align:center;">
-<p>I build production-ready mobile apps.</p>
-<a href="#" class="btn btn-primary">Fiverr Profile</a>
-</div>
-</div>
-</section>
-
+<!-- CONTACT -->
 <section id="contact">
 <div class="container" style="text-align:center;">
 <h2>Contact</h2>
 <p>jeet.mobiledeveloper@gmail.com</p>
-<p>+91 9327972901</p>
 </div>
 </section>
 
-<!-- CHAT -->
-<div id="chatBox">
-<div id="chatMessages"></div>
-<input id="chatInput" placeholder="Ask me...">
+<!-- SLIDER -->
+<div id="slider">
+<img id="sliderImg">
+<div class="controls">
+<button onclick="prev()">⬅</button>
+<button onclick="next()">➡</button>
+<button onclick="closeSlider()">❌</button>
+</div>
 </div>
 
-<button class="chat-btn" onclick="toggleChat()">🤖</button>
-<a href="https://wa.me/919327972901" class="whatsapp">💬</a>
-
 <script>
-window.onload=()=>{document.getElementById("loader").style.display="none";}
 
 /* typing */
-const texts=["Flutter Developer 🚀","Android Expert 📱","Freelancer 💼"];
+const texts=["Flutter Developer 🚀","Android Expert 📱"];
 let i=0;
 setInterval(()=>{
 document.getElementById("typing").innerText=texts[i];
@@ -284,32 +210,47 @@ s.classList.add("show");
 });
 });
 
-/* chat */
-function toggleChat(){
-let box=document.getElementById("chatBox");
-box.style.display=box.style.display==="none"?"block":"none";
+/* slider data */
+let data={
+todo:[
+"assets/images/todo/login.png",
+"assets/images/todo/register.png",
+"assets/images/todo/task.png",
+"assets/images/todo/add-task.png",
+"assets/images/todo/edit-task.png",
+"assets/images/todo/delete-task.png",
+"assets/images/todo/mask-task-options.png",
+"assets/images/todo/task-list.png"
+]
+};
+
+let list=[],index=0;
+
+function openSlider(type){
+list=data[type];index=0;
+document.getElementById("slider").style.display="flex";
+show();
+}
+function show(){
+document.getElementById("sliderImg").src=list[index];
+}
+function next(){index=(index+1)%list.length;show();}
+function prev(){index=(index-1+list.length)%list.length;show();}
+function closeSlider(){
+document.getElementById("slider").style.display="none";
 }
 
-document.getElementById("chatInput").addEventListener("keypress",function(e){
-if(e.key==="Enter"){
-let msg=this.value.toLowerCase();
-let reply="I build mobile apps 🚀";
-if(msg.includes("flutter")) reply="8+ years Flutter experience";
-if(msg.includes("contact")) reply="Check contact section!";
-if(msg.includes("price")) reply="Let’s discuss on WhatsApp 📲";
-let chat=document.getElementById("chatMessages");
-chat.innerHTML+=`<p>You: ${this.value}</p><p>AI: ${reply}</p>`;
-this.value="";
-chat.scrollTop=chat.scrollHeight;
-}
+/* swipe */
+let startX=0;
+document.getElementById("slider").addEventListener("touchstart",e=>{
+startX=e.touches[0].clientX;
+});
+document.getElementById("slider").addEventListener("touchend",e=>{
+let endX=e.changedTouches[0].clientX;
+if(endX-startX>50) prev();
+if(startX-endX>50) next();
 });
 
-/* voice */
-function speakIntro(){
-let msg=new SpeechSynthesisUtterance("Hi I am Jeet Parmar Flutter developer");
-speechSynthesis.speak(msg);
-}
-setTimeout(speakIntro,1500);
 </script>
 
 </body>
