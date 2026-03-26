@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0">
 <title>Jeet Parmar | Senior Flutter & Android Developer</title>
 <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800;900&family=Cabinet+Grotesk:wght@400;500;700;800;900&display=swap" rel="stylesheet">
 <style>
@@ -23,144 +23,452 @@
 html{scroll-behavior:smooth;}
 body{background:var(--bg);color:var(--text);font-family:'Outfit',sans-serif;overflow-x:hidden;cursor:none;}
 
-/* ── CURSOR ── */
+/* ── CURSOR (desktop only) ── */
 #cur,#cur-ring{position:fixed;pointer-events:none;z-index:99999;border-radius:50%;transform:translate(-50%,-50%);}
 #cur{width:10px;height:10px;background:var(--accent);transition:transform .15s,background .2s;}
 #cur-ring{width:36px;height:36px;border:1.5px solid rgba(108,71,255,.5);transition:width .3s,height .3s,border-color .3s;}
 #cur.h{transform:translate(-50%,-50%) scale(2);background:var(--accent2);}
 #cur-ring.h{width:52px;height:52px;border-color:rgba(255,71,214,.5);}
+@media(pointer:coarse){#cur,#cur-ring{display:none;}body{cursor:auto;}}
 
 /* ── NAV ── */
-nav{display:flex;justify-content:space-between;align-items:center;padding:18px 60px;position:sticky;top:0;z-index:1000;background:rgba(5,8,15,.85);backdrop-filter:blur(20px);border-bottom:1px solid var(--border);}
+nav{display:flex;justify-content:space-between;align-items:center;padding:15px 40px;position:sticky;top:0;z-index:1000;background:rgba(5,8,15,.9);backdrop-filter:blur(20px);border-bottom:1px solid var(--border);}
 .logo{font-family:'Cabinet Grotesk',sans-serif;font-size:20px;font-weight:900;background:linear-gradient(135deg,var(--accent),var(--accent2));-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;text-decoration:none;}
-.nav-r{display:flex;gap:28px;align-items:center;}
-.nav-r a{color:var(--muted);text-decoration:none;font-size:13.5px;font-weight:500;transition:color .2s;}
+.nav-r{display:flex;gap:22px;align-items:center;}
+.nav-r a{color:var(--muted);text-decoration:none;font-size:13px;font-weight:500;transition:color .2s;}
 .nav-r a:hover{color:var(--text);}
-.nav-cta{background:linear-gradient(135deg,var(--accent),var(--accent2));color:#fff !important;padding:8px 20px;border-radius:50px;font-size:13px !important;font-weight:600 !important;}
+.nav-cta{background:linear-gradient(135deg,var(--accent),var(--accent2));color:#fff !important;padding:8px 18px;border-radius:50px;font-size:12.5px !important;font-weight:700 !important;white-space:nowrap;}
+@media(max-width:700px){
+  nav{padding:12px 18px;}
+  .nav-r a:not(.nav-cta){display:none;}
+}
 
 /* ── HERO ── */
-.hero{min-height:92vh;display:flex;flex-direction:column;justify-content:center;align-items:center;text-align:center;padding:80px 30px 60px;position:relative;overflow:hidden;}
+.hero{min-height:90vh;display:flex;flex-direction:column;justify-content:center;align-items:center;text-align:center;padding:80px 20px 60px;position:relative;overflow:hidden;}
 .hero-glow{position:absolute;inset:0;background:radial-gradient(ellipse 80% 60% at 50% -10%,rgba(108,71,255,.2) 0%,transparent 65%),radial-gradient(ellipse 50% 40% at 90% 90%,rgba(255,71,214,.1) 0%,transparent 60%),radial-gradient(ellipse 40% 30% at 10% 80%,rgba(71,200,255,.08) 0%,transparent 60%);pointer-events:none;}
 .hero-dots{position:absolute;inset:0;background-image:radial-gradient(rgba(108,71,255,.15) 1px,transparent 1px);background-size:32px 32px;pointer-events:none;}
-.hero-content{position:relative;z-index:1;max-width:780px;}
-.badge{display:inline-flex;align-items:center;gap:8px;background:rgba(108,71,255,.1);border:1px solid rgba(108,71,255,.25);padding:6px 16px;border-radius:50px;font-size:12.5px;color:#a78bfa;margin-bottom:30px;font-weight:500;}
-.badge-dot{width:7px;height:7px;border-radius:50%;background:var(--green);animation:blink 2s infinite;}
+.hero-content{position:relative;z-index:1;max-width:780px;width:100%;}
+.badge{display:inline-flex;align-items:center;gap:8px;background:rgba(108,71,255,.1);border:1px solid rgba(108,71,255,.25);padding:6px 16px;border-radius:50px;font-size:12px;color:#a78bfa;margin-bottom:28px;font-weight:500;}
+.badge-dot{width:7px;height:7px;flex-shrink:0;border-radius:50%;background:var(--green);animation:blink 2s infinite;}
 @keyframes blink{0%,100%{opacity:1}50%{opacity:.4}}
-.hero h1{font-family:'Cabinet Grotesk',sans-serif;font-size:clamp(40px,7.5vw,78px);font-weight:900;line-height:1.05;letter-spacing:-2px;margin-bottom:20px;}
+.hero h1{font-family:'Cabinet Grotesk',sans-serif;font-size:clamp(36px,8vw,78px);font-weight:900;line-height:1.05;letter-spacing:-2px;margin-bottom:18px;}
 .grad{background:linear-gradient(135deg,var(--accent),var(--accent2) 50%,var(--accent3));-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;}
-.hero-sub{font-size:17px;color:var(--muted);line-height:1.75;margin-bottom:18px;font-weight:400;}
-.hero-tags{display:flex;gap:10px;flex-wrap:wrap;justify-content:center;margin-bottom:38px;}
-.hero-tag{background:rgba(255,255,255,.04);border:1px solid var(--border);padding:6px 14px;border-radius:8px;font-size:12.5px;color:var(--muted);font-weight:500;}
-.hero-btns{display:flex;gap:14px;justify-content:center;flex-wrap:wrap;}
-.btn-p{background:linear-gradient(135deg,var(--accent),var(--accent2));color:#fff;padding:13px 30px;border-radius:50px;text-decoration:none;font-size:14px;font-weight:700;box-shadow:0 8px 32px rgba(108,71,255,.4);transition:transform .2s,box-shadow .2s;}
+.hero-sub{font-size:clamp(14px,2.5vw,17px);color:var(--muted);line-height:1.75;margin-bottom:18px;font-weight:400;}
+.hero-tags{display:flex;gap:8px;flex-wrap:wrap;justify-content:center;margin-bottom:34px;}
+.hero-tag{background:rgba(255,255,255,.04);border:1px solid var(--border);padding:5px 12px;border-radius:8px;font-size:12px;color:var(--muted);font-weight:500;}
+.hero-btns{display:flex;gap:12px;justify-content:center;flex-wrap:wrap;}
+.btn-p{background:linear-gradient(135deg,var(--accent),var(--accent2));color:#fff;padding:12px 28px;border-radius:50px;text-decoration:none;font-size:13.5px;font-weight:700;box-shadow:0 8px 32px rgba(108,71,255,.4);transition:transform .2s,box-shadow .2s;}
 .btn-p:hover{transform:translateY(-2px);box-shadow:0 14px 40px rgba(108,71,255,.55);}
-.btn-s{background:rgba(255,255,255,.04);border:1px solid rgba(255,255,255,.1);color:var(--text);padding:13px 30px;border-radius:50px;text-decoration:none;font-size:14px;font-weight:600;transition:background .2s,border-color .2s;}
+.btn-s{background:rgba(255,255,255,.04);border:1px solid rgba(255,255,255,.1);color:var(--text);padding:12px 28px;border-radius:50px;text-decoration:none;font-size:13.5px;font-weight:600;transition:background .2s,border-color .2s;}
 .btn-s:hover{background:rgba(255,255,255,.08);border-color:rgba(108,71,255,.4);}
 
 /* ── STATS ── */
 .stats{display:flex;justify-content:center;background:var(--bg2);border-top:1px solid var(--border);border-bottom:1px solid var(--border);flex-wrap:wrap;}
-.stat{flex:1;min-width:130px;max-width:200px;text-align:center;padding:32px 20px;border-right:1px solid var(--border);}
+.stat{flex:1;min-width:100px;max-width:200px;text-align:center;padding:28px 16px;border-right:1px solid var(--border);}
 .stat:last-child{border-right:none;}
-.stat-n{font-family:'Cabinet Grotesk',sans-serif;font-size:38px;font-weight:900;background:linear-gradient(135deg,var(--accent),var(--accent2));-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;}
-.stat-l{font-size:11.5px;color:var(--muted);margin-top:4px;font-weight:600;text-transform:uppercase;letter-spacing:.8px;}
+.stat-n{font-family:'Cabinet Grotesk',sans-serif;font-size:32px;font-weight:900;background:linear-gradient(135deg,var(--accent),var(--accent2));-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;}
+.stat-l{font-size:10.5px;color:var(--muted);margin-top:4px;font-weight:600;text-transform:uppercase;letter-spacing:.8px;}
+@media(max-width:500px){.stat{min-width:50%;}.stat:nth-child(2){border-right:none;}.stat:nth-child(4){border-right:none;}}
 
 /* ── SECTIONS ── */
-.sec{padding:80px 60px;}
+.sec{padding:70px 40px;}
 .sec-alt{background:var(--bg2);}
-.sec-head{margin-bottom:50px;}
+.sec-head{margin-bottom:44px;}
 .sec-label{font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:2px;color:var(--accent);margin-bottom:10px;}
-.sec-title{font-family:'Cabinet Grotesk',sans-serif;font-size:clamp(26px,4vw,38px);font-weight:900;letter-spacing:-1px;line-height:1.15;}
+.sec-title{font-family:'Cabinet Grotesk',sans-serif;font-size:clamp(24px,4vw,38px);font-weight:900;letter-spacing:-1px;line-height:1.15;}
 .sec-title .g{background:linear-gradient(135deg,var(--accent),var(--accent2));-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;}
 .sec-desc{color:var(--muted);font-size:15px;margin-top:10px;max-width:550px;}
+@media(max-width:700px){.sec{padding:50px 18px;}}
 
 /* ── SKILLS ── */
-.skills-cats{display:flex;flex-direction:column;gap:28px;}
-.skill-cat-title{font-size:12px;font-weight:700;text-transform:uppercase;letter-spacing:1.5px;color:var(--accent2);margin-bottom:12px;}
-.skills-wrap{display:flex;flex-wrap:wrap;gap:9px;}
-.skill{background:var(--bg3);border:1px solid var(--border);padding:9px 16px;border-radius:10px;font-size:13px;font-weight:600;color:var(--text);transition:border-color .2s,transform .2s,background .2s;}
+.skills-cats{display:flex;flex-direction:column;gap:26px;}
+.skill-cat-title{font-size:11.5px;font-weight:700;text-transform:uppercase;letter-spacing:1.5px;color:var(--accent2);margin-bottom:11px;}
+.skills-wrap{display:flex;flex-wrap:wrap;gap:8px;}
+.skill{background:var(--bg3);border:1px solid var(--border);padding:8px 15px;border-radius:10px;font-size:13px;font-weight:600;color:var(--text);transition:border-color .2s,transform .2s,background .2s;}
 .skill:hover{border-color:var(--accent);transform:translateY(-2px);background:rgba(108,71,255,.08);}
 
 /* ── EXPERIENCE ── */
-.exp-list{display:flex;flex-direction:column;gap:0;border-left:2px solid rgba(108,71,255,.2);padding-left:30px;margin-left:10px;}
-.exp-item{position:relative;padding-bottom:42px;}
+.exp-list{display:flex;flex-direction:column;gap:0;border-left:2px solid rgba(108,71,255,.2);padding-left:28px;margin-left:8px;}
+.exp-item{position:relative;padding-bottom:40px;}
 .exp-item:last-child{padding-bottom:0;}
-.exp-dot{position:absolute;left:-39px;top:5px;width:14px;height:14px;border-radius:50%;background:var(--accent);border:3px solid var(--bg2);box-shadow:0 0 0 3px rgba(108,71,255,.2);}
-.exp-year{font-size:11.5px;font-weight:700;color:var(--accent);text-transform:uppercase;letter-spacing:1px;margin-bottom:5px;}
-.exp-role{font-family:'Cabinet Grotesk',sans-serif;font-size:19px;font-weight:800;margin-bottom:3px;}
-.exp-co{font-size:14px;color:var(--muted);margin-bottom:12px;font-weight:500;}
-.exp-desc{font-size:13.5px;color:var(--muted);line-height:1.7;max-width:620px;}
-.exp-tags{display:flex;flex-wrap:wrap;gap:7px;margin-top:12px;}
-.exp-tag{background:rgba(108,71,255,.1);border:1px solid rgba(108,71,255,.2);color:#a78bfa;font-size:11.5px;font-weight:600;padding:3px 11px;border-radius:50px;}
+.exp-dot{position:absolute;left:-38px;top:5px;width:14px;height:14px;border-radius:50%;background:var(--accent);border:3px solid var(--bg2);box-shadow:0 0 0 3px rgba(108,71,255,.2);}
+.exp-year{font-size:11px;font-weight:700;color:var(--accent);text-transform:uppercase;letter-spacing:1px;margin-bottom:5px;}
+.exp-role{font-family:'Cabinet Grotesk',sans-serif;font-size:18px;font-weight:800;margin-bottom:3px;}
+.exp-co{font-size:13.5px;color:var(--muted);margin-bottom:11px;font-weight:500;}
+.exp-desc{font-size:13px;color:var(--muted);line-height:1.7;max-width:620px;}
+.exp-tags{display:flex;flex-wrap:wrap;gap:7px;margin-top:11px;}
+.exp-tag{background:rgba(108,71,255,.1);border:1px solid rgba(108,71,255,.2);color:#a78bfa;font-size:11px;font-weight:600;padding:3px 10px;border-radius:50px;}
 
 /* ── PROJECTS ── */
-.projects-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(300px,1fr));gap:18px;}
-.proj-card{background:var(--bg3);border:1px solid var(--border);border-radius:var(--r);padding:24px;transition:border-color .25s,transform .25s;}
+.projects-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(280px,1fr));gap:16px;}
+.proj-card{background:var(--bg3);border:1px solid var(--border);border-radius:var(--r);padding:22px;transition:border-color .25s,transform .25s;}
 .proj-card:hover{border-color:rgba(108,71,255,.4);transform:translateY(-3px);}
-.proj-top{display:flex;justify-content:space-between;align-items:flex-start;margin-bottom:12px;}
-.proj-icon{font-size:28px;}
+.proj-top{display:flex;justify-content:space-between;align-items:flex-start;margin-bottom:11px;}
+.proj-icon{font-size:26px;}
 .proj-link{background:rgba(108,71,255,.1);border:1px solid rgba(108,71,255,.2);color:#a78bfa;font-size:11px;font-weight:700;padding:4px 12px;border-radius:50px;text-decoration:none;transition:background .2s;}
 .proj-link:hover{background:rgba(108,71,255,.22);}
-.proj-title{font-family:'Cabinet Grotesk',sans-serif;font-size:17px;font-weight:800;margin-bottom:7px;}
-.proj-desc{font-size:13px;color:var(--muted);line-height:1.65;margin-bottom:14px;}
-.proj-stack{display:flex;flex-wrap:wrap;gap:6px;}
-.proj-tech{background:rgba(255,255,255,.04);border:1px solid var(--border);color:var(--muted);font-size:11px;font-weight:600;padding:3px 9px;border-radius:6px;}
+.proj-title{font-family:'Cabinet Grotesk',sans-serif;font-size:16px;font-weight:800;margin-bottom:7px;}
+.proj-desc{font-size:13px;color:var(--muted);line-height:1.65;margin-bottom:13px;}
+.proj-stack{display:flex;flex-wrap:wrap;gap:5px;}
+.proj-tech{background:rgba(255,255,255,.04);border:1px solid var(--border);color:var(--muted);font-size:11px;font-weight:600;padding:3px 8px;border-radius:6px;}
 
-/* ── APPS SHOWCASE ── */
-.apps-list{display:flex;flex-direction:column;gap:60px;}
-.app-top{display:flex;justify-content:space-between;align-items:center;margin-bottom:20px;flex-wrap:wrap;gap:10px;}
-.app-name{font-family:'Cabinet Grotesk',sans-serif;font-size:21px;font-weight:800;}
-.app-live{background:rgba(34,197,94,.1);border:1px solid rgba(34,197,94,.25);color:#4ade80;font-size:10.5px;font-weight:800;padding:4px 13px;border-radius:50px;text-transform:uppercase;letter-spacing:1px;}
+/* ════════════════════════════════════════
+   APP SHOWCASE — CARD LIST VIEW
+════════════════════════════════════════ */
+.apps-list{display:flex;flex-direction:column;gap:14px;}
 
-/* ── CAROUSEL ── */
-.caro-wrap{background:var(--bg2);border:1px solid var(--border);border-radius:22px;padding:28px 18px 20px;user-select:none;}
-.caro-outer{overflow:hidden;}
-.caro-track{display:flex;gap:16px;transition:transform .55s cubic-bezier(.22,1,.36,1);will-change:transform;}
-.phone{flex:0 0 155px;height:295px;border-radius:26px;overflow:hidden;border:2.5px solid rgba(255,255,255,.07);background:#0d0d0d;transition:transform .4s cubic-bezier(.22,1,.36,1),border-color .4s,box-shadow .4s;cursor:grab;}
-.phone:active{cursor:grabbing;}
-.phone img{width:100%;height:100%;object-fit:cover;display:block;pointer-events:none;}
-.phone.on{transform:scale(1.11) translateY(-8px);border-color:var(--accent);box-shadow:0 18px 55px rgba(108,71,255,.45),0 0 0 1px rgba(108,71,255,.3);}
-.phone.off{transform:scale(0.93);opacity:.55;}
-.caro-ctrl{display:flex;align-items:center;justify-content:center;gap:12px;margin-top:20px;}
-.carr-btn{width:34px;height:34px;border-radius:50%;border:1px solid rgba(108,71,255,.3);background:rgba(108,71,255,.08);color:var(--accent);font-size:15px;cursor:pointer;display:flex;align-items:center;justify-content:center;transition:background .2s,transform .15s;}
-.carr-btn:hover{background:rgba(108,71,255,.2);transform:scale(1.1);}
-.dots{display:flex;gap:5px;align-items:center;}
-.dot{width:5px;height:5px;border-radius:50%;background:rgba(255,255,255,.12);cursor:pointer;transition:background .2s,transform .2s;}
-.dot.on{background:var(--accent);transform:scale(1.5);}
+.app-card{
+  background:var(--bg3);
+  border:1px solid var(--border);
+  border-radius:16px;
+  display:flex;
+  align-items:center;
+  gap:18px;
+  padding:16px 20px;
+  cursor:pointer;
+  transition:border-color .25s, transform .2s, background .2s;
+  -webkit-tap-highlight-color:transparent;
+  position:relative;
+  overflow:hidden;
+}
+.app-card::before{
+  content:'';
+  position:absolute;
+  inset:0;
+  background:linear-gradient(135deg,rgba(108,71,255,.04),transparent);
+  opacity:0;
+  transition:opacity .25s;
+}
+.app-card:hover{
+  border-color:rgba(108,71,255,.45);
+  transform:translateY(-2px);
+  background:rgba(255,255,255,.02);
+}
+.app-card:hover::before{opacity:1;}
+.app-card:active{transform:scale(.98);}
+
+/* Thumbnail */
+.app-thumb{
+  flex-shrink:0;
+  width:62px;
+  height:110px;
+  border-radius:14px;
+  overflow:hidden;
+  border:2px solid rgba(255,255,255,.07);
+  background:#0d0d0d;
+  position:relative;
+}
+.app-thumb img{
+  width:100%;
+  height:100%;
+  object-fit:cover;
+  display:block;
+}
+.app-thumb-placeholder{
+  width:100%;
+  height:100%;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  font-size:28px;
+}
+
+/* Text info */
+.app-info{flex:1;min-width:0;}
+.app-info-name{
+  font-family:'Cabinet Grotesk',sans-serif;
+  font-size:16px;
+  font-weight:800;
+  margin-bottom:4px;
+  white-space:nowrap;
+  overflow:hidden;
+  text-overflow:ellipsis;
+}
+.app-info-sub{
+  font-size:12px;
+  color:var(--muted);
+  margin-bottom:8px;
+}
+.app-info-count{
+  display:inline-flex;
+  align-items:center;
+  gap:5px;
+  background:rgba(108,71,255,.1);
+  border:1px solid rgba(108,71,255,.2);
+  color:#a78bfa;
+  font-size:11px;
+  font-weight:700;
+  padding:3px 10px;
+  border-radius:50px;
+}
+.app-live-badge{
+  display:inline-flex;
+  align-items:center;
+  gap:5px;
+  background:rgba(34,197,94,.1);
+  border:1px solid rgba(34,197,94,.25);
+  color:#4ade80;
+  font-size:10px;
+  font-weight:800;
+  padding:3px 10px;
+  border-radius:50px;
+  text-transform:uppercase;
+  letter-spacing:.8px;
+  margin-left:6px;
+}
+.app-live-dot{width:5px;height:5px;border-radius:50%;background:#4ade80;animation:blink 2s infinite;}
+
+/* Arrow chevron */
+.app-arrow{
+  flex-shrink:0;
+  width:32px;
+  height:32px;
+  border-radius:50%;
+  background:rgba(108,71,255,.1);
+  border:1px solid rgba(108,71,255,.2);
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  color:#a78bfa;
+  font-size:14px;
+  transition:background .2s, transform .2s;
+}
+.app-card:hover .app-arrow{background:rgba(108,71,255,.25);transform:translateX(3px);}
+
+/* ════════════════════════════════════════
+   FULLSCREEN LIGHTBOX
+════════════════════════════════════════ */
+#lightbox{
+  position:fixed;
+  inset:0;
+  z-index:99998;
+  background:rgba(0,0,0,.96);
+  backdrop-filter:blur(18px);
+  display:flex;
+  flex-direction:column;
+  align-items:center;
+  justify-content:center;
+  opacity:0;
+  pointer-events:none;
+  transition:opacity .3s;
+}
+#lightbox.open{
+  opacity:1;
+  pointer-events:all;
+}
+
+/* Header */
+.lb-header{
+  position:absolute;
+  top:0;left:0;right:0;
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  padding:16px 20px;
+  background:linear-gradient(to bottom,rgba(0,0,0,.8),transparent);
+  z-index:10;
+}
+.lb-title{
+  font-family:'Cabinet Grotesk',sans-serif;
+  font-size:17px;
+  font-weight:800;
+  color:#fff;
+}
+.lb-counter{
+  font-size:12px;
+  color:rgba(255,255,255,.5);
+  font-weight:600;
+  margin-top:2px;
+}
+.lb-close{
+  width:40px;height:40px;
+  border-radius:50%;
+  background:rgba(255,255,255,.1);
+  border:1px solid rgba(255,255,255,.15);
+  color:#fff;
+  font-size:18px;
+  cursor:pointer;
+  display:flex;align-items:center;justify-content:center;
+  transition:background .2s, transform .15s;
+  -webkit-tap-highlight-color:transparent;
+}
+.lb-close:hover{background:rgba(255,255,255,.2);transform:scale(1.1);}
+
+/* Main image area */
+.lb-main{
+  width:100%;
+  height:100%;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  overflow:hidden;
+  position:relative;
+}
+
+/* Image wrapper for pan/zoom */
+.lb-img-wrap{
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  width:100%;
+  height:100%;
+  cursor:zoom-in;
+  overflow:hidden;
+  touch-action:none;
+}
+.lb-img-wrap.zoomed{cursor:grab;}
+.lb-img-wrap.zoomed:active{cursor:grabbing;}
+
+.lb-img{
+  max-width:88vw;
+  max-height:78vh;
+  border-radius:20px;
+  border:2px solid rgba(255,255,255,.08);
+  object-fit:contain;
+  display:block;
+  box-shadow:0 24px 80px rgba(0,0,0,.7);
+  user-select:none;
+  -webkit-user-drag:none;
+  transition:transform .35s cubic-bezier(.22,1,.36,1), border-color .3s;
+  transform-origin:center center;
+  will-change:transform;
+}
+.lb-img.zoomed{
+  max-width:none;
+  max-height:none;
+  border-color:rgba(108,71,255,.4);
+}
+
+/* Side nav buttons */
+.lb-nav{
+  position:absolute;
+  top:50%;
+  transform:translateY(-50%);
+  z-index:10;
+  display:flex;
+  gap:0;
+}
+.lb-nav.prev{left:16px;}
+.lb-nav.next{right:16px;}
+.lb-btn{
+  width:44px;height:44px;
+  border-radius:50%;
+  border:1px solid rgba(255,255,255,.12);
+  background:rgba(255,255,255,.08);
+  color:#fff;
+  font-size:18px;
+  cursor:pointer;
+  display:flex;align-items:center;justify-content:center;
+  backdrop-filter:blur(10px);
+  transition:background .2s, transform .15s;
+  -webkit-tap-highlight-color:transparent;
+}
+.lb-btn:hover{background:rgba(108,71,255,.4);transform:scale(1.1);}
+@media(max-width:500px){
+  .lb-nav.prev{left:8px;}
+  .lb-nav.next{right:8px;}
+  .lb-btn{width:36px;height:36px;font-size:15px;}
+}
+
+/* Progress bar */
+.lb-progress{
+  position:absolute;
+  bottom:0;left:0;
+  height:2.5px;
+  background:linear-gradient(90deg,var(--accent),var(--accent2));
+  width:0%;
+  transition:width linear;
+  border-radius:0 2px 2px 0;
+}
+
+/* Dots */
+.lb-dots{
+  position:absolute;
+  bottom:20px;
+  left:50%;
+  transform:translateX(-50%);
+  display:flex;
+  gap:6px;
+  align-items:center;
+  z-index:10;
+}
+.lb-dot{
+  width:6px;height:6px;
+  border-radius:50%;
+  background:rgba(255,255,255,.2);
+  cursor:pointer;
+  transition:background .2s, transform .2s, width .2s;
+  -webkit-tap-highlight-color:transparent;
+}
+.lb-dot.on{
+  background:var(--accent);
+  transform:scale(1.4);
+  width:18px;
+  border-radius:4px;
+}
+
+/* Autoplay toggle */
+.lb-play-btn{
+  position:absolute;
+  bottom:46px;
+  right:18px;
+  width:36px;height:36px;
+  border-radius:50%;
+  background:rgba(255,255,255,.08);
+  border:1px solid rgba(255,255,255,.12);
+  color:rgba(255,255,255,.6);
+  font-size:12px;
+  cursor:pointer;
+  display:flex;align-items:center;justify-content:center;
+  transition:background .2s, color .2s;
+  z-index:10;
+  -webkit-tap-highlight-color:transparent;
+}
+.lb-play-btn.playing{color:var(--accent);background:rgba(108,71,255,.15);border-color:rgba(108,71,255,.3);}
+
+/* Zoom indicator */
+.lb-zoom-hint{
+  position:absolute;
+  bottom:52px;
+  left:50%;
+  transform:translateX(-50%);
+  background:rgba(0,0,0,.7);
+  border:1px solid rgba(255,255,255,.1);
+  color:rgba(255,255,255,.6);
+  font-size:11px;
+  font-weight:600;
+  padding:5px 14px;
+  border-radius:50px;
+  pointer-events:none;
+  opacity:0;
+  transition:opacity .3s;
+  z-index:10;
+  white-space:nowrap;
+}
+.lb-zoom-hint.show{opacity:1;}
 
 /* ── EDUCATION ── */
-.edu-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(280px,1fr));gap:16px;}
-.edu-card{background:var(--bg3);border:1px solid var(--border);border-radius:var(--r);padding:22px;transition:border-color .2s;}
+.edu-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(260px,1fr));gap:14px;}
+.edu-card{background:var(--bg3);border:1px solid var(--border);border-radius:var(--r);padding:20px;transition:border-color .2s;}
 .edu-card:hover{border-color:rgba(108,71,255,.3);}
-.edu-deg{font-family:'Cabinet Grotesk',sans-serif;font-size:17px;font-weight:800;margin-bottom:5px;}
-.edu-school{font-size:13.5px;color:var(--muted);margin-bottom:6px;}
-.edu-yr{font-size:11.5px;font-weight:700;color:var(--accent);text-transform:uppercase;letter-spacing:1px;}
+.edu-deg{font-family:'Cabinet Grotesk',sans-serif;font-size:16px;font-weight:800;margin-bottom:5px;}
+.edu-school{font-size:13px;color:var(--muted);margin-bottom:6px;}
+.edu-yr{font-size:11px;font-weight:700;color:var(--accent);text-transform:uppercase;letter-spacing:1px;}
 
 /* ── CONTACT ── */
 .contact-box{max-width:660px;margin:0 auto;text-align:center;}
-.contact-links{display:flex;gap:14px;justify-content:center;flex-wrap:wrap;margin-top:36px;}
-.cl{display:flex;align-items:center;gap:10px;background:var(--bg3);border:1px solid var(--border);padding:13px 22px;border-radius:12px;text-decoration:none;color:var(--text);font-size:13.5px;font-weight:600;transition:border-color .2s,transform .2s,background .2s;}
+.contact-links{display:flex;gap:12px;justify-content:center;flex-wrap:wrap;margin-top:34px;}
+.cl{display:flex;align-items:center;gap:9px;background:var(--bg3);border:1px solid var(--border);padding:12px 20px;border-radius:12px;text-decoration:none;color:var(--text);font-size:13px;font-weight:600;transition:border-color .2s,transform .2s,background .2s;}
 .cl:hover{border-color:var(--accent);transform:translateY(-3px);background:rgba(108,71,255,.07);}
+@media(max-width:480px){.cl{font-size:12px;padding:11px 15px;gap:7px;}}
 
 /* ── FOOTER ── */
-footer{text-align:center;padding:28px;color:var(--muted);font-size:13px;border-top:1px solid var(--border);}
+footer{text-align:center;padding:26px 20px;color:var(--muted);font-size:13px;border-top:1px solid var(--border);}
 footer strong{color:var(--accent);}
 
 /* ── SCROLL REVEAL ── */
-.reveal{opacity:0;transform:translateY(28px);transition:opacity .65s ease,transform .65s ease;}
+.reveal{opacity:0;transform:translateY(24px);transition:opacity .6s ease,transform .6s ease;}
 .reveal.in{opacity:1;transform:none;}
-
-/* ── RESPONSIVE ── */
-@media(max-width:900px){
-  nav{padding:15px 20px;}
-  .nav-r a:not(.nav-cta){display:none;}
-  .sec{padding:60px 22px;}
-  .stat{min-width:50%;}
-}
-@media(max-width:600px){
-  .hero h1{letter-spacing:-1px;}
-  .phone{flex:0 0 125px;height:240px;}
-  .projects-grid{grid-template-columns:1fr;}
-}
 </style>
 </head>
 <body>
@@ -268,7 +576,6 @@ footer strong{color:var(--accent);}
     <p class="sec-desc">10+ years across product companies, agencies, and startups.</p>
   </div>
   <div class="exp-list">
-
     <div class="exp-item reveal">
       <div class="exp-dot"></div>
       <div class="exp-year">Dec 2024 – Present</div>
@@ -277,7 +584,6 @@ footer strong{color:var(--accent);}
       <div class="exp-desc">Leading mobile development with Android &amp; Flutter. Architecting scalable, maintainable solutions following industry best practices. Implementing CI/CD pipelines via GitHub Actions, building n8n workflow automation for team efficiency, and working with agent-based development for intelligent automation.</div>
       <div class="exp-tags"><span class="exp-tag">Flutter</span><span class="exp-tag">Android</span><span class="exp-tag">Riverpod</span><span class="exp-tag">Bloc</span><span class="exp-tag">GitHub Actions</span><span class="exp-tag">n8n</span><span class="exp-tag">Clean Architecture</span></div>
     </div>
-
     <div class="exp-item reveal">
       <div class="exp-dot"></div>
       <div class="exp-year">Mar 2023 – Dec 2024</div>
@@ -286,7 +592,6 @@ footer strong{color:var(--accent);}
       <div class="exp-desc">Developed and maintained multiple Android &amp; Flutter applications for international clients. Led code reviews, mentored junior developers, implemented Jetpack Compose UI, integrated Firebase &amp; GraphQL APIs, and optimized performance resulting in improved load times and reduced crash rates.</div>
       <div class="exp-tags"><span class="exp-tag">Flutter</span><span class="exp-tag">Jetpack Compose</span><span class="exp-tag">GraphQL</span><span class="exp-tag">Firebase</span><span class="exp-tag">CI/CD</span><span class="exp-tag">Mentoring</span></div>
     </div>
-
     <div class="exp-item reveal">
       <div class="exp-dot"></div>
       <div class="exp-year">Jun 2021 – Feb 2023</div>
@@ -295,7 +600,6 @@ footer strong{color:var(--accent);}
       <div class="exp-desc">Native Android development using Kotlin/Java with MVVM architecture. Implemented In-App Purchases, real-time chat with Cloud Firestore, and hardware BLE integration using Estimote &amp; Kontakt IO SDK. Published multiple 4★+ apps on the Play Store.</div>
       <div class="exp-tags"><span class="exp-tag">Kotlin</span><span class="exp-tag">MVVM</span><span class="exp-tag">BLE</span><span class="exp-tag">Firestore</span><span class="exp-tag">In-App Purchases</span></div>
     </div>
-
     <div class="exp-item reveal">
       <div class="exp-dot"></div>
       <div class="exp-year">Aug 2016 – May 2021</div>
@@ -304,7 +608,6 @@ footer strong{color:var(--accent);}
       <div class="exp-desc">Built 15+ Android apps across music, video, e-commerce, and utilities. Created custom media player and video editing apps, implemented social sharing, push notifications, and analytics. Gained experience in Android smartwatch app development.</div>
       <div class="exp-tags"><span class="exp-tag">Android</span><span class="exp-tag">Java</span><span class="exp-tag">ExoPlayer</span><span class="exp-tag">REST APIs</span><span class="exp-tag">Smartwatch</span></div>
     </div>
-
     <div class="exp-item reveal">
       <div class="exp-dot"></div>
       <div class="exp-year">Aug 2014 – Aug 2016</div>
@@ -313,7 +616,6 @@ footer strong{color:var(--accent);}
       <div class="exp-desc">Started career building Android apps in Java. Developed e-commerce applications with payment gateway integration, SQLite database management, and Material Design UI. Full SDLC participation in agile team environment.</div>
       <div class="exp-tags"><span class="exp-tag">Java</span><span class="exp-tag">Android SDK</span><span class="exp-tag">SQLite</span><span class="exp-tag">Material Design</span></div>
     </div>
-
   </div>
 </section>
 
@@ -325,140 +627,120 @@ footer strong{color:var(--accent);}
     <p class="sec-desc">Production apps with real users, real downloads, and real impact.</p>
   </div>
   <div class="projects-grid">
-
     <div class="proj-card reveal">
       <div class="proj-top"><div class="proj-icon">💬</div><a href="https://play.google.com/store/apps/details?id=com.quirktastic" target="_blank" class="proj-link">Play Store ↗</a></div>
       <div class="proj-title">QuirkChat</div>
       <div class="proj-desc">Social networking platform for geek communities &amp; fandom clubs. Real-time chat with Cloud Firestore, social authentication, and push notifications.</div>
       <div class="proj-stack"><span class="proj-tech">Kotlin</span><span class="proj-tech">MVVM</span><span class="proj-tech">Firebase</span><span class="proj-tech">Firestore</span><span class="proj-tech">FCM</span></div>
     </div>
-
     <div class="proj-card reveal">
       <div class="proj-top"><div class="proj-icon">🎵</div><a href="https://play.google.com/store/apps/details?id=com.ostech.vibez" target="_blank" class="proj-link">Play Store ↗</a></div>
       <div class="proj-title">Vibez — African Music</div>
       <div class="proj-desc">Music streaming platform connecting African artists with global audiences. Playlist management, offline playback, and premium subscription payments.</div>
       <div class="proj-stack"><span class="proj-tech">Kotlin</span><span class="proj-tech">ExoPlayer</span><span class="proj-tech">Retrofit</span><span class="proj-tech">Room</span><span class="proj-tech">In-App Purchases</span></div>
     </div>
-
     <div class="proj-card reveal">
       <div class="proj-top"><div class="proj-icon">🏗</div><a href="https://play.google.com/store/apps/details?id=com.contractorfm" target="_blank" class="proj-link">Play Store ↗</a></div>
       <div class="proj-title">FM Contractor</div>
       <div class="proj-desc">Business management app for contractors and broker networks with complex business logic, data visualization dashboards and reporting.</div>
       <div class="proj-stack"><span class="proj-tech">Kotlin</span><span class="proj-tech">MVVM</span><span class="proj-tech">Retrofit</span><span class="proj-tech">Google Analytics</span></div>
     </div>
-
     <div class="proj-card reveal">
       <div class="proj-top"><div class="proj-icon">🌾</div><a href="https://play.google.com/store/apps/details?id=com.keinsumos" target="_blank" class="proj-link">Play Store ↗</a></div>
       <div class="proj-title">Ke Insumos</div>
       <div class="proj-desc">Agricultural marketplace with dual user roles for producers &amp; agronomists. Order management, real-time tracking, and notification system.</div>
       <div class="proj-stack"><span class="proj-tech">Flutter</span><span class="proj-tech">GetX</span><span class="proj-tech">Firebase</span><span class="proj-tech">REST APIs</span></div>
     </div>
-
     <div class="proj-card reveal">
       <div class="proj-top"><div class="proj-icon">🏓</div><a href="https://apps.apple.com/us/app/main-court-play-pickleball/id6471336853" target="_blank" class="proj-link">App Store ↗</a></div>
       <div class="proj-title">Main Court: Pickleball</div>
       <div class="proj-desc">Cross-platform iOS &amp; Android app connecting Pickleball players. Match creation, skill-based matching, scheduling, and Google Maps integration.</div>
       <div class="proj-stack"><span class="proj-tech">Flutter</span><span class="proj-tech">Bloc</span><span class="proj-tech">Firebase</span><span class="proj-tech">Google Maps</span></div>
     </div>
-
     <div class="proj-card reveal">
       <div class="proj-top"><div class="proj-icon">🥗</div><a href="https://play.google.com/store/apps/details?id=com.lomasdefrida.dietassaludablesV2" target="_blank" class="proj-link">Play Store ↗</a></div>
       <div class="proj-title">Dietas Saludables</div>
       <div class="proj-desc">Health &amp; fitness app with 30+ diet plans, BMI calculator, ideal weight algorithms, and intuitive meal planning UI.</div>
       <div class="proj-stack"><span class="proj-tech">Android</span><span class="proj-tech">SQLite</span><span class="proj-tech">Custom UI</span><span class="proj-tech">Material Design</span></div>
     </div>
-
   </div>
 </section>
 
-<!-- ── APP SCREENSHOTS ── -->
+<!-- ══════════════════════════════════════
+     APP SCREENSHOTS — CARD LIST
+══════════════════════════════════════ -->
 <section class="sec sec-alt" id="apps">
   <div class="sec-head reveal">
     <div class="sec-label">UI Showcase</div>
     <div class="sec-title">App <span class="g">Screenshots</span></div>
-    <p class="sec-desc">Tap arrows or swipe to browse each app's screens one at a time.</p>
+    <p class="sec-desc">Tap any app card to browse all screenshots in fullscreen. Pinch to zoom.</p>
   </div>
+
   <div class="apps-list">
 
-    <div class="app-block reveal">
-      <div class="app-top"><div class="app-name">📋 Todo App</div><div class="app-live">Live</div></div>
-      <div class="caro-wrap" id="w-todo">
-        <div class="caro-outer"><div class="caro-track" id="t-todo">
-          <div class="phone"><img src="assets/images/todo/login.png" alt="Login" draggable="false"></div>
-          <div class="phone"><img src="assets/images/todo/task-list.png" alt="Tasks" draggable="false"></div>
-          <div class="phone"><img src="assets/images/todo/add-task.png" alt="Add Task" draggable="false"></div>
-          <div class="phone"><img src="assets/images/todo/edit-task.png" alt="Edit Task" draggable="false"></div>
-        </div></div>
-        <div class="caro-ctrl">
-          <button class="carr-btn" data-d="-1">&#8592;</button>
-          <div class="dots" id="d-todo"></div>
-          <button class="carr-btn" data-d="1">&#8594;</button>
-        </div>
+    <!-- Todo App -->
+    <div class="app-card reveal" data-app="todo">
+      <div class="app-thumb">
+        <img src="assets/images/todo/login.png" alt="Todo App" loading="lazy">
       </div>
+      <div class="app-info">
+        <div class="app-info-name">📋 Todo App <span class="app-live-badge"><span class="app-live-dot"></span>Live</span></div>
+        <div class="app-info-sub">Task management with login, list &amp; edit views</div>
+        <div class="app-info-count">🖼 4 screenshots</div>
+      </div>
+      <div class="app-arrow">›</div>
     </div>
 
-    <div class="app-block reveal">
-      <div class="app-top"><div class="app-name">📞 Video Call App</div><div class="app-live">Live</div></div>
-      <div class="caro-wrap" id="w-video">
-        <div class="caro-outer"><div class="caro-track" id="t-video">
-          <div class="phone"><img src="assets/images/video/login.png" alt="Login" draggable="false"></div>
-          <div class="phone"><img src="assets/images/video/users.png" alt="Users" draggable="false"></div>
-          <div class="phone"><img src="assets/images/video/video-1.png" alt="Video" draggable="false"></div>
-        </div></div>
-        <div class="caro-ctrl">
-          <button class="carr-btn" data-d="-1">&#8592;</button>
-          <div class="dots" id="d-video"></div>
-          <button class="carr-btn" data-d="1">&#8594;</button>
-        </div>
+    <!-- Video Call App -->
+    <div class="app-card reveal" data-app="video">
+      <div class="app-thumb">
+        <img src="assets/images/video/login.png" alt="Video Call App" loading="lazy">
       </div>
+      <div class="app-info">
+        <div class="app-info-name">📞 Video Call App <span class="app-live-badge"><span class="app-live-dot"></span>Live</span></div>
+        <div class="app-info-sub">Real-time video calling with user management</div>
+        <div class="app-info-count">🖼 3 screenshots</div>
+      </div>
+      <div class="app-arrow">›</div>
     </div>
 
-    <div class="app-block reveal">
-      <div class="app-top"><div class="app-name">🖼 Gallery App</div><div class="app-live">Live</div></div>
-      <div class="caro-wrap" id="w-gallery">
-        <div class="caro-outer"><div class="caro-track" id="t-gallery">
-          <div class="phone"><img src="assets/images/gallery/gallery-1.png" alt="Gallery" draggable="false"></div>
-          <div class="phone"><img src="assets/images/gallery/1.png" alt="Photo 1" draggable="false"></div>
-          <div class="phone"><img src="assets/images/gallery/2.png" alt="Photo 2" draggable="false"></div>
-        </div></div>
-        <div class="caro-ctrl">
-          <button class="carr-btn" data-d="-1">&#8592;</button>
-          <div class="dots" id="d-gallery"></div>
-          <button class="carr-btn" data-d="1">&#8594;</button>
-        </div>
+    <!-- Gallery App -->
+    <div class="app-card reveal" data-app="gallery">
+      <div class="app-thumb">
+        <img src="assets/images/gallery/gallery-1.png" alt="Gallery App" loading="lazy">
       </div>
+      <div class="app-info">
+        <div class="app-info-name">🖼 Gallery App <span class="app-live-badge"><span class="app-live-dot"></span>Live</span></div>
+        <div class="app-info-sub">Photo gallery with grid &amp; detail view</div>
+        <div class="app-info-count">🖼 3 screenshots</div>
+      </div>
+      <div class="app-arrow">›</div>
     </div>
 
-    <div class="app-block reveal">
-      <div class="app-top"><div class="app-name">🎬 Video Editor</div><div class="app-live">Live</div></div>
-      <div class="caro-wrap" id="w-studio">
-        <div class="caro-outer"><div class="caro-track" id="t-studio">
-          <div class="phone"><img src="assets/images/videostudio/1.png" alt="Screen 1" draggable="false"></div>
-          <div class="phone"><img src="assets/images/videostudio/2.png" alt="Screen 2" draggable="false"></div>
-          <div class="phone"><img src="assets/images/videostudio/3.png" alt="Screen 3" draggable="false"></div>
-        </div></div>
-        <div class="caro-ctrl">
-          <button class="carr-btn" data-d="-1">&#8592;</button>
-          <div class="dots" id="d-studio"></div>
-          <button class="carr-btn" data-d="1">&#8594;</button>
-        </div>
+    <!-- Video Editor -->
+    <div class="app-card reveal" data-app="studio">
+      <div class="app-thumb">
+        <img src="assets/images/videostudio/1.png" alt="Video Editor" loading="lazy">
       </div>
+      <div class="app-info">
+        <div class="app-info-name">🎬 Video Editor <span class="app-live-badge"><span class="app-live-dot"></span>Live</span></div>
+        <div class="app-info-sub">Full-featured video studio &amp; editor app</div>
+        <div class="app-info-count">🖼 3 screenshots</div>
+      </div>
+      <div class="app-arrow">›</div>
     </div>
 
-    <div class="app-block reveal">
-      <div class="app-top"><div class="app-name">🏢 Society App</div><div class="app-live">Live</div></div>
-      <div class="caro-wrap" id="w-ns">
-        <div class="caro-outer"><div class="caro-track" id="t-ns">
-          <div class="phone"><img src="assets/images/ns/login.webp" alt="Login" draggable="false"></div>
-          <div class="phone"><img src="assets/images/ns/home.webp" alt="Home" draggable="false"></div>
-          <div class="phone"><img src="assets/images/ns/dashboard.webp" alt="Dashboard" draggable="false"></div>
-        </div></div>
-        <div class="caro-ctrl">
-          <button class="carr-btn" data-d="-1">&#8592;</button>
-          <div class="dots" id="d-ns"></div>
-          <button class="carr-btn" data-d="1">&#8594;</button>
-        </div>
+    <!-- Society App -->
+    <div class="app-card reveal" data-app="ns">
+      <div class="app-thumb">
+        <img src="assets/images/ns/login.webp" alt="Society App" loading="lazy">
       </div>
+      <div class="app-info">
+        <div class="app-info-name">🏢 Society App <span class="app-live-badge"><span class="app-live-dot"></span>Live</span></div>
+        <div class="app-info-sub">Housing society management &amp; dashboard</div>
+        <div class="app-info-count">🖼 3 screenshots</div>
+      </div>
+      <div class="app-arrow">›</div>
     </div>
 
   </div>
@@ -492,23 +774,23 @@ footer strong{color:var(--accent);}
     <p class="sec-desc" style="margin:12px auto 0;text-align:center;">Available for freelance projects, full-time roles, and consulting. Languages: English, Hindi, Gujarati.</p>
     <div class="contact-links">
       <a href="mailto:jeet.mobiledeveloper@gmail.com" class="cl">
-        <svg width="17" height="17" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"/></svg>
+        <svg width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"/></svg>
         jeet.mobiledeveloper@gmail.com
       </a>
       <a href="https://www.linkedin.com/in/jeet-parmar-a37b0b98" target="_blank" class="cl">
-        <svg width="17" height="17" fill="currentColor" viewBox="0 0 24 24"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-4 0v7h-4v-7a6 6 0 0 1 6-6z"/><rect x="2" y="9" width="4" height="12"/><circle cx="4" cy="4" r="2"/></svg>
+        <svg width="16" height="16" fill="currentColor" viewBox="0 0 24 24"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-4 0v7h-4v-7a6 6 0 0 1 6-6z"/><rect x="2" y="9" width="4" height="12"/><circle cx="4" cy="4" r="2"/></svg>
         LinkedIn
       </a>
       <a href="https://jeetparmar2810.github.io/portfolio" target="_blank" class="cl">
-        <svg width="17" height="17" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><path d="M2 12h20M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/></svg>
+        <svg width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><path d="M2 12h20M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/></svg>
         Portfolio
       </a>
       <a href="tel:+919327972901" class="cl">
-        <svg width="17" height="17" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 4.69 12 19.79 19.79 0 0 1 1.61 3.41 2 2 0 0 1 3.6 1.24h3a2 2 0 0 1 2 1.72c.05.25.11.5.17.74a12.84 12.84 0 0 0 .53 2.07 2 2 0 0 1-.45 2.11L7.91 8.9a16 16 0 0 0 6 6l.92-.92a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+        <svg width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 4.69 12 19.79 19.79 0 0 1 1.61 3.41 2 2 0 0 1 3.6 1.24h3a2 2 0 0 1 2 1.72c.05.25.11.5.17.74a12.84 12.84 0 0 0 .53 2.07 2 2 0 0 1-.45 2.11L7.91 8.9a16 16 0 0 0 6 6l.92-.92a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
         +91 93279 72901
       </a>
       <a href="JITENDRA___Senior_Mobile_Application_Developer__.pdf" target="_blank" class="cl">
-        <svg width="17" height="17" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14,2 14,8 20,8"/><line x1="12" y1="18" x2="12" y2="12"/><polyline points="9,15 12,18 15,15"/></svg>
+        <svg width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14,2 14,8 20,8"/><line x1="12" y1="18" x2="12" y2="12"/><polyline points="9,15 12,18 15,15"/></svg>
         Download Resume
       </a>
     </div>
@@ -520,88 +802,429 @@ footer strong{color:var(--accent);}
   Designed &amp; built by <strong>Jeet Parmar</strong> · Senior Flutter &amp; Android Developer · Ahmedabad, India
 </footer>
 
+<!-- ══════════════════════════════════════
+     FULLSCREEN LIGHTBOX
+══════════════════════════════════════ -->
+<div id="lightbox">
+  <div class="lb-header">
+    <div>
+      <div class="lb-title" id="lb-title">App Name</div>
+      <div class="lb-counter" id="lb-counter">1 / 4</div>
+    </div>
+    <button class="lb-close" id="lb-close" aria-label="Close">✕</button>
+  </div>
+
+  <div class="lb-main" id="lb-main">
+    <div class="lb-img-wrap" id="lb-img-wrap">
+      <img class="lb-img" id="lb-img" src="" alt="Screenshot" draggable="false">
+    </div>
+  </div>
+
+  <!-- Side nav -->
+  <div class="lb-nav prev">
+    <button class="lb-btn" id="lb-prev" aria-label="Previous">‹</button>
+  </div>
+  <div class="lb-nav next">
+    <button class="lb-btn" id="lb-next" aria-label="Next">›</button>
+  </div>
+
+  <!-- Bottom UI -->
+  <div class="lb-dots" id="lb-dots"></div>
+  <div class="lb-progress" id="lb-progress"></div>
+  <button class="lb-play-btn playing" id="lb-play" title="Toggle autoplay">⏵</button>
+  <div class="lb-zoom-hint" id="lb-zoom-hint">Tap to zoom · Pinch to zoom</div>
+</div>
+
 <script>
-/* ── CURSOR ── */
-const cur=document.getElementById('cur'),ring=document.getElementById('cur-ring');
-let mx=0,my=0,rx=0,ry=0;
-document.addEventListener('mousemove',e=>{mx=e.clientX;my=e.clientY;});
-(function tick(){
-  cur.style.left=mx+'px';cur.style.top=my+'px';
-  rx+=(mx-rx)*.11;ry+=(my-ry)*.11;
-  ring.style.left=rx+'px';ring.style.top=ry+'px';
-  requestAnimationFrame(tick);
-})();
-document.querySelectorAll('a,button,.phone,.skill,.proj-card,.exp-item,.edu-card,.cl,.stat').forEach(el=>{
-  el.addEventListener('mouseenter',()=>{cur.classList.add('h');ring.classList.add('h');});
-  el.addEventListener('mouseleave',()=>{cur.classList.remove('h');ring.classList.remove('h');});
-});
-
-/* ── SCROLL REVEAL ── */
-const ro=new IntersectionObserver(entries=>{
-  entries.forEach(e=>{if(e.isIntersecting)e.target.classList.add('in');});
-},{threshold:.1});
-document.querySelectorAll('.reveal').forEach(el=>ro.observe(el));
-
-/* ── CAROUSEL ── */
-function initCaro(id){
-  const track=document.getElementById('t-'+id);
-  const dotsEl=document.getElementById('d-'+id);
-  const wrap=document.getElementById('w-'+id);
-  const cards=[...track.children];
-  const total=cards.length;
-  let current=0,dragX=null,dragging=false;
-
-  // Build dots
-  dotsEl.innerHTML='';
-  cards.forEach((_,i)=>{
-    const d=document.createElement('div');
-    d.className='dot'+(i===0?' on':'');
-    d.addEventListener('click',()=>go(i));
-    dotsEl.appendChild(d);
+/* ───────────────────────────────────
+   CURSOR (desktop)
+─────────────────────────────────── */
+const cur = document.getElementById('cur');
+const ring = document.getElementById('cur-ring');
+if (window.matchMedia('(pointer:fine)').matches) {
+  let mx=0, my=0, rx=0, ry=0;
+  document.addEventListener('mousemove', e => { mx=e.clientX; my=e.clientY; });
+  (function tick(){
+    cur.style.left=mx+'px'; cur.style.top=my+'px';
+    rx+=(mx-rx)*.11; ry+=(my-ry)*.11;
+    ring.style.left=rx+'px'; ring.style.top=ry+'px';
+    requestAnimationFrame(tick);
+  })();
+  document.querySelectorAll('a,button,.app-card,.skill,.proj-card,.exp-item,.edu-card,.cl,.stat').forEach(el => {
+    el.addEventListener('mouseenter', () => { cur.classList.add('h'); ring.classList.add('h'); });
+    el.addEventListener('mouseleave', () => { cur.classList.remove('h'); ring.classList.remove('h'); });
   });
-
-  function cardW(){return cards[0].offsetWidth+16;}
-  function update(){
-    cards.forEach((c,i)=>{c.classList.remove('on','off');c.classList.add(i===current?'on':'off');});
-    dotsEl.querySelectorAll('.dot').forEach((d,i)=>d.classList.toggle('on',i===current));
-  }
-  function go(idx){
-    current=((idx%total)+total)%total;
-    const cw=cardW();
-    const ow=track.parentElement.offsetWidth;
-    const offset=current*cw-(ow-cards[0].offsetWidth)/2;
-    track.style.transform=`translateX(${-Math.max(0,offset)}px)`;
-    update();
-  }
-  go(0);
-
-  // Buttons — scoped to this wrap only
-  wrap.querySelectorAll('.carr-btn').forEach(b=>{
-    b.addEventListener('click',()=>go(current+parseInt(b.dataset.d)));
-  });
-
-  // Drag / swipe
-  const ds=x=>{dragX=x;dragging=false;};
-  const dm=x=>{if(dragX!==null&&Math.abs(x-dragX)>5)dragging=true;};
-  const de=x=>{
-    if(dragX===null)return;
-    if(dragging){const diff=dragX-x;if(diff>40)go(current+1);else if(diff<-40)go(current-1);}
-    dragX=null;dragging=false;
-  };
-  wrap.addEventListener('mousedown',e=>ds(e.clientX));
-  wrap.addEventListener('mousemove',e=>dm(e.clientX));
-  wrap.addEventListener('mouseup',e=>de(e.clientX));
-  wrap.addEventListener('mouseleave',e=>{if(dragX!==null)de(e.clientX);});
-  wrap.addEventListener('touchstart',e=>ds(e.touches[0].clientX),{passive:true});
-  wrap.addEventListener('touchmove',e=>dm(e.touches[0].clientX),{passive:true});
-  wrap.addEventListener('touchend',e=>de(e.changedTouches[0].clientX));
-
-  // Auto-play
-  setInterval(()=>go(current+1),3800);
-  window.addEventListener('resize',()=>go(current));
 }
 
-['todo','video','gallery','studio','ns'].forEach(initCaro);
+/* ───────────────────────────────────
+   SCROLL REVEAL
+─────────────────────────────────── */
+const ro = new IntersectionObserver(entries => {
+  entries.forEach(e => { if (e.isIntersecting) e.target.classList.add('in'); });
+}, { threshold: 0.08 });
+document.querySelectorAll('.reveal').forEach(el => ro.observe(el));
+
+/* ───────────────────────────────────
+   APP DATA
+─────────────────────────────────── */
+const APP_DATA = {
+  todo: {
+    name: '📋 Todo App',
+    images: [
+      'assets/images/todo/login.png',
+      'assets/images/todo/task-list.png',
+      'assets/images/todo/add-task.png',
+      'assets/images/todo/edit-task.png'
+    ]
+  },
+  video: {
+    name: '📞 Video Call App',
+    images: [
+      'assets/images/video/login.png',
+      'assets/images/video/users.png',
+      'assets/images/video/video-1.png'
+    ]
+  },
+  gallery: {
+    name: '🖼 Gallery App',
+    images: [
+      'assets/images/gallery/gallery-1.png',
+      'assets/images/gallery/1.png',
+      'assets/images/gallery/2.png'
+    ]
+  },
+  studio: {
+    name: '🎬 Video Editor',
+    images: [
+      'assets/images/videostudio/1.png',
+      'assets/images/videostudio/2.png',
+      'assets/images/videostudio/3.png'
+    ]
+  },
+  ns: {
+    name: '🏢 Society App',
+    images: [
+      'assets/images/ns/login.webp',
+      'assets/images/ns/home.webp',
+      'assets/images/ns/dashboard.webp'
+    ]
+  }
+};
+
+/* ───────────────────────────────────
+   LIGHTBOX ENGINE
+─────────────────────────────────── */
+const lb        = document.getElementById('lightbox');
+const lbImg     = document.getElementById('lb-img');
+const lbWrap    = document.getElementById('lb-img-wrap');
+const lbTitle   = document.getElementById('lb-title');
+const lbCounter = document.getElementById('lb-counter');
+const lbDots    = document.getElementById('lb-dots');
+const lbProg    = document.getElementById('lb-progress');
+const lbPlayBtn = document.getElementById('lb-play');
+const lbZHint   = document.getElementById('lb-zoom-hint');
+
+let lbImages = [], lbIndex = 0;
+let autoTimer = null, progTimer = null;
+let autoPlaying = true;
+const AUTO_DELAY = 3500; // ms per slide
+
+/* ── zoom state ── */
+let zoomScale = 1;
+const ZOOM_MAX = 3.5;
+let panX = 0, panY = 0;
+let touchStartDist = null;
+let touchStartScale = 1;
+let isPanning = false;
+let panStartX = 0, panStartY = 0;
+let panOriginX = 0, panOriginY = 0;
+
+function setZoom(scale, cx, cy) {
+  const img = lbImg;
+  const rect = img.getBoundingClientRect();
+  const prevScale = zoomScale;
+  zoomScale = Math.max(1, Math.min(ZOOM_MAX, scale));
+
+  if (zoomScale === 1) {
+    panX = 0; panY = 0;
+  } else {
+    // Adjust pan to zoom toward pointer
+    const ox = cx !== undefined ? cx - rect.left - rect.width/2 : 0;
+    const oy = cy !== undefined ? cy - rect.top - rect.height/2 : 0;
+    panX = panX - ox * (zoomScale / prevScale - 1);
+    panY = panY - oy * (zoomScale / prevScale - 1);
+  }
+  clampPan();
+  applyTransform();
+}
+
+function clampPan() {
+  if (zoomScale <= 1) { panX = 0; panY = 0; return; }
+  const img = lbImg;
+  const w = img.naturalWidth || img.offsetWidth;
+  const h = img.naturalHeight || img.offsetHeight;
+  const maxPanX = (w * (zoomScale - 1)) / 2;
+  const maxPanY = (h * (zoomScale - 1)) / 2;
+  panX = Math.max(-maxPanX, Math.min(maxPanX, panX));
+  panY = Math.max(-maxPanY, Math.min(maxPanY, panY));
+}
+
+function applyTransform(animated) {
+  lbImg.style.transition = animated ? 'transform .3s ease' : 'none';
+  lbImg.style.transform = `scale(${zoomScale}) translate(${panX/zoomScale}px, ${panY/zoomScale}px)`;
+  lbImg.classList.toggle('zoomed', zoomScale > 1);
+  lbWrap.classList.toggle('zoomed', zoomScale > 1);
+}
+
+function resetZoom() {
+  zoomScale = 1; panX = 0; panY = 0;
+  applyTransform(true);
+}
+
+/* ── navigation ── */
+function lbGo(idx) {
+  lbIndex = ((idx % lbImages.length) + lbImages.length) % lbImages.length;
+  resetZoom();
+
+  // Animate image swap
+  lbImg.style.opacity = '0';
+  lbImg.style.transform = 'scale(0.95)';
+  setTimeout(() => {
+    lbImg.src = lbImages[lbIndex];
+    lbImg.style.transition = 'opacity .3s ease, transform .35s ease';
+    lbImg.style.opacity = '1';
+    lbImg.style.transform = 'scale(1)';
+  }, 120);
+
+  lbCounter.textContent = `${lbIndex + 1} / ${lbImages.length}`;
+  lbDots.querySelectorAll('.lb-dot').forEach((d, i) => d.classList.toggle('on', i === lbIndex));
+
+  if (autoPlaying) restartAutoPlay();
+}
+
+/* ── autoplay ── */
+function restartAutoPlay() {
+  clearTimeout(autoTimer);
+  clearInterval(progTimer);
+  lbProg.style.transition = 'none';
+  lbProg.style.width = '0%';
+  setTimeout(() => {
+    lbProg.style.transition = `width ${AUTO_DELAY}ms linear`;
+    lbProg.style.width = '100%';
+  }, 30);
+  autoTimer = setTimeout(() => {
+    lbGo(lbIndex + 1);
+  }, AUTO_DELAY);
+}
+
+function stopAutoPlay() {
+  clearTimeout(autoTimer);
+  lbProg.style.transition = 'none';
+  lbProg.style.width = '0%';
+}
+
+function toggleAutoPlay() {
+  autoPlaying = !autoPlaying;
+  lbPlayBtn.textContent = autoPlaying ? '⏵' : '⏸';
+  lbPlayBtn.classList.toggle('playing', autoPlaying);
+  if (autoPlaying) restartAutoPlay(); else stopAutoPlay();
+}
+
+/* ── open / close ── */
+function openLightbox(appKey) {
+  const data = APP_DATA[appKey];
+  if (!data) return;
+  lbImages = data.images;
+  lbIndex = 0;
+  lbTitle.textContent = data.name;
+
+  // Build dots
+  lbDots.innerHTML = '';
+  lbImages.forEach((_, i) => {
+    const d = document.createElement('div');
+    d.className = 'lb-dot' + (i === 0 ? ' on' : '');
+    d.addEventListener('click', () => lbGo(i));
+    lbDots.appendChild(d);
+  });
+
+  lb.classList.add('open');
+  document.body.style.overflow = 'hidden';
+  autoPlaying = true;
+  lbPlayBtn.textContent = '⏵';
+  lbPlayBtn.classList.add('playing');
+
+  lbGo(0);
+  showZoomHint();
+}
+
+function closeLightbox() {
+  lb.classList.remove('open');
+  document.body.style.overflow = '';
+  stopAutoPlay();
+  resetZoom();
+}
+
+function showZoomHint() {
+  lbZHint.classList.add('show');
+  setTimeout(() => lbZHint.classList.remove('show'), 2500);
+}
+
+/* ── events ── */
+document.querySelectorAll('.app-card').forEach(card => {
+  card.addEventListener('click', () => openLightbox(card.dataset.app));
+});
+
+document.getElementById('lb-close').addEventListener('click', closeLightbox);
+document.getElementById('lb-prev').addEventListener('click', () => { stopAutoPlay(); lbGo(lbIndex - 1); if(autoPlaying) restartAutoPlay(); });
+document.getElementById('lb-next').addEventListener('click', () => { stopAutoPlay(); lbGo(lbIndex + 1); if(autoPlaying) restartAutoPlay(); });
+lbPlayBtn.addEventListener('click', toggleAutoPlay);
+
+/* Close on backdrop click */
+lb.addEventListener('click', e => {
+  if (e.target === lb) closeLightbox();
+});
+
+/* Keyboard */
+document.addEventListener('keydown', e => {
+  if (!lb.classList.contains('open')) return;
+  if (e.key === 'Escape') closeLightbox();
+  if (e.key === 'ArrowLeft') lbGo(lbIndex - 1);
+  if (e.key === 'ArrowRight') lbGo(lbIndex + 1);
+  if (e.key === ' ') { e.preventDefault(); toggleAutoPlay(); }
+});
+
+/* ── Mouse click to zoom ── */
+lbWrap.addEventListener('click', e => {
+  if (isPanning) return;
+  if (zoomScale > 1) {
+    resetZoom();
+  } else {
+    const rect = lbImg.getBoundingClientRect();
+    setZoom(2.5, e.clientX - rect.left - rect.width/2, e.clientY - rect.top - rect.height/2);
+    applyTransform(true);
+  }
+});
+
+/* ── Mouse drag to pan ── */
+let mousePanActive = false;
+let mousePanStartX = 0, mousePanStartY = 0;
+let mousePanOriginX = 0, mousePanOriginY = 0;
+
+lbWrap.addEventListener('mousedown', e => {
+  if (zoomScale <= 1) return;
+  mousePanActive = true;
+  mousePanStartX = e.clientX;
+  mousePanStartY = e.clientY;
+  mousePanOriginX = panX;
+  mousePanOriginY = panY;
+  e.preventDefault();
+});
+document.addEventListener('mousemove', e => {
+  if (!mousePanActive) return;
+  panX = mousePanOriginX + (e.clientX - mousePanStartX);
+  panY = mousePanOriginY + (e.clientY - mousePanStartY);
+  clampPan();
+  applyTransform(false);
+});
+document.addEventListener('mouseup', () => {
+  setTimeout(() => { mousePanActive = false; }, 10);
+});
+
+/* ── Touch: swipe + pinch-zoom ── */
+let touchStartX = null, touchStartY = null;
+let touchPanOriginX = 0, touchPanOriginY = 0;
+let isTouchPanning = false;
+
+lbWrap.addEventListener('touchstart', e => {
+  if (e.touches.length === 1) {
+    touchStartX = e.touches[0].clientX;
+    touchStartY = e.touches[0].clientY;
+    touchPanOriginX = panX;
+    touchPanOriginY = panY;
+    isTouchPanning = false;
+    touchStartDist = null;
+  } else if (e.touches.length === 2) {
+    touchStartDist = Math.hypot(
+      e.touches[0].clientX - e.touches[1].clientX,
+      e.touches[0].clientY - e.touches[1].clientY
+    );
+    touchStartScale = zoomScale;
+    touchStartX = null; // cancel swipe
+  }
+}, { passive: true });
+
+lbWrap.addEventListener('touchmove', e => {
+  if (e.touches.length === 2 && touchStartDist !== null) {
+    // Pinch zoom
+    e.preventDefault();
+    const dist = Math.hypot(
+      e.touches[0].clientX - e.touches[1].clientX,
+      e.touches[0].clientY - e.touches[1].clientY
+    );
+    const mid = {
+      x: (e.touches[0].clientX + e.touches[1].clientX) / 2,
+      y: (e.touches[0].clientY + e.touches[1].clientY) / 2
+    };
+    const rect = lbImg.getBoundingClientRect();
+    setZoom(touchStartScale * (dist / touchStartDist), mid.x - rect.left - rect.width/2, mid.y - rect.top - rect.height/2);
+    applyTransform(false);
+  } else if (e.touches.length === 1 && touchStartX !== null) {
+    const dx = e.touches[0].clientX - touchStartX;
+    const dy = e.touches[0].clientY - touchStartY;
+    if (zoomScale > 1) {
+      // Pan
+      e.preventDefault();
+      isTouchPanning = true;
+      panX = touchPanOriginX + dx;
+      panY = touchPanOriginY + dy;
+      clampPan();
+      applyTransform(false);
+    }
+    // Swipe handled on touchend
+  }
+}, { passive: false });
+
+lbWrap.addEventListener('touchend', e => {
+  if (e.changedTouches.length === 1 && touchStartX !== null && !isTouchPanning) {
+    const dx = e.changedTouches[0].clientX - touchStartX;
+    const dy = e.changedTouches[0].clientY - touchStartY;
+    if (Math.abs(dx) > Math.abs(dy) && Math.abs(dx) > 50) {
+      // Horizontal swipe — navigate
+      stopAutoPlay();
+      if (dx < 0) lbGo(lbIndex + 1); else lbGo(lbIndex - 1);
+      if (autoPlaying) restartAutoPlay();
+    }
+  }
+  touchStartX = null;
+  touchStartDist = null;
+  isTouchPanning = false;
+}, { passive: true });
+
+/* Double tap to zoom */
+let lastTap = 0;
+lbWrap.addEventListener('touchend', e => {
+  const now = Date.now();
+  if (now - lastTap < 300 && e.changedTouches.length === 1) {
+    if (zoomScale > 1) {
+      resetZoom();
+    } else {
+      const t = e.changedTouches[0];
+      const rect = lbImg.getBoundingClientRect();
+      setZoom(2.5, t.clientX - rect.left - rect.width/2, t.clientY - rect.top - rect.height/2);
+      applyTransform(true);
+    }
+  }
+  lastTap = now;
+}, { passive: true });
+
+/* Mouse wheel zoom */
+lbWrap.addEventListener('wheel', e => {
+  e.preventDefault();
+  const rect = lbImg.getBoundingClientRect();
+  const delta = e.deltaY > 0 ? -0.3 : 0.3;
+  setZoom(zoomScale + delta, e.clientX - rect.left - rect.width/2, e.clientY - rect.top - rect.height/2);
+  applyTransform(false);
+}, { passive: false });
 </script>
 </body>
 </html>
