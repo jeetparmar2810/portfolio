@@ -1,443 +1,404 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" data-theme="dark">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0">
-<title>Jeet Parmar | Senior Flutter, Android & AI Developer</title>
-<link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;500;600;700;800&family=DM+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Jeet Parmar — Senior Mobile & AI Developer</title>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,700;0,9..144,900;1,9..144,300;1,9..144,400&family=Epilogue:wght@300;400;500;600;700&display=swap" rel="stylesheet">
 <style>
-:root{--accent:#7c5cfc;--accent2:#fc5cdc;--accent3:#5ce4fc;--ai:#22d3a5;--bg:#04060d;--bg2:#080b16;--bg3:#0e1220;--border:rgba(255,255,255,.07);--text:#eef0f8;--muted:#6b7394;--green:#22c55e;--r:16px;--r2:24px;}
-*{margin:0;padding:0;box-sizing:border-box;}html{scroll-behavior:smooth;}
-body{background:var(--bg);color:var(--text);font-family:'DM Sans',sans-serif;overflow-x:hidden;cursor:none;}
-#cur,#cur-ring{position:fixed;pointer-events:none;z-index:99999;border-radius:50%;transform:translate(-50%,-50%);}
-#cur{width:8px;height:8px;background:var(--accent);transition:transform .12s,background .2s;}
-#cur-ring{width:32px;height:32px;border:1.5px solid rgba(124,92,252,.45);transition:width .28s,height .28s,border-color .28s;}
-#cur.h{transform:translate(-50%,-50%) scale(1.6);background:var(--accent2);}
-#cur-ring.h{width:48px;height:48px;border-color:rgba(252,92,220,.45);}
-@media(pointer:coarse){#cur,#cur-ring{display:none;}body{cursor:auto;}}
-nav{display:flex;justify-content:space-between;align-items:center;padding:14px 40px;position:sticky;top:0;z-index:1000;background:rgba(4,6,13,.88);backdrop-filter:blur(24px);-webkit-backdrop-filter:blur(24px);border-bottom:1px solid var(--border);}
-.logo{font-family:'Syne',sans-serif;font-size:19px;font-weight:800;background:linear-gradient(135deg,var(--accent),var(--accent2));-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;text-decoration:none;}
-.nav-r{display:flex;gap:20px;align-items:center;}
-.nav-r a{color:var(--muted);text-decoration:none;font-size:13px;font-weight:500;transition:color .2s;}
-.nav-r a:hover{color:var(--text);}
-.nav-cta{background:linear-gradient(135deg,var(--accent),var(--accent2));color:#fff!important;padding:8px 18px;border-radius:50px;font-size:12.5px!important;font-weight:700!important;white-space:nowrap;}
-@media(max-width:700px){nav{padding:12px 18px;}.nav-r a:not(.nav-cta){display:none;}}
-.hero{min-height:92vh;display:flex;flex-direction:column;justify-content:center;align-items:center;text-align:center;padding:80px 20px 60px;position:relative;overflow:hidden;}
-.hero-mesh{position:absolute;inset:0;pointer-events:none;background:radial-gradient(ellipse 85% 65% at 50% -5%,rgba(124,92,252,.22) 0%,transparent 65%),radial-gradient(ellipse 55% 45% at 92% 88%,rgba(252,92,220,.13) 0%,transparent 60%),radial-gradient(ellipse 45% 35% at 8% 82%,rgba(92,228,252,.09) 0%,transparent 60%);}
-.hero-grid{position:absolute;inset:0;pointer-events:none;background-image:linear-gradient(rgba(124,92,252,.06) 1px,transparent 1px),linear-gradient(90deg,rgba(124,92,252,.06) 1px,transparent 1px);background-size:48px 48px;}
-.hero-content{position:relative;z-index:1;max-width:820px;width:100%;}
-.badge{display:inline-flex;align-items:center;gap:8px;background:rgba(124,92,252,.1);border:1px solid rgba(124,92,252,.25);padding:7px 18px;border-radius:50px;font-size:12px;color:#b09ffe;margin-bottom:30px;font-weight:500;}
-.badge-dot{width:7px;height:7px;flex-shrink:0;border-radius:50%;background:var(--green);animation:blink 2s infinite;}
-@keyframes blink{0%,100%{opacity:1}50%{opacity:.3}}
-.hero h1{font-family:'Syne',sans-serif;font-size:clamp(38px,8.5vw,84px);font-weight:800;line-height:1.03;letter-spacing:-3px;margin-bottom:20px;}
-.grad{background:linear-gradient(135deg,var(--accent),var(--accent2) 50%,var(--accent3));-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;}
-.hero-sub{font-size:clamp(14px,2.5vw,17px);color:var(--muted);line-height:1.8;margin-bottom:20px;}
-.hero-sub strong{color:var(--text);}
-.hero-tags{display:flex;gap:8px;flex-wrap:wrap;justify-content:center;margin-bottom:36px;}
-.htag{background:rgba(255,255,255,.04);border:1px solid var(--border);padding:6px 13px;border-radius:9px;font-size:12px;color:var(--muted);font-weight:500;}
-.htag.ai{border-color:rgba(34,211,165,.2);color:rgba(34,211,165,.8);}
-.hero-btns{display:flex;gap:12px;justify-content:center;flex-wrap:wrap;}
-.btn-p{background:linear-gradient(135deg,var(--accent),var(--accent2));color:#fff;padding:13px 30px;border-radius:50px;text-decoration:none;font-size:13.5px;font-weight:700;box-shadow:0 8px 32px rgba(124,92,252,.38);transition:transform .2s,box-shadow .2s;}
-.btn-p:hover{transform:translateY(-2px);box-shadow:0 16px 44px rgba(124,92,252,.55);}
-.btn-s{background:rgba(255,255,255,.04);border:1px solid rgba(255,255,255,.1);color:var(--text);padding:13px 30px;border-radius:50px;text-decoration:none;font-size:13.5px;font-weight:600;transition:background .2s,border-color .2s;}
-.btn-s:hover{background:rgba(255,255,255,.08);border-color:rgba(124,92,252,.4);}
-.stats{display:flex;justify-content:center;background:var(--bg2);border-top:1px solid var(--border);border-bottom:1px solid var(--border);flex-wrap:wrap;}
-.stat{flex:1;min-width:90px;max-width:180px;text-align:center;padding:26px 14px;border-right:1px solid var(--border);}
+:root{--accent:#6c63ff;--accent-soft:rgba(108,99,255,.12);--accent-glow:rgba(108,99,255,.3);--green:#10b981;--teal:#06b6d4;--transition:.3s cubic-bezier(.4,0,.2,1);}
+[data-theme="dark"]{--bg:#090b12;--bg2:#0f1118;--bg3:#141620;--bg4:#1a1d28;--border:rgba(255,255,255,.07);--border-h:rgba(108,99,255,.4);--text:#f0f0f5;--text2:#a0a3b1;--text3:#5c6080;--shadow:0 4px 32px rgba(0,0,0,.5);}
+[data-theme="light"]{--bg:#fafaf8;--bg2:#f2f2ef;--bg3:#e8e8e4;--bg4:#ffffff;--border:rgba(0,0,0,.08);--border-h:rgba(108,99,255,.4);--text:#13141a;--text2:#4a4e6a;--text3:#8a8da0;--shadow:0 4px 24px rgba(0,0,0,.08);}
+*,*::before,*::after{margin:0;padding:0;box-sizing:border-box;}
+html{scroll-behavior:smooth;}
+body{background:var(--bg);color:var(--text);font-family:'Epilogue',sans-serif;overflow-x:hidden;transition:background var(--transition),color var(--transition);}
+a{text-decoration:none;color:inherit;}
+::-webkit-scrollbar{width:4px;}::-webkit-scrollbar-track{background:var(--bg);}::-webkit-scrollbar-thumb{background:var(--accent);border-radius:4px;}
+
+/* NAV */
+nav{position:fixed;top:0;left:0;right:0;z-index:999;display:flex;align-items:center;justify-content:space-between;padding:0 48px;height:64px;border-bottom:1px solid var(--border);backdrop-filter:blur(20px);-webkit-backdrop-filter:blur(20px);transition:background var(--transition);}
+[data-theme="dark"] nav{background:rgba(9,11,18,.88);}
+[data-theme="light"] nav{background:rgba(250,250,248,.92);}
+.nav-logo{font-family:'Fraunces',serif;font-size:22px;font-weight:900;background:linear-gradient(135deg,var(--accent),#a78bfa);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;}
+.nav-links{display:flex;align-items:center;gap:32px;}
+.nav-links a{font-size:13px;font-weight:500;color:var(--text2);transition:color var(--transition);}
+.nav-links a:hover,.nav-links a.active{color:var(--text);}
+.nav-actions{display:flex;align-items:center;gap:12px;}
+.theme-btn{width:40px;height:40px;border-radius:50%;border:1px solid var(--border);background:var(--bg3);cursor:pointer;display:flex;align-items:center;justify-content:center;font-size:16px;transition:all var(--transition);}
+.theme-btn:hover{border-color:var(--accent);transform:rotate(20deg);}
+.nav-cta{padding:9px 20px;border-radius:8px;font-size:13px;font-weight:600;background:var(--accent);color:#fff;box-shadow:0 4px 16px var(--accent-glow);transition:all var(--transition);}
+.nav-cta:hover{transform:translateY(-1px);box-shadow:0 8px 24px var(--accent-glow);}
+.hamburger{display:none;flex-direction:column;gap:5px;cursor:pointer;padding:4px;background:none;border:none;}
+.hamburger span{width:22px;height:2px;background:var(--text2);border-radius:2px;display:block;}
+@media(max-width:768px){nav{padding:0 20px;}.nav-links{display:none;}.hamburger{display:flex;}}
+.mob-menu{position:fixed;top:64px;left:0;right:0;background:var(--bg2);border-bottom:1px solid var(--border);padding:20px;display:none;flex-direction:column;gap:0;z-index:998;}
+.mob-menu.open{display:flex;}
+.mob-menu a{font-size:15px;font-weight:500;color:var(--text2);padding:14px 0;border-bottom:1px solid var(--border);}
+.mob-menu a:last-child{border-bottom:none;}
+
+/* HERO */
+.hero{min-height:100vh;padding:120px 48px 80px;display:flex;flex-direction:column;justify-content:center;position:relative;overflow:hidden;}
+@media(max-width:768px){.hero{padding:100px 20px 60px;}}
+.orb{position:absolute;border-radius:50%;filter:blur(100px);pointer-events:none;animation:flt 8s ease-in-out infinite;}
+.orb1{width:600px;height:600px;background:radial-gradient(circle,rgba(108,99,255,.18),transparent 70%);top:-120px;right:-80px;}
+.orb2{width:380px;height:380px;background:radial-gradient(circle,rgba(16,185,129,.1),transparent 70%);bottom:0;left:-80px;animation-delay:-4s;}
+@keyframes flt{0%,100%{transform:translateY(0);}50%{transform:translateY(-30px);}}
+.hero-in{max-width:1100px;margin:0 auto;width:100%;position:relative;z-index:1;}
+.eyebrow{display:inline-flex;align-items:center;gap:10px;background:rgba(108,99,255,.1);border:1px solid rgba(108,99,255,.2);padding:8px 18px;border-radius:100px;margin-bottom:32px;}
+.edot{width:7px;height:7px;border-radius:50%;background:var(--green);animation:bl 2s infinite;}
+@keyframes bl{0%,100%{opacity:1;}50%{opacity:.2;}}
+.eyebrow span{font-size:12px;font-weight:600;color:var(--accent);letter-spacing:.5px;}
+.hero-name{font-family:'Fraunces',serif;font-size:clamp(54px,9vw,112px);font-weight:900;line-height:.92;letter-spacing:-4px;margin-bottom:10px;}
+.hero-name .f{color:var(--text);}
+.hero-name .l{background:linear-gradient(135deg,var(--accent) 20%,#a78bfa 60%,#38bdf8);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;}
+.hero-title{font-family:'Fraunces',serif;font-size:clamp(15px,2.2vw,20px);font-weight:300;font-style:italic;color:var(--text2);margin-bottom:26px;letter-spacing:-.2px;}
+.hero-desc{font-size:15.5px;color:var(--text2);line-height:1.82;max-width:550px;margin-bottom:38px;}
+.hero-desc strong{color:var(--text);font-weight:600;}
+.chips{display:flex;flex-wrap:wrap;gap:8px;margin-bottom:42px;}
+.chip{padding:6px 14px;border-radius:100px;font-size:12px;font-weight:600;border:1px solid var(--border);background:var(--bg3);color:var(--text2);transition:all var(--transition);}
+.chip:hover{border-color:var(--accent);color:var(--accent);background:var(--accent-soft);}
+.chip.ai{border-color:rgba(16,185,129,.25);color:var(--green);background:rgba(16,185,129,.08);}
+.btns{display:flex;gap:14px;flex-wrap:wrap;}
+.btn-p{display:inline-flex;align-items:center;gap:8px;padding:13px 28px;border-radius:10px;font-size:14px;font-weight:600;background:var(--accent);color:#fff;box-shadow:0 8px 32px var(--accent-glow);transition:all var(--transition);}
+.btn-p:hover{transform:translateY(-2px);box-shadow:0 16px 40px var(--accent-glow);}
+.btn-o{display:inline-flex;align-items:center;gap:8px;padding:13px 28px;border-radius:10px;font-size:14px;font-weight:600;border:1px solid var(--border);color:var(--text2);background:var(--bg3);transition:all var(--transition);}
+.btn-o:hover{border-color:var(--accent);color:var(--accent);transform:translateY(-2px);}
+.scroll-hint{position:absolute;bottom:36px;left:48px;display:flex;align-items:center;gap:12px;color:var(--text3);font-size:12px;font-weight:500;}
+.scroll-line{width:36px;height:1px;background:var(--text3);}
+@media(max-width:768px){.scroll-hint{left:20px;}}
+
+/* STATS */
+.stats{background:var(--bg2);border-top:1px solid var(--border);border-bottom:1px solid var(--border);display:grid;grid-template-columns:repeat(6,1fr);}
+@media(max-width:768px){.stats{grid-template-columns:repeat(3,1fr);}}
+@media(max-width:480px){.stats{grid-template-columns:repeat(2,1fr);}}
+.stat{padding:28px 16px;text-align:center;border-right:1px solid var(--border);transition:background var(--transition);}
 .stat:last-child{border-right:none;}
-.stat-n{font-family:'Syne',sans-serif;font-size:30px;font-weight:800;background:linear-gradient(135deg,var(--accent),var(--accent2));-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;}
-.stat-n.ai{background:linear-gradient(135deg,var(--ai),var(--accent3));-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;}
-.stat-l{font-size:10px;color:var(--muted);margin-top:5px;font-weight:600;text-transform:uppercase;letter-spacing:1px;}
-@media(max-width:500px){.stat{min-width:50%;}.stat:nth-child(2){border-right:none;}.stat:nth-child(4){border-right:none;}.stat:nth-child(6){border-right:none;}}
-.sec{padding:72px 40px;}.sec-alt{background:var(--bg2);}
-.sh{margin-bottom:46px;}
-.sl{font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:2.5px;color:var(--accent);margin-bottom:10px;}
-.sl.ai{color:var(--ai);}
-.st{font-family:'Syne',sans-serif;font-size:clamp(26px,4vw,40px);font-weight:800;letter-spacing:-1.5px;line-height:1.12;}
-.st .g{background:linear-gradient(135deg,var(--accent),var(--accent2));-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;}
-.sd{color:var(--muted);font-size:15px;margin-top:11px;max-width:560px;line-height:1.7;}
-@media(max-width:700px){.sec{padding:52px 18px;}}
-.ai-banner{background:linear-gradient(135deg,rgba(34,211,165,.08),rgba(92,228,252,.05));border:1px solid rgba(34,211,165,.2);border-radius:var(--r2);padding:28px 32px;margin-bottom:52px;display:flex;align-items:center;gap:20px;position:relative;overflow:hidden;}
-.ai-banner-icon{font-size:36px;flex-shrink:0;}
-.ai-banner-text h3{font-family:'Syne',sans-serif;font-size:18px;font-weight:800;margin-bottom:5px;background:linear-gradient(135deg,var(--ai),var(--accent3));-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;}
-.ai-banner-text p{font-size:13.5px;color:var(--muted);line-height:1.65;}
-.ai-badge{position:absolute;top:18px;right:20px;background:rgba(34,211,165,.12);border:1px solid rgba(34,211,165,.25);color:var(--ai);font-size:10px;font-weight:800;padding:4px 12px;border-radius:50px;text-transform:uppercase;letter-spacing:1px;}
-@media(max-width:600px){.ai-banner{flex-direction:column;text-align:center;padding:22px 20px;}.ai-badge{position:static;margin-top:10px;}}
-.skills-cats{display:flex;flex-direction:column;gap:28px;}
-.sct{font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:2px;color:var(--accent2);margin-bottom:12px;}
-.sct.ai{color:var(--ai);}
-.skills-wrap{display:flex;flex-wrap:wrap;gap:8px;}
-.skill{background:var(--bg3);border:1px solid var(--border);padding:8px 16px;border-radius:10px;font-size:13px;font-weight:600;color:var(--text);transition:border-color .2s,transform .2s,background .2s;}
-.skill:hover{border-color:var(--accent);transform:translateY(-2px);background:rgba(124,92,252,.08);}
-.skill.ai{border-color:rgba(34,211,165,.15);color:rgba(34,211,165,.9);}
-.skill.ai:hover{border-color:var(--ai);background:rgba(34,211,165,.08);}
-.exp-list{display:flex;flex-direction:column;gap:0;border-left:2px solid rgba(124,92,252,.2);padding-left:28px;margin-left:8px;}
-.exp-item{position:relative;padding-bottom:42px;}
-.exp-item:last-child{padding-bottom:0;}
-.exp-dot{position:absolute;left:-38px;top:5px;width:14px;height:14px;border-radius:50%;background:var(--accent);border:3px solid var(--bg2);box-shadow:0 0 0 3px rgba(124,92,252,.2);}
-.exp-dot.ai{background:var(--ai);box-shadow:0 0 0 3px rgba(34,211,165,.2);}
-.exp-yr{font-size:11px;font-weight:700;color:var(--accent);text-transform:uppercase;letter-spacing:1px;margin-bottom:5px;}
-.exp-yr.ai{color:var(--ai);}
-.exp-role{font-family:'Syne',sans-serif;font-size:19px;font-weight:800;margin-bottom:3px;letter-spacing:-0.5px;}
-.exp-co{font-size:13.5px;color:var(--muted);margin-bottom:12px;font-weight:500;}
-.exp-desc{font-size:13.5px;color:var(--muted);line-height:1.75;max-width:640px;}
-.exp-tags{display:flex;flex-wrap:wrap;gap:7px;margin-top:13px;}
-.etag{background:rgba(124,92,252,.09);border:1px solid rgba(124,92,252,.2);color:#b09ffe;font-size:11px;font-weight:600;padding:3px 10px;border-radius:50px;}
-.etag.ai{background:rgba(34,211,165,.09);border-color:rgba(34,211,165,.2);color:var(--ai);}
+.stat:hover{background:var(--bg3);}
+.stat-n{font-family:'Fraunces',serif;font-size:32px;font-weight:900;letter-spacing:-1px;background:linear-gradient(135deg,var(--accent),#a78bfa);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;}
+.stat-n.g{background:linear-gradient(135deg,var(--green),var(--teal));-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;}
+.stat-l{font-size:10px;font-weight:700;color:var(--text3);text-transform:uppercase;letter-spacing:1.5px;margin-top:6px;}
 
-/* Project section label */
-.proj-section-label{width:100%;grid-column:1/-1;font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:2.5px;color:var(--accent2);padding:8px 0 4px;border-bottom:1px solid var(--border);margin-bottom:4px;}
-.proj-section-label.current{color:var(--ai);}
+/* SECTIONS */
+.sec{padding:96px 48px;}
+.sec.alt{background:var(--bg2);}
+.con{max-width:1100px;margin:0 auto;width:100%;}
+@media(max-width:768px){.sec{padding:64px 20px;}}
+.slabel{display:inline-flex;align-items:center;gap:10px;margin-bottom:14px;}
+.slabel::before{content:'';width:28px;height:2px;background:var(--accent);border-radius:2px;}
+.slabel span{font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:2px;color:var(--accent);}
+.slabel.g::before{background:var(--green);}
+.slabel.g span{color:var(--green);}
+.stitle{font-family:'Fraunces',serif;font-size:clamp(28px,4vw,46px);font-weight:900;letter-spacing:-2px;line-height:1.05;margin-bottom:12px;}
+.stitle em{font-style:italic;color:var(--accent);}
+.sdesc{font-size:15px;color:var(--text2);max-width:520px;line-height:1.78;}
 
-.projects-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(290px,1fr));gap:16px;}
-.proj-card{background:var(--bg3);border:1px solid var(--border);border-radius:var(--r2);padding:24px;transition:border-color .25s,transform .25s;}
-.proj-card:hover{border-color:rgba(124,92,252,.4);transform:translateY(-4px);}
-.proj-card.ai-card{border-color:rgba(34,211,165,.15);}
-.proj-card.ai-card:hover{border-color:rgba(34,211,165,.4);}
-.proj-top{display:flex;justify-content:space-between;align-items:flex-start;margin-bottom:12px;}
-.proj-icon{font-size:28px;}
-.proj-link{background:rgba(124,92,252,.1);border:1px solid rgba(124,92,252,.2);color:#b09ffe;font-size:11px;font-weight:700;padding:4px 12px;border-radius:50px;text-decoration:none;transition:background .2s;}
-.proj-link:hover{background:rgba(124,92,252,.25);}
-.proj-title{font-family:'Syne',sans-serif;font-size:16px;font-weight:800;margin-bottom:8px;letter-spacing:-0.3px;}
-.proj-desc{font-size:13px;color:var(--muted);line-height:1.65;margin-bottom:14px;}
-.proj-stack{display:flex;flex-wrap:wrap;gap:5px;}
-.ptag{background:rgba(255,255,255,.04);border:1px solid var(--border);color:var(--muted);font-size:11px;font-weight:600;padding:3px 9px;border-radius:7px;}
-.ai-label{display:inline-flex;align-items:center;gap:5px;background:rgba(34,211,165,.1);border:1px solid rgba(34,211,165,.2);color:var(--ai);font-size:10px;font-weight:800;padding:3px 9px;border-radius:50px;text-transform:uppercase;letter-spacing:1px;margin-bottom:8px;}
-.current-badge{display:inline-flex;align-items:center;gap:5px;background:rgba(34,197,94,.08);border:1px solid rgba(34,197,94,.2);color:#4ade80;font-size:10px;font-weight:800;padding:3px 9px;border-radius:50px;text-transform:uppercase;letter-spacing:1px;margin-bottom:8px;margin-left:6px;}
-.apps-list{display:flex;flex-direction:column;gap:12px;}
-.app-card{background:var(--bg3);border:1px solid var(--border);border-radius:18px;display:flex;align-items:center;gap:18px;padding:16px 20px;cursor:pointer;transition:border-color .25s,transform .2s,box-shadow .25s;-webkit-tap-highlight-color:transparent;position:relative;overflow:hidden;user-select:none;}
-.app-card:hover{border-color:rgba(124,92,252,.4);transform:translateY(-2px);box-shadow:0 12px 40px rgba(0,0,0,.3);}
-.app-card:active{transform:scale(.985);}
-.app-thumb{flex-shrink:0;width:58px;height:104px;border-radius:12px;overflow:hidden;border:2px solid rgba(255,255,255,.07);background:#0a0a0a;}
-.app-thumb img{width:100%;height:100%;object-fit:cover;display:block;}
-.app-info{flex:1;min-width:0;}
-.app-name{font-family:'Syne',sans-serif;font-size:15px;font-weight:800;margin-bottom:4px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;}
-.app-sub{font-size:12px;color:var(--muted);margin-bottom:8px;}
-.app-cnt{display:inline-flex;align-items:center;gap:5px;background:rgba(124,92,252,.1);border:1px solid rgba(124,92,252,.2);color:#b09ffe;font-size:11px;font-weight:700;padding:3px 10px;border-radius:50px;}
-.app-live{display:inline-flex;align-items:center;gap:5px;background:rgba(34,197,94,.1);border:1px solid rgba(34,197,94,.25);color:#4ade80;font-size:10px;font-weight:800;padding:3px 9px;border-radius:50px;text-transform:uppercase;letter-spacing:.8px;margin-left:6px;}
-.live-dot{width:5px;height:5px;border-radius:50%;background:#4ade80;animation:blink 2s infinite;}
-.app-arrow{flex-shrink:0;width:34px;height:34px;border-radius:50%;background:rgba(124,92,252,.1);border:1px solid rgba(124,92,252,.2);display:flex;align-items:center;justify-content:center;color:#b09ffe;font-size:16px;transition:background .2s,transform .2s;}
-.app-card:hover .app-arrow{background:rgba(124,92,252,.25);transform:translateX(3px);}
-#carousel{position:fixed;inset:0;z-index:99999;background:rgba(2,3,8,.97);display:flex;flex-direction:column;opacity:0;pointer-events:none;transition:opacity .3s ease;overflow:hidden;}
-#carousel.open{opacity:1;pointer-events:all;}
-.car-header{position:absolute;top:0;left:0;right:0;z-index:20;display:flex;align-items:center;justify-content:space-between;padding:18px 24px;background:linear-gradient(to bottom,rgba(2,3,8,.95) 60%,transparent);}
-.car-app-name{font-family:'Syne',sans-serif;font-size:18px;font-weight:800;color:#fff;letter-spacing:-0.5px;}
-.car-counter{font-size:12px;color:rgba(255,255,255,.4);font-weight:500;margin-top:2px;}
-.car-close{width:42px;height:42px;border-radius:50%;background:rgba(255,255,255,.08);border:1px solid rgba(255,255,255,.12);color:#fff;font-size:20px;cursor:pointer;display:flex;align-items:center;justify-content:center;transition:background .2s;-webkit-tap-highlight-color:transparent;}
-.car-close:hover{background:rgba(255,255,255,.18);}
-.car-stage{flex:1;display:flex;align-items:center;justify-content:center;position:relative;padding:80px 70px 130px;overflow:hidden;}
-@media(max-width:500px){.car-stage{padding:72px 14px 140px;}}
-.car-track{display:flex;width:100%;height:100%;position:relative;align-items:center;justify-content:center;}
-.car-slide{position:absolute;display:flex;align-items:center;justify-content:center;width:100%;height:100%;transition:transform .4s cubic-bezier(.25,.46,.45,.94),opacity .4s ease;opacity:0;pointer-events:none;}
-.car-slide.active{transform:translateX(0) scale(1);opacity:1;pointer-events:all;z-index:2;}
-.car-slide.prev{transform:translateX(-100%) scale(.9);opacity:0;z-index:1;}
-.car-slide.next{transform:translateX(100%) scale(.9);opacity:0;z-index:1;}
-.car-slide.exit-left{transform:translateX(-110%) scale(.85);opacity:0;z-index:1;}
-.car-slide.exit-right{transform:translateX(110%) scale(.85);opacity:0;z-index:1;}
-.car-img{max-width:100%;max-height:100%;border-radius:24px;object-fit:contain;box-shadow:0 32px 100px rgba(0,0,0,.8),0 0 0 1px rgba(255,255,255,.06);display:block;transform-origin:center;user-select:none;-webkit-user-drag:none;}
-.car-img.zoomed{cursor:grab;}.car-img.zoomed:active{cursor:grabbing;}
-.car-nav{position:absolute;top:50%;transform:translateY(-50%);z-index:25;}
-.car-nav.left{left:16px;}.car-nav.right{right:16px;}
-.car-btn{width:46px;height:46px;border-radius:50%;border:1px solid rgba(255,255,255,.12);background:rgba(255,255,255,.07);color:#fff;font-size:20px;cursor:pointer;display:flex;align-items:center;justify-content:center;backdrop-filter:blur(12px);transition:background .2s,transform .15s;-webkit-tap-highlight-color:transparent;}
-.car-btn:hover{background:rgba(124,92,252,.4);transform:scale(1.1);}
-.car-btn:active{transform:scale(.95);}
-@media(max-width:500px){.car-nav.left{left:8px;}.car-nav.right{right:8px;}.car-btn{width:38px;height:38px;font-size:17px;}}
-.car-thumbs{position:absolute;bottom:0;left:0;right:0;z-index:20;background:linear-gradient(to top,rgba(2,3,8,.98) 70%,transparent);padding:12px 0 20px;display:flex;flex-direction:column;align-items:center;gap:10px;}
-.car-dots{display:flex;gap:6px;align-items:center;}
-.car-dot{width:6px;height:6px;border-radius:50%;background:rgba(255,255,255,.2);cursor:pointer;transition:background .2s,width .25s,border-radius .25s;}
-.car-dot.on{background:var(--accent);width:20px;border-radius:4px;}
-.car-thumb-row{display:flex;gap:8px;padding:0 20px;overflow-x:auto;scrollbar-width:none;-webkit-overflow-scrolling:touch;max-width:100%;align-items:center;}
-.car-thumb-row::-webkit-scrollbar{display:none;}
-.car-thumb{flex-shrink:0;width:42px;height:72px;border-radius:9px;overflow:hidden;border:2px solid rgba(255,255,255,.08);cursor:pointer;transition:border-color .2s,transform .2s,opacity .2s;opacity:.45;}
-.car-thumb img{width:100%;height:100%;object-fit:cover;display:block;}
-.car-thumb.on{border-color:var(--accent);opacity:1;transform:scale(1.08);}
-.car-thumb:hover{opacity:.75;}.car-thumb.on:hover{opacity:1;}
-.car-zoom-btn{position:absolute;bottom:125px;right:20px;width:38px;height:38px;border-radius:50%;background:rgba(255,255,255,.07);border:1px solid rgba(255,255,255,.1);color:rgba(255,255,255,.55);font-size:14px;cursor:pointer;display:flex;align-items:center;justify-content:center;transition:background .2s,color .2s;z-index:22;-webkit-tap-highlight-color:transparent;}
-.car-zoom-btn.on{color:var(--accent);background:rgba(124,92,252,.15);}
-.car-hint{position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);background:rgba(0,0,0,.7);border:1px solid rgba(255,255,255,.1);color:rgba(255,255,255,.6);font-size:12px;font-weight:600;padding:8px 18px;border-radius:50px;pointer-events:none;opacity:0;transition:opacity .35s;z-index:30;white-space:nowrap;}
-.car-hint.show{opacity:1;}
-.car-prog-wrap{width:calc(100% - 48px);max-width:400px;height:2px;background:rgba(255,255,255,.07);border-radius:2px;overflow:hidden;}
-.car-prog{height:100%;width:0%;background:linear-gradient(90deg,var(--accent),var(--accent2));border-radius:2px;transition:width linear;}
-.edu-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(270px,1fr));gap:14px;}
-.edu-card{background:var(--bg3);border:1px solid var(--border);border-radius:var(--r2);padding:22px;transition:border-color .2s,transform .2s;}
-.edu-card:hover{border-color:rgba(124,92,252,.3);transform:translateY(-2px);}
-.edu-deg{font-family:'Syne',sans-serif;font-size:16px;font-weight:800;margin-bottom:6px;}
-.edu-school{font-size:13px;color:var(--muted);margin-bottom:7px;line-height:1.5;}
+/* AI BANNER */
+.ai-box{background:linear-gradient(135deg,rgba(16,185,129,.06),rgba(6,182,212,.04));border:1px solid rgba(16,185,129,.2);border-radius:16px;padding:28px 32px;display:flex;align-items:center;gap:22px;margin:48px 0;position:relative;overflow:hidden;}
+.ai-box::after{content:'';position:absolute;top:-40px;right:-40px;width:140px;height:140px;border-radius:50%;background:radial-gradient(circle,rgba(16,185,129,.1),transparent 70%);}
+.ai-box-icon{font-size:38px;flex-shrink:0;}
+.ai-box h3{font-family:'Fraunces',serif;font-size:19px;font-weight:700;color:var(--green);margin-bottom:5px;}
+.ai-box p{font-size:13.5px;color:var(--text2);line-height:1.7;}
+.ai-pill{position:absolute;top:14px;right:16px;background:rgba(16,185,129,.1);border:1px solid rgba(16,185,129,.25);color:var(--green);font-size:10px;font-weight:800;padding:3px 11px;border-radius:100px;text-transform:uppercase;letter-spacing:1px;}
+@media(max-width:600px){.ai-box{flex-direction:column;text-align:center;padding:22px 18px;}.ai-pill{position:static;margin-top:8px;}}
+
+/* SKILL GRID */
+.sk-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(300px,1fr));gap:14px;margin-top:48px;}
+.sk-card{background:var(--bg4);border:1px solid var(--border);border-radius:14px;padding:22px;transition:all var(--transition);}
+[data-theme="dark"] .sk-card{background:var(--bg3);}
+.sk-card:hover{border-color:var(--border-h);box-shadow:var(--shadow);}
+.sk-head{display:flex;align-items:center;gap:10px;margin-bottom:14px;}
+.sk-ico{font-size:18px;}
+.sk-cat{font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:1.5px;color:var(--text3);}
+.sk-tags{display:flex;flex-wrap:wrap;gap:7px;}
+.sk-tag{padding:5px 11px;border-radius:7px;font-size:12px;font-weight:600;background:var(--bg2);border:1px solid var(--border);color:var(--text2);transition:all var(--transition);}
+[data-theme="light"] .sk-tag{background:var(--bg3);}
+.sk-tag:hover{border-color:var(--accent);color:var(--accent);background:var(--accent-soft);}
+.sk-tag.ai{border-color:rgba(16,185,129,.2);color:var(--green);background:rgba(16,185,129,.06);}
+
+/* TIMELINE */
+.tl{position:relative;padding-left:32px;margin-top:52px;}
+.tl::before{content:'';position:absolute;left:0;top:8px;bottom:0;width:1px;background:var(--border);}
+.tl-item{position:relative;padding-bottom:46px;}
+.tl-item:last-child{padding-bottom:0;}
+.tl-dot{position:absolute;left:-39px;top:6px;width:15px;height:15px;border-radius:50%;background:var(--accent);border:3px solid var(--bg);box-shadow:0 0 0 3px var(--accent-glow);}
+.tl-dot.cur{background:var(--green);box-shadow:0 0 0 3px rgba(16,185,129,.3);}
+[data-theme="light"] .tl-dot{border-color:var(--bg2);}
+.tl-date{font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:1px;color:var(--accent);margin-bottom:7px;}
+.tl-date.cur{color:var(--green);}
+.tl-role{font-family:'Fraunces',serif;font-size:20px;font-weight:700;letter-spacing:-.5px;margin-bottom:3px;}
+.tl-co{font-size:14px;color:var(--text2);margin-bottom:12px;font-weight:500;}
+.tl-desc{font-size:13.5px;color:var(--text2);line-height:1.8;max-width:620px;margin-bottom:14px;}
+.tl-tags{display:flex;flex-wrap:wrap;gap:6px;}
+.ttag{padding:4px 11px;border-radius:100px;font-size:11px;font-weight:600;background:var(--accent-soft);border:1px solid rgba(108,99,255,.2);color:#a78bfa;}
+.ttag.ai{background:rgba(16,185,129,.08);border-color:rgba(16,185,129,.2);color:var(--green);}
+
+/* PROJECTS */
+.proj-label{font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:2px;color:var(--text3);padding:10px 0 8px;border-bottom:1px solid var(--border);margin-bottom:18px;display:flex;align-items:center;gap:10px;}
+.proj-label::before{content:'';flex:1;height:1px;background:var(--border);}
+.proj-label.cur{color:var(--green);}
+.proj-label.cur,.proj-label.cur::before{border-color:rgba(16,185,129,.2);}
+.pgrid{display:grid;grid-template-columns:repeat(auto-fill,minmax(310px,1fr));gap:14px;margin-bottom:30px;}
+.pcard{background:var(--bg4);border:1px solid var(--border);border-radius:18px;padding:24px;transition:all var(--transition);position:relative;overflow:hidden;}
+[data-theme="dark"] .pcard{background:var(--bg3);}
+.pcard::before{content:'';position:absolute;inset:0;opacity:0;background:radial-gradient(circle at top right,rgba(108,99,255,.07),transparent 55%);transition:opacity var(--transition);border-radius:inherit;pointer-events:none;}
+.pcard:hover{border-color:var(--border-h);transform:translateY(-4px);box-shadow:var(--shadow);}
+.pcard:hover::before{opacity:1;}
+.pcard.cur-c{border-color:rgba(16,185,129,.14);}
+.pcard.cur-c:hover{border-color:rgba(16,185,129,.38);}
+.pcard.cur-c::before{background:radial-gradient(circle at top right,rgba(16,185,129,.05),transparent 55%);}
+.ptop{display:flex;justify-content:space-between;align-items:flex-start;margin-bottom:13px;}
+.pico{font-size:29px;line-height:1;}
+.pbadges{display:flex;flex-direction:column;align-items:flex-end;gap:5px;}
+.pbadge{font-size:10px;font-weight:700;padding:3px 10px;border-radius:100px;text-transform:uppercase;letter-spacing:.8px;}
+.pbadge.ai{background:var(--accent-soft);border:1px solid rgba(108,99,255,.22);color:#a78bfa;}
+.pbadge.cur{background:rgba(16,185,129,.1);border:1px solid rgba(16,185,129,.25);color:var(--green);display:flex;align-items:center;gap:5px;}
+.pbadge.cur .d{width:5px;height:5px;border-radius:50%;background:var(--green);animation:bl 2s infinite;}
+.pbadge.ar{background:rgba(6,182,212,.1);border:1px solid rgba(6,182,212,.25);color:var(--teal);}
+.pbadge.store{background:var(--accent-soft);border:1px solid rgba(108,99,255,.18);color:#a78bfa;}
+.ptitle{font-family:'Fraunces',serif;font-size:17px;font-weight:700;letter-spacing:-.3px;margin-bottom:9px;}
+.pdesc{font-size:13px;color:var(--text2);line-height:1.7;margin-bottom:15px;}
+.pfooter{display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:8px;}
+.pstack{display:flex;flex-wrap:wrap;gap:5px;}
+.ptag{padding:3px 9px;border-radius:6px;font-size:11px;font-weight:600;background:var(--bg2);border:1px solid var(--border);color:var(--text3);}
+[data-theme="light"] .ptag{background:var(--bg3);}
+.plink{font-size:11px;font-weight:700;color:var(--accent);display:flex;align-items:center;gap:4px;white-space:nowrap;transition:all var(--transition);}
+.plink:hover{color:#a78bfa;transform:translateX(2px);}
+
+/* EDUCATION */
+.edu-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(280px,1fr));gap:14px;margin-top:48px;}
+.edu-card{background:var(--bg4);border:1px solid var(--border);border-radius:16px;padding:26px;transition:all var(--transition);}
+[data-theme="dark"] .edu-card{background:var(--bg3);}
+.edu-card:hover{border-color:var(--border-h);transform:translateY(-2px);box-shadow:var(--shadow);}
+.edu-ico{font-size:28px;margin-bottom:14px;}
+.edu-deg{font-family:'Fraunces',serif;font-size:17px;font-weight:700;margin-bottom:8px;letter-spacing:-.3px;}
+.edu-school{font-size:13px;color:var(--text2);line-height:1.5;margin-bottom:10px;}
 .edu-yr{font-size:11px;font-weight:700;color:var(--accent);text-transform:uppercase;letter-spacing:1px;}
-.contact-box{max-width:680px;margin:0 auto;text-align:center;}
-.contact-links{display:flex;gap:10px;justify-content:center;flex-wrap:wrap;margin-top:36px;}
-.cl{display:flex;align-items:center;gap:9px;background:var(--bg3);border:1px solid var(--border);padding:12px 20px;border-radius:14px;text-decoration:none;color:var(--text);font-size:13px;font-weight:600;transition:border-color .2s,transform .2s,background .2s;}
-.cl:hover{border-color:var(--accent);transform:translateY(-3px);background:rgba(124,92,252,.07);}
-@media(max-width:480px){.cl{font-size:12px;padding:11px 15px;gap:7px;}}
-footer{text-align:center;padding:28px 20px;color:var(--muted);font-size:13px;border-top:1px solid var(--border);line-height:1.7;}
+
+/* CONTACT */
+.ctc-wrap{max-width:700px;margin:0 auto;text-align:center;}
+.ctc-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(200px,1fr));gap:12px;margin-top:40px;}
+.ctc-card{display:flex;align-items:center;gap:12px;background:var(--bg4);border:1px solid var(--border);border-radius:14px;padding:16px 18px;transition:all var(--transition);text-align:left;}
+[data-theme="dark"] .ctc-card{background:var(--bg3);}
+.ctc-card:hover{border-color:var(--border-h);transform:translateY(-3px);box-shadow:var(--shadow);}
+.ctc-ico{width:38px;height:38px;border-radius:10px;background:var(--accent-soft);border:1px solid rgba(108,99,255,.2);display:flex;align-items:center;justify-content:center;font-size:16px;flex-shrink:0;}
+.ctc-lbl{font-size:10px;font-weight:700;text-transform:uppercase;letter-spacing:1px;color:var(--text3);margin-bottom:3px;}
+.ctc-val{font-size:13px;font-weight:600;color:var(--text);white-space:nowrap;overflow:hidden;text-overflow:ellipsis;}
+
+/* FOOTER */
+footer{text-align:center;padding:32px 20px;border-top:1px solid var(--border);color:var(--text3);font-size:13px;line-height:1.8;}
 footer strong{color:var(--accent);}
-.rv{opacity:1;transform:none;}
-.rv.anim{opacity:0;transform:translateY(20px);transition:opacity .55s ease,transform .55s ease;}
-.rv.anim.in{opacity:1;transform:none;}
+
+/* BACK TOP */
+.btop{position:fixed;bottom:28px;right:28px;z-index:990;width:44px;height:44px;border-radius:12px;background:var(--accent);color:#fff;display:flex;align-items:center;justify-content:center;font-size:18px;cursor:pointer;box-shadow:0 8px 24px var(--accent-glow);opacity:0;transform:translateY(10px);transition:all var(--transition);pointer-events:none;border:none;}
+.btop.show{opacity:1;transform:none;pointer-events:all;}
+.btop:hover{transform:translateY(-3px);}
+
+/* REVEAL */
+.rv{opacity:0;transform:translateY(22px);transition:opacity .6s ease,transform .6s ease;}
+.rv.in{opacity:1;transform:none;}
 </style>
 </head>
 <body>
-<div id="cur"></div><div id="cur-ring"></div>
 
-<nav>
-  <a href="#" class="logo">JP</a>
-  <div class="nav-r">
-    <a href="#skills">Skills</a><a href="#experience">Experience</a><a href="#projects">Projects</a><a href="#apps">Apps</a><a href="#contact">Contact</a>
-    <a href="Jitendra_Parmar_Senior_Mobile_Application_Developer.pdf" target="_blank" class="nav-cta">Resume ↗</a>
+<nav id="nav">
+  <a href="#" class="nav-logo">JP</a>
+  <div class="nav-links">
+    <a href="#skills">Skills</a>
+    <a href="#experience">Experience</a>
+    <a href="#projects">Projects</a>
+    <a href="#education">Education</a>
+    <a href="#contact">Contact</a>
+  </div>
+  <div class="nav-actions">
+    <button class="theme-btn" id="themeBtn">🌙</button>
+    <a href="JITENDRA___Senior_Mobile_Application_Developer___pdf.pdf" target="_blank" class="nav-cta">Resume ↗</a>
+    <button class="hamburger" id="hbg"><span></span><span></span><span></span></button>
   </div>
 </nav>
 
-<section class="hero">
-  <div class="hero-mesh"></div><div class="hero-grid"></div>
-  <div class="hero-content">
-    <div class="badge"><span class="badge-dot"></span> Open to opportunities · Ahmedabad, India</div>
-    <h1>Jeet <span class="grad">Parmar</span></h1>
-    <p class="hero-sub">Senior Mobile Developer &amp; <strong>AI Workflow Engineer</strong> with <strong>10+ years</strong> building high-performance Android &amp; Flutter apps used by hundreds of thousands.</p>
-    <div class="hero-tags">
-      <span class="htag">📱 Flutter</span><span class="htag">🤖 Android · Kotlin</span><span class="htag">🔥 Firebase</span>
-      <span class="htag">🏗 Clean Architecture</span><span class="htag ai">🧠 AI Agents</span><span class="htag ai">⚡ n8n Automation</span>
-      <span class="htag">⚙️ CI/CD</span><span class="htag">🤝 Team Lead</span>
+<div class="mob-menu" id="mob">
+  <a href="#skills">Skills</a>
+  <a href="#experience">Experience</a>
+  <a href="#projects">Projects</a>
+  <a href="#education">Education</a>
+  <a href="#contact">Contact</a>
+  <a href="JITENDRA___Senior_Mobile_Application_Developer___pdf.pdf" target="_blank">Download Resume ↗</a>
+</div>
+
+<section class="hero" id="home">
+  <div class="orb orb1"></div>
+  <div class="orb orb2"></div>
+  <div class="hero-in">
+    <div class="eyebrow rv"><span class="edot"></span><span>Open to opportunities · Ahmedabad, India</span></div>
+    <div class="hero-name rv" style="transition-delay:.08s"><div class="f">Jeet</div><div class="l">Parmar.</div></div>
+    <p class="hero-title rv" style="transition-delay:.15s">Senior Mobile Developer &amp; AI Workflow Engineer</p>
+    <p class="hero-desc rv" style="transition-delay:.2s"><strong>10+ years</strong> building high-performance Android &amp; Flutter applications. From native Kotlin to cross-platform Flutter, from ARCore 3D experiences to Groq AI integrations — I craft mobile software that scales.</p>
+    <div class="chips rv" style="transition-delay:.25s">
+      <span class="chip">📱 Flutter &amp; Dart</span><span class="chip">🤖 Android · Kotlin</span><span class="chip">🏗 Clean Architecture</span><span class="chip">🔥 Firebase</span><span class="chip ai">🧠 AI Integrations</span><span class="chip ai">⚡ n8n Automation</span><span class="chip">🦾 ARCore &amp; ML Kit</span><span class="chip">⚙️ CI/CD</span><span class="chip">🤝 Team Lead</span>
     </div>
-    <div class="hero-btns">
-      <a href="#projects" class="btn-p">View My Work</a>
-      <a href="Jitendra_Parmar_Senior_Mobile_Application_Developer.pdf" target="_blank" class="btn-s">Download Resume ↓</a>
+    <div class="btns rv" style="transition-delay:.3s">
+      <a href="#projects" class="btn-p">View My Work ↓</a>
+      <a href="JITENDRA___Senior_Mobile_Application_Developer___pdf.pdf" target="_blank" class="btn-o">Download Resume</a>
     </div>
   </div>
+  <div class="scroll-hint"><div class="scroll-line"></div><span>Scroll to explore</span></div>
 </section>
 
 <div class="stats">
-  <div class="stat"><div class="stat-n">10+</div><div class="stat-l">Years Exp.</div></div>
-  <div class="stat"><div class="stat-n">30+</div><div class="stat-l">Apps Built</div></div>
-  <div class="stat"><div class="stat-n">100K+</div><div class="stat-l">Downloads</div></div>
-  <div class="stat"><div class="stat-n">4.5★</div><div class="stat-l">Avg Rating</div></div>
-  <div class="stat"><div class="stat-n ai">5+</div><div class="stat-l">AI Workflows</div></div>
-  <div class="stat"><div class="stat-n">5</div><div class="stat-l">Companies</div></div>
+  <div class="stat rv"><div class="stat-n">10+</div><div class="stat-l">Years Exp.</div></div>
+  <div class="stat rv"><div class="stat-n">30+</div><div class="stat-l">Apps Built</div></div>
+  <div class="stat rv"><div class="stat-n">100K+</div><div class="stat-l">Downloads</div></div>
+  <div class="stat rv"><div class="stat-n">4.5★</div><div class="stat-l">Avg Rating</div></div>
+  <div class="stat rv"><div class="stat-n g">11+</div><div class="stat-l">Key Projects</div></div>
+  <div class="stat rv"><div class="stat-n">5</div><div class="stat-l">Companies</div></div>
 </div>
 
 <section class="sec" id="skills">
-  <div class="sh rv"><div class="sl">What I work with</div><div class="st">Tech <span class="g">Stack</span></div><p class="sd">A decade of hands-on experience across mobile development — plus modern AI tooling.</p></div>
-  <div class="ai-banner rv">
-    <div class="ai-banner-icon">🧠</div>
-    <div class="ai-banner-text"><h3>Now working with AI &amp; Automation</h3><p>Building agent-based workflows, LLM integrations, and intelligent automation pipelines alongside mobile development.</p></div>
-    <div class="ai-badge">New Skill</div>
-  </div>
-  <div class="skills-cats">
-    <div class="rv"><div class="sct">📱 Mobile Development</div><div class="skills-wrap"><span class="skill">Flutter</span><span class="skill">Android Native</span><span class="skill">Dart</span><span class="skill">Kotlin</span><span class="skill">Java</span><span class="skill">Jetpack Compose</span></div></div>
-    <div class="rv"><div class="sct">🏗 Architecture &amp; Patterns</div><div class="skills-wrap"><span class="skill">MVVM</span><span class="skill">MVC</span><span class="skill">MVP</span><span class="skill">Clean Architecture</span></div></div>
-    <div class="rv"><div class="sct">🔄 State Management</div><div class="skills-wrap"><span class="skill">Riverpod</span><span class="skill">Bloc</span><span class="skill">Cubit</span><span class="skill">GetX</span><span class="skill">Provider</span></div></div>
-    <div class="rv"><div class="sct">🔥 Backend &amp; Database</div><div class="skills-wrap"><span class="skill">Firebase</span><span class="skill">REST APIs</span><span class="skill">GraphQL</span><span class="skill">Retrofit</span><span class="skill">Dio</span><span class="skill">SQLite</span><span class="skill">Room DB</span><span class="skill">Realm</span><span class="skill">Cloud Firestore</span><span class="skill">FCM</span></div></div>
-    <div class="rv"><div class="sct ai">🧠 AI &amp; Automation</div><div class="skills-wrap"><span class="skill ai">n8n Workflow Automation</span><span class="skill ai">AI Agent Development</span><span class="skill ai">LLM Integration</span><span class="skill ai">Prompt Engineering</span><span class="skill ai">RAG Pipelines</span><span class="skill ai">OpenAI API</span><span class="skill ai">Claude API</span><span class="skill ai">Agentic Systems</span><span class="skill ai">Groq API</span><span class="skill ai">Google ML Kit</span><span class="skill ai">ARCore / Sceneform</span><span class="skill ai">FFmpeg Kit</span></div></div>
-    <div class="rv"><div class="sct">⚙️ DevOps &amp; Tools</div><div class="skills-wrap"><span class="skill">GitHub Actions</span><span class="skill">GitLab CI/CD</span><span class="skill">Firebase Distribution</span><span class="skill">Git</span><span class="skill">Jira</span><span class="skill">Figma</span><span class="skill">SonarQube</span></div></div>
-    <div class="rv"><div class="sct">💳 Integrations &amp; More</div><div class="skills-wrap"><span class="skill">In-App Purchases</span><span class="skill">Payment Gateways</span><span class="skill">BLE / Wi-Fi API</span><span class="skill">Google Analytics</span><span class="skill">AppsFlyer</span><span class="skill">Optimizely</span><span class="skill">ExoPlayer</span><span class="skill">Social Media SDKs</span><span class="skill">CameraX</span><span class="skill">YouTube Lounge API</span><span class="skill">ADB Protocol</span></div></div>
+  <div class="con">
+    <div class="slabel rv"><span>What I Work With</span></div>
+    <h2 class="stitle rv">Tech <em>Stack</em></h2>
+    <p class="sdesc rv">A decade of hands-on mobile experience — plus modern AI, AR, and automation tooling.</p>
+    <div class="ai-box rv">
+      <div class="ai-box-icon">🧠</div>
+      <div><h3>Now working with AI &amp; Automation</h3><p>Building agent-based workflows, LLM integrations, ARCore experiences, FFmpeg-powered video AI, and intelligent automation pipelines alongside production mobile development.</p></div>
+      <div class="ai-pill">New Skill</div>
+    </div>
+    <div class="sk-grid">
+      <div class="sk-card rv"><div class="sk-head"><span class="sk-ico">📱</span><span class="sk-cat">Mobile Development</span></div><div class="sk-tags"><span class="sk-tag">Flutter</span><span class="sk-tag">Android Native</span><span class="sk-tag">Dart</span><span class="sk-tag">Kotlin</span><span class="sk-tag">Java</span><span class="sk-tag">Jetpack Compose</span></div></div>
+      <div class="sk-card rv"><div class="sk-head"><span class="sk-ico">🏗</span><span class="sk-cat">Architecture</span></div><div class="sk-tags"><span class="sk-tag">MVVM</span><span class="sk-tag">MVC</span><span class="sk-tag">MVP</span><span class="sk-tag">Clean Architecture</span><span class="sk-tag">Feature-first</span></div></div>
+      <div class="sk-card rv"><div class="sk-head"><span class="sk-ico">🔄</span><span class="sk-cat">State Management</span></div><div class="sk-tags"><span class="sk-tag">Riverpod</span><span class="sk-tag">Bloc</span><span class="sk-tag">Cubit</span><span class="sk-tag">GetX</span><span class="sk-tag">Provider</span></div></div>
+      <div class="sk-card rv"><div class="sk-head"><span class="sk-ico">🔥</span><span class="sk-cat">Backend &amp; Database</span></div><div class="sk-tags"><span class="sk-tag">Firebase</span><span class="sk-tag">REST APIs</span><span class="sk-tag">GraphQL</span><span class="sk-tag">Retrofit</span><span class="sk-tag">Dio</span><span class="sk-tag">Room DB</span><span class="sk-tag">SQLite</span><span class="sk-tag">Realm</span><span class="sk-tag">Firestore</span><span class="sk-tag">FCM</span></div></div>
+      <div class="sk-card rv"><div class="sk-head"><span class="sk-ico">🧠</span><span class="sk-cat">AI, AR &amp; ML</span></div><div class="sk-tags"><span class="sk-tag ai">n8n Automation</span><span class="sk-tag ai">AI Agents</span><span class="sk-tag ai">Groq API</span><span class="sk-tag ai">Whisper STT</span><span class="sk-tag ai">ML Kit</span><span class="sk-tag ai">ARCore</span><span class="sk-tag ai">Sceneform</span><span class="sk-tag ai">FFmpeg Kit</span><span class="sk-tag ai">LLM Integration</span><span class="sk-tag ai">OpenAI</span><span class="sk-tag ai">Claude API</span></div></div>
+      <div class="sk-card rv"><div class="sk-head"><span class="sk-ico">⚙️</span><span class="sk-cat">DevOps &amp; Tools</span></div><div class="sk-tags"><span class="sk-tag">GitHub Actions</span><span class="sk-tag">GitLab CI/CD</span><span class="sk-tag">Firebase Dist.</span><span class="sk-tag">Git</span><span class="sk-tag">Jira</span><span class="sk-tag">Figma</span><span class="sk-tag">SonarQube</span></div></div>
+      <div class="sk-card rv"><div class="sk-head"><span class="sk-ico">💳</span><span class="sk-cat">Integrations</span></div><div class="sk-tags"><span class="sk-tag">CameraX</span><span class="sk-tag">In-App Purchases</span><span class="sk-tag">Payment Gateways</span><span class="sk-tag">BLE / Wi-Fi</span><span class="sk-tag">ADB Protocol</span><span class="sk-tag">YouTube Lounge</span><span class="sk-tag">ExoPlayer</span><span class="sk-tag">Social SDKs</span></div></div>
+      <div class="sk-card rv"><div class="sk-head"><span class="sk-ico">🔬</span><span class="sk-cat">Methodologies</span></div><div class="sk-tags"><span class="sk-tag">Agile / Scrum</span><span class="sk-tag">Code Reviews</span><span class="sk-tag">Unit Testing</span><span class="sk-tag">Integration Testing</span><span class="sk-tag">Mentoring</span></div></div>
+    </div>
   </div>
 </section>
 
-<section class="sec sec-alt" id="experience">
-  <div class="sh rv"><div class="sl">Career Journey</div><div class="st">Work <span class="g">Experience</span></div><p class="sd">10+ years across product companies, agencies, and startups — now including AI.</p></div>
-  <div class="exp-list">
-    <div class="exp-item rv"><div class="exp-dot ai"></div><div class="exp-yr ai">Dec 2024 – Present</div><div class="exp-role">Senior Software Engineer</div><div class="exp-co">Gooroo Mobility India Pvt. Ltd. · Ahmedabad</div><div class="exp-desc">Leading mobile development with Android &amp; Flutter. Architecting scalable, maintainable solutions. Implementing CI/CD pipelines via GitHub Actions, building <strong>n8n workflow automation</strong> for team efficiency, and working with <strong>agent-based AI development</strong> for intelligent automation.</div><div class="exp-tags"><span class="etag">Flutter</span><span class="etag">Android</span><span class="etag">Riverpod</span><span class="etag">Bloc</span><span class="etag">GitHub Actions</span><span class="etag ai">n8n</span><span class="etag ai">AI Agents</span><span class="etag">Clean Architecture</span></div></div>
-    <div class="exp-item rv"><div class="exp-dot"></div><div class="exp-yr">Mar 2023 – Dec 2024</div><div class="exp-role">Senior Software Engineer</div><div class="exp-co">Brainvire Infotech Pvt. Ltd. · Ahmedabad</div><div class="exp-desc">Developed and maintained multiple Android &amp; Flutter applications for international clients. Led code reviews, mentored junior developers, implemented Jetpack Compose UI, integrated Firebase &amp; GraphQL APIs.</div><div class="exp-tags"><span class="etag">Flutter</span><span class="etag">Jetpack Compose</span><span class="etag">GraphQL</span><span class="etag">Firebase</span><span class="etag">CI/CD</span><span class="etag">Mentoring</span></div></div>
-    <div class="exp-item rv"><div class="exp-dot"></div><div class="exp-yr">Jun 2021 – Feb 2023</div><div class="exp-role">Senior Software Engineer</div><div class="exp-co">TOPS Infosolutions Pvt. Ltd. · Ahmedabad</div><div class="exp-desc">Native Android development using Kotlin/Java with MVVM architecture. Implemented In-App Purchases, real-time chat with Cloud Firestore, and hardware BLE integration. Published multiple 4★+ apps on the Play Store.</div><div class="exp-tags"><span class="etag">Kotlin</span><span class="etag">MVVM</span><span class="etag">BLE</span><span class="etag">Firestore</span><span class="etag">In-App Purchases</span></div></div>
-    <div class="exp-item rv"><div class="exp-dot"></div><div class="exp-yr">Aug 2016 – May 2021</div><div class="exp-role">Android Developer</div><div class="exp-co">Wedowebapps Pvt. Ltd. · Ahmedabad</div><div class="exp-desc">Built 15+ Android apps across music, video, e-commerce, and utilities. Created custom media player and video editing apps, implemented social sharing, push notifications, and analytics.</div><div class="exp-tags"><span class="etag">Android</span><span class="etag">Java</span><span class="etag">ExoPlayer</span><span class="etag">REST APIs</span><span class="etag">Smartwatch</span></div></div>
-    <div class="exp-item rv"><div class="exp-dot"></div><div class="exp-yr">Aug 2014 – Aug 2016</div><div class="exp-role">Android Developer</div><div class="exp-co">Alakmalak Technologies Pvt. Ltd. · Ahmedabad</div><div class="exp-desc">Started career building Android apps in Java. Developed e-commerce applications with payment gateway integration, SQLite database management, and Material Design UI.</div><div class="exp-tags"><span class="etag">Java</span><span class="etag">Android SDK</span><span class="etag">SQLite</span><span class="etag">Material Design</span></div></div>
+<section class="sec alt" id="experience">
+  <div class="con">
+    <div class="slabel rv"><span>Career Journey</span></div>
+    <h2 class="stitle rv">Work <em>Experience</em></h2>
+    <p class="sdesc rv">10+ years across product companies, agencies, and startups — from Android Developer to Senior Engineer leading teams and building AI-powered products.</p>
+    <div class="tl">
+      <div class="tl-item rv"><div class="tl-dot cur"></div><div class="tl-date cur">Dec 2024 – Present</div><div class="tl-role">Senior Software Engineer</div><div class="tl-co">Gooroo Mobility India Pvt. Ltd. · Ahmedabad</div><p class="tl-desc">Leading mobile application development with Android &amp; Flutter. Architecting scalable, maintainable solutions using clean architecture. Implementing CI/CD pipelines via GitHub Actions, building <strong>n8n workflow automations</strong>, and working with <strong>agent-based AI development</strong> for intelligent automation.</p><div class="tl-tags"><span class="ttag">Flutter</span><span class="ttag">Android</span><span class="ttag">Riverpod</span><span class="ttag">Bloc</span><span class="ttag">GitHub Actions</span><span class="ttag ai">n8n</span><span class="ttag ai">AI Agents</span><span class="ttag">Clean Architecture</span></div></div>
+      <div class="tl-item rv"><div class="tl-dot"></div><div class="tl-date">Mar 2023 – Dec 2024</div><div class="tl-role">Senior Software Engineer</div><div class="tl-co">Brainvire Infotech Pvt. Ltd. · Ahmedabad</div><p class="tl-desc">Developed and maintained multiple Android &amp; Flutter applications for international clients. Led code reviews, mentored junior developers, implemented Jetpack Compose UI. Integrated Firebase services, GraphQL APIs, and third-party SDKs.</p><div class="tl-tags"><span class="ttag">Flutter</span><span class="ttag">Jetpack Compose</span><span class="ttag">GraphQL</span><span class="ttag">Firebase</span><span class="ttag">CI/CD</span><span class="ttag">Mentoring</span></div></div>
+      <div class="tl-item rv"><div class="tl-dot"></div><div class="tl-date">Jun 2021 – Feb 2023</div><div class="tl-role">Senior Software Engineer</div><div class="tl-co">TOPS Infosolutions Pvt. Ltd. · Ahmedabad</div><p class="tl-desc">Native Android development using Kotlin/Java with MVVM architecture. Implemented In-App Purchases, real-time Cloud Firestore chat, and BLE hardware integrations using Estimote and Kontakt IO SDK. Published multiple apps with 4★+ ratings.</p><div class="tl-tags"><span class="ttag">Kotlin</span><span class="ttag">MVVM</span><span class="ttag">BLE</span><span class="ttag">Firestore</span><span class="ttag">In-App Purchases</span></div></div>
+      <div class="tl-item rv"><div class="tl-dot"></div><div class="tl-date">Aug 2016 – May 2021</div><div class="tl-role">Android Developer</div><div class="tl-co">Wedowebapps Pvt. Ltd. · Ahmedabad</div><p class="tl-desc">Built 15+ Android apps across music, video, e-commerce, and utilities. Created custom media player and video editing apps with advanced features. Implemented social sharing, push notifications, and analytics. Smartwatch development experience.</p><div class="tl-tags"><span class="ttag">Android</span><span class="ttag">Java</span><span class="ttag">ExoPlayer</span><span class="ttag">REST APIs</span><span class="ttag">Smartwatch</span></div></div>
+      <div class="tl-item rv"><div class="tl-dot"></div><div class="tl-date">Aug 2014 – Aug 2016</div><div class="tl-role">Android Developer</div><div class="tl-co">Alakmalak Technologies Pvt. Ltd. · Ahmedabad</div><p class="tl-desc">Started career building Android apps in Java. Developed e-commerce applications with payment gateway integration, SQLite database management, and Material Design UI. Full SDLC participation.</p><div class="tl-tags"><span class="ttag">Java</span><span class="ttag">Android SDK</span><span class="ttag">SQLite</span><span class="ttag">Material Design</span></div></div>
+    </div>
   </div>
 </section>
 
 <section class="sec" id="projects">
-  <div class="sh rv"><div class="sl">Featured Work</div><div class="st">Key <span class="g">Projects</span></div><p class="sd">Production apps and AI-powered tools with real users and real impact.</p></div>
-  <div class="projects-grid">
+  <div class="con">
+    <div class="slabel rv"><span>Featured Work</span></div>
+    <h2 class="stitle rv">Key <em>Projects</em></h2>
+    <p class="sdesc rv">Production apps and AI-powered tools — real users, real impact, real code.</p>
 
-    <!-- ── CURRENT PROJECTS LABEL ─────────────────────────────────────────── -->
-    <div class="proj-section-label current rv">⚡ Current Projects</div>
+    <div style="margin-top:48px;">
+      <div class="proj-label cur rv">⚡ Current Projects</div>
+      <div class="pgrid">
+        <div class="pcard cur-c rv"><div class="ptop"><div class="pico">🏢</div><div class="pbadges"><span class="pbadge cur"><span class="d"></span>Current</span><span class="pbadge ai">AI-Powered</span></div></div><div class="ptitle">RedCarpetOffice</div><p class="pdesc">Smart office booking platform with role-based dashboards. Gmail OAuth integration with AI email signal detection (flights, invoices, hotel) and a smart suggestion engine cross-referencing calendar events for contextual reminders.</p><div class="pfooter"><div class="pstack"><span class="ptag">Flutter</span><span class="ptag">Dart</span><span class="ptag">Riverpod</span><span class="ptag">Gmail API</span><span class="ptag">Clean Arch</span></div></div></div>
+        <div class="pcard cur-c rv"><div class="ptop"><div class="pico">📄</div><div class="pbadges"><span class="pbadge cur"><span class="d"></span>Current</span><span class="pbadge ai">ML Kit</span></div></div><div class="ptitle">GMScan – Document Scanner</div><p class="pdesc">Multi-type AI document scanner for ID cards, business cards, books (ISBN → Open Library) &amp; documents. Multi-provider auth, offline-first Room DB, cloud sync queue, and analytics dashboard.</p><div class="pfooter"><div class="pstack"><span class="ptag">Android</span><span class="ptag">Java</span><span class="ptag">CameraX</span><span class="ptag">ML Kit</span><span class="ptag">Room DB</span></div></div></div>
+        <div class="pcard cur-c rv"><div class="ptop"><div class="pico">🐾</div><div class="pbadges"><span class="pbadge cur"><span class="d"></span>Current</span><span class="pbadge ar">AR / XR</span></div></div><div class="ptitle">Animal World AR</div><p class="pdesc">Educational AR app for kids using Google ARCore &amp; Sceneform to place interactive 3D animals in the real world. A–Z encyclopedia with TTS narration, multilingual tracing for 8 Indian languages.</p><div class="pfooter"><div class="pstack"><span class="ptag">Android</span><span class="ptag">Java</span><span class="ptag">ARCore</span><span class="ptag">Sceneform</span><span class="ptag">TTS</span></div></div></div>
+        <div class="pcard cur-c rv"><div class="ptop"><div class="pico">📺</div><div class="pbadges"><span class="pbadge cur"><span class="d"></span>Current</span><span class="pbadge ai">Groq AI</span></div></div><div class="ptitle">GMI IQ Remote</div><p class="pdesc">Universal AI smart TV remote for Android TV, Samsung Tizen, LG webOS, Sony Bravia &amp; Roku. Voice control with intent detection, YouTube Lounge API, Groq LLaMA 3.1, and ADB session monitoring.</p><div class="pfooter"><div class="pstack"><span class="ptag">Flutter</span><span class="ptag">Groq API</span><span class="ptag">STT</span><span class="ptag">ADB</span><span class="ptag">WebSocket</span></div></div></div>
+        <div class="pcard cur-c rv"><div class="ptop"><div class="pico">✂️</div><div class="pbadges"><span class="pbadge cur"><span class="d"></span>Current</span><span class="pbadge ai">10 AI Tools</span></div></div><div class="ptitle">Video Editor Studio SDK</div><p class="pdesc">Full AI-powered video editing SDK with timeline editor, PiP multi-layer, 10 AI tools (BG removal, highlights, stabilisation, smart crop, silence removal &amp; more), Groq Whisper subtitles in 12 languages, FFmpeg export.</p><div class="pfooter"><div class="pstack"><span class="ptag">Flutter</span><span class="ptag">Riverpod</span><span class="ptag">FFmpeg</span><span class="ptag">Whisper</span><span class="ptag">ML Kit</span></div></div></div>
+      </div>
 
-    <!-- RedCarpetOffice -->
-    <div class="proj-card ai-card rv">
-      <div class="ai-label">🤖 AI-Powered</div><span class="current-badge"><span class="live-dot"></span>Current</span>
-      <div class="proj-top"><div class="proj-icon">🏢</div></div>
-      <div class="proj-title">RedCarpetOffice</div>
-      <div class="proj-desc">Smart office space booking platform connecting vendors &amp; clients. Features Gmail OAuth integration with AI-powered email signal detection (flights, invoices, bookings) and a smart suggestion engine that surfaces contextual reminders from calendar events.</div>
-      <div class="proj-stack"><span class="ptag">Flutter</span><span class="ptag">Dart</span><span class="ptag">Riverpod</span><span class="ptag">Gmail API</span><span class="ptag">Google Calendar API</span><span class="ptag">Clean Architecture</span></div>
-    </div>
-
-    <!-- GMScan -->
-    <div class="proj-card ai-card rv">
-      <div class="ai-label">📷 ML Kit</div><span class="current-badge"><span class="live-dot"></span>Current</span>
-      <div class="proj-top"><div class="proj-icon">📄</div></div>
-      <div class="proj-title">GMScan – Document Scanner</div>
-      <div class="proj-desc">Multi-type AI document scanner supporting ID cards, business cards, books (ISBN barcode → Open Library API), and general documents. Features multi-provider auth (Google, Facebook, Apple, LinkedIn), offline-first Room DB, cloud sync, and usage analytics dashboard.</div>
-      <div class="proj-stack"><span class="ptag">Android</span><span class="ptag">Java</span><span class="ptag">CameraX</span><span class="ptag">ML Kit</span><span class="ptag">Room DB</span><span class="ptag">Retrofit</span><span class="ptag">Lottie</span></div>
-    </div>
-
-    <!-- Animal World AR -->
-    <div class="proj-card rv">
-      <div class="ai-label" style="background:rgba(92,228,252,.1);border-color:rgba(92,228,252,.2);color:var(--accent3);">🦁 AR / XR</div><span class="current-badge"><span class="live-dot"></span>Current</span>
-      <div class="proj-top"><div class="proj-icon">🐾</div></div>
-      <div class="proj-title">Animal World AR</div>
-      <div class="proj-desc">Educational AR app for kids using Google ARCore &amp; Sceneform to place interactive 3D animal models in the real world. Features A–Z animal encyclopedia, Text-to-Speech narration, custom letter tracing canvas, and multilingual support for 8 Indian languages.</div>
-      <div class="proj-stack"><span class="ptag">Android</span><span class="ptag">Java</span><span class="ptag">ARCore</span><span class="ptag">Sceneform</span><span class="ptag">TTS</span><span class="ptag">OpenGL ES 3.0</span><span class="ptag">Lottie</span></div>
-    </div>
-
-    <!-- GMI IQ Remote -->
-    <div class="proj-card ai-card rv">
-      <div class="ai-label">🧠 Groq AI + Voice</div><span class="current-badge"><span class="live-dot"></span>Current</span>
-      <div class="proj-top"><div class="proj-icon">📺</div></div>
-      <div class="proj-title">GMI IQ Remote</div>
-      <div class="proj-desc">Universal AI smart TV remote supporting 5 platforms: Android TV, Samsung Tizen, LG webOS, Sony Bravia &amp; Roku. Features auto TV discovery, YouTube Lounge API pairing, voice control with intent detection, Groq LLaMA 3.1 AI suggestions, and ADB session monitoring.</div>
-      <div class="proj-stack"><span class="ptag">Flutter</span><span class="ptag">Dart</span><span class="ptag">Groq API</span><span class="ptag">Speech-to-Text</span><span class="ptag">YouTube Lounge API</span><span class="ptag">ADB Protocol</span><span class="ptag">WebSocket</span></div>
-    </div>
-
-    <!-- Video Editor Studio -->
-    <div class="proj-card ai-card rv">
-      <div class="ai-label">🎬 10 AI Tools</div><span class="current-badge"><span class="live-dot"></span>Current</span>
-      <div class="proj-top"><div class="proj-icon">✂️</div></div>
-      <div class="proj-title">Video Editor Studio SDK</div>
-      <div class="proj-desc">Full-featured AI-powered video editing SDK. Built 10 AI tools (background removal, object removal, auto highlights, scene detection, stabilization, smart crop &amp; more). Groq Whisper auto-subtitles with 12-language support, PiP multi-layer, FFmpeg export, undo/redo, and animated overlays.</div>
-      <div class="proj-stack"><span class="ptag">Flutter</span><span class="ptag">Dart</span><span class="ptag">Riverpod</span><span class="ptag">FFmpeg Kit</span><span class="ptag">Groq Whisper</span><span class="ptag">Google ML Kit</span><span class="ptag">video_player</span></div>
-    </div>
-
-    <!-- ── PREVIOUS PROJECTS LABEL ─────────────────────────────────────────── -->
-    <div class="proj-section-label rv">📦 Previous Projects</div>
-
-    <!-- n8n Automation -->
-    <div class="proj-card ai-card rv"><div class="ai-label">🧠 AI Workflow</div><div class="proj-top"><div class="proj-icon">⚡</div></div><div class="proj-title">n8n Automation Pipelines</div><div class="proj-desc">Built intelligent workflow automations integrating LLMs, APIs, and internal tools. Automated team reporting, notification systems, and data processing pipelines reducing manual work by 70%.</div><div class="proj-stack"><span class="ptag">n8n</span><span class="ptag">OpenAI</span><span class="ptag">REST APIs</span><span class="ptag">Webhooks</span></div></div>
-
-    <!-- QuirkChat -->
-    <div class="proj-card rv"><div class="proj-top"><div class="proj-icon">💬</div><a href="https://play.google.com/store/apps/details?id=com.quirktastic" target="_blank" class="proj-link">Play Store ↗</a></div><div class="proj-title">QuirkChat</div><div class="proj-desc">Social networking platform for geek communities &amp; fandom clubs. Real-time chat with Cloud Firestore, social authentication, and push notifications.</div><div class="proj-stack"><span class="ptag">Kotlin</span><span class="ptag">MVVM</span><span class="ptag">Firebase</span><span class="ptag">Firestore</span><span class="ptag">FCM</span></div></div>
-
-    <!-- Vibez -->
-    <div class="proj-card rv"><div class="proj-top"><div class="proj-icon">🎵</div><a href="https://play.google.com/store/apps/details?id=com.ostech.vibez" target="_blank" class="proj-link">Play Store ↗</a></div><div class="proj-title">Vibez — African Music</div><div class="proj-desc">Music streaming platform connecting African artists with global audiences. Playlist management, offline playback, and premium subscription payments.</div><div class="proj-stack"><span class="ptag">Kotlin</span><span class="ptag">ExoPlayer</span><span class="ptag">Retrofit</span><span class="ptag">Room</span><span class="ptag">In-App Purchases</span></div></div>
-
-    <!-- FM Contractor -->
-    <div class="proj-card rv"><div class="proj-top"><div class="proj-icon">🏗</div><a href="https://play.google.com/store/apps/details?id=com.contractorfm" target="_blank" class="proj-link">Play Store ↗</a></div><div class="proj-title">FM Contractor</div><div class="proj-desc">Business management app for contractors and broker networks with complex business logic, data visualization dashboards and reporting.</div><div class="proj-stack"><span class="ptag">Kotlin</span><span class="ptag">MVVM</span><span class="ptag">Retrofit</span><span class="ptag">Google Analytics</span></div></div>
-
-    <!-- Main Court -->
-    <div class="proj-card rv"><div class="proj-top"><div class="proj-icon">🏓</div><a href="https://apps.apple.com/us/app/main-court-play-pickleball/id6471336853" target="_blank" class="proj-link">App Store ↗</a></div><div class="proj-title">Main Court: Pickleball</div><div class="proj-desc">Cross-platform iOS &amp; Android app connecting Pickleball players. Match creation, skill-based matching, scheduling, and Google Maps integration.</div><div class="proj-stack"><span class="ptag">Flutter</span><span class="ptag">Bloc</span><span class="ptag">Firebase</span><span class="ptag">Google Maps</span></div></div>
-
-    <!-- Ke Insumos -->
-    <div class="proj-card rv"><div class="proj-top"><div class="proj-icon">🌾</div><a href="https://play.google.com/store/apps/details?id=com.keinsumos" target="_blank" class="proj-link">Play Store ↗</a></div><div class="proj-title">Ke Insumos</div><div class="proj-desc">Agricultural marketplace with dual user roles for producers &amp; agronomists. Order management, real-time tracking, and notification system.</div><div class="proj-stack"><span class="ptag">Flutter</span><span class="ptag">GetX</span><span class="ptag">Firebase</span><span class="ptag">REST APIs</span></div></div>
-
-    <!-- Dietas Saludables -->
-    <div class="proj-card rv"><div class="proj-top"><div class="proj-icon">🥗</div><a href="https://play.google.com/store/apps/details?id=com.lomasdefrida.dietassaludablesV2" target="_blank" class="proj-link">Play Store ↗</a></div><div class="proj-title">Dietas Saludables</div><div class="proj-desc">Health &amp; fitness app with 30+ diet plans, BMI calculator, ideal weight algorithms, and intuitive meal planning UI.</div><div class="proj-stack"><span class="ptag">Android</span><span class="ptag">SQLite</span><span class="ptag">Custom UI</span><span class="ptag">Material Design</span></div></div>
-
-  </div>
-</section>
-
-<section class="sec sec-alt" id="apps">
-  <div class="sh rv"><div class="sl">UI Showcase</div><div class="st">App <span class="g">Screenshots</span></div><p class="sd">Tap any app to open fullscreen carousel. Swipe left/right to navigate.</p></div>
-  <div class="apps-list">
-    <div class="app-card rv" data-app="todo"><div class="app-thumb"><img src="assets/images/todo/login.png" alt="Todo" loading="lazy"></div><div class="app-info"><div class="app-name">📋 Todo App <span class="app-live"><span class="live-dot"></span>Live</span></div><div class="app-sub">Task management · login, list &amp; edit views</div><div class="app-cnt">🖼 4 screenshots</div></div><div class="app-arrow">›</div></div>
-    <div class="app-card rv" data-app="video"><div class="app-thumb"><img src="assets/images/video/login.png" alt="Video Call" loading="lazy"></div><div class="app-info"><div class="app-name">📞 Video Call App <span class="app-live"><span class="live-dot"></span>Live</span></div><div class="app-sub">Real-time video calling with user management</div><div class="app-cnt">🖼 3 screenshots</div></div><div class="app-arrow">›</div></div>
-    <div class="app-card rv" data-app="gallery"><div class="app-thumb"><img src="assets/images/gallery/galley-1.png" alt="Gallery" loading="lazy"></div><div class="app-info"><div class="app-name">🖼 Gallery App <span class="app-live"><span class="live-dot"></span>Live</span></div><div class="app-sub">Photo gallery with grid &amp; detail view</div><div class="app-cnt">🖼 1 screenshot</div></div><div class="app-arrow">›</div></div>
-    <div class="app-card rv" data-app="studio"><div class="app-thumb"><img src="assets/images/videostudio/1.png" alt="Video Editor" loading="lazy"></div><div class="app-info"><div class="app-name">🎬 Video Editor <span class="app-live"><span class="live-dot"></span>Live</span></div><div class="app-sub">Full-featured video studio &amp; editor app</div><div class="app-cnt">🖼 3 screenshots</div></div><div class="app-arrow">›</div></div>
-    <div class="app-card rv" data-app="ns"><div class="app-thumb"><img src="assets/images/ns/login.webp" alt="Society" loading="lazy"></div><div class="app-info"><div class="app-name">🏢 Society App <span class="app-live"><span class="live-dot"></span>Live</span></div><div class="app-sub">Housing society management &amp; dashboard</div><div class="app-cnt">🖼 3 screenshots</div></div><div class="app-arrow">›</div></div>
-  </div>
-</section>
-
-<section class="sec" id="education">
-  <div class="sh rv"><div class="sl">Academic Background</div><div class="st">Edu<span class="g">cation</span></div></div>
-  <div class="edu-grid">
-    <div class="edu-card rv"><div class="edu-deg">Master of Computer Application</div><div class="edu-school">Shri Jairambhai Patel Institute of Business Management (NICM)</div><div class="edu-yr">2011 – 2014 · MCA</div></div>
-    <div class="edu-card rv"><div class="edu-deg">Bachelor of Computer Application</div><div class="edu-school">Navgujarat College of Computer Applications</div><div class="edu-yr">2008 – 2011 · BCA</div></div>
-  </div>
-</section>
-
-<section class="sec sec-alt" id="contact">
-  <div class="contact-box rv">
-    <div class="sl" style="text-align:center">Say Hello</div>
-    <div class="st" style="text-align:center">Get in <span class="g">Touch</span></div>
-    <p class="sd" style="margin:12px auto 0;text-align:center;">Available for freelance projects, full-time roles, AI consulting &amp; automation work.<br>Languages: English, Hindi, Gujarati.</p>
-    <div class="contact-links">
-      <a href="mailto:jeet.mobiledeveloper@gmail.com" class="cl"><svg width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"/></svg>jeet.mobiledeveloper@gmail.com</a>
-      <a href="https://www.linkedin.com/in/jeet-parmar-a37b0b98" target="_blank" class="cl"><svg width="16" height="16" fill="currentColor" viewBox="0 0 24 24"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-4 0v7h-4v-7a6 6 0 0 1 6-6z"/><rect x="2" y="9" width="4" height="12"/><circle cx="4" cy="4" r="2"/></svg>LinkedIn</a>
-      <a href="https://jeetparmar2810.github.io/portfolio" target="_blank" class="cl"><svg width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><path d="M2 12h20M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/></svg>Portfolio</a>
-      <a href="tel:+919327972901" class="cl"><svg width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 4.69 12 19.79 19.79 0 0 1 1.61 3.41 2 2 0 0 1 3.6 1.24h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L7.91 8.9a16 16 0 0 0 6 6l.92-.92a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></svg>+91 93279 72901</a>
-      <a href="JITENDRA___Senior_Mobile_Application_Developer___pdf.pdf" target="_blank" class="cl"><svg width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14,2 14,8 20,8"/><line x1="12" y1="18" x2="12" y2="12"/><polyline points="9,15 12,18 15,15"/></svg>Download Resume</a>
+      <div class="proj-label rv">📦 Previous Projects</div>
+      <div class="pgrid">
+        <div class="pcard rv"><div class="ptop"><div class="pico">💬</div><div class="pbadges"><span class="pbadge store">Play Store</span></div></div><div class="ptitle">QuirkChat</div><p class="pdesc">Social networking platform for geek communities &amp; fandom clubs. Real-time Firestore chat, social auth, and FCM push notifications.</p><div class="pfooter"><div class="pstack"><span class="ptag">Kotlin</span><span class="ptag">MVVM</span><span class="ptag">Firebase</span></div><a href="https://play.google.com/store/apps/details?id=com.quirktastic" target="_blank" class="plink">Play Store ↗</a></div></div>
+        <div class="pcard rv"><div class="ptop"><div class="pico">🎵</div><div class="pbadges"><span class="pbadge store">Play Store</span></div></div><div class="ptitle">Vibez — African Music</div><p class="pdesc">Music streaming platform with ExoPlayer, playlist management, offline playback, and premium subscription payments.</p><div class="pfooter"><div class="pstack"><span class="ptag">Kotlin</span><span class="ptag">ExoPlayer</span><span class="ptag">IAP</span></div><a href="https://play.google.com/store/apps/details?id=com.ostech.vibez" target="_blank" class="plink">Play Store ↗</a></div></div>
+        <div class="pcard rv"><div class="ptop"><div class="pico">🏗</div><div class="pbadges"><span class="pbadge store">Play Store</span></div></div><div class="ptitle">FM Contractor</div><p class="pdesc">Business management app for contractors &amp; broker networks with data visualisation dashboards and reporting.</p><div class="pfooter"><div class="pstack"><span class="ptag">Kotlin</span><span class="ptag">MVVM</span><span class="ptag">Retrofit</span></div><a href="https://play.google.com/store/apps/details?id=com.contractorfm" target="_blank" class="plink">Play Store ↗</a></div></div>
+        <div class="pcard rv"><div class="ptop"><div class="pico">🏓</div><div class="pbadges"><span class="pbadge store">App Store</span></div></div><div class="ptitle">Main Court: Pickleball</div><p class="pdesc">Cross-platform iOS &amp; Android Pickleball app with match creation, skill-based matching, and Google Maps.</p><div class="pfooter"><div class="pstack"><span class="ptag">Flutter</span><span class="ptag">Bloc</span><span class="ptag">Firebase</span></div><a href="https://apps.apple.com/us/app/main-court-play-pickleball/id6471336853" target="_blank" class="plink">App Store ↗</a></div></div>
+        <div class="pcard rv"><div class="ptop"><div class="pico">🌾</div><div class="pbadges"><span class="pbadge store">Play Store</span></div></div><div class="ptitle">Ke Insumos</div><p class="pdesc">Agricultural marketplace with dual user roles, order management, and real-time tracking.</p><div class="pfooter"><div class="pstack"><span class="ptag">Flutter</span><span class="ptag">GetX</span><span class="ptag">Firebase</span></div><a href="https://play.google.com/store/apps/details?id=com.keinsumos" target="_blank" class="plink">Play Store ↗</a></div></div>
+        <div class="pcard rv"><div class="ptop"><div class="pico">🥗</div><div class="pbadges"><span class="pbadge store">Play Store</span></div></div><div class="ptitle">Dietas Saludables</div><p class="pdesc">Health &amp; fitness app with 30+ diet plans, BMI calculator, and intuitive meal planning UI.</p><div class="pfooter"><div class="pstack"><span class="ptag">Android</span><span class="ptag">SQLite</span><span class="ptag">Custom UI</span></div><a href="https://play.google.com/store/apps/details?id=com.lomasdefrida.dietassaludablesV2" target="_blank" class="plink">Play Store ↗</a></div></div>
+      </div>
     </div>
   </div>
 </section>
 
-<footer>Designed &amp; built by <strong>Jeet Parmar</strong> · Senior Flutter, Android &amp; AI Developer · Ahmedabad, India</footer>
+<section class="sec alt" id="education">
+  <div class="con">
+    <div class="slabel rv"><span>Academic Background</span></div>
+    <h2 class="stitle rv">Edu<em>cation</em></h2>
+    <div class="edu-grid">
+      <div class="edu-card rv"><div class="edu-ico">🎓</div><div class="edu-deg">Master of Computer Application</div><div class="edu-school">Shri Jairambhai Patel Institute of Business Management (NICM)</div><div class="edu-yr">2011 – 2014 · MCA</div></div>
+      <div class="edu-card rv"><div class="edu-ico">🏫</div><div class="edu-deg">Bachelor of Computer Application</div><div class="edu-school">Navgujarat College of Computer Applications</div><div class="edu-yr">2008 – 2011 · BCA</div></div>
+    </div>
+  </div>
+</section>
 
-<div id="carousel">
-  <div class="car-header"><div><div class="car-app-name" id="car-app-name">App</div><div class="car-counter" id="car-counter">1 / 1</div></div><button class="car-close" id="car-close">✕</button></div>
-  <div class="car-stage" id="car-stage"><div class="car-track" id="car-track"></div><div class="car-hint" id="car-hint">← Swipe to navigate →</div></div>
-  <div class="car-nav left"><button class="car-btn" id="car-prev">‹</button></div>
-  <div class="car-nav right"><button class="car-btn" id="car-next">›</button></div>
-  <button class="car-zoom-btn" id="car-zoom-btn">🔍</button>
-  <div class="car-thumbs"><div class="car-prog-wrap"><div class="car-prog" id="car-prog"></div></div><div class="car-dots" id="car-dots"></div><div class="car-thumb-row" id="car-thumb-row"></div></div>
-</div>
+<section class="sec" id="contact">
+  <div class="con">
+    <div class="ctc-wrap">
+      <div class="slabel rv" style="justify-content:center"><span>Say Hello</span></div>
+      <h2 class="stitle rv" style="text-align:center">Get in <em>Touch</em></h2>
+      <p class="sdesc rv" style="margin:12px auto 0;text-align:center;">Available for full-time roles, freelance, AI consulting &amp; automation work. English · Hindi · Gujarati.</p>
+      <div class="ctc-grid rv">
+        <a href="mailto:jeet.mobiledeveloper@gmail.com" class="ctc-card"><div class="ctc-ico">✉️</div><div><div class="ctc-lbl">Email</div><div class="ctc-val">jeet.mobiledeveloper@gmail.com</div></div></a>
+        <a href="https://www.linkedin.com/in/jeet-parmar-a37b0b98" target="_blank" class="ctc-card"><div class="ctc-ico">💼</div><div><div class="ctc-lbl">LinkedIn</div><div class="ctc-val">jeet-parmar-a37b0b98</div></div></a>
+        <a href="https://jeetparmar2810.github.io/portfolio" target="_blank" class="ctc-card"><div class="ctc-ico">🌐</div><div><div class="ctc-lbl">Portfolio</div><div class="ctc-val">jeetparmar2810.github.io</div></div></a>
+        <a href="tel:+919327972901" class="ctc-card"><div class="ctc-ico">📞</div><div><div class="ctc-lbl">Phone</div><div class="ctc-val">+91 93279 72901</div></div></a>
+        <a href="JITENDRA___Senior_Mobile_Application_Developer___pdf.pdf" target="_blank" class="ctc-card"><div class="ctc-ico">📄</div><div><div class="ctc-lbl">Resume</div><div class="ctc-val">Download PDF ↗</div></div></a>
+        <a class="ctc-card"><div class="ctc-ico">📍</div><div><div class="ctc-lbl">Location</div><div class="ctc-val">Ahmedabad, Gujarat, India</div></div></a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer>Designed &amp; built with care by <strong>Jeet Parmar</strong><br>Senior Flutter, Android &amp; AI Developer · Ahmedabad, India</footer>
+<button class="btop" id="btop">↑</button>
 
 <script>
-const cur=document.getElementById('cur'),ring=document.getElementById('cur-ring');
-if(window.matchMedia('(pointer:fine)').matches){
-  let mx=0,my=0,rx=0,ry=0;
-  document.addEventListener('mousemove',e=>{mx=e.clientX;my=e.clientY;});
-  (function tick(){cur.style.left=mx+'px';cur.style.top=my+'px';rx+=(mx-rx)*.1;ry+=(my-ry)*.1;ring.style.left=rx+'px';ring.style.top=ry+'px';requestAnimationFrame(tick);})();
-  document.querySelectorAll('a,button,.app-card,.skill,.proj-card,.exp-item,.edu-card,.cl,.stat,.car-thumb').forEach(el=>{
-    el.addEventListener('mouseenter',()=>{cur.classList.add('h');ring.classList.add('h');});
-    el.addEventListener('mouseleave',()=>{cur.classList.remove('h');ring.classList.remove('h');});
+// THEME
+const html=document.documentElement,tb=document.getElementById('themeBtn');
+let dark=localStorage.getItem('theme')!=='light';
+html.setAttribute('data-theme',dark?'dark':'light');
+tb.textContent=dark?'🌙':'☀️';
+tb.addEventListener('click',()=>{
+  dark=!dark;
+  const t=dark?'dark':'light';
+  html.setAttribute('data-theme',t);
+  tb.textContent=dark?'🌙':'☀️';
+  localStorage.setItem('theme',t);
+});
+
+// MOBILE MENU
+const hbg=document.getElementById('hbg'),mob=document.getElementById('mob');
+hbg.addEventListener('click',()=>mob.classList.toggle('open'));
+mob.querySelectorAll('a').forEach(a=>a.addEventListener('click',()=>mob.classList.remove('open')));
+
+// REVEAL
+const rvs=document.querySelectorAll('.rv');
+const obs=new IntersectionObserver(entries=>{
+  entries.forEach(e=>{if(e.isIntersecting)e.target.classList.add('in');});
+},{threshold:0.07,rootMargin:'0px 0px -36px 0px'});
+rvs.forEach((el,i)=>{el.style.transitionDelay=(i%5)*0.055+'s';obs.observe(el);});
+setTimeout(()=>rvs.forEach(el=>el.classList.add('in')),1100);
+
+// ACTIVE NAV
+const secs=document.querySelectorAll('section[id]');
+const nls=document.querySelectorAll('.nav-links a');
+new IntersectionObserver(entries=>{
+  entries.forEach(e=>{
+    if(e.isIntersecting){
+      nls.forEach(a=>a.classList.remove('active'));
+      const a=document.querySelector('.nav-links a[href="#'+e.target.id+'"]');
+      if(a)a.classList.add('active');
+    }
   });
-}
-(function(){
-  var els=document.querySelectorAll('.rv');
-  els.forEach(function(el){el.classList.add('anim');});
-  if('IntersectionObserver' in window){
-    var ro=new IntersectionObserver(function(entries){entries.forEach(function(e){if(e.isIntersecting)e.target.classList.add('in');});},{threshold:0.05,rootMargin:'0px 0px -30px 0px'});
-    els.forEach(function(el){ro.observe(el);});
-  } else {
-    els.forEach(function(el){el.classList.add('in');});
-  }
-  setTimeout(function(){els.forEach(function(el){el.classList.add('in');});},1000);
-})();
-var APP_DATA={
-  todo:{name:'📋 Todo App',images:['assets/images/todo/login.png','assets/images/todo/task-list.png','assets/images/todo/add-task.png','assets/images/todo/edit-task.png']},
-  video:{name:'📞 Video Call App',images:['assets/images/video/login.png','assets/images/video/users.png','assets/images/video/video-1.png']},
-  gallery:{name:'🖼 Gallery App',images:['assets/images/gallery/galley-1.png']},
-  studio:{name:'🎬 Video Editor',images:['assets/images/videostudio/1.png','assets/images/videostudio/2.png','assets/images/videostudio/3.png']},
-  ns:{name:'🏢 Society App',images:['assets/images/ns/login.webp','assets/images/ns/home.webp','assets/images/ns/dashboard.webp']}
-};
-var car=document.getElementById('carousel');
-var carTrack=document.getElementById('car-track');
-var carName=document.getElementById('car-app-name');
-var carCount=document.getElementById('car-counter');
-var carDots=document.getElementById('car-dots');
-var carThumbRow=document.getElementById('car-thumb-row');
-var carProg=document.getElementById('car-prog');
-var carHint=document.getElementById('car-hint');
-var carZoomBtn=document.getElementById('car-zoom-btn');
-var images=[],idx=0,total=0,autoTimer=null,autoPlaying=true;
-var AUTO_MS=3800,zScale=1,zPanX=0,zPanY=0,zLvl=0;
-var ZOOM_LEVELS=[1,2,3.2];
-function buildSlides(imgs){carTrack.innerHTML='';imgs.forEach(function(src,i){var s=document.createElement('div');s.className='car-slide'+(i===0?' active':i===1?' next':'');var img=document.createElement('img');img.className='car-img';img.src=src;img.alt='Screenshot '+(i+1);img.draggable=false;s.appendChild(img);carTrack.appendChild(s);});}
-function buildThumbs(imgs){carThumbRow.innerHTML='';carDots.innerHTML='';imgs.forEach(function(src,i){var th=document.createElement('div');th.className='car-thumb'+(i===0?' on':'');var ti=document.createElement('img');ti.src=src;ti.alt='';ti.loading='lazy';th.appendChild(ti);(function(i){th.addEventListener('click',function(){goTo(i);});})(i);carThumbRow.appendChild(th);var d=document.createElement('div');d.className='car-dot'+(i===0?' on':'');(function(i){d.addEventListener('click',function(){goTo(i);});})(i);carDots.appendChild(d);});}
-function goTo(newIdx,dir){var slides=carTrack.querySelectorAll('.car-slide');if(!slides.length)return;var direction=dir!==undefined?dir:(newIdx>idx?1:-1);slides[idx].className='car-slide '+(direction>0?'exit-left':'exit-right');idx=((newIdx%total)+total)%total;resetZoom();slides[idx].className='car-slide '+(direction>0?'next':'prev');void slides[idx].offsetWidth;slides[idx].className='car-slide active';setTimeout(function(){slides.forEach(function(s,i){if(i!==idx)s.className='car-slide';});},420);updateUI();if(autoPlaying)restartAuto();}
-function updateUI(){carCount.textContent=(idx+1)+' / '+total;carDots.querySelectorAll('.car-dot').forEach(function(d,i){d.classList.toggle('on',i===idx);});var thumbs=carThumbRow.querySelectorAll('.car-thumb');thumbs.forEach(function(th,i){th.classList.toggle('on',i===idx);});if(thumbs[idx])thumbs[idx].scrollIntoView({behavior:'smooth',block:'nearest',inline:'center'});}
-function restartAuto(){clearTimeout(autoTimer);carProg.style.transition='none';carProg.style.width='0%';requestAnimationFrame(function(){requestAnimationFrame(function(){carProg.style.transition='width '+AUTO_MS+'ms linear';carProg.style.width='100%';});});autoTimer=setTimeout(function(){goTo(idx+1,1);},AUTO_MS);}
-function stopAuto(){clearTimeout(autoTimer);carProg.style.transition='none';carProg.style.width='0%';}
-function getActiveImg(){var slides=carTrack.querySelectorAll('.car-slide');return slides[idx]?slides[idx].querySelector('.car-img'):null;}
-function applyZoom(anim){var img=getActiveImg();if(!img)return;img.style.transition=anim?'transform .35s cubic-bezier(.25,.46,.45,.94)':'none';img.style.transform='scale('+zScale+') translate('+(zPanX/zScale)+'px,'+(zPanY/zScale)+'px)';img.classList.toggle('zoomed',zScale>1);}
-function clampPan(img){if(!img||zScale<=1){zPanX=0;zPanY=0;return;}var r=img.getBoundingClientRect();var mx=(r.width*(zScale-1))/2,my=(r.height*(zScale-1))/2;zPanX=Math.max(-mx,Math.min(mx,zPanX));zPanY=Math.max(-my,Math.min(my,zPanY));}
-function resetZoom(){zScale=1;zPanX=0;zPanY=0;zLvl=0;carZoomBtn.classList.remove('on');carZoomBtn.textContent='🔍';var img=getActiveImg();if(img){img.style.transition='transform .3s ease';img.style.transform='none';img.classList.remove('zoomed');}}
-function cycleZoom(cx,cy){zLvl=(zLvl+1)%ZOOM_LEVELS.length;var img=getActiveImg();if(!img)return;var prev=zScale;zScale=ZOOM_LEVELS[zLvl];if(zScale===1){zPanX=0;zPanY=0;}else if(cx!==undefined){var r=img.getBoundingClientRect();zPanX-=(cx-r.left-r.width/2)*(zScale/prev-1);zPanY-=(cy-r.top-r.height/2)*(zScale/prev-1);}clampPan(img);applyZoom(true);carZoomBtn.classList.toggle('on',zScale>1);carZoomBtn.textContent=zScale>1?'🔎':'🔍';}
-function openCar(key){var data=APP_DATA[key];if(!data)return;images=data.images;total=images.length;idx=0;carName.textContent=data.name;buildSlides(images);buildThumbs(images);updateUI();car.classList.add('open');document.body.style.overflow='hidden';autoPlaying=true;restartAuto();carHint.classList.add('show');setTimeout(function(){carHint.classList.remove('show');},2200);}
-function closeCar(){car.classList.remove('open');document.body.style.overflow='';stopAuto();resetZoom();}
-document.querySelectorAll('.app-card').forEach(function(c){c.addEventListener('click',function(){openCar(c.dataset.app);});});
-document.getElementById('car-close').addEventListener('click',closeCar);
-document.getElementById('car-prev').addEventListener('click',function(){goTo(idx-1,-1);});
-document.getElementById('car-next').addEventListener('click',function(){goTo(idx+1,1);});
-carZoomBtn.addEventListener('click',function(){cycleZoom();});
-car.addEventListener('click',function(e){if(e.target===car)closeCar();});
-document.addEventListener('keydown',function(e){if(!car.classList.contains('open'))return;if(e.key==='Escape')closeCar();if(e.key==='ArrowLeft')goTo(idx-1,-1);if(e.key==='ArrowRight')goTo(idx+1,1);if(e.key===' '){e.preventDefault();autoPlaying=!autoPlaying;autoPlaying?restartAuto():stopAuto();}});
-var lastClick=0,clickTimer=null;
-document.getElementById('car-stage').addEventListener('click',function(e){if(e.target.closest('.car-btn'))return;var now=Date.now();if(now-lastClick<300){clearTimeout(clickTimer);var img=getActiveImg();if(img){var r=img.getBoundingClientRect();cycleZoom(e.clientX,e.clientY);}}else{clickTimer=setTimeout(function(){if(zScale===1)goTo(idx+1,1);},300);}lastClick=now;});
-var mDrag=false,mSX=0,mSY=0,mOX=0,mOY=0;
-document.getElementById('car-stage').addEventListener('mousedown',function(e){if(zScale<=1)return;mDrag=true;mSX=e.clientX;mSY=e.clientY;mOX=zPanX;mOY=zPanY;e.preventDefault();});
-document.addEventListener('mousemove',function(e){if(!mDrag)return;zPanX=mOX+(e.clientX-mSX);zPanY=mOY+(e.clientY-mSY);clampPan(getActiveImg());applyZoom(false);});
-document.addEventListener('mouseup',function(){mDrag=false;});
-document.getElementById('car-stage').addEventListener('wheel',function(e){if(!car.classList.contains('open'))return;e.preventDefault();var img=getActiveImg();if(!img)return;var prev=zScale;zScale=Math.max(1,Math.min(4,zScale+(e.deltaY<0?.4:-.4)));if(zScale===1){zPanX=0;zPanY=0;}else{var r=img.getBoundingClientRect();zPanX-=(e.clientX-r.left-r.width/2)*(zScale/prev-1);zPanY-=(e.clientY-r.top-r.height/2)*(zScale/prev-1);}zLvl=zScale<=1?0:zScale<=2?1:2;carZoomBtn.classList.toggle('on',zScale>1);carZoomBtn.textContent=zScale>1?'🔎':'🔍';clampPan(img);applyZoom(false);},{passive:false});
-var t0=null,t0Y=null,tPO={x:0,y:0},tPD=null,tPS=1,tMov=false,lastTap=0;
-document.getElementById('car-stage').addEventListener('touchstart',function(e){if(e.touches.length===1){t0=e.touches[0].clientX;t0Y=e.touches[0].clientY;tPO={x:zPanX,y:zPanY};tMov=false;tPD=null;}else if(e.touches.length===2){tPD=Math.hypot(e.touches[0].clientX-e.touches[1].clientX,e.touches[0].clientY-e.touches[1].clientY);tPS=zScale;t0=null;}},{passive:true});
-document.getElementById('car-stage').addEventListener('touchmove',function(e){if(e.touches.length===2&&tPD!==null){e.preventDefault();var dist=Math.hypot(e.touches[0].clientX-e.touches[1].clientX,e.touches[0].clientY-e.touches[1].clientY);var img=getActiveImg();if(!img)return;zScale=Math.max(1,Math.min(4,tPS*(dist/tPD)));clampPan(img);applyZoom(false);carZoomBtn.classList.toggle('on',zScale>1);}else if(e.touches.length===1&&t0!==null){var dx=e.touches[0].clientX-t0,dy=e.touches[0].clientY-t0Y;if(zScale>1){e.preventDefault();tMov=true;zPanX=tPO.x+dx;zPanY=tPO.y+dy;clampPan(getActiveImg());applyZoom(false);}else if(Math.abs(dx)>8)tMov=true;}},{passive:false});
-document.getElementById('car-stage').addEventListener('touchend',function(e){if(e.changedTouches.length===1&&t0!==null&&!tMov&&e.touches.length===0){var dx=e.changedTouches[0].clientX-t0,dy=e.changedTouches[0].clientY-t0Y,now=Date.now();if(Math.abs(dx)<12&&Math.abs(dy)<12){if(now-lastTap<280){var img=getActiveImg();if(img){var r=img.getBoundingClientRect();cycleZoom(e.changedTouches[0].clientX,e.changedTouches[0].clientY);}}lastTap=now;}else if(Math.abs(dx)>Math.abs(dy)&&Math.abs(dx)>48&&zScale===1){stopAuto();if(dx<0)goTo(idx+1,1);else goTo(idx-1,-1);if(autoPlaying)restartAuto();}}t0=null;tPD=null;tMov=false;},{passive:true});
+},{threshold:0.4}).observe;
+secs.forEach(s=>new IntersectionObserver(entries=>{
+  entries.forEach(e=>{if(e.isIntersecting){nls.forEach(a=>a.classList.remove('active'));const a=document.querySelector('.nav-links a[href="#'+e.target.id+'"]');if(a)a.classList.add('active');}});
+},{threshold:0.35}).observe(s));
+
+// BACK TOP
+const bt=document.getElementById('btop');
+window.addEventListener('scroll',()=>bt.classList.toggle('show',scrollY>400));
+bt.addEventListener('click',()=>window.scrollTo({top:0,behavior:'smooth'}));
 </script>
 </body>
 </html>
