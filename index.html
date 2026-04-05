@@ -180,18 +180,14 @@ nav{position:fixed;top:0;left:0;right:0;z-index:999;display:flex;align-items:cen
 .slide-stack{display:flex;flex-wrap:wrap;gap:6px;margin-bottom:24px;}
 .stag{padding:4px 11px;border-radius:7px;font-size:11px;font-weight:600;background:rgba(255,255,255,.07);border:1px solid rgba(255,255,255,.12);color:rgba(255,255,255,.7);backdrop-filter:blur(6px);}
 .slide-links{display:flex;flex-wrap:wrap;gap:8px;align-items:center;}
-/* Primary store link */
 .slide-link{display:inline-flex;align-items:center;gap:7px;padding:10px 18px;border-radius:10px;font-size:12px;font-weight:700;background:rgba(255,255,255,.1);border:1px solid rgba(255,255,255,.18);color:#fff;backdrop-filter:blur(12px);transition:all .25s;width:fit-content;white-space:nowrap;}
 .slide-link:hover{background:rgba(255,255,255,.18);transform:translateY(-2px);}
 .slide-link.primary{background:rgba(108,99,255,.25);border-color:rgba(108,99,255,.5);}
 .slide-link.primary:hover{background:rgba(108,99,255,.4);}
-/* Alt APK link */
 .slide-link.alt{background:rgba(16,185,129,.12);border-color:rgba(16,185,129,.3);color:rgba(255,255,255,.85);}
 .slide-link.alt:hover{background:rgba(16,185,129,.25);border-color:rgba(16,185,129,.5);}
-/* iOS App Store link */
 .slide-link.ios{background:rgba(6,182,212,.15);border-color:rgba(6,182,212,.35);}
 .slide-link.ios:hover{background:rgba(6,182,212,.28);}
-/* divider label */
 .link-divider{font-size:10px;color:rgba(255,255,255,.25);font-weight:600;letter-spacing:.5px;}
 .slide-right{display:flex;align-items:center;justify-content:center;}
 .phone-shell{position:relative;width:220px;height:440px;flex-shrink:0;}
@@ -246,53 +242,17 @@ nav{position:fixed;top:0;left:0;right:0;z-index:999;display:flex;align-items:cen
 .edu-school{font-size:13px;color:var(--text2);line-height:1.5;margin-bottom:10px;}
 .edu-yr{font-size:11px;font-weight:700;color:var(--accent);text-transform:uppercase;letter-spacing:1px;}
 
-/* ===== CONTACT — FIXED ===== */
+/* ===== CONTACT ===== */
 .ctc-wrap{max-width:780px;margin:0 auto;text-align:center;}
-
-/* 3-column grid → 2 col on tablet → 1 col on small mobile */
-.ctc-grid{
-  display:grid;
-  grid-template-columns:repeat(3,1fr);
-  gap:12px;
-  margin-top:40px;
-}
+.ctc-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin-top:40px;}
 @media(max-width:640px){.ctc-grid{grid-template-columns:repeat(2,1fr);gap:10px;}}
 @media(max-width:360px){.ctc-grid{grid-template-columns:1fr;}}
-
-.ctc-card{
-  display:flex;
-  align-items:center;
-  gap:12px;
-  background:var(--bg4);
-  border:1px solid var(--border);
-  border-radius:14px;
-  padding:16px 18px;
-  transition:all var(--transition);
-  text-align:left;
-  min-width:0;
-}
+.ctc-card{display:flex;align-items:center;gap:12px;background:var(--bg4);border:1px solid var(--border);border-radius:14px;padding:16px 18px;transition:all var(--transition);text-align:left;min-width:0;}
 [data-theme="dark"] .ctc-card{background:var(--bg3);}
 .ctc-card:hover{border-color:var(--border-h);transform:translateY(-3px);box-shadow:var(--shadow);}
-.ctc-ico{
-  width:38px;height:38px;
-  border-radius:10px;
-  background:var(--accent-soft);
-  border:1px solid rgba(108,99,255,.2);
-  display:flex;align-items:center;justify-content:center;
-  font-size:16px;
-  flex-shrink:0;
-}
+.ctc-ico{width:38px;height:38px;border-radius:10px;background:var(--accent-soft);border:1px solid rgba(108,99,255,.2);display:flex;align-items:center;justify-content:center;font-size:16px;flex-shrink:0;}
 .ctc-lbl{font-size:10px;font-weight:700;text-transform:uppercase;letter-spacing:1.2px;color:var(--text3);margin-bottom:3px;}
-.ctc-val{
-  font-size:12.5px;
-  font-weight:600;
-  color:var(--text);
-  white-space:nowrap;
-  overflow:hidden;
-  text-overflow:ellipsis;
-  min-width:0;
-}
-
+.ctc-val{font-size:12.5px;font-weight:600;color:var(--text);white-space:nowrap;overflow:hidden;text-overflow:ellipsis;min-width:0;}
 .open-box{background:linear-gradient(135deg,rgba(108,99,255,.06),rgba(167,139,250,.04));border:1px solid rgba(108,99,255,.18);border-radius:16px;padding:26px 30px;margin-top:36px;display:flex;flex-wrap:wrap;gap:20px;align-items:flex-start;}
 .open-box-left{flex:1;min-width:200px;}
 .open-box-left h4{font-family:'Fraunces',serif;font-size:17px;font-weight:700;color:var(--accent);margin-bottom:6px;}
@@ -385,7 +345,7 @@ footer strong{color:var(--accent);}
   <div class="stat rv"><div class="stat-n">30+</div><div class="stat-l">Apps Built</div></div>
   <div class="stat rv"><div class="stat-n">100K+</div><div class="stat-l">Downloads</div></div>
   <div class="stat rv"><div class="stat-n">4.5★</div><div class="stat-l">Avg Rating</div></div>
-  <div class="stat rv"><div class="stat-n g">11+</div><div class="stat-l">Key Projects</div></div>
+  <div class="stat rv"><div class="stat-n g">13+</div><div class="stat-l">Key Projects</div></div>
   <div class="stat rv"><div class="stat-n">5</div><div class="stat-l">Companies</div></div>
 </div>
 
@@ -401,7 +361,7 @@ footer strong{color:var(--accent);}
 
   <div class="carousel-section" id="mainCarousel" style="margin-top:16px;">
     <div class="carousel-track" id="carouselTrack"></div>
-    <div class="slide-counter" id="slideCounter">01 / 11</div>
+    <div class="slide-counter" id="slideCounter">01 / 13</div>
     <div class="carousel-controls">
       <div class="carousel-dots" id="carouselDots"></div>
       <div class="carousel-arrows">
@@ -501,15 +461,13 @@ footer strong{color:var(--accent);}
   </div>
 </section>
 
-<!-- CONTACT — FIXED -->
+<!-- CONTACT -->
 <section class="sec alt" id="contact">
   <div class="con">
     <div class="ctc-wrap">
       <div class="slabel rv" style="justify-content:center"><span>Say Hello</span></div>
       <h2 class="stitle rv" style="text-align:center">Get in <em>Touch</em></h2>
       <p class="sdesc rv" style="margin:12px auto 0;text-align:center;">Primary focus is <strong>Mobile App Development</strong> — happy to help with logo design, websites, backend (Firebase), or AI agent projects. English · Hindi · Gujarati.</p>
-
-      <!-- Open to work box — Python & CrewAI removed -->
       <div class="open-box rv">
         <div class="open-box-left">
           <h4>Open to all kinds of work</h4>
@@ -523,14 +481,12 @@ footer strong{color:var(--accent);}
           <span class="otag">🤖 AI Agents</span>
         </div>
       </div>
-
-      <!-- Contact cards — 3-column grid, fully readable -->
       <div class="ctc-grid rv">
-        <a href="/cdn-cgi/l/email-protection#b8d2ddddcc96d5d7dad1d4dddcddceddd4d7c8ddcaf8dfd5d9d1d496dbd7d5" class="ctc-card">
+        <a href="mailto:jeet.mobiledeveloper@gmail.com" class="ctc-card">
           <div class="ctc-ico">✉️</div>
           <div style="min-width:0;">
             <div class="ctc-lbl">Email</div>
-            <div class="ctc-val" title="jeet.mobiledeveloper@gmail.com"><span class="__cf_email__" data-cfemail="b2d8d7d7c69cdfddd0dbded7d6d7c4d7deddc2d7c0f2d5dfd3dbde9cd1dddf">[email&#160;protected]</span></div>
+            <div class="ctc-val">jeet.mobiledeveloper@gmail.com</div>
           </div>
         </a>
         <a href="https://www.linkedin.com/in/jeet-parmar-a37b0b98" target="_blank" class="ctc-card">
@@ -569,7 +525,6 @@ footer strong{color:var(--accent);}
           </div>
         </a>
       </div>
-
     </div>
   </div>
 </section>
@@ -577,7 +532,7 @@ footer strong{color:var(--accent);}
 <footer>Designed &amp; built with care by <strong>Jeet Parmar</strong><br>Senior Mobile Application Developer &amp; AI Workflow Engineer · Ahmedabad, India</footer>
 <button class="btop" id="btop">↑</button>
 
-<script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
+<script>
 // ---- Theme & nav ----
 const html=document.documentElement,tb=document.getElementById('themeBtn');
 let dark=localStorage.getItem('theme')!=='light';
@@ -613,7 +568,18 @@ const PROJECTS = [
     badges:[{t:'Current',cls:'cur'},{t:'AI-Powered',cls:'ai'}],
     desc:'Smart office booking platform with role-based dashboards. Gmail OAuth integration with AI email signal detection (flights, invoices, hotel) and a smart suggestion engine cross-referencing calendar events.',
     tags:['Flutter','Dart','Riverpod','Gmail API','Clean Architecture'],
-    images:[],
+    images:[
+      BASE+'red-carpet-office/Screenshot_20260405-232802.Redcarpet%20Life%20Signal.png',
+      BASE+'red-carpet-office/Screenshot_20260405-232809.Redcarpet%20Life%20Signal.png',
+      BASE+'red-carpet-office/Screenshot_20260405-232814.Redcarpet%20Life%20Signal.png',
+      BASE+'red-carpet-office/Screenshot_20260405-232820.Redcarpet%20Life%20Signal.png',
+      BASE+'red-carpet-office/Screenshot_20260405-232826.Redcarpet%20Life%20Signal.png',
+      BASE+'red-carpet-office/Screenshot_20260405-232833.Redcarpet%20Life%20Signal.png',
+      BASE+'red-carpet-office/Screenshot_20260405-232836.Redcarpet%20Life%20Signal.png',
+      BASE+'red-carpet-office/Screenshot_20260405-232901.Redcarpet%20Life%20Signal.png',
+      BASE+'red-carpet-office/Screenshot_20260405-232906.Redcarpet%20Life%20Signal.png',
+      BASE+'red-carpet-office/Screenshot_20260405-232913.Redcarpet%20Life%20Signal.png'
+    ],
     gradient:'linear-gradient(135deg,#0d0820 0%,#1a0e40 45%,#060312 100%)',
     glow:'#6c63ff',
     links:[]
@@ -648,7 +614,20 @@ const PROJECTS = [
     badges:[{t:'Current',cls:'cur'},{t:'Groq AI',cls:'ai'}],
     desc:'Universal AI smart TV remote for Android TV, Samsung Tizen, LG webOS, Sony Bravia & Roku. Voice control with intent detection, YouTube Lounge API, Groq LLaMA 3.1, and ADB session monitoring.',
     tags:['Flutter','Groq API','STT','ADB','WebSocket'],
-    images:[],
+    images:[
+      BASE+'remote/Screenshot_20260405-224901.GMI%20IQ%20Remote.png',
+      BASE+'remote/Screenshot_20260405-224903.GMI%20IQ%20Remote.png',
+      BASE+'remote/Screenshot_20260405-224906.GMI%20IQ%20Remote.png',
+      BASE+'remote/Screenshot_20260405-224908.GMI%20IQ%20Remote.png',
+      BASE+'remote/Screenshot_20260405-224910.GMI%20IQ%20Remote.png',
+      BASE+'remote/Screenshot_20260405-224912.GMI%20IQ%20Remote.png',
+      BASE+'remote/Screenshot_20260405-224914.GMI%20IQ%20Remote.png',
+      BASE+'remote/Screenshot_20260405-224916.GMI%20IQ%20Remote.png',
+      BASE+'remote/Screenshot_20260405-224920.GMI%20IQ%20Remote.png',
+      BASE+'remote/Screenshot_20260405-224925.GMI%20IQ%20Remote.png',
+      BASE+'remote/Screenshot_20260405-224929.GMI%20IQ%20Remote.png',
+      BASE+'remote/Screenshot_20260405-224934.GMI%20IQ%20Remote.png'
+    ],
     gradient:'linear-gradient(135deg,#04060e 0%,#0a0e28 45%,#020408 100%)',
     glow:'#3b82f6',
     links:[]
@@ -664,7 +643,25 @@ const PROJECTS = [
     links:[]
   },
   {
-    num:'06', icon:'💬', title:'QuirkChat',
+    num:'06', icon:'📄', title:'GM Scan',
+    badges:[{t:'Current',cls:'cur'},{t:'Document AI',cls:'ai'}],
+    desc:'Smart document scanner with CameraX-powered capture, auto-edge detection, multi-page PDF export, and ID card scanning. Supports book scanning, preview, and organised document management — built for speed and clarity.',
+    tags:['Android','Java','CameraX','ML Kit','PDF Export'],
+    images:[
+      BASE+'Gm-scan/Welcome%20screen.png',
+      BASE+'Gm-scan/Sign%20in%20screen.png',
+      BASE+'Gm-scan/Custom%20CAMERA%20SCREEN%20Document%20scan.png',
+      BASE+'Gm-scan/preview%20screen.png',
+      BASE+'Gm-scan/After%20book%20Scanned.png',
+      BASE+'Gm-scan/Home%20Screen%20-%20After%20Scanned%20All%20documents.png',
+      BASE+'Gm-scan/Home%20Screen%20-%20After%20Scanned%20id%20card.png'
+    ],
+    gradient:'linear-gradient(135deg,#060e14 0%,#0c1c24 45%,#020608 100%)',
+    glow:'#22d3ee',
+    links:[]
+  },
+  {
+    num:'07', icon:'💬', title:'QuirkChat',
     badges:[{t:'Play Store',cls:'store'}],
     desc:'Social networking platform for geek communities & fandom clubs. Real-time Firestore chat, social auth, and FCM push notifications with a custom feed algorithm.',
     tags:['Kotlin','MVVM','Firebase','FCM','Firestore'],
@@ -677,7 +674,7 @@ const PROJECTS = [
     ]
   },
   {
-    num:'07', icon:'🎵', title:'Vibez — African Music',
+    num:'08', icon:'🎵', title:'Vibez — African Music',
     badges:[{t:'Play Store',cls:'store'}],
     desc:'Music streaming platform with ExoPlayer, playlist management, offline playback, and premium subscription payments. Smooth animations and a rich audio-first UI.',
     tags:['Kotlin','ExoPlayer','In-App Purchases','Firebase'],
@@ -690,7 +687,7 @@ const PROJECTS = [
     ]
   },
   {
-    num:'08', icon:'🏗', title:'FM Contractor',
+    num:'09', icon:'🏗', title:'FM Contractor',
     badges:[{t:'Play Store',cls:'store'}],
     desc:'Business management app for contractors & broker networks with data visualisation dashboards and detailed reporting. Clean MVVM architecture with Retrofit.',
     tags:['Kotlin','MVVM','Retrofit','Charts'],
@@ -702,7 +699,7 @@ const PROJECTS = [
     ]
   },
   {
-    num:'09', icon:'🏓', title:'Main Court: Pickleball',
+    num:'10', icon:'🏓', title:'Main Court: Pickleball',
     badges:[{t:'App Store',cls:'store'}],
     desc:'Cross-platform iOS & Android Pickleball app with match creation, skill-based player matching, and Google Maps integration for court discovery.',
     tags:['Flutter','Bloc','Firebase','Google Maps'],
@@ -714,7 +711,7 @@ const PROJECTS = [
     ]
   },
   {
-    num:'10', icon:'🌾', title:'Ke Insumos',
+    num:'11', icon:'🌾', title:'Ke Insumos',
     badges:[{t:'Play Store',cls:'store'}],
     desc:'Agricultural marketplace with dual user roles (buyer/seller), order management, and real-time delivery tracking for farming supplies.',
     tags:['Flutter','GetX','Firebase','Maps'],
@@ -727,7 +724,7 @@ const PROJECTS = [
     ]
   },
   {
-    num:'11', icon:'🥗', title:'Dietas Saludables',
+    num:'12', icon:'🥗', title:'Dietas Saludables',
     badges:[{t:'Play Store',cls:'store'}],
     desc:'Health & fitness app with 30+ diet plans, BMI calculator, and intuitive meal planning UI. Offline-first with SQLite storage and a clean Material Design interface.',
     tags:['Android','SQLite','Custom UI','Material Design'],
@@ -738,6 +735,27 @@ const PROJECTS = [
       {label:'▶ Play Store', url:'https://play.google.com/store/apps/details?id=com.lomasdefrida.dietassaludablesV2', cls:'primary'},
       {label:'📦 Uptodown', url:'https://com-lomasdefrida-dietassaludablesv2.ru.uptodown.com/android', cls:'alt'}
     ]
+  },
+  {
+    num:'13', icon:'🏡', title:'Kulsetu — Samaj App',
+    badges:[{t:'Current',cls:'cur'},{t:'Community',cls:'ar'}],
+    desc:'A dedicated community management app for our Samaj — connecting families, sharing notices, managing member directories, and celebrating events together. Built with love for our community.',
+    tags:['Android','Java','Firebase','Firestore','FCM'],
+    images:[
+      BASE+'kulsetu/Screenshot_20260405-214612.smaj.png',
+      BASE+'kulsetu/Screenshot_20260405-214616.smaj.png',
+      BASE+'kulsetu/Screenshot_20260405-214619.smaj.png',
+      BASE+'kulsetu/Screenshot_20260405-214624.smaj.png',
+      BASE+'kulsetu/Screenshot_20260405-214637.smaj.png',
+      BASE+'kulsetu/Screenshot_20260405-214644.smaj.png',
+      BASE+'kulsetu/Screenshot_20260405-214655.smaj.png',
+      BASE+'kulsetu/Screenshot_20260405-214700.smaj.png',
+      BASE+'kulsetu/Screenshot_20260405-214706.smaj.png',
+      BASE+'kulsetu/Screenshot_20260405-214727.smaj.png'
+    ],
+    gradient:'linear-gradient(135deg,#100808 0%,#241010 45%,#080404 100%)',
+    glow:'#f59e0b',
+    links:[]
   }
 ];
 
@@ -754,7 +772,8 @@ PROJECTS.forEach((p,idx)=>{
   const tagsHtml=p.tags.map(t=>`<span class="stag">${t}</span>`).join('');
   const linksHtml = p.links.length
     ? `<div class="slide-links">${p.links.map(l=>`<a href="${l.url}" target="_blank" class="slide-link ${l.cls}">${l.label}</a>`).join('')}</div>`
-    : '';  let phoneContent;
+    : '';
+  let phoneContent;
   if(p.images.length){
     const imgs=p.images.map((src,i)=>`<img class="phone-img${i===0?' active':''}" src="${src}" alt="${p.title} screenshot">`).join('');
     phoneContent=`<div class="phone-imgs" data-slide="${idx}">${imgs}</div>`;
@@ -788,7 +807,7 @@ function startProgress(){progressFill.style.transition='none';progressFill.style
 function goTo(idx,dir){
   const slides=track.querySelectorAll('.carousel-slide');
   slides[current].classList.remove('active');
-  slides[current].classList.add(dir==='prev'?'':'prev');
+  if(dir!=='prev') slides[current].classList.add('prev');
   setTimeout(()=>slides[current<slides.length?current:0].classList.remove('prev'),700);
   current=(idx+PROJECTS.length)%PROJECTS.length;
   slides[current].classList.remove('prev');
