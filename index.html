@@ -202,10 +202,29 @@ nav{position:fixed;top:0;left:0;right:0;z-index:999;display:flex;align-items:cen
 .ph-icon{font-size:56px;}
 .ph-label{font-family:'Fraunces',serif;font-size:15px;font-weight:700;color:rgba(255,255,255,.6);text-align:center;padding:0 12px;}
 .phone-glow{position:absolute;inset:-30px;border-radius:50%;filter:blur(40px);opacity:.25;z-index:-1;}
-.slide-gallery{display:grid;grid-template-columns:repeat(3,1fr);gap:8px;max-width:380px;}
-@media(max-width:900px){.slide-gallery{display:none;}}
-.gallery-thumb{border-radius:10px;overflow:hidden;border:1px solid rgba(255,255,255,.1);aspect-ratio:9/16;}
-.gallery-thumb img{width:100%;height:100%;object-fit:cover;display:block;}
+
+/* Phone tap hint */
+.phone-tap-hint{
+  position:absolute;
+  bottom:10px;
+  left:50%;
+  transform:translateX(-50%);
+  background:rgba(0,0,0,.7);
+  backdrop-filter:blur(8px);
+  border:1px solid rgba(255,255,255,.15);
+  color:rgba(255,255,255,.8);
+  font-size:10px;
+  font-weight:700;
+  padding:4px 10px;
+  border-radius:20px;
+  letter-spacing:.5px;
+  white-space:nowrap;
+  pointer-events:none;
+  z-index:4;
+  transition:opacity .4s;
+}
+.phone-screen.has-images{cursor:zoom-in;}
+.phone-screen.has-images:hover .phone-tap-hint{opacity:0;}
 
 /* CAROUSEL CONTROLS */
 .carousel-controls{position:absolute;bottom:0;left:0;right:0;z-index:10;display:flex;align-items:center;justify-content:space-between;padding:20px 60px 28px;}
@@ -223,7 +242,7 @@ nav{position:fixed;top:0;left:0;right:0;z-index:999;display:flex;align-items:cen
 
 /* ADDITIONAL PROJECTS */
 .add-proj-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(280px,1fr));gap:10px;margin-bottom:8px;}
-.add-proj-card{display:flex;align-items:flex-start;gap:12px;background:var(--bg4);border:1px solid var(--border);border-radius:12px;padding:14px 16px;transition:all var(--transition);}
+.add-proj-card{display:flex;align-items:flex-start;gap:12px;background:var(--bg4);border:1px solid var(--border);border-radius:12px;padding:14px 16px;transition:all var(--transition);text-align:left;min-width:0;}
 [data-theme="dark"] .add-proj-card{background:var(--bg3);}
 .add-proj-card:hover{border-color:var(--border-h);transform:translateX(3px);}
 .add-proj-ico{font-size:20px;flex-shrink:0;margin-top:1px;}
@@ -279,9 +298,138 @@ footer strong{color:var(--accent);}
 .add-con{max-width:1100px;margin:0 auto;}
 .proj-label{font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:2px;color:var(--text3);padding:10px 0 8px;border-bottom:1px solid var(--border);margin-bottom:18px;display:flex;align-items:center;gap:10px;}
 .proj-label::before{content:'';flex:1;height:1px;background:var(--border);}
+
+/* ===== FULLSCREEN LIGHTBOX ===== */
+#lb-overlay{
+  position:fixed;inset:0;z-index:9999;
+  background:rgba(0,0,0,.96);
+  backdrop-filter:blur(24px);-webkit-backdrop-filter:blur(24px);
+  display:flex;align-items:center;justify-content:center;
+  opacity:0;pointer-events:none;
+  transition:opacity .35s cubic-bezier(.4,0,.2,1);
+}
+#lb-overlay.open{opacity:1;pointer-events:all;}
+
+/* BG blurred image */
+#lb-bg-blur{
+  position:absolute;inset:0;
+  background-size:cover;background-position:center;
+  filter:blur(40px) brightness(.25) saturate(1.4);
+  transform:scale(1.08);
+  transition:background-image .4s;
+}
+
+/* Main image */
+#lb-img-wrap{
+  position:relative;
+  display:flex;align-items:center;justify-content:center;
+  width:100%;height:100%;
+  padding:70px 80px 90px;
+}
+@media(max-width:768px){#lb-img-wrap{padding:60px 16px 80px;}}
+#lb-img{
+  max-width:100%;max-height:100%;
+  object-fit:contain;
+  border-radius:16px;
+  box-shadow:0 40px 120px rgba(0,0,0,.8);
+  transition:opacity .3s ease,transform .3s cubic-bezier(.4,0,.2,1);
+  user-select:none;-webkit-user-drag:none;
+}
+#lb-img.lb-fade{opacity:0;transform:scale(.97);}
+
+/* Close */
+#lb-close{
+  position:fixed;top:20px;right:20px;
+  width:44px;height:44px;border-radius:50%;
+  background:rgba(255,255,255,.1);border:1px solid rgba(255,255,255,.2);
+  color:#fff;font-size:20px;cursor:pointer;
+  display:flex;align-items:center;justify-content:center;
+  transition:all .2s;z-index:10001;
+}
+#lb-close:hover{background:rgba(255,255,255,.22);transform:scale(1.1);}
+
+/* Prev / Next arrows */
+.lb-arrow{
+  position:fixed;top:50%;transform:translateY(-50%);
+  width:48px;height:48px;border-radius:14px;
+  background:rgba(255,255,255,.09);border:1px solid rgba(255,255,255,.18);
+  color:#fff;font-size:20px;cursor:pointer;
+  display:flex;align-items:center;justify-content:center;
+  transition:all .2s;z-index:10001;
+  backdrop-filter:blur(8px);
+}
+.lb-arrow:hover{background:rgba(255,255,255,.2);}
+#lb-prev{left:16px;}
+#lb-next{right:16px;}
+@media(max-width:600px){
+  .lb-arrow{width:38px;height:38px;font-size:16px;}
+  #lb-prev{left:8px;}
+  #lb-next{right:8px;}
+}
+
+/* Counter top-left */
+#lb-counter{
+  position:fixed;top:24px;left:24px;
+  font-family:'Fraunces',serif;font-size:13px;font-weight:700;
+  color:rgba(255,255,255,.5);letter-spacing:2px;
+  z-index:10001;
+}
+
+/* Project title */
+#lb-title{
+  position:fixed;top:22px;left:50%;transform:translateX(-50%);
+  font-family:'Fraunces',serif;font-size:15px;font-weight:700;
+  color:rgba(255,255,255,.75);letter-spacing:-.3px;
+  z-index:10001;white-space:nowrap;
+}
+@media(max-width:600px){#lb-title{display:none;}}
+
+/* Dot strip bottom */
+#lb-dots{
+  position:fixed;bottom:24px;left:50%;transform:translateX(-50%);
+  display:flex;gap:6px;align-items:center;
+  z-index:10001;
+  max-width:90vw;overflow-x:auto;padding:4px 8px;
+  scrollbar-width:none;
+}
+#lb-dots::-webkit-scrollbar{display:none;}
+.lb-dot{
+  width:28px;height:28px;border-radius:8px;
+  overflow:hidden;flex-shrink:0;
+  cursor:pointer;
+  border:2px solid rgba(255,255,255,.15);
+  transition:all .2s;
+  opacity:.5;
+}
+.lb-dot.active{border-color:#fff;opacity:1;transform:scale(1.12);}
+.lb-dot img{width:100%;height:100%;object-fit:cover;display:block;}
+
+/* Swipe hint */
+#lb-swipe-hint{
+  position:fixed;bottom:66px;left:50%;transform:translateX(-50%);
+  font-size:11px;font-weight:600;color:rgba(255,255,255,.3);
+  letter-spacing:1px;z-index:10001;
+  animation:fadeHint 3s forwards;
+}
+@keyframes fadeHint{0%{opacity:1;}70%{opacity:1;}100%{opacity:0;pointer-events:none;}}
 </style>
 </head>
 <body>
+
+<!-- ===== LIGHTBOX ===== -->
+<div id="lb-overlay" role="dialog" aria-modal="true" aria-label="Image gallery">
+  <div id="lb-bg-blur"></div>
+  <div id="lb-img-wrap">
+    <img id="lb-img" src="" alt="Screenshot">
+  </div>
+  <button id="lb-close" aria-label="Close gallery">✕</button>
+  <button class="lb-arrow" id="lb-prev" aria-label="Previous image">←</button>
+  <button class="lb-arrow" id="lb-next" aria-label="Next image">→</button>
+  <div id="lb-counter">01 / 01</div>
+  <div id="lb-title"></div>
+  <div id="lb-dots"></div>
+  <div id="lb-swipe-hint">← SWIPE →</div>
+</div>
 
 <nav id="nav">
   <a href="#" class="nav-logo">JP</a>
@@ -773,6 +921,8 @@ PROJECTS.forEach((p,idx)=>{
   const linksHtml = p.links.length
     ? `<div class="slide-links">${p.links.map(l=>`<a href="${l.url}" target="_blank" class="slide-link ${l.cls}">${l.label}</a>`).join('')}</div>`
     : '';
+
+  // Phone screen content — add has-images class + tap hint if images exist
   let phoneContent;
   if(p.images.length){
     const imgs=p.images.map((src,i)=>`<img class="phone-img${i===0?' active':''}" src="${src}" alt="${p.title} screenshot">`).join('');
@@ -780,13 +930,26 @@ PROJECTS.forEach((p,idx)=>{
   } else {
     phoneContent=`<div class="phone-placeholder" style="background:${p.gradient}"><div class="ph-icon">${p.icon}</div><div class="ph-label">${p.title}</div></div>`;
   }
-  slide.innerHTML=`${bgHtml}<div class="slide-inner"><div class="slide-left"><div class="slide-num">${p.num}</div><div class="slide-badges">${badgesHtml}</div><div class="slide-title">${p.title}</div><p class="slide-desc">${p.desc}</p><div class="slide-stack">${tagsHtml}</div>${linksHtml}</div><div class="slide-right"><div class="phone-shell"><div class="phone-glow" style="background:${p.glow};"></div><div class="phone-frame"></div><div class="phone-notch"></div><div class="phone-screen">${phoneContent}</div></div></div></div>`;
+
+  const hasImages = p.images.length > 0;
+  const tapHintHtml = hasImages ? `<div class="phone-tap-hint">TAP TO VIEW ALL</div>` : '';
+  const screenClass = hasImages ? 'phone-screen has-images' : 'phone-screen';
+
+  slide.innerHTML=`${bgHtml}<div class="slide-inner"><div class="slide-left"><div class="slide-num">${p.num}</div><div class="slide-badges">${badgesHtml}</div><div class="slide-title">${p.title}</div><p class="slide-desc">${p.desc}</p><div class="slide-stack">${tagsHtml}</div>${linksHtml}</div><div class="slide-right"><div class="phone-shell"><div class="phone-glow" style="background:${p.glow};"></div><div class="phone-frame"></div><div class="phone-notch"></div><div class="${screenClass}" data-proj-idx="${idx}">${phoneContent}${tapHintHtml}</div></div></div></div>`;
   track.appendChild(slide);
 
   const dot=document.createElement('button');
   dot.className='c-dot'+(idx===0?' active':'');
   dot.addEventListener('click',()=>goTo(idx));
   dotsEl.appendChild(dot);
+});
+
+// Tap-to-open lightbox on phone screens with images
+track.addEventListener('click', e => {
+  const screen = e.target.closest('.phone-screen.has-images');
+  if(!screen) return;
+  const idx = parseInt(screen.dataset.projIdx, 10);
+  openLightbox(idx, 0);
 });
 
 function startPhotoRotation(slideIdx){
@@ -828,9 +991,123 @@ let touchStartX=0;
 track.addEventListener('touchstart',e=>{touchStartX=e.touches[0].clientX;},{passive:true});
 track.addEventListener('touchend',e=>{const dx=e.changedTouches[0].clientX-touchStartX;if(Math.abs(dx)>50){dx<0?next():prev();startAuto();}});
 
-document.addEventListener('keydown',e=>{if(e.key==='ArrowRight'){next();startAuto();}if(e.key==='ArrowLeft'){prev();startAuto();}});
+document.addEventListener('keydown',e=>{
+  if(lbOpen){
+    if(e.key==='ArrowRight'||e.key==='ArrowDown') lbNext();
+    else if(e.key==='ArrowLeft'||e.key==='ArrowUp') lbPrev();
+    else if(e.key==='Escape') closeLightbox();
+    return;
+  }
+  if(e.key==='ArrowRight'){next();startAuto();}
+  if(e.key==='ArrowLeft'){prev();startAuto();}
+});
 
 startProgress();startAuto();photoTimers[0]=startPhotoRotation(0);
+
+// ====== LIGHTBOX ======
+const lbOverlay  = document.getElementById('lb-overlay');
+const lbImg      = document.getElementById('lb-img');
+const lbBgBlur   = document.getElementById('lb-bg-blur');
+const lbCounter  = document.getElementById('lb-counter');
+const lbTitle    = document.getElementById('lb-title');
+const lbDotsEl   = document.getElementById('lb-dots');
+const lbClose    = document.getElementById('lb-close');
+const lbPrevBtn  = document.getElementById('lb-prev');
+const lbNextBtn  = document.getElementById('lb-next');
+
+let lbOpen = false;
+let lbProjIdx = 0;
+let lbImgIdx = 0;
+let lbImages = [];
+let lbTitle_str = '';
+
+function openLightbox(projIdx, imgIdx) {
+  const proj = PROJECTS[projIdx];
+  if (!proj || !proj.images.length) return;
+  lbProjIdx = projIdx;
+  lbImages  = proj.images;
+  lbTitle_str = proj.title;
+  lbTitle.textContent = proj.title;
+  lbOpen = true;
+  document.body.style.overflow = 'hidden';
+  lbOverlay.classList.add('open');
+  buildLbDots();
+  lbShowImg(imgIdx, false);
+}
+
+function closeLightbox() {
+  lbOpen = false;
+  lbOverlay.classList.remove('open');
+  document.body.style.overflow = '';
+}
+
+function buildLbDots() {
+  lbDotsEl.innerHTML = '';
+  lbImages.forEach((src, i) => {
+    const d = document.createElement('div');
+    d.className = 'lb-dot' + (i === lbImgIdx ? ' active' : '');
+    const im = document.createElement('img');
+    im.src = src; im.alt = '';
+    d.appendChild(im);
+    d.addEventListener('click', () => lbShowImg(i, true));
+    lbDotsEl.appendChild(d);
+  });
+}
+
+function lbShowImg(idx, animate) {
+  lbImgIdx = (idx + lbImages.length) % lbImages.length;
+  const src = lbImages[lbImgIdx];
+
+  // Update bg blur
+  lbBgBlur.style.backgroundImage = `url(${src})`;
+
+  // Fade image
+  if (animate) {
+    lbImg.classList.add('lb-fade');
+    setTimeout(() => {
+      lbImg.src = src;
+      lbImg.onload = () => lbImg.classList.remove('lb-fade');
+      // fallback in case already cached
+      if (lbImg.complete) lbImg.classList.remove('lb-fade');
+    }, 180);
+  } else {
+    lbImg.src = src;
+  }
+
+  // Counter
+  lbCounter.textContent =
+    String(lbImgIdx + 1).padStart(2, '0') + ' / ' +
+    String(lbImages.length).padStart(2, '0');
+
+  // Dots
+  lbDotsEl.querySelectorAll('.lb-dot').forEach((d, i) => {
+    d.classList.toggle('active', i === lbImgIdx);
+  });
+
+  // Scroll active dot into view
+  const activeDot = lbDotsEl.querySelectorAll('.lb-dot')[lbImgIdx];
+  if (activeDot) activeDot.scrollIntoView({inline:'center',block:'nearest',behavior:'smooth'});
+}
+
+function lbNext() { lbShowImg(lbImgIdx + 1, true); }
+function lbPrev() { lbShowImg(lbImgIdx - 1, true); }
+
+lbClose.addEventListener('click', closeLightbox);
+lbNextBtn.addEventListener('click', lbNext);
+lbPrevBtn.addEventListener('click', lbPrev);
+
+// Close on backdrop click
+lbOverlay.addEventListener('click', e => {
+  if (e.target === lbOverlay || e.target === document.getElementById('lb-img-wrap')) closeLightbox();
+});
+
+// Touch swipe inside lightbox
+let lbTouchX = 0;
+lbOverlay.addEventListener('touchstart', e => { lbTouchX = e.touches[0].clientX; }, { passive: true });
+lbOverlay.addEventListener('touchend', e => {
+  const dx = e.changedTouches[0].clientX - lbTouchX;
+  if (Math.abs(dx) > 40) { dx < 0 ? lbNext() : lbPrev(); }
+});
 </script>
 </body>
 </html>
