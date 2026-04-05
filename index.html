@@ -220,11 +220,11 @@ nav{position:fixed;top:0;left:0;right:0;z-index:999;display:flex;align-items:cen
   letter-spacing:.5px;
   white-space:nowrap;
   pointer-events:none;
-  z-index:4;
+  z-index:10;
   transition:opacity .4s;
 }
-.phone-screen.has-images{cursor:zoom-in;}
-.phone-screen.has-images:hover .phone-tap-hint{opacity:0;}
+.phone-shell.has-images{cursor:zoom-in;}
+.phone-shell.has-images:hover .phone-tap-hint{opacity:0;}
 
 /* CAROUSEL CONTROLS */
 .carousel-controls{position:absolute;bottom:0;left:0;right:0;z-index:10;display:flex;align-items:center;justify-content:space-between;padding:20px 60px 28px;}
@@ -933,9 +933,10 @@ PROJECTS.forEach((p,idx)=>{
 
   const hasImages = p.images.length > 0;
   const tapHintHtml = hasImages ? `<div class="phone-tap-hint">TAP TO VIEW ALL</div>` : '';
-  const screenClass = hasImages ? 'phone-screen has-images' : 'phone-screen';
+  const shellClass = hasImages ? 'phone-shell has-images' : 'phone-shell';
+  const screenClass = 'phone-screen';
 
-  slide.innerHTML=`${bgHtml}<div class="slide-inner"><div class="slide-left"><div class="slide-num">${p.num}</div><div class="slide-badges">${badgesHtml}</div><div class="slide-title">${p.title}</div><p class="slide-desc">${p.desc}</p><div class="slide-stack">${tagsHtml}</div>${linksHtml}</div><div class="slide-right"><div class="phone-shell"><div class="phone-glow" style="background:${p.glow};"></div><div class="phone-frame"></div><div class="phone-notch"></div><div class="${screenClass}" data-proj-idx="${idx}">${phoneContent}${tapHintHtml}</div></div></div></div>`;
+  slide.innerHTML=`${bgHtml}<div class="slide-inner"><div class="slide-left"><div class="slide-num">${p.num}</div><div class="slide-badges">${badgesHtml}</div><div class="slide-title">${p.title}</div><p class="slide-desc">${p.desc}</p><div class="slide-stack">${tagsHtml}</div>${linksHtml}</div><div class="slide-right"><div class="${shellClass}" data-proj-idx="${idx}">${tapHintHtml}<div class="phone-glow" style="background:${p.glow};"></div><div class="phone-frame"></div><div class="phone-notch"></div><div class="${screenClass}">${phoneContent}</div></div></div></div>`;
   track.appendChild(slide);
 
   const dot=document.createElement('button');
@@ -944,11 +945,11 @@ PROJECTS.forEach((p,idx)=>{
   dotsEl.appendChild(dot);
 });
 
-// Tap-to-open lightbox on phone screens with images
+// Tap-to-open lightbox on whole phone shell with images
 track.addEventListener('click', e => {
-  const screen = e.target.closest('.phone-screen.has-images');
-  if(!screen) return;
-  const idx = parseInt(screen.dataset.projIdx, 10);
+  const shell = e.target.closest('.phone-shell.has-images');
+  if(!shell) return;
+  const idx = parseInt(shell.dataset.projIdx, 10);
   openLightbox(idx, 0);
 });
 
