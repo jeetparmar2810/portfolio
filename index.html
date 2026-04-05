@@ -20,7 +20,7 @@ nav{position:fixed;top:0;left:0;right:0;z-index:999;display:flex;align-items:cen
 [data-theme="dark"] nav{background:rgba(9,11,18,.88);}
 [data-theme="light"] nav{background:rgba(250,250,248,.92);}
 .nav-logo{font-family:'Fraunces',serif;font-size:22px;font-weight:900;background:linear-gradient(135deg,var(--accent),#a78bfa);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;}
-.nav-links{display:flex;align-items:center;gap:32px;}
+.nav-links{display:flex;align-items:center;gap:24px;}
 .nav-links a{font-size:13px;font-weight:500;color:var(--text2);transition:color var(--transition);}
 .nav-links a:hover,.nav-links a.active{color:var(--text);}
 .nav-actions{display:flex;align-items:center;gap:12px;}
@@ -30,7 +30,7 @@ nav{position:fixed;top:0;left:0;right:0;z-index:999;display:flex;align-items:cen
 .nav-cta:hover{transform:translateY(-1px);box-shadow:0 8px 24px var(--accent-glow);}
 .hamburger{display:none;flex-direction:column;gap:5px;cursor:pointer;padding:4px;background:none;border:none;}
 .hamburger span{width:22px;height:2px;background:var(--text2);border-radius:2px;display:block;}
-@media(max-width:768px){nav{padding:0 20px;}.nav-links{display:none;}.hamburger{display:flex;}}
+@media(max-width:900px){nav{padding:0 20px;}.nav-links{display:none;}.hamburger{display:flex;}}
 .mob-menu{position:fixed;top:64px;left:0;right:0;background:var(--bg2);border-bottom:1px solid var(--border);padding:20px;display:none;flex-direction:column;gap:0;z-index:998;}
 .mob-menu.open{display:flex;}
 .mob-menu a{font-size:15px;font-weight:500;color:var(--text2);padding:14px 0;border-bottom:1px solid var(--border);}
@@ -52,8 +52,13 @@ nav{position:fixed;top:0;left:0;right:0;z-index:999;display:flex;align-items:cen
 .hero-name .f{color:var(--text);}
 .hero-name .l{background:linear-gradient(135deg,var(--accent) 20%,#a78bfa 60%,#38bdf8);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;}
 .hero-title{font-family:'Fraunces',serif;font-size:clamp(15px,2.2vw,20px);font-weight:300;font-style:italic;color:var(--text2);margin-bottom:26px;letter-spacing:-.2px;}
-.hero-desc{font-size:15.5px;color:var(--text2);line-height:1.82;max-width:550px;margin-bottom:38px;}
+.hero-desc{font-size:15.5px;color:var(--text2);line-height:1.82;max-width:580px;margin-bottom:24px;}
 .hero-desc strong{color:var(--text);font-weight:600;}
+.versatile-row{display:flex;flex-wrap:wrap;gap:9px;margin-bottom:32px;align-items:center;}
+.vr-label{font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:1.5px;color:var(--text3);margin-right:4px;}
+.vchip{padding:5px 13px;border-radius:100px;font-size:12px;font-weight:600;border:1px solid var(--border);background:var(--bg3);color:var(--text2);transition:all var(--transition);}
+.vchip:hover{border-color:var(--accent);color:var(--accent);background:var(--accent-soft);}
+.vchip.extra{border-color:rgba(16,185,129,.2);color:var(--green);background:rgba(16,185,129,.06);}
 .chips{display:flex;flex-wrap:wrap;gap:8px;margin-bottom:42px;}
 .chip{padding:6px 14px;border-radius:100px;font-size:12px;font-weight:600;border:1px solid var(--border);background:var(--bg3);color:var(--text2);transition:all var(--transition);}
 .chip:hover{border-color:var(--accent);color:var(--accent);background:var(--accent-soft);}
@@ -92,6 +97,22 @@ nav{position:fixed;top:0;left:0;right:0;z-index:999;display:flex;align-items:cen
 .stitle em{font-style:italic;color:var(--accent);}
 .sdesc{font-size:15px;color:var(--text2);max-width:520px;line-height:1.78;}
 
+/* ACHIEVEMENTS */
+.ach-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(240px,1fr));gap:14px;margin-top:48px;}
+.ach-card{background:var(--bg4);border:1px solid var(--border);border-radius:18px;padding:26px 24px;transition:all var(--transition);position:relative;overflow:hidden;}
+[data-theme="dark"] .ach-card{background:var(--bg3);}
+.ach-card::before{content:'';position:absolute;inset:0;opacity:0;background:radial-gradient(circle at top left,rgba(108,99,255,.07),transparent 60%);transition:opacity var(--transition);pointer-events:none;}
+.ach-card:hover{border-color:var(--border-h);transform:translateY(-4px);box-shadow:var(--shadow);}
+.ach-card:hover::before{opacity:1;}
+.ach-card.gc{border-color:rgba(16,185,129,.12);}
+.ach-card.gc::before{background:radial-gradient(circle at top left,rgba(16,185,129,.07),transparent 60%);}
+.ach-card.gc:hover{border-color:rgba(16,185,129,.35);}
+.ach-ico{font-size:30px;margin-bottom:14px;}
+.ach-num{font-family:'Fraunces',serif;font-size:36px;font-weight:900;letter-spacing:-2px;background:linear-gradient(135deg,var(--accent),#a78bfa);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;line-height:1;margin-bottom:6px;}
+.ach-num.g{background:linear-gradient(135deg,var(--green),var(--teal));-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;}
+.ach-title{font-size:14px;font-weight:700;color:var(--text);margin-bottom:5px;}
+.ach-desc{font-size:12.5px;color:var(--text2);line-height:1.65;}
+
 /* AI BANNER */
 .ai-box{background:linear-gradient(135deg,rgba(16,185,129,.06),rgba(6,182,212,.04));border:1px solid rgba(16,185,129,.2);border-radius:16px;padding:28px 32px;display:flex;align-items:center;gap:22px;margin:48px 0;position:relative;overflow:hidden;}
 .ai-box::after{content:'';position:absolute;top:-40px;right:-40px;width:140px;height:140px;border-radius:50%;background:radial-gradient(circle,rgba(16,185,129,.1),transparent 70%);}
@@ -114,6 +135,7 @@ nav{position:fixed;top:0;left:0;right:0;z-index:999;display:flex;align-items:cen
 [data-theme="light"] .sk-tag{background:var(--bg3);}
 .sk-tag:hover{border-color:var(--accent);color:var(--accent);background:var(--accent-soft);}
 .sk-tag.ai{border-color:rgba(16,185,129,.2);color:var(--green);background:rgba(16,185,129,.06);}
+.sk-tag.tl{border-color:rgba(6,182,212,.2);color:var(--teal);background:rgba(6,182,212,.06);}
 
 /* TIMELINE */
 .tl{position:relative;padding-left:32px;margin-top:52px;}
@@ -164,6 +186,15 @@ nav{position:fixed;top:0;left:0;right:0;z-index:999;display:flex;align-items:cen
 .plink{font-size:11px;font-weight:700;color:var(--accent);display:flex;align-items:center;gap:4px;white-space:nowrap;transition:all var(--transition);}
 .plink:hover{color:#a78bfa;transform:translateX(2px);}
 
+/* ADDITIONAL PROJECTS */
+.add-proj-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(280px,1fr));gap:10px;margin-bottom:8px;}
+.add-proj-card{display:flex;align-items:flex-start;gap:12px;background:var(--bg4);border:1px solid var(--border);border-radius:12px;padding:14px 16px;transition:all var(--transition);}
+[data-theme="dark"] .add-proj-card{background:var(--bg3);}
+.add-proj-card:hover{border-color:var(--border-h);transform:translateX(3px);}
+.add-proj-ico{font-size:20px;flex-shrink:0;margin-top:1px;}
+.add-proj-title{font-size:13px;font-weight:700;color:var(--text);margin-bottom:3px;}
+.add-proj-desc{font-size:12px;color:var(--text2);line-height:1.55;}
+
 /* EDUCATION */
 .edu-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(280px,1fr));gap:14px;margin-top:48px;}
 .edu-card{background:var(--bg4);border:1px solid var(--border);border-radius:16px;padding:26px;transition:all var(--transition);}
@@ -183,6 +214,14 @@ nav{position:fixed;top:0;left:0;right:0;z-index:999;display:flex;align-items:cen
 .ctc-ico{width:38px;height:38px;border-radius:10px;background:var(--accent-soft);border:1px solid rgba(108,99,255,.2);display:flex;align-items:center;justify-content:center;font-size:16px;flex-shrink:0;}
 .ctc-lbl{font-size:10px;font-weight:700;text-transform:uppercase;letter-spacing:1px;color:var(--text3);margin-bottom:3px;}
 .ctc-val{font-size:13px;font-weight:600;color:var(--text);white-space:nowrap;overflow:hidden;text-overflow:ellipsis;}
+.open-box{background:linear-gradient(135deg,rgba(108,99,255,.06),rgba(167,139,250,.04));border:1px solid rgba(108,99,255,.18);border-radius:16px;padding:26px 30px;margin-top:36px;display:flex;flex-wrap:wrap;gap:20px;align-items:flex-start;}
+.open-box-left{flex:1;min-width:200px;}
+.open-box-left h4{font-family:'Fraunces',serif;font-size:17px;font-weight:700;color:var(--accent);margin-bottom:6px;}
+.open-box-left p{font-size:13px;color:var(--text2);line-height:1.7;}
+.open-tags{display:flex;flex-wrap:wrap;gap:8px;align-items:center;}
+.otag{padding:6px 14px;border-radius:8px;font-size:12px;font-weight:600;border:1px solid var(--border);background:var(--bg3);color:var(--text2);transition:all var(--transition);}
+.otag:hover{border-color:var(--accent);color:var(--accent);background:var(--accent-soft);}
+.otag.py{border-color:rgba(6,182,212,.25);color:var(--teal);background:rgba(6,182,212,.07);}
 
 /* FOOTER */
 footer{text-align:center;padding:32px 20px;border-top:1px solid var(--border);color:var(--text3);font-size:13px;line-height:1.8;}
@@ -203,6 +242,7 @@ footer strong{color:var(--accent);}
 <nav id="nav">
   <a href="#" class="nav-logo">JP</a>
   <div class="nav-links">
+    <a href="#achievements">Achievements</a>
     <a href="#skills">Skills</a>
     <a href="#experience">Experience</a>
     <a href="#projects">Projects</a>
@@ -211,39 +251,52 @@ footer strong{color:var(--accent);}
   </div>
   <div class="nav-actions">
     <button class="theme-btn" id="themeBtn">🌙</button>
-    <a href="JITENDRA___Senior_Mobile_Application_Developer___pdf.pdf" target="_blank" class="nav-cta">Resume ↗</a>
+    <a href="Jitendra_Parmar_Senior_Mobile_Application_Developer.pdf" target="_blank" class="nav-cta">Resume ↗</a>
     <button class="hamburger" id="hbg"><span></span><span></span><span></span></button>
   </div>
 </nav>
 
 <div class="mob-menu" id="mob">
+  <a href="#achievements">Achievements</a>
   <a href="#skills">Skills</a>
   <a href="#experience">Experience</a>
   <a href="#projects">Projects</a>
   <a href="#education">Education</a>
   <a href="#contact">Contact</a>
-  <a href="JITENDRA___Senior_Mobile_Application_Developer___pdf.pdf" target="_blank">Download Resume ↗</a>
+  <a href="Jitendra_Parmar_Senior_Mobile_Application_Developer.pdf" target="_blank">Download Resume ↗</a>
 </div>
 
+<!-- HERO -->
 <section class="hero" id="home">
   <div class="orb orb1"></div>
   <div class="orb orb2"></div>
   <div class="hero-in">
     <div class="eyebrow rv"><span class="edot"></span><span>Open to opportunities · Ahmedabad, India</span></div>
     <div class="hero-name rv" style="transition-delay:.08s"><div class="f">Jeet</div><div class="l">Parmar.</div></div>
-    <p class="hero-title rv" style="transition-delay:.15s">Senior Mobile Developer &amp; AI Workflow Engineer</p>
-    <p class="hero-desc rv" style="transition-delay:.2s"><strong>10+ years</strong> building high-performance Android &amp; Flutter applications. From native Kotlin to cross-platform Flutter, from ARCore 3D experiences to Groq AI integrations — I craft mobile software that scales.</p>
+    <p class="hero-title rv" style="transition-delay:.15s">Senior Mobile Application Developer &amp; AI Workflow Engineer</p>
+    <p class="hero-desc rv" style="transition-delay:.2s">
+      <strong>10+ years</strong> building high-performance Android &amp; Flutter applications. Core focus is <strong>mobile app development</strong> — and I'm equally comfortable helping with <strong>logos, websites, backend (Firebase)</strong>, and bringing in <strong>AI &amp; automation</strong> wherever it adds value.
+    </p>
+    <div class="versatile-row rv" style="transition-delay:.23s">
+      <span class="vr-label">Also OK with →</span>
+      <span class="vchip">🎨 Logo Design</span>
+      <span class="vchip">🌐 Website Dev</span>
+      <span class="vchip">🔥 Backend · Firebase</span>
+      <span class="vchip extra">🐍 Python · Overview</span>
+      <span class="vchip extra">🤖 AI Agents</span>
+    </div>
     <div class="chips rv" style="transition-delay:.25s">
       <span class="chip">📱 Flutter &amp; Dart</span><span class="chip">🤖 Android · Kotlin</span><span class="chip">🏗 Clean Architecture</span><span class="chip">🔥 Firebase</span><span class="chip ai">🧠 AI Integrations</span><span class="chip ai">⚡ n8n Automation</span><span class="chip">🦾 ARCore &amp; ML Kit</span><span class="chip">⚙️ CI/CD</span><span class="chip">🤝 Team Lead</span>
     </div>
     <div class="btns rv" style="transition-delay:.3s">
       <a href="#projects" class="btn-p">View My Work ↓</a>
-      <a href="JITENDRA___Senior_Mobile_Application_Developer___pdf.pdf" target="_blank" class="btn-o">Download Resume</a>
+      <a href="Jitendra_Parmar_Senior_Mobile_Application_Developer.pdf" target="_blank" class="btn-o">Download Resume</a>
     </div>
   </div>
   <div class="scroll-hint"><div class="scroll-line"></div><span>Scroll to explore</span></div>
 </section>
 
+<!-- STATS BAR -->
 <div class="stats">
   <div class="stat rv"><div class="stat-n">10+</div><div class="stat-l">Years Exp.</div></div>
   <div class="stat rv"><div class="stat-n">30+</div><div class="stat-l">Apps Built</div></div>
@@ -253,37 +306,129 @@ footer strong{color:var(--accent);}
   <div class="stat rv"><div class="stat-n">5</div><div class="stat-l">Companies</div></div>
 </div>
 
-<section class="sec" id="skills">
+<!-- ACHIEVEMENTS — new section -->
+<section class="sec" id="achievements">
   <div class="con">
-    <div class="slabel rv"><span>What I Work With</span></div>
-    <h2 class="stitle rv">Tech <em>Stack</em></h2>
-    <p class="sdesc rv">A decade of hands-on mobile experience — plus modern AI, AR, and automation tooling.</p>
-    <div class="ai-box rv">
-      <div class="ai-box-icon">🧠</div>
-      <div><h3>Now working with AI &amp; Automation</h3><p>Building agent-based workflows, LLM integrations, ARCore experiences, FFmpeg-powered video AI, and intelligent automation pipelines alongside production mobile development.</p></div>
-      <div class="ai-pill">New Skill</div>
-    </div>
-    <div class="sk-grid">
-      <div class="sk-card rv"><div class="sk-head"><span class="sk-ico">📱</span><span class="sk-cat">Mobile Development</span></div><div class="sk-tags"><span class="sk-tag">Flutter</span><span class="sk-tag">Android Native</span><span class="sk-tag">Dart</span><span class="sk-tag">Kotlin</span><span class="sk-tag">Java</span><span class="sk-tag">Jetpack Compose</span></div></div>
-      <div class="sk-card rv"><div class="sk-head"><span class="sk-ico">🏗</span><span class="sk-cat">Architecture</span></div><div class="sk-tags"><span class="sk-tag">MVVM</span><span class="sk-tag">MVC</span><span class="sk-tag">MVP</span><span class="sk-tag">Clean Architecture</span><span class="sk-tag">Feature-first</span></div></div>
-      <div class="sk-card rv"><div class="sk-head"><span class="sk-ico">🔄</span><span class="sk-cat">State Management</span></div><div class="sk-tags"><span class="sk-tag">Riverpod</span><span class="sk-tag">Bloc</span><span class="sk-tag">Cubit</span><span class="sk-tag">GetX</span><span class="sk-tag">Provider</span></div></div>
-      <div class="sk-card rv"><div class="sk-head"><span class="sk-ico">🔥</span><span class="sk-cat">Backend &amp; Database</span></div><div class="sk-tags"><span class="sk-tag">Firebase</span><span class="sk-tag">REST APIs</span><span class="sk-tag">GraphQL</span><span class="sk-tag">Retrofit</span><span class="sk-tag">Dio</span><span class="sk-tag">Room DB</span><span class="sk-tag">SQLite</span><span class="sk-tag">Realm</span><span class="sk-tag">Firestore</span><span class="sk-tag">FCM</span></div></div>
-      <div class="sk-card rv"><div class="sk-head"><span class="sk-ico">🧠</span><span class="sk-cat">AI, AR &amp; ML</span></div><div class="sk-tags"><span class="sk-tag ai">n8n Automation</span><span class="sk-tag ai">AI Agents</span><span class="sk-tag ai">Groq API</span><span class="sk-tag ai">Whisper STT</span><span class="sk-tag ai">ML Kit</span><span class="sk-tag ai">ARCore</span><span class="sk-tag ai">Sceneform</span><span class="sk-tag ai">FFmpeg Kit</span><span class="sk-tag ai">LLM Integration</span><span class="sk-tag ai">OpenAI</span><span class="sk-tag ai">Claude API</span></div></div>
-      <div class="sk-card rv"><div class="sk-head"><span class="sk-ico">⚙️</span><span class="sk-cat">DevOps &amp; Tools</span></div><div class="sk-tags"><span class="sk-tag">GitHub Actions</span><span class="sk-tag">GitLab CI/CD</span><span class="sk-tag">Firebase Dist.</span><span class="sk-tag">Git</span><span class="sk-tag">Jira</span><span class="sk-tag">Figma</span><span class="sk-tag">SonarQube</span></div></div>
-      <div class="sk-card rv"><div class="sk-head"><span class="sk-ico">💳</span><span class="sk-cat">Integrations</span></div><div class="sk-tags"><span class="sk-tag">CameraX</span><span class="sk-tag">In-App Purchases</span><span class="sk-tag">Payment Gateways</span><span class="sk-tag">BLE / Wi-Fi</span><span class="sk-tag">ADB Protocol</span><span class="sk-tag">YouTube Lounge</span><span class="sk-tag">ExoPlayer</span><span class="sk-tag">Social SDKs</span></div></div>
-      <div class="sk-card rv"><div class="sk-head"><span class="sk-ico">🔬</span><span class="sk-cat">Methodologies</span></div><div class="sk-tags"><span class="sk-tag">Agile / Scrum</span><span class="sk-tag">Code Reviews</span><span class="sk-tag">Unit Testing</span><span class="sk-tag">Integration Testing</span><span class="sk-tag">Mentoring</span></div></div>
+    <div class="slabel rv"><span>Proven Track Record</span></div>
+    <h2 class="stitle rv">Professional <em>Achievements</em></h2>
+    <p class="sdesc rv">Numbers and milestones earned across 10+ years of shipping real, production-grade products.</p>
+    <div class="ach-grid">
+      <div class="ach-card rv">
+        <div class="ach-ico">📱</div>
+        <div class="ach-num">30+</div>
+        <div class="ach-title">Mobile Applications Delivered</div>
+        <div class="ach-desc">Shipped 30+ Android &amp; Flutter apps across social, music, e-commerce, healthcare, AR/VR, and AI verticals.</div>
+      </div>
+      <div class="ach-card rv">
+        <div class="ach-ico">⬇️</div>
+        <div class="ach-num g">100K+</div>
+        <div class="ach-title">Cumulative App Downloads</div>
+        <div class="ach-desc">Applications live on Google Play Store and Apple App Store with 100K+ total downloads and growing user bases.</div>
+      </div>
+      <div class="ach-card gc rv">
+        <div class="ach-ico">⭐</div>
+        <div class="ach-num g">4★+</div>
+        <div class="ach-title">Avg Play Store Rating</div>
+        <div class="ach-desc">Multiple published apps maintaining 4+ star ratings — reflecting strong UX, performance, and stability.</div>
+      </div>
+      <div class="ach-card rv">
+        <div class="ach-ico">🤝</div>
+        <div class="ach-num">5</div>
+        <div class="ach-title">Companies · Team Lead</div>
+        <div class="ach-desc">Led development teams, conducted code reviews, and mentored junior developers across 5 companies from agencies to product startups.</div>
+      </div>
+      <div class="ach-card gc rv">
+        <div class="ach-ico">🧠</div>
+        <div class="ach-num g">AI</div>
+        <div class="ach-title">AR, ML &amp; AI in Production</div>
+        <div class="ach-desc">Built production-grade features using Groq API, Google ML Kit, ARCore, FFmpeg, and CrewAI agent pipelines — not just prototypes.</div>
+      </div>
+      <div class="ach-card rv">
+        <div class="ach-ico">⚙️</div>
+        <div class="ach-num">CI/CD</div>
+        <div class="ach-title">Automated Pipelines Built</div>
+        <div class="ach-desc">Set up GitHub Actions &amp; GitLab CI/CD pipelines that cut build/deploy time and improved release quality across multiple teams.</div>
+      </div>
     </div>
   </div>
 </section>
 
-<section class="sec alt" id="experience">
+<!-- SKILLS -->
+<section class="sec alt" id="skills">
+  <div class="con">
+    <div class="slabel rv"><span>What I Work With</span></div>
+    <h2 class="stitle rv">Tech <em>Stack</em></h2>
+    <p class="sdesc rv">A decade of hands-on mobile experience — plus modern AI, AR, and automation tooling added on top as an additional layer of capability.</p>
+    <div class="ai-box rv">
+      <div class="ai-box-icon">🧠</div>
+      <div><h3>AI &amp; Automation — as an additional skill</h3><p>On top of core Flutter &amp; Android work, I now build agent-based workflows, LLM integrations (OpenAI, Groq, Claude), CrewAI multi-agent pipelines, personal AI tools, ARCore experiences, FFmpeg-powered video AI, and n8n automation.</p></div>
+      <div class="ai-pill">Additional Skill</div>
+    </div>
+    <div class="sk-grid">
+      <div class="sk-card rv">
+        <div class="sk-head"><span class="sk-ico">📱</span><span class="sk-cat">Mobile Development · Core</span></div>
+        <div class="sk-tags"><span class="sk-tag">Flutter</span><span class="sk-tag">Android Native</span><span class="sk-tag">Dart</span><span class="sk-tag">Kotlin</span><span class="sk-tag">Java</span><span class="sk-tag">Jetpack Compose</span></div>
+      </div>
+      <div class="sk-card rv">
+        <div class="sk-head"><span class="sk-ico">🏗</span><span class="sk-cat">Architecture</span></div>
+        <div class="sk-tags"><span class="sk-tag">MVVM</span><span class="sk-tag">MVC</span><span class="sk-tag">MVP</span><span class="sk-tag">Clean Architecture</span><span class="sk-tag">Feature-first</span></div>
+      </div>
+      <div class="sk-card rv">
+        <div class="sk-head"><span class="sk-ico">🔄</span><span class="sk-cat">State Management</span></div>
+        <div class="sk-tags"><span class="sk-tag">Riverpod</span><span class="sk-tag">Bloc</span><span class="sk-tag">Cubit</span><span class="sk-tag">GetX</span><span class="sk-tag">Provider</span></div>
+      </div>
+      <div class="sk-card rv">
+        <div class="sk-head"><span class="sk-ico">🔥</span><span class="sk-cat">Backend &amp; Database</span></div>
+        <div class="sk-tags"><span class="sk-tag">Firebase</span><span class="sk-tag">REST APIs</span><span class="sk-tag">GraphQL</span><span class="sk-tag">Retrofit</span><span class="sk-tag">Dio</span><span class="sk-tag">OkHttp</span><span class="sk-tag">Volley</span><span class="sk-tag">Room DB</span><span class="sk-tag">SQLite</span><span class="sk-tag">Realm</span><span class="sk-tag">Firestore</span><span class="sk-tag">FCM</span></div>
+      </div>
+      <!-- NEW: Libraries card -->
+      <div class="sk-card rv">
+        <div class="sk-head"><span class="sk-ico">📦</span><span class="sk-cat">Libraries &amp; Components</span></div>
+        <div class="sk-tags"><span class="sk-tag">RxJava</span><span class="sk-tag">Dagger 2</span><span class="sk-tag">Navigation Component</span><span class="sk-tag">EventBus</span><span class="sk-tag">ButterKnife</span><span class="sk-tag">Lottie</span><span class="sk-tag">Glide</span><span class="sk-tag">CameraX</span><span class="sk-tag">ExoPlayer</span></div>
+      </div>
+      <!-- AI card with CrewAI, Personal AI, OpenGL -->
+      <div class="sk-card rv" style="border-color:rgba(16,185,129,.18);">
+        <div class="sk-head"><span class="sk-ico">🧠</span><span class="sk-cat">AI, AR &amp; Automation · Additional</span></div>
+        <div class="sk-tags">
+          <span class="sk-tag ai">n8n Automation</span><span class="sk-tag ai">AI Agents</span><span class="sk-tag ai">CrewAI</span><span class="sk-tag ai">Personal AI</span><span class="sk-tag ai">Groq API</span><span class="sk-tag ai">Whisper STT</span><span class="sk-tag ai">ML Kit</span><span class="sk-tag ai">ARCore</span><span class="sk-tag ai">Sceneform</span><span class="sk-tag ai">FFmpeg Kit</span><span class="sk-tag ai">LLM Integration</span><span class="sk-tag ai">OpenAI</span><span class="sk-tag ai">Claude API</span><span class="sk-tag ai">OpenGL ES 3.0</span>
+        </div>
+      </div>
+      <div class="sk-card rv">
+        <div class="sk-head"><span class="sk-ico">⚙️</span><span class="sk-cat">DevOps &amp; CI/CD</span></div>
+        <div class="sk-tags"><span class="sk-tag">GitHub Actions</span><span class="sk-tag">GitLab CI/CD</span><span class="sk-tag">Firebase Dist.</span><span class="sk-tag">Git</span><span class="sk-tag">Android Studio</span><span class="sk-tag">VS Code</span><span class="sk-tag">Jira</span><span class="sk-tag">Figma</span><span class="sk-tag">SonarQube</span></div>
+      </div>
+      <!-- NEW: Analytics card -->
+      <div class="sk-card rv">
+        <div class="sk-head"><span class="sk-ico">📊</span><span class="sk-cat">Analytics &amp; Optimization</span></div>
+        <div class="sk-tags"><span class="sk-tag">Google Analytics</span><span class="sk-tag">AppsFlyer</span><span class="sk-tag">Optimizely</span><span class="sk-tag">Firebase Analytics</span><span class="sk-tag">Crashlytics</span></div>
+      </div>
+      <div class="sk-card rv">
+        <div class="sk-head"><span class="sk-ico">💳</span><span class="sk-cat">Integrations &amp; Protocols</span></div>
+        <div class="sk-tags"><span class="sk-tag">In-App Purchases</span><span class="sk-tag">Payment Gateways</span><span class="sk-tag">BLE / Wi-Fi</span><span class="sk-tag">ADB Protocol</span><span class="sk-tag">WebSocket</span><span class="sk-tag">Speech-to-Text</span><span class="sk-tag">TTS</span><span class="sk-tag">YouTube Lounge</span><span class="sk-tag">Social SDKs</span></div>
+      </div>
+      <div class="sk-card rv">
+        <div class="sk-head"><span class="sk-ico">🔬</span><span class="sk-cat">Methodologies</span></div>
+        <div class="sk-tags"><span class="sk-tag">Agile / Scrum</span><span class="sk-tag">Code Reviews</span><span class="sk-tag">Unit Testing</span><span class="sk-tag">Integration Testing</span><span class="sk-tag">Mentoring</span></div>
+      </div>
+      <div class="sk-card rv" style="border-color:rgba(6,182,212,.15);">
+        <div class="sk-head"><span class="sk-ico">✨</span><span class="sk-cat">Also OK With</span></div>
+        <div class="sk-tags">
+          <span class="sk-tag tl">🎨 Logo Design</span><span class="sk-tag tl">🌐 Website Development</span><span class="sk-tag tl">🔥 Backend · Firebase</span><span class="sk-tag tl">🐍 Python · Overview</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- EXPERIENCE -->
+<section class="sec" id="experience">
   <div class="con">
     <div class="slabel rv"><span>Career Journey</span></div>
     <h2 class="stitle rv">Work <em>Experience</em></h2>
     <p class="sdesc rv">10+ years across product companies, agencies, and startups — from Android Developer to Senior Engineer leading teams and building AI-powered products.</p>
     <div class="tl">
       <div class="tl-item rv"><div class="tl-dot cur"></div><div class="tl-date cur">Dec 2024 – Present</div><div class="tl-role">Senior Software Engineer</div><div class="tl-co">Gooroo Mobility India Pvt. Ltd. · Ahmedabad</div><p class="tl-desc">Leading mobile application development with Android &amp; Flutter. Architecting scalable, maintainable solutions using clean architecture. Implementing CI/CD pipelines via GitHub Actions, building <strong>n8n workflow automations</strong>, and working with <strong>agent-based AI development</strong> for intelligent automation.</p><div class="tl-tags"><span class="ttag">Flutter</span><span class="ttag">Android</span><span class="ttag">Riverpod</span><span class="ttag">Bloc</span><span class="ttag">GitHub Actions</span><span class="ttag ai">n8n</span><span class="ttag ai">AI Agents</span><span class="ttag">Clean Architecture</span></div></div>
-      <div class="tl-item rv"><div class="tl-dot"></div><div class="tl-date">Mar 2023 – Dec 2024</div><div class="tl-role">Senior Software Engineer</div><div class="tl-co">Brainvire Infotech Pvt. Ltd. · Ahmedabad</div><p class="tl-desc">Developed and maintained multiple Android &amp; Flutter applications for international clients. Led code reviews, mentored junior developers, implemented Jetpack Compose UI. Integrated Firebase services, GraphQL APIs, and third-party SDKs.</p><div class="tl-tags"><span class="ttag">Flutter</span><span class="ttag">Jetpack Compose</span><span class="ttag">GraphQL</span><span class="ttag">Firebase</span><span class="ttag">CI/CD</span><span class="ttag">Mentoring</span></div></div>
+      <div class="tl-item rv"><div class="tl-dot"></div><div class="tl-date">Mar 2023 – Dec 2024</div><div class="tl-role">Senior Software Engineer</div><div class="tl-co">Brainvire Infotech Pvt. Ltd. · Ahmedabad</div><p class="tl-desc">Developed and maintained multiple Android &amp; Flutter applications for international clients. Led code reviews, mentored junior developers, implemented Jetpack Compose UI. Integrated Firebase services, GraphQL APIs, and third-party SDKs. Optimized performance improving load times and reducing crash rates.</p><div class="tl-tags"><span class="ttag">Flutter</span><span class="ttag">Jetpack Compose</span><span class="ttag">GraphQL</span><span class="ttag">Firebase</span><span class="ttag">CI/CD</span><span class="ttag">Mentoring</span></div></div>
       <div class="tl-item rv"><div class="tl-dot"></div><div class="tl-date">Jun 2021 – Feb 2023</div><div class="tl-role">Senior Software Engineer</div><div class="tl-co">TOPS Infosolutions Pvt. Ltd. · Ahmedabad</div><p class="tl-desc">Native Android development using Kotlin/Java with MVVM architecture. Implemented In-App Purchases, real-time Cloud Firestore chat, and BLE hardware integrations using Estimote and Kontakt IO SDK. Published multiple apps with 4★+ ratings.</p><div class="tl-tags"><span class="ttag">Kotlin</span><span class="ttag">MVVM</span><span class="ttag">BLE</span><span class="ttag">Firestore</span><span class="ttag">In-App Purchases</span></div></div>
       <div class="tl-item rv"><div class="tl-dot"></div><div class="tl-date">Aug 2016 – May 2021</div><div class="tl-role">Android Developer</div><div class="tl-co">Wedowebapps Pvt. Ltd. · Ahmedabad</div><p class="tl-desc">Built 15+ Android apps across music, video, e-commerce, and utilities. Created custom media player and video editing apps with advanced features. Implemented social sharing, push notifications, and analytics. Smartwatch development experience.</p><div class="tl-tags"><span class="ttag">Android</span><span class="ttag">Java</span><span class="ttag">ExoPlayer</span><span class="ttag">REST APIs</span><span class="ttag">Smartwatch</span></div></div>
       <div class="tl-item rv"><div class="tl-dot"></div><div class="tl-date">Aug 2014 – Aug 2016</div><div class="tl-role">Android Developer</div><div class="tl-co">Alakmalak Technologies Pvt. Ltd. · Ahmedabad</div><p class="tl-desc">Started career building Android apps in Java. Developed e-commerce applications with payment gateway integration, SQLite database management, and Material Design UI. Full SDLC participation.</p><div class="tl-tags"><span class="ttag">Java</span><span class="ttag">Android SDK</span><span class="ttag">SQLite</span><span class="ttag">Material Design</span></div></div>
@@ -291,17 +436,17 @@ footer strong{color:var(--accent);}
   </div>
 </section>
 
-<section class="sec" id="projects">
+<!-- PROJECTS -->
+<section class="sec alt" id="projects">
   <div class="con">
     <div class="slabel rv"><span>Featured Work</span></div>
     <h2 class="stitle rv">Key <em>Projects</em></h2>
     <p class="sdesc rv">Production apps and AI-powered tools — real users, real impact, real code.</p>
-
     <div style="margin-top:48px;">
       <div class="proj-label cur rv">⚡ Current Projects</div>
       <div class="pgrid">
         <div class="pcard cur-c rv"><div class="ptop"><div class="pico">🏢</div><div class="pbadges"><span class="pbadge cur"><span class="d"></span>Current</span><span class="pbadge ai">AI-Powered</span></div></div><div class="ptitle">RedCarpetOffice</div><p class="pdesc">Smart office booking platform with role-based dashboards. Gmail OAuth integration with AI email signal detection (flights, invoices, hotel) and a smart suggestion engine cross-referencing calendar events for contextual reminders.</p><div class="pfooter"><div class="pstack"><span class="ptag">Flutter</span><span class="ptag">Dart</span><span class="ptag">Riverpod</span><span class="ptag">Gmail API</span><span class="ptag">Clean Arch</span></div></div></div>
-        <div class="pcard cur-c rv"><div class="ptop"><div class="pico">📄</div><div class="pbadges"><span class="pbadge cur"><span class="d"></span>Current</span><span class="pbadge ai">ML Kit</span></div></div><div class="ptitle">GMScan – Document Scanner</div><p class="pdesc">Multi-type AI document scanner for ID cards, business cards, books (ISBN → Open Library) &amp; documents. Multi-provider auth, offline-first Room DB, cloud sync queue, and analytics dashboard.</p><div class="pfooter"><div class="pstack"><span class="ptag">Android</span><span class="ptag">Java</span><span class="ptag">CameraX</span><span class="ptag">ML Kit</span><span class="ptag">Room DB</span></div></div></div>
+        <div class="pcard cur-c rv"><div class="ptop"><div class="pico">📄</div><div class="pbadges"><span class="pbadge cur"><span class="d"></span>Current</span><span class="pbadge ai">ML Kit</span></div></div><div class="ptitle">GMScan – Document Scanner</div><p class="pdesc">Multi-type AI document scanner for ID cards, business cards, books (ISBN → Open Library) &amp; documents. Multi-provider auth (Google, Facebook, Apple, LinkedIn, Dropbox), offline-first Room DB, cloud sync queue, and analytics dashboard.</p><div class="pfooter"><div class="pstack"><span class="ptag">Android</span><span class="ptag">Java</span><span class="ptag">CameraX</span><span class="ptag">ML Kit</span><span class="ptag">Room DB</span></div></div></div>
         <div class="pcard cur-c rv"><div class="ptop"><div class="pico">🐾</div><div class="pbadges"><span class="pbadge cur"><span class="d"></span>Current</span><span class="pbadge ar">AR / XR</span></div></div><div class="ptitle">Animal World AR</div><p class="pdesc">Educational AR app for kids using Google ARCore &amp; Sceneform to place interactive 3D animals in the real world. A–Z encyclopedia with TTS narration, multilingual tracing for 8 Indian languages.</p><div class="pfooter"><div class="pstack"><span class="ptag">Android</span><span class="ptag">Java</span><span class="ptag">ARCore</span><span class="ptag">Sceneform</span><span class="ptag">TTS</span></div></div></div>
         <div class="pcard cur-c rv"><div class="ptop"><div class="pico">📺</div><div class="pbadges"><span class="pbadge cur"><span class="d"></span>Current</span><span class="pbadge ai">Groq AI</span></div></div><div class="ptitle">GMI IQ Remote</div><p class="pdesc">Universal AI smart TV remote for Android TV, Samsung Tizen, LG webOS, Sony Bravia &amp; Roku. Voice control with intent detection, YouTube Lounge API, Groq LLaMA 3.1, and ADB session monitoring.</p><div class="pfooter"><div class="pstack"><span class="ptag">Flutter</span><span class="ptag">Groq API</span><span class="ptag">STT</span><span class="ptag">ADB</span><span class="ptag">WebSocket</span></div></div></div>
         <div class="pcard cur-c rv"><div class="ptop"><div class="pico">✂️</div><div class="pbadges"><span class="pbadge cur"><span class="d"></span>Current</span><span class="pbadge ai">10 AI Tools</span></div></div><div class="ptitle">Video Editor Studio SDK</div><p class="pdesc">Full AI-powered video editing SDK with timeline editor, PiP multi-layer, 10 AI tools (BG removal, highlights, stabilisation, smart crop, silence removal &amp; more), Groq Whisper subtitles in 12 languages, FFmpeg export.</p><div class="pfooter"><div class="pstack"><span class="ptag">Flutter</span><span class="ptag">Riverpod</span><span class="ptag">FFmpeg</span><span class="ptag">Whisper</span><span class="ptag">ML Kit</span></div></div></div>
@@ -316,11 +461,23 @@ footer strong{color:var(--accent);}
         <div class="pcard rv"><div class="ptop"><div class="pico">🌾</div><div class="pbadges"><span class="pbadge store">Play Store</span></div></div><div class="ptitle">Ke Insumos</div><p class="pdesc">Agricultural marketplace with dual user roles, order management, and real-time tracking.</p><div class="pfooter"><div class="pstack"><span class="ptag">Flutter</span><span class="ptag">GetX</span><span class="ptag">Firebase</span></div><a href="https://play.google.com/store/apps/details?id=com.keinsumos" target="_blank" class="plink">Play Store ↗</a></div></div>
         <div class="pcard rv"><div class="ptop"><div class="pico">🥗</div><div class="pbadges"><span class="pbadge store">Play Store</span></div></div><div class="ptitle">Dietas Saludables</div><p class="pdesc">Health &amp; fitness app with 30+ diet plans, BMI calculator, and intuitive meal planning UI.</p><div class="pfooter"><div class="pstack"><span class="ptag">Android</span><span class="ptag">SQLite</span><span class="ptag">Custom UI</span></div><a href="https://play.google.com/store/apps/details?id=com.lomasdefrida.dietassaludablesV2" target="_blank" class="plink">Play Store ↗</a></div></div>
       </div>
+
+      <!-- NEW: Additional Notable Projects from resume -->
+      <div class="proj-label rv">🗂 Additional Notable Projects</div>
+      <div class="add-proj-grid">
+        <div class="add-proj-card rv"><div class="add-proj-ico">🚗</div><div><div class="add-proj-title">PIP Car</div><div class="add-proj-desc">Picture-in-Picture video player designed for automotive entertainment use cases.</div></div></div>
+        <div class="add-proj-card rv"><div class="add-proj-ico">🏥</div><div><div class="add-proj-title">Access 24</div><div class="add-proj-desc">Healthcare access and patient management application with real-time data flows.</div></div></div>
+        <div class="add-proj-card rv"><div class="add-proj-ico">🔗</div><div><div class="add-proj-title">Smoogle (Konnect)</div><div class="add-proj-desc">Social connectivity platform helping users discover and connect with their communities.</div></div></div>
+        <div class="add-proj-card rv"><div class="add-proj-ico">✍️</div><div><div class="add-proj-title">Cosign</div><div class="add-proj-desc">Digital signature and document management platform for secure e-signing workflows.</div></div></div>
+        <div class="add-proj-card rv"><div class="add-proj-ico">🏇</div><div><div class="add-proj-title">HPE</div><div class="add-proj-desc">Horse racing and football tips prediction app with live odds and user picks.</div></div></div>
+        <div class="add-proj-card rv"><div class="add-proj-ico">📡</div><div><div class="add-proj-title">Hardware BLE Apps</div><div class="add-proj-desc">BLE-based integration apps using Estimote and Kontakt IO SDK for beacon connectivity and proximity sensing.</div></div></div>
+      </div>
     </div>
   </div>
 </section>
 
-<section class="sec alt" id="education">
+<!-- EDUCATION -->
+<section class="sec" id="education">
   <div class="con">
     <div class="slabel rv"><span>Academic Background</span></div>
     <h2 class="stitle rv">Edu<em>cation</em></h2>
@@ -331,71 +488,65 @@ footer strong{color:var(--accent);}
   </div>
 </section>
 
-<section class="sec" id="contact">
+<!-- CONTACT -->
+<section class="sec alt" id="contact">
   <div class="con">
     <div class="ctc-wrap">
       <div class="slabel rv" style="justify-content:center"><span>Say Hello</span></div>
       <h2 class="stitle rv" style="text-align:center">Get in <em>Touch</em></h2>
-      <p class="sdesc rv" style="margin:12px auto 0;text-align:center;">Available for full-time roles, freelance, AI consulting &amp; automation work. English · Hindi · Gujarati.</p>
+      <p class="sdesc rv" style="margin:12px auto 0;text-align:center;">Primary focus is <strong>Mobile App Development</strong> — and happy to help with logo design, websites, backend (Firebase), or AI agent projects. English · Hindi · Gujarati.</p>
+      <div class="open-box rv">
+        <div class="open-box-left">
+          <h4>Open to all kinds of work</h4>
+          <p>Mobile dev is my core, but I'm comfortable taking on the full picture — design, web, backend, or AI.</p>
+        </div>
+        <div class="open-tags">
+          <span class="otag">📱 Mobile Apps</span>
+          <span class="otag">🎨 Logo Design</span>
+          <span class="otag">🌐 Website Dev</span>
+          <span class="otag">🔥 Backend · Firebase</span>
+          <span class="otag py">🐍 Python · Overview</span>
+          <span class="otag py">🤖 AI Agents · CrewAI</span>
+        </div>
+      </div>
       <div class="ctc-grid rv">
         <a href="mailto:jeet.mobiledeveloper@gmail.com" class="ctc-card"><div class="ctc-ico">✉️</div><div><div class="ctc-lbl">Email</div><div class="ctc-val">jeet.mobiledeveloper@gmail.com</div></div></a>
         <a href="https://www.linkedin.com/in/jeet-parmar-a37b0b98" target="_blank" class="ctc-card"><div class="ctc-ico">💼</div><div><div class="ctc-lbl">LinkedIn</div><div class="ctc-val">jeet-parmar-a37b0b98</div></div></a>
         <a href="https://jeetparmar2810.github.io/portfolio" target="_blank" class="ctc-card"><div class="ctc-ico">🌐</div><div><div class="ctc-lbl">Portfolio</div><div class="ctc-val">jeetparmar2810.github.io</div></div></a>
         <a href="tel:+919327972901" class="ctc-card"><div class="ctc-ico">📞</div><div><div class="ctc-lbl">Phone</div><div class="ctc-val">+91 93279 72901</div></div></a>
-        <a href="JITENDRA___Senior_Mobile_Application_Developer___pdf.pdf" target="_blank" class="ctc-card"><div class="ctc-ico">📄</div><div><div class="ctc-lbl">Resume</div><div class="ctc-val">Download PDF ↗</div></div></a>
+        <a href="Jitendra_Parmar_Senior_Mobile_Application_Developer.pdf" target="_blank" class="ctc-card"><div class="ctc-ico">📄</div><div><div class="ctc-lbl">Resume</div><div class="ctc-val">Download PDF ↗</div></div></a>
         <a class="ctc-card"><div class="ctc-ico">📍</div><div><div class="ctc-lbl">Location</div><div class="ctc-val">Ahmedabad, Gujarat, India</div></div></a>
       </div>
     </div>
   </div>
 </section>
 
-<footer>Designed &amp; built with care by <strong>Jeet Parmar</strong><br>Senior Flutter, Android &amp; AI Developer · Ahmedabad, India</footer>
+<footer>Designed &amp; built with care by <strong>Jeet Parmar</strong><br>Senior Mobile Application Developer &amp; AI Workflow Engineer · Ahmedabad, India</footer>
 <button class="btop" id="btop">↑</button>
 
 <script>
-// THEME
 const html=document.documentElement,tb=document.getElementById('themeBtn');
 let dark=localStorage.getItem('theme')!=='light';
 html.setAttribute('data-theme',dark?'dark':'light');
 tb.textContent=dark?'🌙':'☀️';
 tb.addEventListener('click',()=>{
-  dark=!dark;
-  const t=dark?'dark':'light';
-  html.setAttribute('data-theme',t);
-  tb.textContent=dark?'🌙':'☀️';
-  localStorage.setItem('theme',t);
+  dark=!dark;const t=dark?'dark':'light';
+  html.setAttribute('data-theme',t);tb.textContent=dark?'🌙':'☀️';localStorage.setItem('theme',t);
 });
-
-// MOBILE MENU
 const hbg=document.getElementById('hbg'),mob=document.getElementById('mob');
 hbg.addEventListener('click',()=>mob.classList.toggle('open'));
 mob.querySelectorAll('a').forEach(a=>a.addEventListener('click',()=>mob.classList.remove('open')));
-
-// REVEAL
 const rvs=document.querySelectorAll('.rv');
 const obs=new IntersectionObserver(entries=>{
   entries.forEach(e=>{if(e.isIntersecting)e.target.classList.add('in');});
 },{threshold:0.07,rootMargin:'0px 0px -36px 0px'});
 rvs.forEach((el,i)=>{el.style.transitionDelay=(i%5)*0.055+'s';obs.observe(el);});
 setTimeout(()=>rvs.forEach(el=>el.classList.add('in')),1100);
-
-// ACTIVE NAV
 const secs=document.querySelectorAll('section[id]');
 const nls=document.querySelectorAll('.nav-links a');
-new IntersectionObserver(entries=>{
-  entries.forEach(e=>{
-    if(e.isIntersecting){
-      nls.forEach(a=>a.classList.remove('active'));
-      const a=document.querySelector('.nav-links a[href="#'+e.target.id+'"]');
-      if(a)a.classList.add('active');
-    }
-  });
-},{threshold:0.4}).observe;
 secs.forEach(s=>new IntersectionObserver(entries=>{
   entries.forEach(e=>{if(e.isIntersecting){nls.forEach(a=>a.classList.remove('active'));const a=document.querySelector('.nav-links a[href="#'+e.target.id+'"]');if(a)a.classList.add('active');}});
 },{threshold:0.35}).observe(s));
-
-// BACK TOP
 const bt=document.getElementById('btop');
 window.addEventListener('scroll',()=>bt.classList.toggle('show',scrollY>400));
 bt.addEventListener('click',()=>window.scrollTo({top:0,behavior:'smooth'}));
