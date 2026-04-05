@@ -83,6 +83,11 @@ nav{display:flex;justify-content:space-between;align-items:center;padding:14px 4
 .exp-tags{display:flex;flex-wrap:wrap;gap:7px;margin-top:13px;}
 .etag{background:rgba(124,92,252,.09);border:1px solid rgba(124,92,252,.2);color:#b09ffe;font-size:11px;font-weight:600;padding:3px 10px;border-radius:50px;}
 .etag.ai{background:rgba(34,211,165,.09);border-color:rgba(34,211,165,.2);color:var(--ai);}
+
+/* Project section label */
+.proj-section-label{width:100%;grid-column:1/-1;font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:2.5px;color:var(--accent2);padding:8px 0 4px;border-bottom:1px solid var(--border);margin-bottom:4px;}
+.proj-section-label.current{color:var(--ai);}
+
 .projects-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(290px,1fr));gap:16px;}
 .proj-card{background:var(--bg3);border:1px solid var(--border);border-radius:var(--r2);padding:24px;transition:border-color .25s,transform .25s;}
 .proj-card:hover{border-color:rgba(124,92,252,.4);transform:translateY(-4px);}
@@ -97,6 +102,7 @@ nav{display:flex;justify-content:space-between;align-items:center;padding:14px 4
 .proj-stack{display:flex;flex-wrap:wrap;gap:5px;}
 .ptag{background:rgba(255,255,255,.04);border:1px solid var(--border);color:var(--muted);font-size:11px;font-weight:600;padding:3px 9px;border-radius:7px;}
 .ai-label{display:inline-flex;align-items:center;gap:5px;background:rgba(34,211,165,.1);border:1px solid rgba(34,211,165,.2);color:var(--ai);font-size:10px;font-weight:800;padding:3px 9px;border-radius:50px;text-transform:uppercase;letter-spacing:1px;margin-bottom:8px;}
+.current-badge{display:inline-flex;align-items:center;gap:5px;background:rgba(34,197,94,.08);border:1px solid rgba(34,197,94,.2);color:#4ade80;font-size:10px;font-weight:800;padding:3px 9px;border-radius:50px;text-transform:uppercase;letter-spacing:1px;margin-bottom:8px;margin-left:6px;}
 .apps-list{display:flex;flex-direction:column;gap:12px;}
 .app-card{background:var(--bg3);border:1px solid var(--border);border-radius:18px;display:flex;align-items:center;gap:18px;padding:16px 20px;cursor:pointer;transition:border-color .25s,transform .2s,box-shadow .25s;-webkit-tap-highlight-color:transparent;position:relative;overflow:hidden;user-select:none;}
 .app-card:hover{border-color:rgba(124,92,252,.4);transform:translateY(-2px);box-shadow:0 12px 40px rgba(0,0,0,.3);}
@@ -164,7 +170,6 @@ nav{display:flex;justify-content:space-between;align-items:center;padding:14px 4
 @media(max-width:480px){.cl{font-size:12px;padding:11px 15px;gap:7px;}}
 footer{text-align:center;padding:28px 20px;color:var(--muted);font-size:13px;border-top:1px solid var(--border);line-height:1.7;}
 footer strong{color:var(--accent);}
-/* REVEAL: visible by default. JS adds animation. */
 .rv{opacity:1;transform:none;}
 .rv.anim{opacity:0;transform:translateY(20px);transition:opacity .55s ease,transform .55s ease;}
 .rv.anim.in{opacity:1;transform:none;}
@@ -220,9 +225,9 @@ footer strong{color:var(--accent);}
     <div class="rv"><div class="sct">🏗 Architecture &amp; Patterns</div><div class="skills-wrap"><span class="skill">MVVM</span><span class="skill">MVC</span><span class="skill">MVP</span><span class="skill">Clean Architecture</span></div></div>
     <div class="rv"><div class="sct">🔄 State Management</div><div class="skills-wrap"><span class="skill">Riverpod</span><span class="skill">Bloc</span><span class="skill">Cubit</span><span class="skill">GetX</span><span class="skill">Provider</span></div></div>
     <div class="rv"><div class="sct">🔥 Backend &amp; Database</div><div class="skills-wrap"><span class="skill">Firebase</span><span class="skill">REST APIs</span><span class="skill">GraphQL</span><span class="skill">Retrofit</span><span class="skill">Dio</span><span class="skill">SQLite</span><span class="skill">Room DB</span><span class="skill">Realm</span><span class="skill">Cloud Firestore</span><span class="skill">FCM</span></div></div>
-    <div class="rv"><div class="sct ai">🧠 AI &amp; Automation</div><div class="skills-wrap"><span class="skill ai">n8n Workflow Automation</span><span class="skill ai">AI Agent Development</span><span class="skill ai">LLM Integration</span><span class="skill ai">Prompt Engineering</span><span class="skill ai">RAG Pipelines</span><span class="skill ai">OpenAI API</span><span class="skill ai">Claude API</span><span class="skill ai">Agentic Systems</span></div></div>
+    <div class="rv"><div class="sct ai">🧠 AI &amp; Automation</div><div class="skills-wrap"><span class="skill ai">n8n Workflow Automation</span><span class="skill ai">AI Agent Development</span><span class="skill ai">LLM Integration</span><span class="skill ai">Prompt Engineering</span><span class="skill ai">RAG Pipelines</span><span class="skill ai">OpenAI API</span><span class="skill ai">Claude API</span><span class="skill ai">Agentic Systems</span><span class="skill ai">Groq API</span><span class="skill ai">Google ML Kit</span><span class="skill ai">ARCore / Sceneform</span><span class="skill ai">FFmpeg Kit</span></div></div>
     <div class="rv"><div class="sct">⚙️ DevOps &amp; Tools</div><div class="skills-wrap"><span class="skill">GitHub Actions</span><span class="skill">GitLab CI/CD</span><span class="skill">Firebase Distribution</span><span class="skill">Git</span><span class="skill">Jira</span><span class="skill">Figma</span><span class="skill">SonarQube</span></div></div>
-    <div class="rv"><div class="sct">💳 Integrations &amp; More</div><div class="skills-wrap"><span class="skill">In-App Purchases</span><span class="skill">Payment Gateways</span><span class="skill">BLE / Wi-Fi API</span><span class="skill">Google Analytics</span><span class="skill">AppsFlyer</span><span class="skill">Optimizely</span><span class="skill">ExoPlayer</span><span class="skill">Social Media SDKs</span></div></div>
+    <div class="rv"><div class="sct">💳 Integrations &amp; More</div><div class="skills-wrap"><span class="skill">In-App Purchases</span><span class="skill">Payment Gateways</span><span class="skill">BLE / Wi-Fi API</span><span class="skill">Google Analytics</span><span class="skill">AppsFlyer</span><span class="skill">Optimizely</span><span class="skill">ExoPlayer</span><span class="skill">Social Media SDKs</span><span class="skill">CameraX</span><span class="skill">YouTube Lounge API</span><span class="skill">ADB Protocol</span></div></div>
   </div>
 </section>
 
@@ -238,15 +243,81 @@ footer strong{color:var(--accent);}
 </section>
 
 <section class="sec" id="projects">
-  <div class="sh rv"><div class="sl">Featured Work</div><div class="st">Key <span class="g">Projects</span></div><p class="sd">Production apps and AI workflows with real users and real impact.</p></div>
+  <div class="sh rv"><div class="sl">Featured Work</div><div class="st">Key <span class="g">Projects</span></div><p class="sd">Production apps and AI-powered tools with real users and real impact.</p></div>
   <div class="projects-grid">
+
+    <!-- ── CURRENT PROJECTS LABEL ─────────────────────────────────────────── -->
+    <div class="proj-section-label current rv">⚡ Current Projects</div>
+
+    <!-- RedCarpetOffice -->
+    <div class="proj-card ai-card rv">
+      <div class="ai-label">🤖 AI-Powered</div><span class="current-badge"><span class="live-dot"></span>Current</span>
+      <div class="proj-top"><div class="proj-icon">🏢</div></div>
+      <div class="proj-title">RedCarpetOffice</div>
+      <div class="proj-desc">Smart office space booking platform connecting vendors &amp; clients. Features Gmail OAuth integration with AI-powered email signal detection (flights, invoices, bookings) and a smart suggestion engine that surfaces contextual reminders from calendar events.</div>
+      <div class="proj-stack"><span class="ptag">Flutter</span><span class="ptag">Dart</span><span class="ptag">Riverpod</span><span class="ptag">Gmail API</span><span class="ptag">Google Calendar API</span><span class="ptag">Clean Architecture</span></div>
+    </div>
+
+    <!-- GMScan -->
+    <div class="proj-card ai-card rv">
+      <div class="ai-label">📷 ML Kit</div><span class="current-badge"><span class="live-dot"></span>Current</span>
+      <div class="proj-top"><div class="proj-icon">📄</div></div>
+      <div class="proj-title">GMScan – Document Scanner</div>
+      <div class="proj-desc">Multi-type AI document scanner supporting ID cards, business cards, books (ISBN barcode → Open Library API), and general documents. Features multi-provider auth (Google, Facebook, Apple, LinkedIn), offline-first Room DB, cloud sync, and usage analytics dashboard.</div>
+      <div class="proj-stack"><span class="ptag">Android</span><span class="ptag">Java</span><span class="ptag">CameraX</span><span class="ptag">ML Kit</span><span class="ptag">Room DB</span><span class="ptag">Retrofit</span><span class="ptag">Lottie</span></div>
+    </div>
+
+    <!-- Animal World AR -->
+    <div class="proj-card rv">
+      <div class="ai-label" style="background:rgba(92,228,252,.1);border-color:rgba(92,228,252,.2);color:var(--accent3);">🦁 AR / XR</div><span class="current-badge"><span class="live-dot"></span>Current</span>
+      <div class="proj-top"><div class="proj-icon">🐾</div></div>
+      <div class="proj-title">Animal World AR</div>
+      <div class="proj-desc">Educational AR app for kids using Google ARCore &amp; Sceneform to place interactive 3D animal models in the real world. Features A–Z animal encyclopedia, Text-to-Speech narration, custom letter tracing canvas, and multilingual support for 8 Indian languages.</div>
+      <div class="proj-stack"><span class="ptag">Android</span><span class="ptag">Java</span><span class="ptag">ARCore</span><span class="ptag">Sceneform</span><span class="ptag">TTS</span><span class="ptag">OpenGL ES 3.0</span><span class="ptag">Lottie</span></div>
+    </div>
+
+    <!-- GMI IQ Remote -->
+    <div class="proj-card ai-card rv">
+      <div class="ai-label">🧠 Groq AI + Voice</div><span class="current-badge"><span class="live-dot"></span>Current</span>
+      <div class="proj-top"><div class="proj-icon">📺</div></div>
+      <div class="proj-title">GMI IQ Remote</div>
+      <div class="proj-desc">Universal AI smart TV remote supporting 5 platforms: Android TV, Samsung Tizen, LG webOS, Sony Bravia &amp; Roku. Features auto TV discovery, YouTube Lounge API pairing, voice control with intent detection, Groq LLaMA 3.1 AI suggestions, and ADB session monitoring.</div>
+      <div class="proj-stack"><span class="ptag">Flutter</span><span class="ptag">Dart</span><span class="ptag">Groq API</span><span class="ptag">Speech-to-Text</span><span class="ptag">YouTube Lounge API</span><span class="ptag">ADB Protocol</span><span class="ptag">WebSocket</span></div>
+    </div>
+
+    <!-- Video Editor Studio -->
+    <div class="proj-card ai-card rv">
+      <div class="ai-label">🎬 10 AI Tools</div><span class="current-badge"><span class="live-dot"></span>Current</span>
+      <div class="proj-top"><div class="proj-icon">✂️</div></div>
+      <div class="proj-title">Video Editor Studio SDK</div>
+      <div class="proj-desc">Full-featured AI-powered video editing SDK. Built 10 AI tools (background removal, object removal, auto highlights, scene detection, stabilization, smart crop &amp; more). Groq Whisper auto-subtitles with 12-language support, PiP multi-layer, FFmpeg export, undo/redo, and animated overlays.</div>
+      <div class="proj-stack"><span class="ptag">Flutter</span><span class="ptag">Dart</span><span class="ptag">Riverpod</span><span class="ptag">FFmpeg Kit</span><span class="ptag">Groq Whisper</span><span class="ptag">Google ML Kit</span><span class="ptag">video_player</span></div>
+    </div>
+
+    <!-- ── PREVIOUS PROJECTS LABEL ─────────────────────────────────────────── -->
+    <div class="proj-section-label rv">📦 Previous Projects</div>
+
+    <!-- n8n Automation -->
     <div class="proj-card ai-card rv"><div class="ai-label">🧠 AI Workflow</div><div class="proj-top"><div class="proj-icon">⚡</div></div><div class="proj-title">n8n Automation Pipelines</div><div class="proj-desc">Built intelligent workflow automations integrating LLMs, APIs, and internal tools. Automated team reporting, notification systems, and data processing pipelines reducing manual work by 70%.</div><div class="proj-stack"><span class="ptag">n8n</span><span class="ptag">OpenAI</span><span class="ptag">REST APIs</span><span class="ptag">Webhooks</span></div></div>
+
+    <!-- QuirkChat -->
     <div class="proj-card rv"><div class="proj-top"><div class="proj-icon">💬</div><a href="https://play.google.com/store/apps/details?id=com.quirktastic" target="_blank" class="proj-link">Play Store ↗</a></div><div class="proj-title">QuirkChat</div><div class="proj-desc">Social networking platform for geek communities &amp; fandom clubs. Real-time chat with Cloud Firestore, social authentication, and push notifications.</div><div class="proj-stack"><span class="ptag">Kotlin</span><span class="ptag">MVVM</span><span class="ptag">Firebase</span><span class="ptag">Firestore</span><span class="ptag">FCM</span></div></div>
+
+    <!-- Vibez -->
     <div class="proj-card rv"><div class="proj-top"><div class="proj-icon">🎵</div><a href="https://play.google.com/store/apps/details?id=com.ostech.vibez" target="_blank" class="proj-link">Play Store ↗</a></div><div class="proj-title">Vibez — African Music</div><div class="proj-desc">Music streaming platform connecting African artists with global audiences. Playlist management, offline playback, and premium subscription payments.</div><div class="proj-stack"><span class="ptag">Kotlin</span><span class="ptag">ExoPlayer</span><span class="ptag">Retrofit</span><span class="ptag">Room</span><span class="ptag">In-App Purchases</span></div></div>
+
+    <!-- FM Contractor -->
     <div class="proj-card rv"><div class="proj-top"><div class="proj-icon">🏗</div><a href="https://play.google.com/store/apps/details?id=com.contractorfm" target="_blank" class="proj-link">Play Store ↗</a></div><div class="proj-title">FM Contractor</div><div class="proj-desc">Business management app for contractors and broker networks with complex business logic, data visualization dashboards and reporting.</div><div class="proj-stack"><span class="ptag">Kotlin</span><span class="ptag">MVVM</span><span class="ptag">Retrofit</span><span class="ptag">Google Analytics</span></div></div>
+
+    <!-- Main Court -->
     <div class="proj-card rv"><div class="proj-top"><div class="proj-icon">🏓</div><a href="https://apps.apple.com/us/app/main-court-play-pickleball/id6471336853" target="_blank" class="proj-link">App Store ↗</a></div><div class="proj-title">Main Court: Pickleball</div><div class="proj-desc">Cross-platform iOS &amp; Android app connecting Pickleball players. Match creation, skill-based matching, scheduling, and Google Maps integration.</div><div class="proj-stack"><span class="ptag">Flutter</span><span class="ptag">Bloc</span><span class="ptag">Firebase</span><span class="ptag">Google Maps</span></div></div>
+
+    <!-- Ke Insumos -->
     <div class="proj-card rv"><div class="proj-top"><div class="proj-icon">🌾</div><a href="https://play.google.com/store/apps/details?id=com.keinsumos" target="_blank" class="proj-link">Play Store ↗</a></div><div class="proj-title">Ke Insumos</div><div class="proj-desc">Agricultural marketplace with dual user roles for producers &amp; agronomists. Order management, real-time tracking, and notification system.</div><div class="proj-stack"><span class="ptag">Flutter</span><span class="ptag">GetX</span><span class="ptag">Firebase</span><span class="ptag">REST APIs</span></div></div>
+
+    <!-- Dietas Saludables -->
     <div class="proj-card rv"><div class="proj-top"><div class="proj-icon">🥗</div><a href="https://play.google.com/store/apps/details?id=com.lomasdefrida.dietassaludablesV2" target="_blank" class="proj-link">Play Store ↗</a></div><div class="proj-title">Dietas Saludables</div><div class="proj-desc">Health &amp; fitness app with 30+ diet plans, BMI calculator, ideal weight algorithms, and intuitive meal planning UI.</div><div class="proj-stack"><span class="ptag">Android</span><span class="ptag">SQLite</span><span class="ptag">Custom UI</span><span class="ptag">Material Design</span></div></div>
+
   </div>
 </section>
 
@@ -286,7 +357,6 @@ footer strong{color:var(--accent);}
 
 <footer>Designed &amp; built by <strong>Jeet Parmar</strong> · Senior Flutter, Android &amp; AI Developer · Ahmedabad, India</footer>
 
-<!-- CAROUSEL -->
 <div id="carousel">
   <div class="car-header"><div><div class="car-app-name" id="car-app-name">App</div><div class="car-counter" id="car-counter">1 / 1</div></div><button class="car-close" id="car-close">✕</button></div>
   <div class="car-stage" id="car-stage"><div class="car-track" id="car-track"></div><div class="car-hint" id="car-hint">← Swipe to navigate →</div></div>
@@ -297,7 +367,6 @@ footer strong{color:var(--accent);}
 </div>
 
 <script>
-// CURSOR
 const cur=document.getElementById('cur'),ring=document.getElementById('cur-ring');
 if(window.matchMedia('(pointer:fine)').matches){
   let mx=0,my=0,rx=0,ry=0;
@@ -308,8 +377,6 @@ if(window.matchMedia('(pointer:fine)').matches){
     el.addEventListener('mouseleave',()=>{cur.classList.remove('h');ring.classList.remove('h');});
   });
 }
-
-// SCROLL REVEAL — safe: content always visible, animation is enhancement
 (function(){
   var els=document.querySelectorAll('.rv');
   els.forEach(function(el){el.classList.add('anim');});
@@ -319,11 +386,8 @@ if(window.matchMedia('(pointer:fine)').matches){
   } else {
     els.forEach(function(el){el.classList.add('in');});
   }
-  // Absolute fallback — show everything after 1s no matter what
   setTimeout(function(){els.forEach(function(el){el.classList.add('in');});},1000);
 })();
-
-// APP DATA
 var APP_DATA={
   todo:{name:'📋 Todo App',images:['assets/images/todo/login.png','assets/images/todo/task-list.png','assets/images/todo/add-task.png','assets/images/todo/edit-task.png']},
   video:{name:'📞 Video Call App',images:['assets/images/video/login.png','assets/images/video/users.png','assets/images/video/video-1.png']},
@@ -331,8 +395,6 @@ var APP_DATA={
   studio:{name:'🎬 Video Editor',images:['assets/images/videostudio/1.png','assets/images/videostudio/2.png','assets/images/videostudio/3.png']},
   ns:{name:'🏢 Society App',images:['assets/images/ns/login.webp','assets/images/ns/home.webp','assets/images/ns/dashboard.webp']}
 };
-
-// CAROUSEL
 var car=document.getElementById('carousel');
 var carTrack=document.getElementById('car-track');
 var carName=document.getElementById('car-app-name');
@@ -345,169 +407,37 @@ var carZoomBtn=document.getElementById('car-zoom-btn');
 var images=[],idx=0,total=0,autoTimer=null,autoPlaying=true;
 var AUTO_MS=3800,zScale=1,zPanX=0,zPanY=0,zLvl=0;
 var ZOOM_LEVELS=[1,2,3.2];
-
-function buildSlides(imgs){
-  carTrack.innerHTML='';
-  imgs.forEach(function(src,i){
-    var s=document.createElement('div');
-    s.className='car-slide'+(i===0?' active':i===1?' next':'');
-    var img=document.createElement('img');
-    img.className='car-img';img.src=src;img.alt='Screenshot '+(i+1);img.draggable=false;
-    s.appendChild(img);carTrack.appendChild(s);
-  });
-}
-function buildThumbs(imgs){
-  carThumbRow.innerHTML='';carDots.innerHTML='';
-  imgs.forEach(function(src,i){
-    var th=document.createElement('div');th.className='car-thumb'+(i===0?' on':'');
-    var ti=document.createElement('img');ti.src=src;ti.alt='';ti.loading='lazy';
-    th.appendChild(ti);(function(i){th.addEventListener('click',function(){goTo(i);});})(i);
-    carThumbRow.appendChild(th);
-    var d=document.createElement('div');d.className='car-dot'+(i===0?' on':'');
-    (function(i){d.addEventListener('click',function(){goTo(i);});})(i);
-    carDots.appendChild(d);
-  });
-}
-function goTo(newIdx,dir){
-  var slides=carTrack.querySelectorAll('.car-slide');
-  if(!slides.length)return;
-  var direction=dir!==undefined?dir:(newIdx>idx?1:-1);
-  slides[idx].className='car-slide '+(direction>0?'exit-left':'exit-right');
-  idx=((newIdx%total)+total)%total;
-  resetZoom();
-  slides[idx].className='car-slide '+(direction>0?'next':'prev');
-  void slides[idx].offsetWidth;
-  slides[idx].className='car-slide active';
-  setTimeout(function(){slides.forEach(function(s,i){if(i!==idx)s.className='car-slide';});},420);
-  updateUI();
-  if(autoPlaying)restartAuto();
-}
-function updateUI(){
-  carCount.textContent=(idx+1)+' / '+total;
-  carDots.querySelectorAll('.car-dot').forEach(function(d,i){d.classList.toggle('on',i===idx);});
-  var thumbs=carThumbRow.querySelectorAll('.car-thumb');
-  thumbs.forEach(function(th,i){th.classList.toggle('on',i===idx);});
-  if(thumbs[idx])thumbs[idx].scrollIntoView({behavior:'smooth',block:'nearest',inline:'center'});
-}
-function restartAuto(){
-  clearTimeout(autoTimer);
-  carProg.style.transition='none';carProg.style.width='0%';
-  requestAnimationFrame(function(){requestAnimationFrame(function(){
-    carProg.style.transition='width '+AUTO_MS+'ms linear';carProg.style.width='100%';
-  });});
-  autoTimer=setTimeout(function(){goTo(idx+1,1);},AUTO_MS);
-}
+function buildSlides(imgs){carTrack.innerHTML='';imgs.forEach(function(src,i){var s=document.createElement('div');s.className='car-slide'+(i===0?' active':i===1?' next':'');var img=document.createElement('img');img.className='car-img';img.src=src;img.alt='Screenshot '+(i+1);img.draggable=false;s.appendChild(img);carTrack.appendChild(s);});}
+function buildThumbs(imgs){carThumbRow.innerHTML='';carDots.innerHTML='';imgs.forEach(function(src,i){var th=document.createElement('div');th.className='car-thumb'+(i===0?' on':'');var ti=document.createElement('img');ti.src=src;ti.alt='';ti.loading='lazy';th.appendChild(ti);(function(i){th.addEventListener('click',function(){goTo(i);});})(i);carThumbRow.appendChild(th);var d=document.createElement('div');d.className='car-dot'+(i===0?' on':'');(function(i){d.addEventListener('click',function(){goTo(i);});})(i);carDots.appendChild(d);});}
+function goTo(newIdx,dir){var slides=carTrack.querySelectorAll('.car-slide');if(!slides.length)return;var direction=dir!==undefined?dir:(newIdx>idx?1:-1);slides[idx].className='car-slide '+(direction>0?'exit-left':'exit-right');idx=((newIdx%total)+total)%total;resetZoom();slides[idx].className='car-slide '+(direction>0?'next':'prev');void slides[idx].offsetWidth;slides[idx].className='car-slide active';setTimeout(function(){slides.forEach(function(s,i){if(i!==idx)s.className='car-slide';});},420);updateUI();if(autoPlaying)restartAuto();}
+function updateUI(){carCount.textContent=(idx+1)+' / '+total;carDots.querySelectorAll('.car-dot').forEach(function(d,i){d.classList.toggle('on',i===idx);});var thumbs=carThumbRow.querySelectorAll('.car-thumb');thumbs.forEach(function(th,i){th.classList.toggle('on',i===idx);});if(thumbs[idx])thumbs[idx].scrollIntoView({behavior:'smooth',block:'nearest',inline:'center'});}
+function restartAuto(){clearTimeout(autoTimer);carProg.style.transition='none';carProg.style.width='0%';requestAnimationFrame(function(){requestAnimationFrame(function(){carProg.style.transition='width '+AUTO_MS+'ms linear';carProg.style.width='100%';});});autoTimer=setTimeout(function(){goTo(idx+1,1);},AUTO_MS);}
 function stopAuto(){clearTimeout(autoTimer);carProg.style.transition='none';carProg.style.width='0%';}
 function getActiveImg(){var slides=carTrack.querySelectorAll('.car-slide');return slides[idx]?slides[idx].querySelector('.car-img'):null;}
-function applyZoom(anim){
-  var img=getActiveImg();if(!img)return;
-  img.style.transition=anim?'transform .35s cubic-bezier(.25,.46,.45,.94)':'none';
-  img.style.transform='scale('+zScale+') translate('+(zPanX/zScale)+'px,'+(zPanY/zScale)+'px)';
-  img.classList.toggle('zoomed',zScale>1);
-}
-function clampPan(img){
-  if(!img||zScale<=1){zPanX=0;zPanY=0;return;}
-  var r=img.getBoundingClientRect();
-  var mx=(r.width*(zScale-1))/2,my=(r.height*(zScale-1))/2;
-  zPanX=Math.max(-mx,Math.min(mx,zPanX));zPanY=Math.max(-my,Math.min(my,zPanY));
-}
-function resetZoom(){
-  zScale=1;zPanX=0;zPanY=0;zLvl=0;carZoomBtn.classList.remove('on');carZoomBtn.textContent='🔍';
-  var img=getActiveImg();if(img){img.style.transition='transform .3s ease';img.style.transform='none';img.classList.remove('zoomed');}
-}
-function cycleZoom(cx,cy){
-  zLvl=(zLvl+1)%ZOOM_LEVELS.length;
-  var img=getActiveImg();if(!img)return;
-  var prev=zScale;zScale=ZOOM_LEVELS[zLvl];
-  if(zScale===1){zPanX=0;zPanY=0;}
-  else if(cx!==undefined){var r=img.getBoundingClientRect();zPanX-=(cx-r.left-r.width/2)*(zScale/prev-1);zPanY-=(cy-r.top-r.height/2)*(zScale/prev-1);}
-  clampPan(img);applyZoom(true);carZoomBtn.classList.toggle('on',zScale>1);carZoomBtn.textContent=zScale>1?'🔎':'🔍';
-}
-function openCar(key){
-  var data=APP_DATA[key];if(!data)return;
-  images=data.images;total=images.length;idx=0;
-  carName.textContent=data.name;buildSlides(images);buildThumbs(images);updateUI();
-  car.classList.add('open');document.body.style.overflow='hidden';
-  autoPlaying=true;restartAuto();
-  carHint.classList.add('show');setTimeout(function(){carHint.classList.remove('show');},2200);
-}
+function applyZoom(anim){var img=getActiveImg();if(!img)return;img.style.transition=anim?'transform .35s cubic-bezier(.25,.46,.45,.94)':'none';img.style.transform='scale('+zScale+') translate('+(zPanX/zScale)+'px,'+(zPanY/zScale)+'px)';img.classList.toggle('zoomed',zScale>1);}
+function clampPan(img){if(!img||zScale<=1){zPanX=0;zPanY=0;return;}var r=img.getBoundingClientRect();var mx=(r.width*(zScale-1))/2,my=(r.height*(zScale-1))/2;zPanX=Math.max(-mx,Math.min(mx,zPanX));zPanY=Math.max(-my,Math.min(my,zPanY));}
+function resetZoom(){zScale=1;zPanX=0;zPanY=0;zLvl=0;carZoomBtn.classList.remove('on');carZoomBtn.textContent='🔍';var img=getActiveImg();if(img){img.style.transition='transform .3s ease';img.style.transform='none';img.classList.remove('zoomed');}}
+function cycleZoom(cx,cy){zLvl=(zLvl+1)%ZOOM_LEVELS.length;var img=getActiveImg();if(!img)return;var prev=zScale;zScale=ZOOM_LEVELS[zLvl];if(zScale===1){zPanX=0;zPanY=0;}else if(cx!==undefined){var r=img.getBoundingClientRect();zPanX-=(cx-r.left-r.width/2)*(zScale/prev-1);zPanY-=(cy-r.top-r.height/2)*(zScale/prev-1);}clampPan(img);applyZoom(true);carZoomBtn.classList.toggle('on',zScale>1);carZoomBtn.textContent=zScale>1?'🔎':'🔍';}
+function openCar(key){var data=APP_DATA[key];if(!data)return;images=data.images;total=images.length;idx=0;carName.textContent=data.name;buildSlides(images);buildThumbs(images);updateUI();car.classList.add('open');document.body.style.overflow='hidden';autoPlaying=true;restartAuto();carHint.classList.add('show');setTimeout(function(){carHint.classList.remove('show');},2200);}
 function closeCar(){car.classList.remove('open');document.body.style.overflow='';stopAuto();resetZoom();}
-
 document.querySelectorAll('.app-card').forEach(function(c){c.addEventListener('click',function(){openCar(c.dataset.app);});});
 document.getElementById('car-close').addEventListener('click',closeCar);
 document.getElementById('car-prev').addEventListener('click',function(){goTo(idx-1,-1);});
 document.getElementById('car-next').addEventListener('click',function(){goTo(idx+1,1);});
 carZoomBtn.addEventListener('click',function(){cycleZoom();});
 car.addEventListener('click',function(e){if(e.target===car)closeCar();});
-
-document.addEventListener('keydown',function(e){
-  if(!car.classList.contains('open'))return;
-  if(e.key==='Escape')closeCar();
-  if(e.key==='ArrowLeft')goTo(idx-1,-1);
-  if(e.key==='ArrowRight')goTo(idx+1,1);
-  if(e.key===' '){e.preventDefault();autoPlaying=!autoPlaying;autoPlaying?restartAuto():stopAuto();}
-});
-
-// Stage: single click=next, double click=zoom
+document.addEventListener('keydown',function(e){if(!car.classList.contains('open'))return;if(e.key==='Escape')closeCar();if(e.key==='ArrowLeft')goTo(idx-1,-1);if(e.key==='ArrowRight')goTo(idx+1,1);if(e.key===' '){e.preventDefault();autoPlaying=!autoPlaying;autoPlaying?restartAuto():stopAuto();}});
 var lastClick=0,clickTimer=null;
-document.getElementById('car-stage').addEventListener('click',function(e){
-  if(e.target.closest('.car-btn'))return;
-  var now=Date.now();
-  if(now-lastClick<300){
-    clearTimeout(clickTimer);
-    var img=getActiveImg();if(img){var r=img.getBoundingClientRect();cycleZoom(e.clientX,e.clientY);}
-  } else {
-    clickTimer=setTimeout(function(){if(zScale===1)goTo(idx+1,1);},300);
-  }
-  lastClick=now;
-});
-
-// Mouse pan
+document.getElementById('car-stage').addEventListener('click',function(e){if(e.target.closest('.car-btn'))return;var now=Date.now();if(now-lastClick<300){clearTimeout(clickTimer);var img=getActiveImg();if(img){var r=img.getBoundingClientRect();cycleZoom(e.clientX,e.clientY);}}else{clickTimer=setTimeout(function(){if(zScale===1)goTo(idx+1,1);},300);}lastClick=now;});
 var mDrag=false,mSX=0,mSY=0,mOX=0,mOY=0;
 document.getElementById('car-stage').addEventListener('mousedown',function(e){if(zScale<=1)return;mDrag=true;mSX=e.clientX;mSY=e.clientY;mOX=zPanX;mOY=zPanY;e.preventDefault();});
 document.addEventListener('mousemove',function(e){if(!mDrag)return;zPanX=mOX+(e.clientX-mSX);zPanY=mOY+(e.clientY-mSY);clampPan(getActiveImg());applyZoom(false);});
 document.addEventListener('mouseup',function(){mDrag=false;});
-
-// Wheel zoom
-document.getElementById('car-stage').addEventListener('wheel',function(e){
-  if(!car.classList.contains('open'))return;
-  e.preventDefault();var img=getActiveImg();if(!img)return;
-  var prev=zScale;zScale=Math.max(1,Math.min(4,zScale+(e.deltaY<0?.4:-.4)));
-  if(zScale===1){zPanX=0;zPanY=0;}else{var r=img.getBoundingClientRect();zPanX-=(e.clientX-r.left-r.width/2)*(zScale/prev-1);zPanY-=(e.clientY-r.top-r.height/2)*(zScale/prev-1);}
-  zLvl=zScale<=1?0:zScale<=2?1:2;carZoomBtn.classList.toggle('on',zScale>1);carZoomBtn.textContent=zScale>1?'🔎':'🔍';
-  clampPan(img);applyZoom(false);
-},{passive:false});
-
-// Touch
+document.getElementById('car-stage').addEventListener('wheel',function(e){if(!car.classList.contains('open'))return;e.preventDefault();var img=getActiveImg();if(!img)return;var prev=zScale;zScale=Math.max(1,Math.min(4,zScale+(e.deltaY<0?.4:-.4)));if(zScale===1){zPanX=0;zPanY=0;}else{var r=img.getBoundingClientRect();zPanX-=(e.clientX-r.left-r.width/2)*(zScale/prev-1);zPanY-=(e.clientY-r.top-r.height/2)*(zScale/prev-1);}zLvl=zScale<=1?0:zScale<=2?1:2;carZoomBtn.classList.toggle('on',zScale>1);carZoomBtn.textContent=zScale>1?'🔎':'🔍';clampPan(img);applyZoom(false);},{passive:false});
 var t0=null,t0Y=null,tPO={x:0,y:0},tPD=null,tPS=1,tMov=false,lastTap=0;
-document.getElementById('car-stage').addEventListener('touchstart',function(e){
-  if(e.touches.length===1){t0=e.touches[0].clientX;t0Y=e.touches[0].clientY;tPO={x:zPanX,y:zPanY};tMov=false;tPD=null;}
-  else if(e.touches.length===2){tPD=Math.hypot(e.touches[0].clientX-e.touches[1].clientX,e.touches[0].clientY-e.touches[1].clientY);tPS=zScale;t0=null;}
-},{passive:true});
-document.getElementById('car-stage').addEventListener('touchmove',function(e){
-  if(e.touches.length===2&&tPD!==null){
-    e.preventDefault();
-    var dist=Math.hypot(e.touches[0].clientX-e.touches[1].clientX,e.touches[0].clientY-e.touches[1].clientY);
-    var img=getActiveImg();if(!img)return;
-    zScale=Math.max(1,Math.min(4,tPS*(dist/tPD)));clampPan(img);applyZoom(false);carZoomBtn.classList.toggle('on',zScale>1);
-  } else if(e.touches.length===1&&t0!==null){
-    var dx=e.touches[0].clientX-t0,dy=e.touches[0].clientY-t0Y;
-    if(zScale>1){e.preventDefault();tMov=true;zPanX=tPO.x+dx;zPanY=tPO.y+dy;clampPan(getActiveImg());applyZoom(false);}
-    else if(Math.abs(dx)>8)tMov=true;
-  }
-},{passive:false});
-document.getElementById('car-stage').addEventListener('touchend',function(e){
-  if(e.changedTouches.length===1&&t0!==null&&!tMov&&e.touches.length===0){
-    var dx=e.changedTouches[0].clientX-t0,dy=e.changedTouches[0].clientY-t0Y,now=Date.now();
-    if(Math.abs(dx)<12&&Math.abs(dy)<12){
-      if(now-lastTap<280){var img=getActiveImg();if(img){var r=img.getBoundingClientRect();cycleZoom(e.changedTouches[0].clientX,e.changedTouches[0].clientY);}}
-      lastTap=now;
-    } else if(Math.abs(dx)>Math.abs(dy)&&Math.abs(dx)>48&&zScale===1){
-      stopAuto();if(dx<0)goTo(idx+1,1);else goTo(idx-1,-1);if(autoPlaying)restartAuto();
-    }
-  }
-  t0=null;tPD=null;tMov=false;
-},{passive:true});
+document.getElementById('car-stage').addEventListener('touchstart',function(e){if(e.touches.length===1){t0=e.touches[0].clientX;t0Y=e.touches[0].clientY;tPO={x:zPanX,y:zPanY};tMov=false;tPD=null;}else if(e.touches.length===2){tPD=Math.hypot(e.touches[0].clientX-e.touches[1].clientX,e.touches[0].clientY-e.touches[1].clientY);tPS=zScale;t0=null;}},{passive:true});
+document.getElementById('car-stage').addEventListener('touchmove',function(e){if(e.touches.length===2&&tPD!==null){e.preventDefault();var dist=Math.hypot(e.touches[0].clientX-e.touches[1].clientX,e.touches[0].clientY-e.touches[1].clientY);var img=getActiveImg();if(!img)return;zScale=Math.max(1,Math.min(4,tPS*(dist/tPD)));clampPan(img);applyZoom(false);carZoomBtn.classList.toggle('on',zScale>1);}else if(e.touches.length===1&&t0!==null){var dx=e.touches[0].clientX-t0,dy=e.touches[0].clientY-t0Y;if(zScale>1){e.preventDefault();tMov=true;zPanX=tPO.x+dx;zPanY=tPO.y+dy;clampPan(getActiveImg());applyZoom(false);}else if(Math.abs(dx)>8)tMov=true;}},{passive:false});
+document.getElementById('car-stage').addEventListener('touchend',function(e){if(e.changedTouches.length===1&&t0!==null&&!tMov&&e.touches.length===0){var dx=e.changedTouches[0].clientX-t0,dy=e.changedTouches[0].clientY-t0Y,now=Date.now();if(Math.abs(dx)<12&&Math.abs(dy)<12){if(now-lastTap<280){var img=getActiveImg();if(img){var r=img.getBoundingClientRect();cycleZoom(e.changedTouches[0].clientX,e.changedTouches[0].clientY);}}lastTap=now;}else if(Math.abs(dx)>Math.abs(dy)&&Math.abs(dx)>48&&zScale===1){stopAuto();if(dx<0)goTo(idx+1,1);else goTo(idx-1,-1);if(autoPlaying)restartAuto();}}t0=null;tPD=null;tMov=false;},{passive:true});
 </script>
 </body>
 </html>
