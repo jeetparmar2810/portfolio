@@ -254,14 +254,15 @@ nav{position:fixed;top:0;left:0;right:0;z-index:999;display:flex;align-items:cen
 
 /* CONTACT */
 .ctc-wrap{max-width:700px;margin:0 auto;text-align:center;}
-.ctc-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(200px,1fr));gap:12px;margin-top:40px;}
-.ctc-card{display:flex;align-items:center;gap:12px;background:var(--bg4);border:1px solid var(--border);border-radius:14px;padding:16px 18px;transition:all var(--transition);text-align:left;}
+.ctc-grid{display:grid;grid-template-columns:repeat(6,1fr);gap:10px;margin-top:40px;}
+@media(max-width:900px){.ctc-grid{grid-template-columns:repeat(3,1fr);}}
+@media(max-width:560px){.ctc-grid{grid-template-columns:repeat(2,1fr);}}
+.ctc-card{display:flex;align-items:center;gap:10px;background:var(--bg4);border:1px solid var(--border);border-radius:14px;padding:14px 14px;transition:all var(--transition);text-align:left;min-width:0;}
 [data-theme="dark"] .ctc-card{background:var(--bg3);}
 .ctc-card:hover{border-color:var(--border-h);transform:translateY(-3px);box-shadow:var(--shadow);}
-.ctc-ico{width:38px;height:38px;border-radius:10px;background:var(--accent-soft);border:1px solid rgba(108,99,255,.2);display:flex;align-items:center;justify-content:center;font-size:16px;flex-shrink:0;}
-.ctc-lbl{font-size:10px;font-weight:700;text-transform:uppercase;letter-spacing:1px;color:var(--text3);margin-bottom:3px;}
-/* FIXED: email no longer cut off */
-.ctc-val{font-size:12px;font-weight:600;color:var(--text);word-break:break-all;line-height:1.4;}
+.ctc-ico{width:34px;height:34px;border-radius:9px;background:var(--accent-soft);border:1px solid rgba(108,99,255,.2);display:flex;align-items:center;justify-content:center;font-size:14px;flex-shrink:0;}
+.ctc-lbl{font-size:9px;font-weight:700;text-transform:uppercase;letter-spacing:1px;color:var(--text3);margin-bottom:3px;}
+.ctc-val{font-size:11.5px;font-weight:600;color:var(--text);white-space:nowrap;overflow:hidden;text-overflow:ellipsis;min-width:0;}
 .open-box{background:linear-gradient(135deg,rgba(108,99,255,.06),rgba(167,139,250,.04));border:1px solid rgba(108,99,255,.18);border-radius:16px;padding:26px 30px;margin-top:36px;display:flex;flex-wrap:wrap;gap:20px;align-items:flex-start;}
 .open-box-left{flex:1;min-width:200px;}
 .open-box-left h4{font-family:'Fraunces',serif;font-size:17px;font-weight:700;color:var(--accent);margin-bottom:6px;}
@@ -497,12 +498,12 @@ footer strong{color:var(--accent);}
         </div>
       </div>
       <div class="ctc-grid rv">
-        <a href="mailto:jeet.mobiledeveloper@gmail.com" class="ctc-card"><div class="ctc-ico">✉️</div><div><div class="ctc-lbl">Email</div><div class="ctc-val">jeet.mobiledeveloper@gmail.com</div></div></a>
-        <a href="https://www.linkedin.com/in/jeet-parmar-a37b0b98" target="_blank" class="ctc-card"><div class="ctc-ico">💼</div><div><div class="ctc-lbl">LinkedIn</div><div class="ctc-val">jeet-parmar-a37b0b98</div></div></a>
-        <a href="https://jeetparmar2810.github.io/portfolio" target="_blank" class="ctc-card"><div class="ctc-ico">🌐</div><div><div class="ctc-lbl">Portfolio</div><div class="ctc-val">jeetparmar2810.github.io</div></div></a>
-        <a href="tel:+919327972901" class="ctc-card"><div class="ctc-ico">📞</div><div><div class="ctc-lbl">Phone</div><div class="ctc-val">+91 93279 72901</div></div></a>
-        <a href="Jitendra_Parmar_Senior_Mobile_Application_Developer.pdf" target="_blank" class="ctc-card"><div class="ctc-ico">📄</div><div><div class="ctc-lbl">Resume</div><div class="ctc-val">Download PDF ↗</div></div></a>
-        <a class="ctc-card"><div class="ctc-ico">📍</div><div><div class="ctc-lbl">Location</div><div class="ctc-val">Ahmedabad, Gujarat, India</div></div></a>
+        <a href="mailto:jeet.mobiledeveloper@gmail.com" class="ctc-card"><div class="ctc-ico">✉️</div><div style="min-width:0;"><div class="ctc-lbl">Email</div><div class="ctc-val">jeet.mobiledeveloper@gmail.com</div></div></a>
+        <a href="https://www.linkedin.com/in/jeet-parmar-a37b0b98" target="_blank" class="ctc-card"><div class="ctc-ico">💼</div><div style="min-width:0;"><div class="ctc-lbl">LinkedIn</div><div class="ctc-val">jeet-parmar-a37b0b98</div></div></a>
+        <a href="https://jeetparmar2810.github.io/portfolio" target="_blank" class="ctc-card"><div class="ctc-ico">🌐</div><div style="min-width:0;"><div class="ctc-lbl">Portfolio</div><div class="ctc-val">jeetparmar2810.github.io</div></div></a>
+        <a href="tel:+919327972901" class="ctc-card"><div class="ctc-ico">📞</div><div style="min-width:0;"><div class="ctc-lbl">Phone</div><div class="ctc-val">+91 93279 72901</div></div></a>
+        <a href="Jitendra_Parmar_Senior_Mobile_Application_Developer.pdf" target="_blank" class="ctc-card"><div class="ctc-ico">📄</div><div style="min-width:0;"><div class="ctc-lbl">Resume</div><div class="ctc-val">Download PDF ↗</div></div></a>
+        <a class="ctc-card"><div class="ctc-ico">📍</div><div style="min-width:0;"><div class="ctc-lbl">Location</div><div class="ctc-val">Ahmedabad, Gujarat, India</div></div></a>
       </div>
     </div>
   </div>
@@ -552,10 +553,10 @@ const PROJECTS = [
     glow:'#6c63ff', link:null
   },
   {
-    num:'02', icon:'📄', title:'GMScan – Document Scanner',
-    badges:[{t:'Current',cls:'cur'},{t:'ML Kit',cls:'ai'}],
-    desc:'Multi-type AI document scanner for ID cards, business cards, books (ISBN → Open Library) & documents. Multi-provider auth (Google, Facebook, Apple, LinkedIn, Dropbox), offline-first Room DB, cloud sync queue.',
-    tags:['Android','Java','CameraX','ML Kit','Room DB'],
+    num:'02', icon:'🏘️', title:'Nakshatra Aspire',
+    badges:[{t:'Play Store',cls:'store'},{t:'Society App',cls:'ar'}],
+    desc:'Complete society management app for Nakshatra Aspire residents. Features visitor management, maintenance billing, notices, amenity booking, community chat, and a real-time dashboard for committee members.',
+    tags:['Android','Java','Firebase','Firestore','FCM'],
     images:[
       BASE+'ns/splash.webp',
       BASE+'ns/home.webp',
@@ -564,7 +565,7 @@ const PROJECTS = [
       BASE+'ns/reports.webp'
     ],
     gradient:'linear-gradient(135deg,#041020 0%,#081e38 45%,#020810 100%)',
-    glow:'#06b6d4', link:null
+    glow:'#06b6d4', link:'https://play.google.com/store/apps/details?id=com.nakshatraaspire'
   },
   {
     num:'03', icon:'🐾', title:'Animal World AR',
