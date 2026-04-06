@@ -200,16 +200,10 @@ nav{position:fixed;top:0;left:0;right:0;z-index:999;display:flex;align-items:cen
 .phone-frame{position:absolute;inset:0;border-radius:36px;border:2px solid rgba(255,255,255,.15);background:rgba(255,255,255,.04);backdrop-filter:blur(10px);box-shadow:0 0 0 1px rgba(255,255,255,.05),0 32px 80px rgba(0,0,0,.6),inset 0 1px 0 rgba(255,255,255,.08);}
 .phone-notch{position:absolute;top:14px;left:50%;transform:translateX(-50%);width:60px;height:6px;border-radius:3px;background:rgba(0,0,0,.5);z-index:3;}
 .phone-screen{position:absolute;top:12px;left:8px;right:8px;bottom:12px;border-radius:28px;overflow:hidden;background:#000;}
-.phone-imgs{position:relative;width:100%;height:100%;}
-.phone-img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;opacity:0;transition:opacity .6s ease;}
-.phone-img.active{opacity:1;}
 .phone-placeholder{position:absolute;inset:0;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:14px;}
 .ph-icon{font-size:56px;}
 .ph-label{font-family:'Fraunces',serif;font-size:15px;font-weight:700;color:rgba(255,255,255,.6);text-align:center;padding:0 12px;}
 .phone-glow{position:absolute;inset:-30px;border-radius:50%;filter:blur(40px);opacity:.25;z-index:-1;}
-.phone-tap-hint{position:absolute;bottom:10px;left:50%;transform:translateX(-50%);background:rgba(0,0,0,.7);backdrop-filter:blur(8px);border:1px solid rgba(255,255,255,.15);color:rgba(255,255,255,.8);font-size:10px;font-weight:700;padding:4px 10px;border-radius:20px;letter-spacing:.5px;white-space:nowrap;pointer-events:none;z-index:10;transition:opacity .4s;}
-.phone-shell.has-images{cursor:zoom-in;}
-.phone-shell.has-images:hover .phone-tap-hint{opacity:0;}
 
 /* CAROUSEL CONTROLS */
 .carousel-controls{position:absolute;bottom:0;left:0;right:0;z-index:10;display:flex;align-items:center;justify-content:space-between;padding:20px 60px 28px;}
@@ -224,6 +218,24 @@ nav{position:fixed;top:0;left:0;right:0;z-index:999;display:flex;align-items:cen
 .carousel-progress-fill{height:100%;background:linear-gradient(90deg,var(--accent),#a78bfa);width:0%;transition:width linear;}
 .slide-counter{position:absolute;top:90px;right:60px;z-index:10;font-size:11px;font-weight:700;color:rgba(255,255,255,.4);letter-spacing:2px;}
 @media(max-width:768px){.slide-counter{right:24px;top:80px;}}
+
+/* ALL WORKS BANNER */
+.all-works-sec{background:#040507;border-top:1px solid rgba(255,255,255,.06);padding:56px 48px;}
+@media(max-width:768px){.all-works-sec{padding:44px 20px;}}
+.all-works-inner{max-width:1100px;margin:0 auto;display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;gap:28px;}
+.all-works-text{}
+.all-works-text .aw-label{display:inline-flex;align-items:center;gap:10px;margin-bottom:10px;}
+.all-works-text .aw-label::before{content:'';width:28px;height:2px;background:#a78bfa;border-radius:2px;}
+.all-works-text .aw-label span{font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:2px;color:#a78bfa;}
+.all-works-text h2{font-family:'Fraunces',serif;font-size:clamp(24px,4vw,38px);font-weight:900;letter-spacing:-1.5px;color:#fff;margin-bottom:8px;}
+.all-works-text h2 em{font-style:italic;background:linear-gradient(135deg,#a78bfa,#38bdf8);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;}
+.all-works-text p{font-size:14px;color:rgba(255,255,255,.45);max-width:480px;line-height:1.7;}
+.all-works-cards{display:flex;flex-wrap:wrap;gap:10px;align-items:center;}
+.aw-btn{display:inline-flex;align-items:center;gap:9px;padding:14px 26px;border-radius:12px;font-size:13px;font-weight:700;transition:all .25s;white-space:nowrap;}
+.aw-btn.drive{background:rgba(108,99,255,.18);border:1px solid rgba(108,99,255,.45);color:#c4b5fd;}
+.aw-btn.drive:hover{background:rgba(108,99,255,.32);transform:translateY(-2px);box-shadow:0 8px 28px rgba(108,99,255,.25);}
+.aw-btn-ico{font-size:18px;}
+.aw-meta{font-size:11px;color:rgba(255,255,255,.25);margin-top:6px;letter-spacing:.5px;}
 
 /* ADDITIONAL PROJECTS */
 .add-proj-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(280px,1fr));gap:10px;margin-bottom:8px;}
@@ -282,48 +294,9 @@ footer strong{color:var(--accent);}
 /* REVEAL */
 .rv{opacity:0;transform:translateY(22px);transition:opacity .6s ease,transform .6s ease;}
 .rv.in{opacity:1;transform:none;}
-
-/* ===== FULLSCREEN LIGHTBOX ===== */
-#lb-overlay{position:fixed;inset:0;z-index:9999;background:rgba(0,0,0,.96);backdrop-filter:blur(24px);-webkit-backdrop-filter:blur(24px);display:flex;align-items:center;justify-content:center;opacity:0;pointer-events:none;transition:opacity .35s cubic-bezier(.4,0,.2,1);}
-#lb-overlay.open{opacity:1;pointer-events:all;}
-#lb-bg-blur{position:absolute;inset:0;background-size:cover;background-position:center;filter:blur(40px) brightness(.25) saturate(1.4);transform:scale(1.08);transition:background-image .4s;}
-#lb-img-wrap{position:relative;display:flex;align-items:center;justify-content:center;width:100%;height:100%;padding:70px 80px 90px;}
-@media(max-width:768px){#lb-img-wrap{padding:60px 16px 80px;}}
-#lb-img{max-width:100%;max-height:100%;object-fit:contain;border-radius:16px;box-shadow:0 40px 120px rgba(0,0,0,.8);transition:opacity .3s ease,transform .3s cubic-bezier(.4,0,.2,1);user-select:none;-webkit-user-drag:none;}
-#lb-img.lb-fade{opacity:0;transform:scale(.97);}
-#lb-close{position:fixed;top:20px;right:20px;width:44px;height:44px;border-radius:50%;background:rgba(255,255,255,.1);border:1px solid rgba(255,255,255,.2);color:#fff;font-size:20px;cursor:pointer;display:flex;align-items:center;justify-content:center;transition:all .2s;z-index:10001;}
-#lb-close:hover{background:rgba(255,255,255,.22);transform:scale(1.1);}
-.lb-arrow{position:fixed;top:50%;transform:translateY(-50%);width:48px;height:48px;border-radius:14px;background:rgba(255,255,255,.09);border:1px solid rgba(255,255,255,.18);color:#fff;font-size:20px;cursor:pointer;display:flex;align-items:center;justify-content:center;transition:all .2s;z-index:10001;backdrop-filter:blur(8px);}
-.lb-arrow:hover{background:rgba(255,255,255,.2);}
-#lb-prev{left:16px;}
-#lb-next{right:16px;}
-@media(max-width:600px){.lb-arrow{width:38px;height:38px;font-size:16px;}#lb-prev{left:8px;}#lb-next{right:8px;}}
-#lb-counter{position:fixed;top:24px;left:24px;font-family:'Fraunces',serif;font-size:13px;font-weight:700;color:rgba(255,255,255,.5);letter-spacing:2px;z-index:10001;}
-#lb-title{position:fixed;top:22px;left:50%;transform:translateX(-50%);font-family:'Fraunces',serif;font-size:15px;font-weight:700;color:rgba(255,255,255,.75);letter-spacing:-.3px;z-index:10001;white-space:nowrap;}
-@media(max-width:600px){#lb-title{display:none;}}
-#lb-dots{position:fixed;bottom:24px;left:50%;transform:translateX(-50%);display:flex;gap:6px;align-items:center;z-index:10001;max-width:90vw;overflow-x:auto;padding:4px 8px;scrollbar-width:none;}
-#lb-dots::-webkit-scrollbar{display:none;}
-.lb-dot{width:28px;height:28px;border-radius:8px;overflow:hidden;flex-shrink:0;cursor:pointer;border:2px solid rgba(255,255,255,.15);transition:all .2s;opacity:.5;}
-.lb-dot.active{border-color:#fff;opacity:1;transform:scale(1.12);}
-.lb-dot img{width:100%;height:100%;object-fit:cover;display:block;}
-#lb-swipe-hint{position:fixed;bottom:66px;left:50%;transform:translateX(-50%);font-size:11px;font-weight:600;color:rgba(255,255,255,.3);letter-spacing:1px;z-index:10001;animation:fadeHint 3s forwards;}
-@keyframes fadeHint{0%{opacity:1;}70%{opacity:1;}100%{opacity:0;pointer-events:none;}}
 </style>
 </head>
 <body>
-
-<!-- LIGHTBOX -->
-<div id="lb-overlay" role="dialog" aria-modal="true" aria-label="Image gallery">
-  <div id="lb-bg-blur"></div>
-  <div id="lb-img-wrap"><img id="lb-img" src="" alt="Screenshot"></div>
-  <button id="lb-close" aria-label="Close gallery">✕</button>
-  <button class="lb-arrow" id="lb-prev" aria-label="Previous image">←</button>
-  <button class="lb-arrow" id="lb-next" aria-label="Next image">→</button>
-  <div id="lb-counter">01 / 01</div>
-  <div id="lb-title"></div>
-  <div id="lb-dots"></div>
-  <div id="lb-swipe-hint">← SWIPE →</div>
-</div>
 
 <nav id="nav">
   <a href="#" class="nav-logo">JP</a>
@@ -391,7 +364,7 @@ footer strong{color:var(--accent);}
   <div class="stat rv"><div class="stat-n">30+</div><div class="stat-l">Apps Built</div></div>
   <div class="stat rv"><div class="stat-n">100K+</div><div class="stat-l">Downloads</div></div>
   <div class="stat rv"><div class="stat-n">4.5★</div><div class="stat-l">Avg Rating</div></div>
-  <div class="stat rv"><div class="stat-n g">13+</div><div class="stat-l">Key Projects</div></div>
+  <div class="stat rv"><div class="stat-n g">12+</div><div class="stat-l">Key Projects</div></div>
   <div class="stat rv"><div class="stat-n">5</div><div class="stat-l">Companies</div></div>
 </div>
 
@@ -406,7 +379,7 @@ footer strong{color:var(--accent);}
   </div>
   <div class="carousel-section" id="mainCarousel" style="margin-top:16px;">
     <div class="carousel-track" id="carouselTrack"></div>
-    <div class="slide-counter" id="slideCounter">01 / 13</div>
+    <div class="slide-counter" id="slideCounter">01 / 12</div>
     <div class="carousel-controls">
       <div class="carousel-dots" id="carouselDots"></div>
       <div class="carousel-arrows">
@@ -417,6 +390,24 @@ footer strong{color:var(--accent);}
     <div class="carousel-progress"><div class="carousel-progress-fill" id="progressFill"></div></div>
   </div>
 </section>
+
+<!-- ALL WORKS -->
+<div class="all-works-sec rv">
+  <div class="all-works-inner">
+    <div class="all-works-text">
+      <div class="aw-label"><span>Complete Portfolio</span></div>
+      <h2>All My <em>Works</em></h2>
+      <p>Browse all project designs, APKs, screen recordings, and source assets — every project in one place on Google Drive.</p>
+    </div>
+    <div style="display:flex;flex-direction:column;align-items:flex-start;gap:6px;">
+      <a href="https://drive.google.com/drive/folders/16_UtQWcJPgUME2IET4nWQxZzti9OFY8d?usp=sharing" target="_blank" class="aw-btn drive">
+        <span class="aw-btn-ico">📁</span>
+        View All Works on Google Drive ↗
+      </a>
+      <div class="aw-meta">Designs · APKs · Screenshots · Source Files</div>
+    </div>
+  </div>
+</div>
 
 <!-- ACHIEVEMENTS -->
 <section class="sec" id="achievements">
@@ -610,7 +601,7 @@ const bt=document.getElementById('btop');
 window.addEventListener('scroll',()=>bt.classList.toggle('show',scrollY>400));
 bt.addEventListener('click',()=>window.scrollTo({top:0,behavior:'smooth'}));
 
-// ====== PROJECT CAROUSEL ======
+// ====== PROJECT DATA ======
 const BASE = 'https://jeetparmar2810.github.io/portfolio/assets/images/';
 
 const PROJECTS = [
@@ -619,18 +610,6 @@ const PROJECTS = [
     badges:[{t:'Current',cls:'cur'},{t:'AI-Powered',cls:'ai'}],
     desc:'Smart office booking platform with role-based dashboards. Gmail OAuth integration with AI email signal detection (flights, invoices, hotel) and a smart suggestion engine cross-referencing calendar events.',
     tags:['Flutter','Dart','Riverpod','Gmail API','Clean Architecture'],
-    images:[
-      BASE+'red-carpet-office/Screenshot_20260405-232802.Redcarpet%20Life%20Signal.png',
-      BASE+'red-carpet-office/Screenshot_20260405-232809.Redcarpet%20Life%20Signal.png',
-      BASE+'red-carpet-office/Screenshot_20260405-232814.Redcarpet%20Life%20Signal.png',
-      BASE+'red-carpet-office/Screenshot_20260405-232820.Redcarpet%20Life%20Signal.png',
-      BASE+'red-carpet-office/Screenshot_20260405-232826.Redcarpet%20Life%20Signal.png',
-      BASE+'red-carpet-office/Screenshot_20260405-232833.Redcarpet%20Life%20Signal.png',
-      BASE+'red-carpet-office/Screenshot_20260405-232836.Redcarpet%20Life%20Signal.png',
-      BASE+'red-carpet-office/Screenshot_20260405-232901.Redcarpet%20Life%20Signal.png',
-      BASE+'red-carpet-office/Screenshot_20260405-232906.Redcarpet%20Life%20Signal.png',
-      BASE+'red-carpet-office/Screenshot_20260405-232913.Redcarpet%20Life%20Signal.png'
-    ],
     gradient:'linear-gradient(135deg,#0d0820 0%,#1a0e40 45%,#060312 100%)',
     glow:'#6c63ff',
     links:[]
@@ -640,10 +619,6 @@ const PROJECTS = [
     badges:[{t:'Play Store',cls:'store'},{t:'Society App',cls:'ar'}],
     desc:'Complete society management app for Nakshatra Aspire residents. Features visitor management, maintenance billing, notices, amenity booking, community chat, and a real-time dashboard for committee members.',
     tags:['Android','Java','Firebase','Firestore','FCM'],
-    images:[
-      BASE+'ns/splash.webp',BASE+'ns/home.webp',BASE+'ns/login.webp',
-      BASE+'ns/dashboard.webp',BASE+'ns/reports.webp'
-    ],
     gradient:'linear-gradient(135deg,#041020 0%,#081e38 45%,#020810 100%)',
     glow:'#06b6d4',
     links:[
@@ -655,7 +630,6 @@ const PROJECTS = [
     badges:[{t:'Current',cls:'cur'},{t:'AR / XR',cls:'ar'}],
     desc:'Educational AR app for kids using Google ARCore & Sceneform to place interactive 3D animals in the real world. A–Z encyclopedia with TTS narration, multilingual tracing for 8 Indian languages.',
     tags:['Android','Java','ARCore','Sceneform','TTS'],
-    images:[],
     gradient:'linear-gradient(135deg,#041408 0%,#082814 45%,#020a04 100%)',
     glow:'#10b981',
     links:[]
@@ -665,20 +639,6 @@ const PROJECTS = [
     badges:[{t:'Current',cls:'cur'},{t:'Groq AI',cls:'ai'}],
     desc:'Universal AI smart TV remote for Android TV, Samsung Tizen, LG webOS, Sony Bravia & Roku. Voice control with intent detection, YouTube Lounge API, Groq LLaMA 3.1, and ADB session monitoring.',
     tags:['Flutter','Groq API','STT','ADB','WebSocket'],
-    images:[
-      BASE+'remote/Screenshot_20260405-224901.GMI%20IQ%20Remote.png',
-      BASE+'remote/Screenshot_20260405-224903.GMI%20IQ%20Remote.png',
-      BASE+'remote/Screenshot_20260405-224906.GMI%20IQ%20Remote.png',
-      BASE+'remote/Screenshot_20260405-224908.GMI%20IQ%20Remote.png',
-      BASE+'remote/Screenshot_20260405-224910.GMI%20IQ%20Remote.png',
-      BASE+'remote/Screenshot_20260405-224912.GMI%20IQ%20Remote.png',
-      BASE+'remote/Screenshot_20260405-224914.GMI%20IQ%20Remote.png',
-      BASE+'remote/Screenshot_20260405-224916.GMI%20IQ%20Remote.png',
-      BASE+'remote/Screenshot_20260405-224920.GMI%20IQ%20Remote.png',
-      BASE+'remote/Screenshot_20260405-224925.GMI%20IQ%20Remote.png',
-      BASE+'remote/Screenshot_20260405-224929.GMI%20IQ%20Remote.png',
-      BASE+'remote/Screenshot_20260405-224934.GMI%20IQ%20Remote.png'
-    ],
     gradient:'linear-gradient(135deg,#04060e 0%,#0a0e28 45%,#020408 100%)',
     glow:'#3b82f6',
     links:[]
@@ -688,7 +648,6 @@ const PROJECTS = [
     badges:[{t:'Current',cls:'cur'},{t:'10 AI Tools',cls:'ai'}],
     desc:'Full AI-powered video editing SDK with timeline editor, PiP multi-layer, 10 AI tools (BG removal, highlights, stabilisation, smart crop, silence removal & more), Groq Whisper subtitles in 12 languages, FFmpeg export.',
     tags:['Flutter','Riverpod','FFmpeg','Whisper','ML Kit'],
-    images:[BASE+'videostudio/1.png',BASE+'videostudio/2.png',BASE+'videostudio/3.png'],
     gradient:'linear-gradient(135deg,#140800 0%,#2a1200 45%,#080400 100%)',
     glow:'#f97316',
     links:[]
@@ -698,29 +657,20 @@ const PROJECTS = [
     badges:[{t:'Current',cls:'cur'},{t:'Document AI',cls:'ai'}],
     desc:'Smart document scanner with CameraX-powered capture, auto-edge detection, multi-page PDF export, and ID card scanning. Supports book scanning, preview, and organised document management — built for speed and clarity.',
     tags:['Android','Java','CameraX','ML Kit','PDF Export'],
-    images:[
-      BASE+'Gm-scan/Welcome%20screen.png',
-      BASE+'Gm-scan/Sign%20in%20screen.png',
-      BASE+'Gm-scan/Custom%20CAMERA%20SCREEN%20Document%20scan.png',
-      BASE+'Gm-scan/preview%20screen.png',
-      BASE+'Gm-scan/After%20book%20Scanned.png',
-      BASE+'Gm-scan/Home%20Screen%20-%20After%20Scanned%20All%20documents.png',
-      BASE+'Gm-scan/Home%20Screen%20-%20After%20Scanned%20id%20card.png'
-    ],
     gradient:'linear-gradient(135deg,#060e14 0%,#0c1c24 45%,#020608 100%)',
     glow:'#22d3ee',
     links:[]
   },
   {
     num:'07', icon:'💬', title:'QuirkChat',
-    badges:[{t:'Play Store',cls:'store'}],
+    badges:[{t:'Play Store',cls:'store'},{t:'App Store',cls:'ar'}],
     desc:'Social networking platform for geek communities & fandom clubs. Real-time Firestore chat, social auth, and FCM push notifications with a custom feed algorithm.',
     tags:['Kotlin','MVVM','Firebase','FCM','Firestore'],
-    images:[],
     gradient:'linear-gradient(135deg,#0e0414 0%,#1c0828 45%,#06020a 100%)',
     glow:'#a78bfa',
     links:[
       {label:'▶ Play Store', url:'https://play.google.com/store/apps/details?id=com.quirktastic', cls:'primary'},
+      {label:'🍎 App Store', url:'https://apps.apple.com/in/app/quirkchat-find-your-people/id1448019300', cls:'ios'},
       {label:'📦 Softonic', url:'https://quirkchat-find-your-people.en.softonic.com/android', cls:'alt'}
     ]
   },
@@ -729,7 +679,6 @@ const PROJECTS = [
     badges:[{t:'Play Store',cls:'store'}],
     desc:'Music streaming platform with ExoPlayer, playlist management, offline playback, and premium subscription payments. Smooth animations and a rich audio-first UI.',
     tags:['Kotlin','ExoPlayer','In-App Purchases','Firebase'],
-    images:[],
     gradient:'linear-gradient(135deg,#14020a 0%,#280412 45%,#0a0204 100%)',
     glow:'#ec4899',
     links:[
@@ -738,23 +687,10 @@ const PROJECTS = [
     ]
   },
   {
-    num:'09', icon:'🏗', title:'FM Contractor',
-    badges:[{t:'Play Store',cls:'store'}],
-    desc:'Business management app for contractors & broker networks with data visualisation dashboards and detailed reporting. Clean MVVM architecture with Retrofit.',
-    tags:['Kotlin','MVVM','Retrofit','Charts'],
-    images:[],
-    gradient:'linear-gradient(135deg,#080c0e 0%,#101820 45%,#040608 100%)',
-    glow:'#64748b',
-    links:[
-      {label:'▶ Play Store', url:'https://play.google.com/store/apps/details?id=com.contractorfm', cls:'primary'}
-    ]
-  },
-  {
-    num:'10', icon:'🏓', title:'Main Court: Pickleball',
+    num:'09', icon:'🏓', title:'Main Court: Pickleball',
     badges:[{t:'App Store',cls:'store'}],
     desc:'Cross-platform iOS & Android Pickleball app with match creation, skill-based player matching, and Google Maps integration for court discovery.',
     tags:['Flutter','Bloc','Firebase','Google Maps'],
-    images:[],
     gradient:'linear-gradient(135deg,#021206 0%,#042410 45%,#010804 100%)',
     glow:'#34d399',
     links:[
@@ -762,11 +698,10 @@ const PROJECTS = [
     ]
   },
   {
-    num:'11', icon:'🌾', title:'Ke Insumos',
+    num:'10', icon:'🌾', title:'Ke Insumos',
     badges:[{t:'Play Store',cls:'store'}],
     desc:'Agricultural marketplace with dual user roles (buyer/seller), order management, and real-time delivery tracking for farming supplies.',
     tags:['Flutter','GetX','Firebase','Maps'],
-    images:[],
     gradient:'linear-gradient(135deg,#0c1002 0%,#182006 45%,#060800 100%)',
     glow:'#84cc16',
     links:[
@@ -775,41 +710,29 @@ const PROJECTS = [
     ]
   },
   {
-    num:'12', icon:'🥗', title:'Dietas Saludables',
+    num:'11', icon:'🥗', title:'Dietas Saludables',
     badges:[{t:'Play Store',cls:'store'}],
     desc:'Health & fitness app with 30+ diet plans, BMI calculator, and intuitive meal planning UI. Offline-first with SQLite storage and a clean Material Design interface.',
     tags:['Android','SQLite','Custom UI','Material Design'],
-    images:[],
     gradient:'linear-gradient(135deg,#040e14 0%,#081c24 45%,#020608 100%)',
     glow:'#22d3ee',
     links:[
       {label:'▶ Play Store', url:'https://play.google.com/store/apps/details?id=com.lomasdefrida.dietassaludablesV2', cls:'primary'},
-      {label:'📦 Uptodown', url:'https://com-lomasdefrida-dietassaludablesv2.ru.uptodown.com/android', cls:'alt'}
+      {label:'📦 Uptodown', url:'https://com-lomasdefrida-dietassaludablesv2.en.uptodown.com/android', cls:'alt'}
     ]
   },
   {
-    num:'13', icon:'🏡', title:'Kulsetu — Samaj App',
+    num:'12', icon:'🏡', title:'Kulsetu — Samaj App',
     badges:[{t:'Current',cls:'cur'},{t:'Community',cls:'ar'}],
     desc:'A dedicated community management app for our Samaj — connecting families, sharing notices, managing member directories, and celebrating events together. Built with love for our community.',
     tags:['Android','Java','Firebase','Firestore','FCM'],
-    images:[
-      BASE+'kulsetu/Screenshot_20260405-214612.smaj.png',
-      BASE+'kulsetu/Screenshot_20260405-214616.smaj.png',
-      BASE+'kulsetu/Screenshot_20260405-214619.smaj.png',
-      BASE+'kulsetu/Screenshot_20260405-214624.smaj.png',
-      BASE+'kulsetu/Screenshot_20260405-214637.smaj.png',
-      BASE+'kulsetu/Screenshot_20260405-214644.smaj.png',
-      BASE+'kulsetu/Screenshot_20260405-214655.smaj.png',
-      BASE+'kulsetu/Screenshot_20260405-214700.smaj.png',
-      BASE+'kulsetu/Screenshot_20260405-214706.smaj.png',
-      BASE+'kulsetu/Screenshot_20260405-214727.smaj.png'
-    ],
     gradient:'linear-gradient(135deg,#100808 0%,#241010 45%,#080404 100%)',
     glow:'#f59e0b',
     links:[]
   }
 ];
 
+// ====== BUILD CAROUSEL ======
 const track=document.getElementById('carouselTrack');
 const dotsEl=document.getElementById('carouselDots');
 const counterEl=document.getElementById('slideCounter');
@@ -818,44 +741,26 @@ const progressFill=document.getElementById('progressFill');
 PROJECTS.forEach((p,idx)=>{
   const slide=document.createElement('div');
   slide.className='carousel-slide'+(idx===0?' active':'');
-  const bgHtml=`<div class="slide-bg">${p.images.length?`<img class="slide-bg-img" src="${p.images[0]}" alt="">`:''}<div class="slide-bg-gradient" style="background:${p.gradient};${p.images.length?'opacity:.85':''}"></div></div>`;
+
+  const bgHtml=`<div class="slide-bg"><div class="slide-bg-gradient" style="background:${p.gradient};"></div></div>`;
   const badgesHtml=p.badges.map(b=>`<span class="sbadge ${b.cls}">${b.cls==='cur'?'<span class="live-dot"></span>':''}${b.t}</span>`).join('');
   const tagsHtml=p.tags.map(t=>`<span class="stag">${t}</span>`).join('');
   const linksHtml=p.links.length?`<div class="slide-links">${p.links.map(l=>`<a href="${l.url}" target="_blank" class="slide-link ${l.cls}">${l.label}</a>`).join('')}</div>`:'';
-  let phoneContent;
-  if(p.images.length){
-    const imgs=p.images.map((src,i)=>`<img class="phone-img${i===0?' active':''}" src="${src}" alt="${p.title} screenshot">`).join('');
-    phoneContent=`<div class="phone-imgs" data-slide="${idx}">${imgs}</div>`;
-  } else {
-    phoneContent=`<div class="phone-placeholder" style="background:${p.gradient}"><div class="ph-icon">${p.icon}</div><div class="ph-label">${p.title}</div></div>`;
-  }
-  const hasImages=p.images.length>0;
-  const tapHintHtml=hasImages?`<div class="phone-tap-hint">TAP TO VIEW ALL</div>`:'';
-  const shellClass=hasImages?'phone-shell has-images':'phone-shell';
-  slide.innerHTML=`${bgHtml}<div class="slide-inner"><div class="slide-left"><div class="slide-num">${p.num}</div><div class="slide-badges">${badgesHtml}</div><div class="slide-title">${p.title}</div><p class="slide-desc">${p.desc}</p><div class="slide-stack">${tagsHtml}</div>${linksHtml}</div><div class="slide-right"><div class="${shellClass}" data-proj-idx="${idx}">${tapHintHtml}<div class="phone-glow" style="background:${p.glow};"></div><div class="phone-frame"></div><div class="phone-notch"></div><div class="phone-screen">${phoneContent}</div></div></div></div>`;
+
+  // Phone always shows icon + name only (no screenshots)
+  const phoneContent=`<div class="phone-placeholder" style="background:${p.gradient}"><div class="ph-icon">${p.icon}</div><div class="ph-label">${p.title}</div></div>`;
+
+  slide.innerHTML=`${bgHtml}<div class="slide-inner"><div class="slide-left"><div class="slide-num">${p.num}</div><div class="slide-badges">${badgesHtml}</div><div class="slide-title">${p.title}</div><p class="slide-desc">${p.desc}</p><div class="slide-stack">${tagsHtml}</div>${linksHtml}</div><div class="slide-right"><div class="phone-shell"><div class="phone-glow" style="background:${p.glow};"></div><div class="phone-frame"></div><div class="phone-notch"></div><div class="phone-screen">${phoneContent}</div></div></div></div>`;
   track.appendChild(slide);
+
   const dot=document.createElement('button');
   dot.className='c-dot'+(idx===0?' active':'');
   dot.addEventListener('click',()=>goTo(idx));
   dotsEl.appendChild(dot);
 });
 
-track.addEventListener('click',e=>{
-  const shell=e.target.closest('.phone-shell.has-images');
-  if(!shell)return;
-  const idx=parseInt(shell.dataset.projIdx,10);
-  openLightbox(idx,0);
-});
-
-function startPhotoRotation(slideIdx){
-  const imgs=track.querySelectorAll(`.phone-imgs[data-slide="${slideIdx}"] .phone-img`);
-  if(!imgs.length)return;
-  let cur=0;
-  return setInterval(()=>{imgs[cur].classList.remove('active');cur=(cur+1)%imgs.length;imgs[cur].classList.add('active');},2200);
-}
-
+// ====== CAROUSEL CONTROLS ======
 let current=0,autoTimer=null;
-const photoTimers={};
 const DURATION=5000;
 
 function updateDots(){document.querySelectorAll('.c-dot').forEach((d,i)=>d.classList.toggle('active',i===current));}
@@ -871,8 +776,6 @@ function goTo(idx,dir){
   slides[current].classList.remove('prev');
   slides[current].classList.add('active');
   updateDots();updateCounter();startProgress();
-  clearInterval(photoTimers[current]);
-  photoTimers[current]=startPhotoRotation(current);
 }
 
 function next(){goTo(current+1,'next');}
@@ -887,82 +790,12 @@ track.addEventListener('touchstart',e=>{touchStartX=e.touches[0].clientX;},{pass
 track.addEventListener('touchend',e=>{const dx=e.changedTouches[0].clientX-touchStartX;if(Math.abs(dx)>50){dx<0?next():prev();startAuto();}});
 
 document.addEventListener('keydown',e=>{
-  if(lbOpen){
-    if(e.key==='ArrowRight'||e.key==='ArrowDown')lbNext();
-    else if(e.key==='ArrowLeft'||e.key==='ArrowUp')lbPrev();
-    else if(e.key==='Escape')closeLightbox();
-    return;
-  }
   if(e.key==='ArrowRight'){next();startAuto();}
   if(e.key==='ArrowLeft'){prev();startAuto();}
 });
 
-startProgress();startAuto();photoTimers[0]=startPhotoRotation(0);
-
-// ====== LIGHTBOX ======
-const lbOverlay=document.getElementById('lb-overlay');
-const lbImg=document.getElementById('lb-img');
-const lbBgBlur=document.getElementById('lb-bg-blur');
-const lbCounter=document.getElementById('lb-counter');
-const lbTitle=document.getElementById('lb-title');
-const lbDotsEl=document.getElementById('lb-dots');
-const lbClose=document.getElementById('lb-close');
-const lbPrevBtn=document.getElementById('lb-prev');
-const lbNextBtn=document.getElementById('lb-next');
-
-let lbOpen=false,lbProjIdx=0,lbImgIdx=0,lbImages=[],lbTitle_str='';
-
-function openLightbox(projIdx,imgIdx){
-  const proj=PROJECTS[projIdx];
-  if(!proj||!proj.images.length)return;
-  lbProjIdx=projIdx;lbImages=proj.images;lbTitle_str=proj.title;
-  lbTitle.textContent=proj.title;lbOpen=true;
-  document.body.style.overflow='hidden';
-  lbOverlay.classList.add('open');
-  buildLbDots();lbShowImg(imgIdx,false);
-}
-
-function closeLightbox(){
-  lbOpen=false;lbOverlay.classList.remove('open');document.body.style.overflow='';
-}
-
-function buildLbDots(){
-  lbDotsEl.innerHTML='';
-  lbImages.forEach((src,i)=>{
-    const d=document.createElement('div');
-    d.className='lb-dot'+(i===lbImgIdx?' active':'');
-    const im=document.createElement('img');im.src=src;im.alt='';
-    d.appendChild(im);
-    d.addEventListener('click',()=>lbShowImg(i,true));
-    lbDotsEl.appendChild(d);
-  });
-}
-
-function lbShowImg(idx,animate){
-  lbImgIdx=(idx+lbImages.length)%lbImages.length;
-  const src=lbImages[lbImgIdx];
-  lbBgBlur.style.backgroundImage=`url(${src})`;
-  if(animate){
-    lbImg.classList.add('lb-fade');
-    setTimeout(()=>{lbImg.src=src;lbImg.onload=()=>lbImg.classList.remove('lb-fade');if(lbImg.complete)lbImg.classList.remove('lb-fade');},180);
-  } else {lbImg.src=src;}
-  lbCounter.textContent=String(lbImgIdx+1).padStart(2,'0')+' / '+String(lbImages.length).padStart(2,'0');
-  lbDotsEl.querySelectorAll('.lb-dot').forEach((d,i)=>d.classList.toggle('active',i===lbImgIdx));
-  const activeDot=lbDotsEl.querySelectorAll('.lb-dot')[lbImgIdx];
-  if(activeDot)activeDot.scrollIntoView({inline:'center',block:'nearest',behavior:'smooth'});
-}
-
-function lbNext(){lbShowImg(lbImgIdx+1,true);}
-function lbPrev(){lbShowImg(lbImgIdx-1,true);}
-
-lbClose.addEventListener('click',closeLightbox);
-lbNextBtn.addEventListener('click',lbNext);
-lbPrevBtn.addEventListener('click',lbPrev);
-lbOverlay.addEventListener('click',e=>{if(e.target===lbOverlay||e.target===document.getElementById('lb-img-wrap'))closeLightbox();});
-
-let lbTouchX=0;
-lbOverlay.addEventListener('touchstart',e=>{lbTouchX=e.touches[0].clientX;},{passive:true});
-lbOverlay.addEventListener('touchend',e=>{const dx=e.changedTouches[0].clientX-lbTouchX;if(Math.abs(dx)>40){dx<0?lbNext():lbPrev();}});
+startProgress();
+startAuto();
 </script>
 </body>
 </html>
