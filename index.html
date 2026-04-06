@@ -542,10 +542,13 @@ footer strong{color:var(--accent);}
         </div>
       </div>
       <div class="ctc-grid rv">
-        <a href="/cdn-cgi/l/email-protection#442e2121306a292b262d282120213221282b342136042329252d286a272b29" class="ctc-card">
+
+        <!-- ✅ DIRECT EMAIL — NO CLOUDFLARE OBFUSCATION -->
+        <a href="mailto:jeet.mobiledeveloper@gmail.com" class="ctc-card">
           <div class="ctc-ico">✉️</div>
-          <div style="min-width:0;"><div class="ctc-lbl">Email</div><div class="ctc-val"><span class="__cf_email__" data-cfemail="8de7e8e8f9a3e0e2efe4e1e8e9e8fbe8e1e2fde8ffcdeae0ece4e1a3eee2e0">[email&#160;protected]</span></div></div>
+          <div style="min-width:0;"><div class="ctc-lbl">Email</div><div class="ctc-val">jeet.mobiledeveloper@gmail.com</div></div>
         </a>
+
         <a href="https://www.linkedin.com/in/jeet-parmar-a37b0b98" target="_blank" class="ctc-card">
           <div class="ctc-ico">💼</div>
           <div style="min-width:0;"><div class="ctc-lbl">LinkedIn</div><div class="ctc-val">jeet-parmar-a37b0b98</div></div>
@@ -574,7 +577,7 @@ footer strong{color:var(--accent);}
 <footer>Designed &amp; built with care by <strong>Jeet Parmar</strong><br>Senior Mobile Application Developer &amp; AI Workflow Engineer · Ahmedabad, India</footer>
 <button class="btop" id="btop">↑</button>
 
-<script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
+<script>
 // ---- Theme & nav ----
 const html=document.documentElement,tb=document.getElementById('themeBtn');
 let dark=localStorage.getItem('theme')!=='light';
@@ -602,8 +605,6 @@ window.addEventListener('scroll',()=>bt.classList.toggle('show',scrollY>400));
 bt.addEventListener('click',()=>window.scrollTo({top:0,behavior:'smooth'}));
 
 // ====== PROJECT DATA ======
-const BASE = 'https://jeetparmar2810.github.io/portfolio/assets/images/';
-
 const PROJECTS = [
   {
     num:'01', icon:'🏢', title:'RedCarpetOffice',
@@ -759,7 +760,6 @@ PROJECTS.forEach((p,idx)=>{
   const tagsHtml=p.tags.map(t=>`<span class="stag">${t}</span>`).join('');
   const linksHtml=p.links.length?`<div class="slide-links">${p.links.map(l=>`<a href="${l.url}" target="_blank" class="slide-link ${l.cls}">${l.label}</a>`).join('')}</div>`:'';
 
-  // Phone always shows icon + name only (no screenshots)
   const phoneContent=`<div class="phone-placeholder" style="background:${p.gradient}"><div class="ph-icon">${p.icon}</div><div class="ph-label">${p.title}</div></div>`;
 
   slide.innerHTML=`${bgHtml}<div class="slide-inner"><div class="slide-left"><div class="slide-num">${p.num}</div><div class="slide-badges">${badgesHtml}</div><div class="slide-title">${p.title}</div><p class="slide-desc">${p.desc}</p><div class="slide-stack">${tagsHtml}</div>${linksHtml}</div><div class="slide-right"><div class="phone-shell"><div class="phone-glow" style="background:${p.glow};"></div><div class="phone-frame"></div><div class="phone-notch"></div><div class="phone-screen">${phoneContent}</div></div></div></div>`;
